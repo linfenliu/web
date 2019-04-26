@@ -1,0 +1,4 @@
+﻿#function(cfg)
+local t=table();
+t.title="单站(X-47b)RCS";
+return t;

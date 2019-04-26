@@ -1,0 +1,33 @@
+# 圆锥体
+圆锥体可用于生成圆形圆锥体。
+
+## 定义方式
+### 底面半径——高
+#### 属性对话框
+[image]("image/DShape/DShapeCone.png","",".parawindow")
+
+#### 参数含义
+[block-ref](radius-height-table)
+
+#### 示意图
+[image]("image/DShape/DShapeCone_sample.png","",".sample-mc")
+
+
+## 如何创建圆锥体
+* [link](?help_model_shape_symbol_DShapeCreate.create-by-GUI, "界面创建圆锥体")
+* [link](?help_model_Advanced_ewsl_model,"脚本创建圆锥体")
+
+
+
+
+```block:radius-height-table
+||(,".paratab-mc")
+| 参数名称 |  说明 | 备注 |
+| 边数 | 指定圆锥体底部圆的边数 | 边数越高越接近圆 |
+| 高度 | 指定圆锥体高度 | - |
+| 底面半径 | 指定圆锥体底面的二维（X、Y）坐标 | - |
+```
+
+
+
+

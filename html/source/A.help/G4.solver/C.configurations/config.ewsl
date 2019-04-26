@@ -1,0 +1,5 @@
+#function(cfg)
+
+local t=table();
+t.title="求解器配置";
+return t;

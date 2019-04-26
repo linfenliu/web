@@ -1,0 +1,716 @@
+[topic](param)
+
+概述
+============
+
+窗口管理器，是一个通用的多文档编辑器管理器，类似MVC框架。抽像出Event和Plugin的概念，
+对不同的功能进行组织，并映射到ewsl的ui库。
+
+
+Event
+-----------
+
+窗口管理器，抽像出Event的概念，Event大概可分为以下几大类：
+* EvtCommand 一般用于关联按扭、菜单或工具条等，在控件触发时，要触发这个关联的Event。
+* EvtProxy 一般用于关联用户可编辑控件，用于控件的状态的交互，
+ 最其中的交互是transfer\_data，可以通过EvtProxy把值传送到控件，也可以从控件传送到EvtProxy。
+* EvtGroup 组，用于代表一组Event，可以用EvtGroup来生成菜单和工具条等。
+* EvtOptionData，下拉框等控件选项定义。
+* WndModel 窗口对象。
+* Plugin 插件对象。
+ 
+跟Event关联的内容，有EvtListener和Validator。 
+EvtListener用于监听Event，Validator用于绑定到控件，负责具体的控件和Event之间的交互。
+在脚本中，一般不需要直接使用到这两方面的内容，而是通过Event间接与控件进行交互。
+如果想要控件的状态变化时触动某个动作，可以往名称为```sync_handler```的Event中注册触发函数。
+
+
+例子：在`time.policy`改变时，修改```time.dt_reference```控件的状态
+
+```ewsl
+	
+	local ec=...; // ec为WndModel关联的evtmgr，构造方式要看具体环境
+	local fn1=function(e)
+	{		
+		local v=ec["time.policy"].value;
+		ec["time.dt_reference"].set("FLAG_ENABLE",v==1);
+	};	
+	ec["sync_handler"].add(fn1,"time.policy");
+	
+```
+
+Plugin
+--------
+
+Plugin是一种特殊的Event。
+窗口管理器，按功能进行划分，抽象为不同的Plugin来实现。
+不同的Plugin，可以动态注册到窗口管理器中，注册后即可以使用Plugin的功能。
+比如，有菜单管理器Plugin，有工具条管理器Plugin，有历史打开文件Plugin等。
+只要是功能独立，即使功能很小，一般也建议抽象成Plugin来实现。
+在Plugin系统的基础上，我们抽象出编辑器Plugin，编辑器认为是在主Canvas中打开文件并处理的Plugin。
+
+编辑器Plugin，目前包括：
+* ewsl后处理交互编辑器
+* peditor模型文档编辑器
+* fieldviewer实时场观察器
+* texteditor文本文件编辑器
+* html浏览器
+
+
+ui库
+--------
+
+ui库，把窗口管理器中各方面的内容，基于ewsl扩展出相应的脚本接口，
+达到使用ewsl来定义界面相关的对象及交互的目的，降低维护扩展的难度。
+
+ui库内容：
+| 名称 | 作用 |
+| ui.evt | Event库 |
+| ui.res | 界面资源库 |
+| ui.window | 窗口库 |
+
+
+ui库相关对象
+| 名称 | 作用 |
+| WndModel | 窗口对象  |
+| KMaker | 窗口控件布局生成器 |
+| EvtManager | Event管理器 |
+| WndProperty | 窗口属性对象 |
+| DToolBox | toolbox对象 |
+
+
+ui库
+========
+
+
+ui.evt库
+------------
+
+每个WndModel，都有一个自己的evtmgr，ui.evt是全局的Event管理器。
+使用evtmgr时，可以通过Event的id来引用预定义的Event，比如```ui.evt["Open"]```或```model.evtmgr["event_id"]```。
+窗口管理器，内置了很多Event，另外，用户也可以使用外置脚本来定义自己的Event，
+或是修改已经定义好的Event。比如文件菜单，对应的Event为"File"，类型为EvtGroup，
+可以通过修改"File"这个Event来修改"File"菜单。
+具体可参考 ui/scripting/evt\_manger.ewsl。
+另外，也可以修改功能对应的快捷键等内容，修改后一般立即生效。
+
+通过ewsl来定义Event(下面假设ec为对应的evtmgr)
+* ```ec.wm_var``` 定义EvtProxy  
+* ```ec.wm_cmd``` 定义EvtCommand  
+* ```ec.gp_beg/ec.gp_end``` 定义EvtGroup或EvtOptionData等
+* ```ec.gp_new``` 跟 ```ec.gp_beg``` 功能类似，但会先清空原有的内容
+
+
+定义EvtProxy时，数据会关联到evtmgr的数据集中
+* evtmgr.get_data 获取关联的数据集
+* evtmgr.set_data 设置关联的数据集（必须是table）
+* 默认会关联到model.data
+
+```ewsl
+local evtmgr=ui.evt;
+local data=table();
+local olddata=evtmgr.set_data(data);
+evtmgr.wm_var("var.x","x","1");
+evtmgr.set_data(olddata);
+
+data.x="...";
+// model.transfer_data(+1); 可以把data.x传送到var.x关联的控件
+
+```
+
+
+通过ewsl，也可以直接调用这些Event，
+比如要通过ewsl来触发打开这个动作，这个动作对应的Event的id为"Open"，
+可以 ```ui.evt["Open"].cmd_execute()```这样来触发。
+
+
+一般较具体的功能，在窗口管理器中，也可能是由某个预定义的事件来提供。
+比如通用的对话框
+* Dialog.Msgs 弹出简单的消息窗口的功能
+* Dialog.File 弹出文件对话框
+* Dialog.Text 弹出文本对话框
+
+
+```ewsl
+local ec=...;
+
+//定义一个EvtGroup
+ec.gp_new("tb.Search");
+	ec.gp_add("Find");
+	ec.gp_add("Replace");
+ec.gp_end();
+
+//定义EvtProxy
+ec.wm_var("workmode.id","id",0); // 定义名称为`workmode.id`的EvtProxy，初始值为0，短名称为id，可以使用model.data.id访问。
+ec.wm_var("workmode.figure","figure"); // 定义名称为```workmode.figure```的EvtProxy，初始值为nil，短名称为figure。
+
+// 定义一个EvtCommand
+ec.wm_cmd("my_button").do_cmd_execute=function(param,model,evtmgr)
+{
+	// model和evtmgr是创建这个Event时关联的WndModel和EvtManager
+	// param.model是触发这个事件时对应的WndModel
+	
+	model.transfer_data(-1);
+	ui.evt["Dialog.Msgs"].std_execute(
+		table{
+			title: "message"
+			content: "workmode.id is "..model.data.id;	
+		}
+	);
+	local f=create_figure(model.data.id);
+	model.data.figure=f;
+	
+	model.transfer_data(+1);	
+};
+
+
+```
+
+ui.res库
+------------
+用来定义和加载资源文件，比如图像等。工具图标等，都是通过这个库来定义，
+系统会直接使用同名称的图标资源，对于没定义图标的情况，将使用默认图标。
+同一个名称的资源，可以包括多个不同大小的图像资源，在需要使用图像资源时，
+优先选择同样大小的图像，如果没有，则自动使用较大的图像进行缩放生成，
+如果没有较大的，就使用小的进行放大，完全没有就使用默认图标。  
+具体用法比较简单，可以参考系统默认的资源配置脚本。注意，这是配置脚本，
+可以利用脚本再加一些特殊的约定，动态加载资源。  
+系统默认的资源配置脚本：```app:/scripting/ui/res_manager.ewsl```，可以修改这个文件来定制图标等。
+
+
+
+ui.window库
+------------
+这个库，目前只定义了一个函数，用来创建WndModel对象。
+
+| 名称 | 作用 |
+| ui.window.create | 创建窗口对象 |
+
+ui.window.create函数，参数可以是窗口的创建函数，table、toolbox或文件名。
+当参数是table或toolbox时，必须定义入口函数wnd\_create。
+
+   
+   
+
+WndProperty的属性及方法
+-----------
+
+| 名称 | 作用 |
+| sv | 保存窗口属性对象 |
+| name | 关联的Event名称 |
+| label | 标签 |
+| flags | 状态标识 |
+| nvalue | 值(整数) |
+| svalue | 值（字符串）|
+| align | 水平对齐 |
+| valign | 垂直对齐 |
+| hint | 提示信息 |
+
+另外：其他还有很多属性，不同的窗口定义，
+需要不同的专有属性，通用属性，
+在不同类型的窗口定义中，
+也可能有不同的意义，具体见窗口类型的说明表。
+
+
+KMaker窗口控件布局生成器的属性及方法
+------------------
+
+| 名称 | 作用 |
+| ld | 载入窗口属性对象 |
+| win | 定义生成窗口 |
+| end | 完成窗口定义 |
+| add | 添加窗口，相当于win(...).end() |
+| row | 相当于 win("row",...) |
+| col | 相当于 win("col",...) |
+| add\_item | 添加预定义内容 |
+
+其中，win/end两个接口，必须匹配。
+如果end函数可以带一个字符串作为参数，
+这情况下，表示前面的内容为预定义内容，
+后面可以使用add\_item来添加预定内容。
+另外，KMaker窗口生成器，继承了所有的窗口对象的属性和方法。
+
+WndModel窗口对象属性及方法
+-------------
+
+| 名称 | 作用 |
+| maker | 关联的KMaker对象 |
+| evtmgr | 局部Event表 |
+| context | 用户数据 |
+| data | 默认关联的数据集 |
+| transfer\_data | 数据传输函数 |
+| show | 显示窗口（非模式对话框）|
+| show\_modal | 显示窗口（模式对话框） |
+| end\_modal | 结束模式对话框 |
+| close | 关闭窗口 |
+
+
+
+示例代码
+----------------
+
+表达式解释器的窗口代码
+```ewsl
+
+local t=table();
+t.wnd_create=function(ctx)
+{
+	local km=ctx.maker;
+
+	km.ld(0).width(280).sv(1);
+	km.ld(0).width( 96).sv(2);
+
+	km.win("dialog"		,km.label(_hT("expr")).flags(km.IWND_NO_RESIZABLE|km.IWND_NO_CLOSE|km.IWND_AUTO_FIT).sprops("icon","Find"));
+		km.win("col");
+			km.win("row");
+				km.add("textctrl"	,km.ld(1).name("expr.expression").height(120).flags(km.IWND_MULTILINE).hint(_hT("expression")));
+				km.add("textctrl"	,km.ld(1).name("expr.result").flags(km.IWND_READONLY).hint(_hT("result")));
+			km.end();
+		
+			km.win("row");
+				km.add("button"		,km.ld(2).name(_kT("Ok#button")));
+				km.add("button"		,km.ld(2).name(_kT("Cancel#button")));
+			km.end();
+		km.end();
+	km.end();
+};
+return t;
+
+```
+
+
+
+搜索窗口的ewsl代码
+```ewsl
+
+local t=table();
+t.wnd_create=function(ctx)
+{
+	local km=ctx.maker;
+	km.width(280).sv(1);
+	km.width( 96).sv(2);
+
+	km.win("col"		,km.ld(0).label(_hT("search_flags")).flags(km.IWND_EXPAND));
+		km.add("checkbox"	,km.ld(0).name("search.case").label(_hT("match case")));
+		km.add("checkbox"	,km.ld(0).name("search.word").label(_hT("match word")));
+		km.add("checkbox"	,km.ld(0).name("search.regexp").label(_hT("regexp")));
+		//km.add("checkbox"	,km.ld(0).name("search.posix").label(_hT("posix")));
+	km.end("flags");
+	
+	km.win("dialog"		,km.label(_hT("find and replace")).flags(km.IWND_NO_RESIZABLE|km.IWND_NO_CLOSE|km.IWND_AUTO_FIT).sprops("icon","Find"));
+		km.win("col");
+			km.win("row");
+				km.add("textctrl"	,km.ld(1).name("search.text_old").hint(_hT("find what?")));
+				km.add("textctrl"	,km.ld(1).name("search.text_new").hint(_hT("replace with?")));
+				km.add_item("flags");
+			km.end();
+			km.win("row");
+				km.add("button"		,km.ld(2).name("Find#button"));
+				km.add("button"		,km.ld(2).name("Replace#button"));
+				km.add("button"		,km.ld(2).name("ReplaceAll#button"));
+			km.end();
+		km.end();
+	km.end();
+};
+
+return t;
+
+
+```
+
+
+例子：动态创建窗口，并立即弹出
+```ewsl
+
+ui.window.create(function(model)
+{
+	local ec=model.evtmgr;
+	// 这里定义关联的Event
+	
+	local km=model.maker;
+	km.win("dialog",...);
+		// 这里定义窗口内容
+	km.end();
+}).show_modal();
+
+
+```
+
+技巧及进阶
+===========
+
+可以灵活应用所有的ewsl脚本技巧，
+来简化窗口的定义，避免重复的内容。
+目前已经定义出props库，来简化这个工作。
+
+对于经常要使用的较类似的窗口布局和行为，
+可抽象成窗口模板，目前已经抽象出toolbox，
+并在toolbox的基础上扩展出了smartdata和wizard。
+可以根据具体的需要，在toolbox的基础上扩展出具体的窗口模板。
+现在来说，smartdata是参考旧框架的smartdata实现的，但是，
+smartdata可以有更多的形式，以后来说，
+应该定义出多种具有不同针对性的smartdata。
+
+
+props
+-----------
+在KMaker的基础上，扩展出一些较高级的接口，
+用来简化窗口的定义，并对风格进行整体控制。
+
+
+例子：使用props库来定义Cube的界面
+```ewsl
+
+property.createpage=function(ctx)
+{
+	local km=props.bind(ctx);	
+	
+	km.new_page("center_width",0);
+		km.vec3("center");
+		km.vec3("width");
+	km.end_page("page0");
+	
+	km.new_page("corner_corner",1);
+		km.vec3("lo_corner");
+		km.vec3("hi_corner");
+	km.end_page("page1");
+	
+	km.new_page("corner_width",2);
+		km.vec3("lo_corner");
+		km.dataview("vector3_list");
+	km.end_page("page2");
+	
+	km.new_book("book#cube");					
+		km.add_item("page0");
+		km.add_item("page1");	
+		km.add_item("page2");			
+	km.end_book("book0");	
+	
+	km.new_container();	
+		km.combo_book("cube_type","book#cube");		
+		km.add_item("book0");
+	km.end_container();
+};
+
+```
+
+
+toolbox
+-----------
+toolbox，是一种轻量化的工具扩展，
+可认为是一个独立的功能模块，类似微信或支付宝的小程序。  
+* 可以完全使用脚本来定义界面及交互逻辑
+* 可以作为一个变量保存到变量表中，也可保存到文件中
+* 定义时不需要界面
+* 在界面上可以打开，打开后可以根据设定的逻辑进行交互操作
+* 工具箱的交互操作中，可以动态调用绘图库绘图并展现在界面中，甚至可以构造另一个工具箱并打开
+
+一个toolbox对象，可能关键到特定类型的窗口控件，
+也可以通过```ui.window.create_by_toolbox```函数来创建WndModel对象。
+在交互式后处理窗口中，可以通过触发。
+
+toolbox的入口函数为成员函数```wnd_create```，默认实现：
+```ewsl
+// toolbox的内部数据为context
+context.wnd_create=function(model)
+{
+	this.evt_init(model);
+	this.dlg_init(model);
+};
+```
+这个实现中，抽象出了```evt_init```函数和```dlg_init```函数。
+* ```evt_init```函数用于构造这个toolbox用到的Event。
+* ```dlg_init```函数用于构造界面和布局。
+
+
+
+smartdata
+---------
+
+smartdata是一种特殊的toolbox，继承所有toolbox的特点，
+所有的内容，通过外置脚本文件 app:/scripting/data/helper/smartdata.ewsl实现，
+定义了专有```evt_init```函数和```dlg_init```函数。
+* smartdata抽象出操作的概念，smartdata可认为是内部数据和多个操作的集合
+* smartdata可以有多种实现形式，目前参考旧版的界面和逻辑实现了一种smartdata
+
+toolbox.smartdata示例
+```ewsl
+#import toolbox;
+
+local tb=toolbox.new_smartdata();
+tb.title="Smartdata#sample";
+
+local op;
+
+op=tb.add_operation("figure1");
+op.add_param("x").type("string").value("0:100").unit("mm");
+op.add_param("y").type("string").value("x*2").label("f(x)").unit("mm");
+op.add_param("title").type("string").value("figure");
+op.add_param("xlabel").type("string").value("x");
+op.add_param("ylabel").type("string").value("y");
+op.add_param("type").type("integer").value(0).optdata(["plot","polar"]);
+
+
+op.do_execute=function(idata,pdata)
+{
+
+	local x=eval2(pdata.x);
+	local f=eval2("return function(x){"..pdata.y.."\nreturn temp;}");
+	local y=eval2(
+		"""
+			#function(x,f)
+			local y=zeros(x.length(),1);
+			for(local i=0;i<x.length();i++) y[i]=f(x[i]);
+			return y;
+		""",x,f);
+
+	local g=fig.new_figure();
+
+	if(pdata.type==0)
+	{
+		fig.plot(x,y);
+	}
+	else
+	{
+		fig.polar(x,y);
+	}
+	
+	fig.title(pdata.title);
+	fig.xlabel(pdata.xlabel);
+	fig.ylabel(pdata.ylabel);	
+	
+	return g;
+};
+
+op=tb.add_operation("figure2");
+op.add_param("x").type("string").value("linspace(-1,1,100)");
+op.add_param("y").type("string").value("linspace(-1,1,100)");
+op.add_param("z").type("string").value("sin(x*3)*sin(y*5)").label("f(x,y)");
+
+op.do_execute=function(idata,pdata)
+{
+	local x=eval2(pdata.x);
+	local y=eval2("#function(x)\n"..pdata.y,x);
+	local f=eval2("return function(x,y){"..pdata.z.."\nreturn temp;}");
+	local z=eval2(
+		"""
+			#function(x,y,f)
+			local z=zeros(x.length(),y.length());
+			for(local i=0;i<x.length();i++)
+				for(local j=0;j<y.length();j++) z[i,j]=f(x[i],y[j]);
+			return z;
+		""",x,y,f);	
+	local g=fig.new_figure();
+	fig.imagesc(x,y,z);	
+	return g;
+};
+return tb;
+
+```
+
+
+wizard
+--------
+wizard是一种特殊的toolbox，继承所有toolbox的特点，
+所有的内容，通过外置脚本文件 app:/scripting/data/helper/wizard.ewsl实现，
+定义了专有```evt_init```函数和```dlg_init```函数。
+
+
+ ```evt_init```用于定义专有的Event，比如btn.prev和btn.next，
+用户需要定义自己的Event，使用```do_evt_init```函数来定义。
+向导完成时，会自动调用```on_done```函数。
+可重新定义这个函数，来实现专有的向导完成动作。
+
+
+可以使用```new_page```来创建页面。page有以下函数和成员
+* ```page.evt_init```函数可以用来定义本页面的局部事件，一般不需要使用。
+* ```page.dlg_init```函数用来定义本页面的界面。
+* ```page.on_next```函数用来定义next的行为，
+ 返回nil代表向导结束了，
+ 返回具体的page则会转到具体的page，
+ 抛出异常则认为参数有问题，留在原页面。
+ ```page.on_next```函数，默认行为为 ```return this.next```
+* ```page.next```和```page.children```成员，均为nil代表这个页面是最终页，有非空则不是。
+ 默认实现下，```page.next```即为下一页。
+ 当next为nil但children不为空时，这个函数必须重新定义，
+ 根据用户选择的参数在children数组中选择下一页。
+另外，还有函数```add_page```，相当于创建一个page并添加到最后页。 
+
+
+对于某一页面要根据用户的参数来选择下一页的情况，比如选择计算模式后，跳到不同的下一页，一般这样实现。
+```ewsl
+
+// define workmode1
+// define workmode2
+// define workmode3
+
+page.children=[workmode1,workmode2,workmode3];
+page.on_next=function(){return children[model.data.workmode_id];}
+```
+
+
+
+wizard示例1：toolbox.wizard
+```ewsl
+#import toolbox;
+
+local tb=toolbox.new_wizard();
+
+tb.do_evt_init=function(model)
+{
+	local ec=model.evtmgr;
+	ec.wm_var("myexpr.x","x","1");
+	ec.wm_var("myexpr.y","y","1");
+	ec.wm_var("myexpr.z","z","2");	
+};
+
+local page1=tb.add_page("aa");
+page1.dlg_init=function(model)
+{
+	local km=model.maker;	
+	km.win("container",km.page(this.name).nvalue(this.index));
+		km.win("row");			
+			km.add("label",km.label("input x"));
+			km.add("expression",km.name("myexpr.x"));			
+		km.end();
+	km.end();
+};
+
+local page2=tb.add_page("bb");
+page2.dlg_init=function(model)
+{
+	local km=model.maker;
+	km.win("container",km.page(this.name).nvalue(this.index));
+		km.win("row");			
+			km.add("label",km.label("input y"));
+			km.add("expression",km.name("myexpr.y"));
+		km.end();
+	km.end();
+};
+
+page2.on_next=function(model)
+{
+	model.data.z=string(eval2("("..model.data.x..")+("..model.data.y..")"));
+	return this.next;
+};
+
+local page3=tb.add_page("cc");
+page3.dlg_init=function(model)
+{
+	local km=model.maker;	
+	km.win("container",km.page(this.name).nvalue(this.index));
+		km.win("row");			
+			km.add("label",km.label("calc x+y"));
+			km.add("textctrl",km.name("myexpr.z"));
+		km.end();
+	km.end();
+};
+
+tb.on_done=function(model)
+{
+	logger.log_message("wizard done");
+	model.show(false);
+	return true;
+};
+
+return tb;
+
+
+
+```
+
+
+wizard示例2，根据用户的选择来决定下一页内容。
+
+```ewsl
+
+#import toolbox;
+
+local tb=toolbox.new_wizard();
+
+tb.do_evt_init=function(model)
+{
+	local ec=model.evtmgr;
+	
+	ec.gp_beg("workmode.type", "OptionData");
+		ec.gp_add("workmode1", 0);
+		ec.gp_add("workmdoe2", 1);
+	ec.gp_end();
+	ec.wm_var("workmode.id","id",0);
+
+};
+
+local endpage=tb.new_page("aa");
+endpage.dlg_init=function(model)
+{
+	local km=model.maker;	
+	km.win("container",km.page(this.name).nvalue(this.index));
+		km.win("row");			
+			km.add("label",km.label("this is endpage"));	
+		km.end();
+	km.end();
+};
+
+
+local workmode1=tb.new_page("aa");
+workmode1.next=endpage;
+workmode1.dlg_init=function(model)
+{
+	local km=model.maker;	
+	km.win("container",km.page(this.name).nvalue(this.index));
+		km.win("row");			
+			km.add("label",km.label("this is workmode1"));	
+		km.end();
+	km.end();
+};
+
+
+
+local workmode2=tb.new_page("bb");
+workmode2.next=endpage;
+workmode2.dlg_init=function(model)
+{
+	local km=model.maker;	
+	km.win("container",km.page(this.name).nvalue(this.index));
+		km.win("row");			
+			km.add("label",km.label("this is workmode2"));	
+		km.end();
+	km.end();
+};
+
+
+local start_page=tb.new_page("bb");
+start_page.children=[workmode1,workmode2];
+start_page.dlg_init=function(model)
+{
+	local km=model.maker;
+	km.win("container",km.page(this.name).nvalue(this.index));
+		km.win("row");			
+			km.add("combo"	,km.name("workmode.id").flags(km.IWND_READONLY|km.IWND_EXPAND).optdata("workmode.type"));
+			
+		km.end();
+	km.end();
+};
+start_page.on_next=function(model)
+{
+	return this.children[model.data.id];
+};
+
+
+tb.fpage=start_page;
+
+tb.on_done=function(model)
+{
+	logger.log_message("wizard done");
+	model.show(false);
+	return true;
+};
+
+return tb;
+
+```
+
+
+
+
+

@@ -1,0 +1,190 @@
+# 正则表达式库函数
+
+正则表达式介绍请阅读[link]("?help_script_Modules_Regex",正则表达式库)。  
+
+```block:syntax
+  
+**语法：**  
+```
+
+```block:example
+  
+**例子：**  
+```
+
+```block:reference
+  
+**参考：**  
+```
+
+
+[anchor](".library_functions")
+## 库函数
+
+[anchor](".function.compile")
+`regex.compile`  
+
+将正则表达式编译成一个正则表达式对象
+
+
+[block-ref]("syntax")
+```ewsl
+regex.compile(re_str)           // Compile a regular expression object.
+regex.compile(re_str, flag)     // Compile a regular expression object with user's flag.
+```
+
+[anchor](".function.create")
+`regex.create`  
+
+创建一个正则表达式对象，允许用户加载预定义子串。
+
+[block-ref]("syntax")
+```ewsl
+regex.create()                  // Create a regular expression object.
+regex.create(re_str)            // Create a regular expression object defined by a string.
+```
+
+[anchor](".function.match")
+`regex.match`  
+
+使用正则表达式进行字符串匹配
+
+[block-ref]("syntax")
+```ewsl
+regex.match(re_str, str)                        // Return a match-object if it matches, or it returns nil value.
+regex.match(re_str, str, flag)                  // Like above and it does with user's flag.
+```
+
+
+[anchor](".function.search")
+`regex.search`  
+
+使用正则表达式进行匹配搜索
+
+[block-ref]("syntax")
+```ewsl
+regex.search(re_str, str)                       // Return a match-object if it matches, or it returns nil value.
+regex.search(re_str, str, flag)                 // Like above and it does with user's flag.
+```
+
+
+[anchor](".function.replace")
+`regex.replace`  
+
+使用正则表达式进行替换
+
+[block-ref]("syntax")
+```ewsl
+regex.replace(re_str1, re_str2, str)                    // Replace pattern re_str1 by re_str2 in str.
+regex.replace(re_str1, re_str2, str, count, flag)       // Replace pattern re_str1 by re_str2 in str with options flag and count restriction (default 0 means no-restriction).
+```
+
+[anchor](".regex_object")
+## 正则表达式对象成员
+
+使用`regex.create`函数和`regex.compile`函数创建的正则表达式对象```regex_object```可以使用一系列成员函数。正则表达式匹配行为在`regex_object.compile`函数运行时确定，匹配、搜索和替换过程不再接受传入的标志参数。  
+
+
+[anchor](".function.regex_object.prepare")
+`regex_object.prepare`  
+
+加载具名预定义子串模式
+
+[block-ref]("syntax")
+```ewsl
+regex_object.prepare(re_name, re_str)
+```
+
+[anchor](".function.regex_object.compile")
+`regex_object.compile`  
+
+自编译  
+
+[block-ref]("syntax")
+```ewsl
+regex_object.compile()
+regex_object.compile(flag)
+```
+
+
+[anchor](".function.regex_object.match")
+`regex_object.match`  
+
+匹配字符串  
+
+[block-ref]("syntax")
+```ewsl
+regex_object.match(str)                 // If it matches, it returns a match-object. If it does not match, it returns a nil value.
+```
+
+[anchor](".function.regex_object.search")
+`regex_object.search`  
+
+搜索
+
+[block-ref]("syntax")
+```ewsl
+regex_object.search(str)                // If it matches at a position, it returns a match-object. If it does not match, it returns a nil value.
+```
+
+[anchor](".function_regex_object.replace")
+`regex_object.replace`  
+
+替换  
+
+[block-ref]("syntax")
+```ewsl
+result, real_count = regex_object.replace(str, pattern)          // Search the target string 'str' from the leftmost and if it matches the regular expression it will be replaced by the pattern 'pattern'
+result, real_count = regex_object.replace(str, pattern, count)   // Search the target string 'str' from the leftmost and if it matches the regular expression it will be replaced by the pattern 'pattern' with count restriction (0 means no restriction as default)
+result, real_count = regex_object.replace(str, callback, count=0) // Search the target string 'str' from the leftmost and if it matches the regular expression call `callback(match_object)` and take the result as replacement. Count restriction is also be taked if count > 0.
+```
+
+[anchor](".match_object")
+## 匹配对象成员
+
+匹配、搜索函数返回一个匹配对象（**Match Object**），使用匹配对象可以进行子串匹配、迭代匹配等操作。  
+
+
+[anchor](".function.match_object.next")
+`match_object.next`  
+
+定位到下一个匹配位置  
+
+[block-ref]("syntax")
+```ewsl
+match_object.next()     // Go next position. If it goes next successly it returns true. If it goes the end it returns false. 
+```
+
+
+[anchor](".function.match_object.sub")
+`match_object.sub`  
+
+获得子串匹配的结果（返回匹配结果字符串的数组）  
+
+[block-ref]("syntax")
+```ewsl
+match_object.sub()          // Return all top-level indexed matched substrings.
+match_object.sub(n1,...)    // Return custom-selected-level indexed matched substrings. (n1,...) indicates the indexed substring's (indexed bracket's) depth and position.
+```
+
+
+[anchor](".function.match_object.group")
+`match_object.group`  
+
+获得所有匹配子串的信息（包括所有层次的被索引的匹配结果），以及根据该结果返回按照给定次序重组的结果
+
+[block-ref]("syntax")
+```ewsl
+match_object.group()                // Return all matched sub-strings.
+match_object.group(i1,i2,...)       // Regroup by [i1,i2,...] from the matched sub-strings.
+```
+
+[anchor](".function.match_object.replace")
+`match_object.replace`
+
+[block-ref]("syntax")
+```ewsl
+match_object.replace(pattern)  // Replace the matched result by pattern and return the substituted result.
+```
+
+

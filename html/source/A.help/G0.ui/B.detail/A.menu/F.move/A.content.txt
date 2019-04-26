@@ -1,0 +1,29 @@
+﻿# 移动 菜单
+
+移动菜单是[link]("?help_ui_editor_editor_figure", "绘图编辑器")、
+[link]("?help_ui_editor_editor_model", "模型文档编辑器")
+以及[link]("?help_ui_editor_editor_fieldviewer", "实时场观察器")的特有菜单，
+主要用于微调物体的移动。
+
+
+[image]("image/UI/menu/move.png", "移动菜单")
+
+
+[block-ref](move_menu_table)
+
+
+```tips:warning-提示
+移动菜单的所有操作，只是简单改变观察视角，并不会影响物体内部实际的位置参数。
+```
+
+
+```block:move_menu_table`endtag1
+|(L) 菜单项 |(L) 备注 |
+|(L) 移动 > 左移 |(L) 视角上将物体左移 |
+|(L) 移动 > 右移 |(L) 视角上将物体右移 |
+|(L) 移动 > 下移 |(L) 视角上将物体下移 |
+|(L) 移动 > 上移 |(L) 视角上将物体上移 |
+|(L) 移动 > 后移 |(L) 视角上将物体后移 |
+|(L) 移动 > 前移 |(L) 视角上将物体前移 |
+
+```endtag1

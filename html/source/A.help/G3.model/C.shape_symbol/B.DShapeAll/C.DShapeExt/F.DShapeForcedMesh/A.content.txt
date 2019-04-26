@@ -1,0 +1,41 @@
+# 强制网格
+强制网格可在所指定的关键网格位置强制生成网格体或网格面或网格线，并加密周围网格。  
+
+## 定义方式
+### 中心——三维长度
+#### 属性对话框
+[image]("image/DShape/DShapeForcedMesh.png","",".parawindow")
+
+#### 参数含义
+[block-ref](center--length-table)
+
+#### 示意图
+[image]("image/DShape/DShapeForcedMesh_sample.png","",".sample-cl")
+
+
+## 如何创建强制网格
+* [link](?help_model_shape_symbol_DShapeCreate.create-by-GUI, "界面创建强制网格")
+* [link](?help_model_Advanced_ewsl_model,"脚本创建强制网格")
+
+
+
+
+
+```block:center--length-table
+||(,".paratab-cl")
+| 参数名称 | 说明 | 备注 |
+| 平面类型 | 指定强制网格的类型 | XY平面、YZ平面、ZX平面或BOX体（平面可退化为线）  |
+| 中心 | 指定强制网格的中心位置 | - |
+| 三维长度 | 指定X、Y、Z三个方向的长度 | 对应的平面会自动忽略不需要维度的长度量（例如XY平面会忽略Z方向长度） |
+```
+
+
+
+
+
+
+
+
+
+
+

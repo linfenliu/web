@@ -1,0 +1,18 @@
+# 边界设置
+
+## 界面
+[image]("image/param/border.png","","边界设置界面")
+
+
+## 参数说明
+
+[block-ref](border-param-table)
+
+
+
+```block:border-param-table
+|(L) 参数         |(L) 说明 |(L) 备注 |
+|(L) 边界条件     |(L)      |(L)      |
+|(L) 吸收边界类型 |(L)      |(L)      |
+|(L) 吸收边界层数 |(L)      |(L)      |
+```

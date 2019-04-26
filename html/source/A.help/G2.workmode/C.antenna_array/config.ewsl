@@ -1,0 +1,4 @@
+#function(cfg)
+local t=table();
+t.title="天线阵计算模式";
+return t;

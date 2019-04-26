@@ -1,0 +1,4 @@
+#function(cfg)
+return table{
+    title: "和其他语言的比较"
+};

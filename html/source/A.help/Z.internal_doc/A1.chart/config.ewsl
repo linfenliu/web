@@ -1,0 +1,4 @@
+local t=table();
+t.title="图表库(帮助系统)说明";
+t.mathjax=true;
+return t;

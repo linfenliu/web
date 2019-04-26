@@ -1,0 +1,4 @@
+#function(cfg)
+local t=table();
+t.title="内部文档";
+return t;

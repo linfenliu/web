@@ -1,0 +1,8 @@
+﻿# MXLab 窗口
+
+MXLab 窗口主要用于 MX 语言的交互使用。
+
+
+[image]("image/UI/other_wnd/mxlab.png", "mxlab 窗口")
+
+

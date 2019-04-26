@@ -1,0 +1,72 @@
+# 变量
+
+[anchor](".concept")
+## 变量的概念
+在EWSL中，预先定义一个变量后，可以在后续（一定范围内）的程序中通过引用该变量的符号来使用其内部值。在程序代码中**直接定义**（[link]("?.indirect_definition",间接定义)）的变量的符号名称必须是一个可见符号的序列，并且符合下列条件：
+* 英文字母、数字、下划线，大部分普通宽字符（包括中文字符）。
+* 开头第一个字符不允许是数字。
+* 大小写敏感。
+* 下划线开头的变量通常为内部使用，在用户的主程序中不应使用此类名称作为重要的变量名字。
+
+[anchor](".evaluation")
+## 变量的求值
+求值（Evaluation）是程序语言中的重要概念，是指对一个指定的符号计算其内部的数值的过程。EWSL采用立即求值（Eager Evaluation）策略，即使用符号的时候要求确保该符号的数值已被求值。除了“短路逻辑”（Short-Circuit Logic）的特殊规定以外，表达式、普通语句中的变量符号都是立即求值的。例如，我们打印一个变量的内容时，实际上内部确保这个变量符号的数值已经被计算出来，我们才可以把它的值打印在屏幕上。变量求值过程发生在定义和赋值阶段，因此，一般不需要考虑某个表达式或者语句在运行的时候某个变量符号的值没有被求值的情况。
+
+[anchor](".scope")
+## 变量的作用域
+在现代程序设计语言中，变量的作用域（Scope）非常重要，EWSL中主要区分两种作用域的变量，一种被称为“全局变量”，另一种被称为“局部变量”。两者的生命周期有所不同。
+* 全局变量，即**global variable**：其生命周期从其定义开始，如果没有显式的清除全局变量的命令，那么它将存在于整个程序的运行周期，直至程序结束为止。
+  * 全局变量可以被脚本程序、定义的函数所见。
+  * 全局变量存放在全局变量表中，用户可以使用`_G`这一代理符号引用全局变量表。
+  * 在仿真计算后处理的结果中，大部分结果都以全局变量的形式存在。
+  * 建议：谨慎定义全局变量。
+* 局部变量，即**local variable**：其生命周期从其定义的位置到其所在的语句块结束。
+* [link]("help_ewsl_Programming_II.htm#closure","闭包")捕获的局部变量：其生命周期为所有捕获它的闭包的生命周期结束。
+
+**补充说明：**
+函数或者闭包中定义的变量符号，试用的是词法作用域（Lexical Scope），这些变量的意义在函数定义的时候就已经确定下来，有些语言（如早期的LISP语言）采用动态作用域（Dynamic Scope），这种语言的函数中引用的变量符号在调用的地方才确定其含义，可能导致其行为与调用处有关。如果要模拟动态作用域的效果，可以试用`eval`函数，调用一段程序代码的字符串，具体内容参考[link]("?help_script_Specifications.function.eval",`eval`)和[link]("?help_script_Programming_I.compilation_and_interpretation",程序的编译和解释)。
+
+[anchor](".definition")
+## 变量的定义
+一般来说，用户可以直接使用赋值`=`来定义一个新变量，并且在变量名称符号前加上`global`或者`local`来表示其作用域。例如：
+```ewsl
+a = "def";          // define a variable 'a' (maybe local or global which is dependant with a environment variable)
+local b = 123;      // explicitly define a local variable 'b'
+global c = 25.0;    // explicitly define a global variable 'c'
+local func = function(x){return x/2;};  // explicitly define a local variable which is binding to a function.
+```
+
+[anchor](".indirect_definition")
+* 特殊名称的间接定义
+
+EWSL可以定义特殊名称的变量，可以使用反引号对（
+```htmtext
+`varname`
+```
+）来定义一个叫`"varname"`的变量，`varname`可以是各种字符串，包括带有空格、使用数字开头等。例如：
+```ewsl
+`1`=2
+```
+> 上面的例子命名了一个叫做`1`的变量，其值为`2`。
+
+[anchor](".global_variable_table_proxy")
+## 全局变量表代理`_G`
+当一个函数局部定义了一个变量名与全局变量名字相同的时候，就不能直接通过变量的名称来引用全局变量，此时可以使用`_G`的一个全局变量表代理来引用，例如：
+```ewsl
+global a = 1;
+local a = 2; 
+local b = 3;    // add a local variable named 'b'
+_G.b = 4;       // add a global variable named 'b'
+println(a);     // output 2 which refered to the local variable named 'a'
+println(_G.a);  // output 1 which refered to the global variable named 'a'
+```
+
+[anchor](".system_constants")
+## 系统常（变）量
+EWSL运行时环境在初始化时设置了一个**系统变量表**，实际上存放了系统公用的一些常量，包括函数等用户不能直接修改的内容。数学常量`pi`、数学函数如`sin`、`cos`等都是系统常量。尽管用户在全局变量表和局部变量表中都看不见它们，但是可以引用它们。注意名字引用的优先次序（不加上`global`和`local`标识符的情况）：
++ 当前代码块中的局部变量
++ 上层代码块中的局部变量
++ 全局变量表中的变量
++ 系统常量
+
+

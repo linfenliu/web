@@ -1,0 +1,5 @@
+#function(cfg)
+
+local t=table();
+t.title="更新日志";
+return t;

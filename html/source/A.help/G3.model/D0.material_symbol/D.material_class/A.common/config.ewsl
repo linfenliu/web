@@ -1,0 +1,4 @@
+#function(cfg)
+local t = table();
+t.title = "公共属性";
+return t;

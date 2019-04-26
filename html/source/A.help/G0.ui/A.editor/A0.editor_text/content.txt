@@ -1,0 +1,52 @@
+# 文本文件编辑器
+
+文本文件编辑器主要是用于查看或修改具有文本格式(`*.txt, *.log, *ewp2, *.ewsl, *.cpp, *.h`)的文件。
+
+
+## 打开方式
+
+EastWave 7 提供了两种方式打开文本文件编辑器：
++ **新建文本文件**：打开**文件**菜单栏，选择**新建 > 新建文本文件**。    
++ **打开文本文件**：打开**文件**菜单栏，选择**打开**，弹出的文件对话框中，选择扩展名格式**文本文件(`*.txt,*.log...`)**，最后选取文件打开。
+
+
+## 界面直览
+
+为了向用户提供有关文本文件编辑器界面的高级直观概览，下图显示了通过文本文件编辑器打开一个工程文件(`example.ewp2`)后的界面：
+
+
+[image]("image/UI/editor_text.png","EastWave 7 文本文件编辑器")
+
+
+其中：
+* 窗口
+  * **[link]("?help_ui_detail_other_window_text", "文本文件编辑窗口")**
+  * [link]("?help_ui_detail_other_window_workplace", "工作空间窗口")
+  * [link]("?help_ui_detail_other_window_message", "消息管理窗口")
+* 菜单栏
+  * **[link]("?help_ui_detail_menu_text", "文本")**
+  * [link]("?help_ui_detail_menu_file", "文件")
+  * [link]("?help_ui_detail_menu_edit", "编辑")
+  * [link]("?help_ui_detail_menu_view", "视图")
+  * [link]("?help_ui_detail_menu_help", "帮助")
+* 核心部分
+  * 行号：用于显示文本行数。
+  * 语言：当前文本的语言格式，包括`C++, MX, LUA, Python, SQL等`。
+  * 语法高亮：提供语法高亮功能。
+  * 折叠：语句块折叠功能。
+  * 自动换行：文本自动换行功能。
+  * 缩进提示：开启缩进提示后，同缩进层级代码会增加虚线提示，增加代码可读性。
+  * 特殊字符显示：包括换行符以及空白符的显示。
+  * 模式切换：包括只读模式、改写模式。
+
+
+  
+```tips:indicate-提示
+当 EastWave 7 的模型工程文件(`*.ewsl, *.ewp2`)无法通过模型编辑器打开时，可以通过文本文件编辑器对该脚本文件进行修改。
+```
+
+
+
+
+
+

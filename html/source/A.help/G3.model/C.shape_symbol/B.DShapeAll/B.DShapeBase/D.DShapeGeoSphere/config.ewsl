@@ -1,0 +1,4 @@
+﻿#function(cfg)
+local t=table();
+t.title="几何球体";
+return t;

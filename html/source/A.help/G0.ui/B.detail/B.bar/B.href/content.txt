@@ -1,0 +1,17 @@
+﻿# 地址栏 工具条
+
+地址栏工具条可用于访问指定的网站(EastWave 7 内置了 Web 浏览器)。
+
+
+[image]("image/UI/bar/address.png", "地址栏工具栏")
+
+
+[block-ref](address_bar_table)
+
+
+
+```block:address_bar_table`endtag1
+|(L) 图标 |(L) 功能说明 |
+|(L) ``<image src="123.png" />`` |(L) 地址栏输入框 |
+|(L) ``<image src="123.png" />`` |(L) 浏览按钮 |
+```endtag1

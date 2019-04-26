@@ -1,0 +1,4 @@
+# 步骤 4:启动计算
+
+> 若对启动计算不了解，请参看[link]("?help_overview_about_run", "关于 EastWave 7 求解器配置")。    
+

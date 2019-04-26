@@ -1,0 +1,4 @@
+﻿#function(cfg)
+local t=table();
+t.title="偶极子天线阵";
+return t;

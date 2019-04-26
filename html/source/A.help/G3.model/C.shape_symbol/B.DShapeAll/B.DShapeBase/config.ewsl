@@ -1,0 +1,4 @@
+#function(cfg)
+local t=table();
+t.title="基础几何元件 ";
+return t;

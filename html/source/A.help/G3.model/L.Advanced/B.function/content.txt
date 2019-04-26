@@ -1,0 +1,55 @@
+# 文档函数
+
+[anchor](".time")
+## 时间信号
+
+
+### 正弦信号
+
+### 余弦信号
+
+### 微分正弦信号
+
+### 微分余弦信号
+
+
+### 上升下降沿
+
+
+
+### 高斯脉冲
+
+
+
+### 时域滤波信号
+
+
+
+[anchor](".spacial")
+## 空间分布
+
+
+[anchor](".uniform")
+### 均匀分布
+
+[anchor](".gaussian_distribution")
+### 高斯分布
+
+[anchor](".gaussian_beam")
+### 高斯波束
+
+[anchor](".aperture")
+### 口径分布（空间滤波、波束赋形）
+
+[anchor](".data_import")
+### 导入数据
+
+
+
+
+[anchor](".modeling")
+## 建模函数
+
+
+
+

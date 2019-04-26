@@ -1,0 +1,41 @@
+# 圆柱体
+圆柱体可用于生成截面为正圆或椭圆的实心或空心的柱形几何体。
+
+## 定义方式
+
+| 定义方式 | 体中心（体中心——长宽高） | 底面中心（面中心——高度） |
+| 属性对话框 | [image]("image/DShape/DShapeCylinder_mc.png","",".parawindow-mc") | [image]("image/DShape/DShapeCylinder_uc.png","",".parawindow-uc") | 
+| 参数含义 | [block-ref](cy-middle-center-table) | [block-ref](undersurface-center-table) |
+| 示意图 | [image]("image/DShape/DShapeCylinder_sample_mc.png","",".sample-mc") | [image]("image/DShape/DShapeCylinder_sample_uc.png","",".sample-uc") | 
+
+## 如何创建圆柱体
+* [link](?help_model_shape_symbol_DShapeCreate.create-by-GUI, "界面创建圆柱体")
+* [link](?help_model_Advanced_ewsl_model,"脚本创建圆柱体")
+
+
+
+```block:cy-middle-center-table
+||(,".paratab-mc")
+| 参数名称 | 说明 | 备注 |
+| 边数 | 指定圆柱体的切割份数 | 越高越精密 |
+| 体空心比 | 指定圆柱体的体空心比率 | 取值范围0.0\~1.0 |
+| 体中心 | 指定圆柱体中心点的坐标 | - |
+| 长宽高 | 指定圆柱体的长度、宽度、高度 | - |
+```
+ 
+```block:undersurface-center-table
+||(,".paratab-uc")
+| 参数 | 说明 | 备注 |
+| 边数 | 指定圆柱体的切割份数 | 越高越精密 |
+| 体空心比 | 指定圆柱体的体空心比率 | 取值范围0.0\~1.0 |
+| 底面中心 | 指定圆柱体底面中心的坐标 | X、Y两个方向 |
+| 底面半径 | 指定底面圆的半径 | X、Y方向的长度 |
+| 高度 | 指定圆柱体的高度 | - |   
+```
+
+
+ 
+
+
+
+

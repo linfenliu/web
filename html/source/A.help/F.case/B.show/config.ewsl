@@ -1,0 +1,7 @@
+#function(cfg)
+
+local t=table();
+t.title = "演示案例";
+
+
+return t;

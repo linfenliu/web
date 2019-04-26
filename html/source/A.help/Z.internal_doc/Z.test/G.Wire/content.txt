@@ -1,0 +1,22 @@
+# 导线（测试说明）
+导线介绍参考此[link]("?help_model_Wire","链接")。
+## 条件控制
+测试案例必须保证集总端口方向为xyz之一，即使模型经历了复杂旋转操作。
+## 测试目标
++ 测试导线离散化模型是否合理
++ 对比导线与细PEC圆柱的计算精度差别；
+
+
+## 测试方法
++ 运行标准案例**细导线模型**，改变变量表中旋转角度**jd**、平移距离**len**,观察细导线
+  离散化结果是否合理、计算时场值是否为0；
++ 在旋转角度**jd=0**时，比较标准案例**细PEC圆柱**和**细导线模型**计算结果
+  差异是否随细PEC圆柱半径r_w减小而接近；
+
+
+
+
+
+## 测试案例
++ [link]("javascript:ewdoc.open_editor('internal_files/test/systest/wire/ew-v7_0_0-wire_antenna-0001.ewp2')","细PEC圆柱")
++ [link]("javascript:ewdoc.open_editor('internal_files/test/systest/wire/ew-v7_0_0-wire_antenna-0002.ewp2')","细导线模型")

@@ -1,0 +1,5 @@
+# 准备工作
+
+在进行 RCS 计算模式仿真前，用户需要确保完成了以下准备工作：
++ 安装 [link]("?help_install_install","EastWave 7")。
++ [link]("?help_install_license","配置许可证")。

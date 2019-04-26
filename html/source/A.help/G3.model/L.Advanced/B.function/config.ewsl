@@ -1,0 +1,4 @@
+#function(cfg)
+local t = table();
+t.title = "文档函数";
+return t;

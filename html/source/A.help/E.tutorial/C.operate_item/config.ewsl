@@ -1,0 +1,7 @@
+#function(cfg)
+
+local t=table();
+t.title = "物体操作";
+
+
+return t;

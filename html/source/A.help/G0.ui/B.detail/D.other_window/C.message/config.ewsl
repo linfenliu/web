@@ -1,0 +1,7 @@
+#function(cfg)
+
+local t=table();
+t.title = "消息管理窗口";
+
+
+return t;

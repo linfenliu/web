@@ -1,0 +1,18 @@
+﻿# 帮助 菜单
+
+帮助菜单主要用于访问自带的帮助文档系统以及查看 EastWave 的产品信息、许可信息。帮助下拉菜单中的所有操作命令如图所示。
+
+
+[image]("image/UI/menu/help.png", "帮助菜单")
+
+
+[block-ref](help_menu_table)
+
+
+
+```block:help_menu_table`endtag1
+|(L) 菜单项 |(L) 备注 |
+|(L) 帮助 > 官方网站 |(L) 打开 EastWave 官方网站，获取更多资料 |
+|(L) 帮助 > 帮助文档 |(L) 打开 EastWave 7 帮助文档系统 |
+|(L) 帮助 > 关于我们 |(L) 显示软件、公司以及许可证相关信息 |
+```endtag1

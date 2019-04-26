@@ -1,0 +1,25 @@
+﻿# 观察面 菜单
+
+观察面菜单是[link]("?help_ui_editor_editor_figure", "绘图编辑器")、
+[link]("?help_ui_editor_editor_model", "模型文档编辑器")
+以及[link]("?help_ui_editor_editor_fieldviewer", "实时场观察器")的特有菜单，
+主要用于控制观察的平面，便于用户从不同角度查看模型或者监视器。
+
+
+[image]("image/UI/menu/look.png", "观察面菜单")
+
+
+[block-ref](look_menu_table)
+
+
+
+```block:look_menu_table`endtag1
+|(L) 菜单项 |(L) 备注 |
+|(L) 观察面 > XOY+ |(L) 观察 XOY 正平面 |
+|(L) 观察面 > XOZ+ |(L) 观察 XOZ 正平面 |
+|(L) 观察面 > YOZ+ |(L) 观察 YOZ 正平面 |
+|(L) 观察面 > XOY- |(L) 观察 XOY 负平面 |
+|(L) 观察面 > XOZ- |(L) 观察 XOZ 负平面 |
+|(L) 观察面 > YOZ- |(L) 观察 YOZ 负平面 |
+|(L) 观察面 > 3D |(L) 观察 3D(立体) 平面 |
+```endtag1

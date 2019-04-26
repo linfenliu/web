@@ -1,0 +1,33 @@
+普通（Simple）阵列
+=============  
+### 普通阵列示意图
+[image]("image/DShape/DArraySimple_sample.png","",".s_exampic")
+
+### 普通阵列参数设置对话框
+[image]("image/DShape/DArraySimple.png","",".s_parawindow")
+   
+### 普通阵列参数含义
+[block-ref](simple-table)
+
+### 如何创建普通阵列
+* [link](?help_model_shape_symbol_DShapeCreate.create-by-GUI, "界面创建普通阵列")
+* [link](?help_model_Advanced_ewsl_model,"脚本创建普通阵列")
+
+
+
+```block:simple-table
+||(普通阵列参数说明表,".paratab-s")
+| 参数名称 | 说明 | 备注 |
+| 待处理元件 | 指定普通阵列中单元的元件信息 | - |
+| 栅格范围 | 指定普通阵列的三维栅格范围 | X、Y、Z三个维度的格子数 |
+| a1 | 指定普通阵列中元件在X维度的排列情况 | a1有X、Y、Z三个方向的长度 |
+| a2 | 指定普通阵列中元件在Y维度的排列情况 | a2有X、Y、Z三个方向的长度 |
+| a3 | 指定普通阵列中元件在Z维度的排列情况 | a3有X、Y、Z三个方向的长度 |
+```
+
+
+
+
+
+
+

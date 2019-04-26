@@ -1,0 +1,4 @@
+#function(cfg)
+local t = table();
+t.title = "活动组";
+return t;

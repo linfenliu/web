@@ -1,0 +1,21 @@
+# 求解器
+
+## 界面
+[image]("image/param/solver.png","","求解器设置界面")
+
+
+## 参数说明
+
+[block-ref](solver-param-table)
+
+
+
+```block:solver-param-table
+|(L) 参数             |(L) 说明 |(L) 备注 |
+|(L) 微引擎划分粒度   |(L)      |(L)      |
+|(L) 启用自动结束计算 |(L)      |(L)      |
+|(L) 自动结束能量收敛 |(L)      |(L)      |
+|(L) 最小计算步数     |(L)      |(L)      |
+|(L) 开启零引擎       |(L)      |(L)      |
+```
+

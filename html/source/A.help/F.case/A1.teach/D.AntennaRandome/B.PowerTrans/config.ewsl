@@ -1,0 +1,4 @@
+﻿#function(cfg)
+local t=table();
+t.title="功率传输系数";
+return t;

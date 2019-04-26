@@ -1,0 +1,4 @@
+#function(cfg)
+local t = table();
+t.title = "求解器";
+return t;

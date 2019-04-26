@@ -1,0 +1,4 @@
+#function(cfg)
+local t=table();
+t.title="名词约定";
+return t;

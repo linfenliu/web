@@ -1,0 +1,60 @@
+# 绘图编辑器
+
+EastWave 7 提供的绘图编辑器，
+是一种**数据可视化**以及**数据分析**的工具，
+可以满足日常科技工作中的大部分需求(`二维、三维绘图、均值求解等`)。
+
+
+## 界面直览
+
+为了向用户提供有关绘图编辑器界面的高级直观概览，
+下图显示了通过绘图编辑器绘制了二维、三维数据后的界面：
+
+
+[image]("image/UI/editor_figure.png","EastWave 7 绘图编辑器")
+
+
+其中：
+* 窗口
+  * **[link]("?help_ui_detail_other_window_figure", "绘图编辑窗口")**
+  * [link]("?help_ui_detail_other_window_modeltree", "模型树窗口")
+  * [link]("?help_ui_detail_other_window_workplace", "工作空间窗口")
+  * [link]("?help_ui_detail_other_window_message", "消息管理窗口")
+* 菜单栏
+  * **[link]("?help_ui_detail_menu_colormap", "色度条")**
+  * **[link]("?help_ui_detail_menu_timectrl", "时间控制")**
+  * [link]("?help_ui_detail_menu_look", "观察面")
+  * [link]("?help_ui_detail_menu_move", "移动")
+  * [link]("?help_ui_detail_menu_rotate", "旋转")
+  * [link]("?help_ui_detail_menu_scale", "缩放")
+  * [link]("?help_ui_detail_menu_file", "文件")
+  * [link]("?help_ui_detail_menu_edit", "编辑")
+  * [link]("?help_ui_detail_menu_view", "视图")
+  * [link]("?help_ui_detail_menu_help", "帮助")
+* 核心部分
+  * title：图表的标题。
+  * label：坐标轴的文本标注。
+  * legend：图表的图例。
+  * colormap：颜色数值表。
+  * datamgr：数据集合。
+
+
+## 界面逻辑
+
+旋转、移动、观察面切换以及对colormap的操作，只会对当前选中的图表起作用。
+
+
+## 图形类型
+
+* plot 二维点线图
+* polar 二维极坐标点线图
+* imagesc 二维图像
+* polar3d 三维球坐标图
+* stlmodel 三维模型图
+
+
+
+
+
+
+

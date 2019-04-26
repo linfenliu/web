@@ -1,0 +1,4 @@
+#function(cfg)
+local t = table();
+t.title = "数学函数";
+return t;

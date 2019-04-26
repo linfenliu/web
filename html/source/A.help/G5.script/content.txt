@@ -1,0 +1,535 @@
+# MX程序设计语言帮助手册
+
+## 目录
+[topic](./)
+
+简介
+======
+
+**MX程序设计语言**是上海东峻信息科技有限公司开发的一款面向CAE仿真前、后处理和通用接口设计编码的脚本语言。EastWave V7.0脚本语言以下简称**MX**。
+> EastWave V7版本EWSL与之前版本的EWSL有较多差异，但也有一定的相似性。使用旧版脚本语言可以较快的掌握新版脚本语言的基本用法。
+
+新版EWSL支持动态类型（Dynamic Typed）、C风格语法（C-Style Syntax）、变量表（Variable Table）和动态变量数组（Dynamic Variable Array）、预编译/解释执行（Pre-compiled/Interpretative）、函数/闭包（Function/Closure）、函数式编程（Functional Programming）、面向对象编程（Object Oriented Programming）、面向数组/矩阵运算（Array/Matrix Computation）的语法、数值计算库、绘图库、WEB服务器等多种功能。
+
+第一个程序
+======
+
+**从Hello World!开始**
+像大多数语言的入门教程一样，先实现一个Hello World程序。打开EastWave界面，选择新建“Ewsl交互式编辑器”。然后在交互式编程环境下输入：
+`>> print("Hello World!")`
+
+* 注释    
+  EWSL使用C/C++风格注释，即支持`//`行注释和`/**/`的块注释。
+* 前处理指令（这部分未来放到其他地方）    
+  EWSL支持前处理指令，用`#`字符开头，用来控制编译器或者解释器的一些行为，以及对源代码文件的含义的解释。目前典型的包括有：    
+  + `#function`
+    > `#function`前处理指令用来规定该文件内容是定义一个函数，函数的输入参数在`#function`后的括号中表述，诸如：`#function(arg1, arg2, ...)`
+  + `#variable`
+    > `#variable`用来指定文件内容中定义变量符号的作用域规则（`local`或者`global`），`#variable(explicit)`表示所有的变量符号定义必须显式指定，`#variable(implicit:global)`表示采用隐式规则，并且默认设定为全局变量（除特殊的局部语法规定外），`#variable(implicit:local)`表示采用隐式规则，并且默认设定为局部变量。
+  + `#import`和`#export`
+    > 导入模块和设定模块导出符号表。
+      + `#import`用法: 使用`#import modulename`导入整个模块，但是必须使用模块名作前缀名；使用`#import modulename(symbol, ...)`从模块中导入部分符号，并且作为系统变量表中的可用符号。**注意：**系统变量表中的符号不允许同名，如果同名会抛出错误信息。
+      + `#export`用法：使用`#export(sym1, ...)`，对`#import ...`可导入的符号产生影响。
+  + `#results`设定语句运行时是否打印出返回值
+    > `#results(show)`表示语句最后没有分号时，会打印语句的返回值
+      `#results(hide)`表示语句最后没有分号时，不打印语句的返回值
+
+
+
+基本概念
+======
+
+基本数据类型
+------
+
+* 数值类型（整数和浮点数）
+
+EWSL提供了整数类型（Integer）和浮点数类型（Float），两种基本数值类型。其中整数类型是有符号64位整数类型，浮点数为双精度浮点数。
+
+```c
+a = 1; // 定义一个变量a，其值为整数1
+b = 2.0; // 定义一个浮点变量b，其值为浮点数2.0
+```
+
+数值类型支持四则运算`+`、`-`、`*`、`/`。此外数值类型在一定程度上可以互相转换。例如我们可以计算勾股定理：
+$$
+c=\sqrt{a^2+b^2}, a=3, b=4
+$$
+参考代码如下：
+
+```c++
+a = 3;
+b = 4;
+c = sqrt(a^2+b^2);
+print(c);
+```
+
+打印结果为`5`。
+
+
+
+* 布尔类型（Boolean）
+
+布尔类型即布尔代数的数据类型，布尔型包括两个值，真`true`和假`false`，支持**C风格**布尔运算符号：逻辑与`&&`、逻辑或`||`、逻辑非`!`、逻辑异或`^^`。
+
+```c++
+a = true;
+b = false;
+c = a && b;  // 逻辑与运算
+d = a || b;  // 逻辑或运算
+e = !a;      // 逻辑非运算
+f = a ^^ b   // 逻辑异或
+```
+
+* 复数类型（Complex）
+
+EWSL支持复数类型的直接定义语法糖，诸如`1+1i`注意，这里`i`前面的`1`不能省略。相关函数包括取实部`real`、取虚部`imag`、取共轭`conj`、绝对值`abs`和幅角`arg`（也可以用`angle`函数）。使用complex类型构造函数`complex`也可以构造一个复数。
+
+例子：
+
+```c++
+a = 1+1i;    // a = complex(1,1);
+b = conj(a); // b = 1-1i
+c = abs(a); // c = sqrt(2)
+d = arg(a); // d = pi/4，用d = angle(a)相似
+```
+
+
+* 字符串类型（String）
+
+EWSL支持字符串类型。定义字符串的方式包括双引号`"abc"`、单引号方式`'abc'`以及多行字符串（无转义字符串）`'''abc'''`。使用`print`函数可以打印显示，使用`..`实现字符串的串联功能。复杂的用法见[link](string_functions,字符串高级功能)。
+
+定义字符串例子：
+
+```ewsl
+a = "Hello world!";
+b = 'Good Luck';
+c = '''
+What you want is what we try to achieve.
+'''
+```
+
+> EWSL支持宽字符作为变量，例如可以定义`我=1024`，也可以使用特殊字符串，这时候必须使用反撇记号(``` ` ```)，如``` `a->b`=value; ```这样给一个名叫`a->b`的变量进行赋值。
+
+变量表（Variable Table）
+------
+
+EWSL支持变量表类型。所谓变量表，本质上是一个字典（Dictation），即一个名称（字符串类型）作为键值（key）映射到一个任意变量的数据结构。变量表用`table`函数定义。
+
+```c
+/* 常规定义方式 */
+tbl = table();
+tbl.x = 1;
+tbl.y = 'abc';
+tbl.t = table();
+tbl["u"] = [1,2,3];
+
+/* table 直接定义内容的方式，格式对齐可以便于阅读 */
+tbl2 = table{
+    a : 1;
+    b : [1;2;3];
+    c : "abc";
+    d : table {
+        x : 0;
+        y : 1; 
+        z : 2        
+    }
+}
+
+/* table函数的定义方式 */
+tbl3 = table(
+    "a", 1, 
+    "b", [1,2,3],
+    "c", "abc",
+    "d", table(
+        "x", 1,
+        "y", 2
+    )
+)
+```
+
+三种定义方式适用不同情况：
+> (1) 直接定义适合于一般的动态添加子变量的情况。
+  (2) 用table{}语法糖适合于在程序中直接定义静态的数据结构。
+  (3) 用table()函数方式适合于用户用程序方式生成参数表，以及一些特殊子变量名称的定义。
+
+* 变量表引用的方式可以使用`.`也可以使用```[]```的方式：
+
+```c++
+tbl = table("a", 1, "b", 2);
+tbl.a = 1;
+tbl["b"] = "xyz";
+```
+
+> 使用`.`相当于使用静态的代码字符串字面量作为索引键值，使用```[]```相当于使用一个字符串变量的内容作为键值。
+  使用```[]```时可以定义一些特殊的名称，不必顾及变量名与语法关键词、算符重名的情况，当作一个通用字典数据库时，推荐使用该方法。
+
+
+
+数组（Array）
+------
+
+EWSL语言支持两类数组，一类由动态类型变量作为值，另一类指定了某种数据类型。动态变量数组可以直接使用方括号（```[]```）定义：
+
+```c++
+a = [1,2,3,4];
+b = ["a", "b", 3, 4];
+c = [];
+d = [table("a", 1, "b", 2), 1, 2, 3];
+e = [function(x){return x;}, function(x){return x+1;}, math.add, math.sin];
+```
+
+EWSL支持用分号分隔符来定义2维数组：
+```c++
+a = [
+1,2,3;
+2,3,4;
+3,4,5 ]
+```
+
+动态变量类型的数组，允许存入任何变量类型，包括`nil`值类型。
+
+对于数值计算来说，用户可能需要使用特定数据类型数组， EWSL支持：
+
+* 整型数组
+* 浮点数组
+* 复数数组
+
+用户可以使用“类型构造函数”将动态数组转换成上述三种类型数组：
+
+```lua
+a = integer([1,2,3]);
+b = double([1,2,3]);
+c = complex([1,2,3]);
+```
+
+> * 提示1：上述构造函数支持尽可能将字符串转换为数字的功能。转换失败将抛出错误信息。
+  * 提示2：EWSL的数组最大支持6个维度，且支持数组嵌套（数组的数组）
+
+* 数组的其他操作还包括
+  * `push`向数组尾部追加元素（一种成员方法，参看[link](Object-Oriented-Programming,面向对象编程)）
+  * `size`函数返回数组的大小
+  * `trans`返回二维数组的转置
+
+函数（Function）
+------
+
+EWSL支持用户自定义函数，定义方式使用`function`关键词或者`def`关键词均可。使用`return`关键词表达函数的返回值。
+EWSL的函数支持：
+* 不定参数个数和参数包（Parameter Package，即`...`）
+* 函数的递归调用（Recursive Call）
+* 多返回值（Multiple Returned Value）
+* 函数体内定义函数
+* 函数可作为变量的值
+
+
+例如，我们定义一个求和函数：
+
+```c
+function mysum(...)
+{
+    local s = 0;
+    for_each(v in [...])
+    {
+        s = s + v;
+    }
+    return s;
+}
+```
+
+定义一个阶乘函数：
+
+```c
+function factorial(n)
+{
+    if(n==1)
+    {
+        return 1;
+    }else
+    {
+        return self(n-1)*n;
+    }
+}
+```
+
+> 函数递归调用时，建议使用self关键词，可以防止出现内存泄漏问题。
+
+函数作为变量的值，并且内部再定义一个函数：
+
+```c++
+local myfunc = function(op)
+{
+    local candidate = table(
+        "hello", function() { return "Hello!"; },
+        "good_luck", function() { return "Gool Luck!"; },
+        "go_home", function() { return "Go Home!"; }
+    );
+    
+    local default_func = function() { return "Unknown!"; };
+    
+    if(nil==candidate[op])
+    {
+        return default_func;
+    }else
+    {
+        return candidate[op];
+    }
+}
+```
+
+EWSL支持匿名函数语法糖，使用`@(args,...){...}`的方式定义，使用时如下：
+```
+map(@(x){return x+1;}, [1,2,3])
+```
+
+函数进一步的使用请参考：[link](Concept-Closure,闭包)和[link](Functional-Programming,函数式编程)两部分内容。
+
+类和对象
+------
+
+EWSL提供了面向对象编程支持，支持用户定义类型和对象，并且重载相应的接口函数。
+
+[link-ref]("help","ewsl")  
+
+> 类（class）的概念表达的是对一族对象的性质的抽象，定义一个class，意味着任何属于这个类的对象都应当具备这个class规定的接口和数据。
+
+类型的定义由一段EWSL脚本生成，起始用关键词`class`表示，定义成员用`self.`或者`self[member_name]`的方式。定义成员函数有两种方式，一种为动态绑定的成员函数，用`function self.func(...){...}`来定义，另一种用`function meta.func(...){...}`来定义。
+```lua
+class T
+{
+    self.x = 0;
+    self.y = 0;
+    self.z = 0;
+    function meta.length() // 元表函数，静态绑定，同一个类型的所有实例对象公用一份
+    {
+        return sqrt(self.x^2 + self.y^2 + self.z^2)
+    }
+    function meta.__get_index__(ind) // 元表函数，静态绑定的索引算符
+    {
+        switch(ind)
+        {
+            case 0: return self.x;
+            case 1: return self.y;
+            case 2: return self.z;
+        }
+    }
+    function self.bind(f) // 普通成员函数，动态绑定，每个实例对象均有一份
+    {
+        return f(self);
+    }
+}
+```
+
+使用类可以定义一些动态的数据结构，提升程序的可读性。经过特别设计的类可以作为接口类对数据进行分类管理。
+
+
+
+过程控制结构
+======
+
+EWSL提供了条件分支和switch分支、循环、条件循环几种过程控制结构：  
+1. `if`语句
+语法：`if`关键词后带一个括号，括号中为一个条件表达式，返回值为布尔值。如果为`true`则执行第一个语句块中的语句，如果`false`则执行`else`关键词后的语句块。例如：
+```lua
+if(typename(v)=="string")
+{
+    print("v is a string-typed variable.");
+}else
+{
+    print("v is not a string-typed variable.");
+}
+```
+
+` > `if`语句允许使用初始化语句如：```if(local a=10; local b=0; x<a && x>b) {...}```。
+
+2. `switch(){case ... }`语句
+语法：`switch`后的括号中是一个值表达式，求出的值和`case`分支后的常量值进行匹配。若匹配执行`case ..:`冒号后的语句（直到下一个`case`分支或者`default`默认分支之前）。例如：
+```c++
+switch(val)
+{
+    case 0: print("value = 0");
+    case 1: print("value = 1");
+    case 2: print("value = 2");
+    default: print("other value"); 
+}
+```
+
+> 注意：与C/C++不同，`case`分支不需要用`break`语句跳出分支结构。
+
+3. `for`和`for_each`
+* `for`表达循环控制结构： 
+语法：
+```htmltext`endtag
+for(<init-statement>;<loop-condition-expr>;<iteration-statement>)
+{
+    <loop-statement>
+}
+```endtag
+
+`for`关键词后面的括号里用分号隔开为三项，第一项表示循环前初始化语句，第二项表示循环继续条件表达式，第三项是循环迭代语句（一般用于计数），例如：
+```c
+s = 0;
+for(local i=0; i<100; ++i)
+{
+    s += i;
+}
+print(s);
+```
+
+在`for`循环体内，可以使用`break`提前跳出循环；使用`continue`跳过循环内语句的后续部分，直接进入下一轮循环过程。
+
+
+* `for_each`语句：
+语法：
+```htmltext`endtag
+for_each (i, v in lst) // or for_each(v in lst)
+{
+    <loop-statement>
+}
+```endtag
+`for_each`取目标数组或变量表的索引和值进行迭代，允许省略索引值而只使用值进行迭代。这种语法的好处是能写出意义更加清楚地循环结构。
+
+> 建议1：`for`循环中的初始条件语句可以定义变量，建议使用`local`关键词限制其作用域，防止循环变量污染全局名字空间。  
+  建议2：在`for`循环中谨慎使用`break`和`continue`等跳转语句以及过于复杂的分值判断，滥用可能过程逻辑变得不够清晰。复杂循环的编写可参考[link](Functional-Programming,函数式编程)部分内容。  
+  建议3：简单循环尽量使用`for_each`语句来替代`for`循环。
+ 
+4. `while`和`do-while`条件循环控制结构：
+语法：
+```c++
+// while loop structure
+while(<loop-condition-expr>)
+{
+    <loop-statement>
+}
+// do-while loop struture
+do
+{
+    <loop-statement>
+}while(<loop-condition-expr>)
+```
+
+其中`while`循环方式的循环判断处于每次循环过程之前，而`do-while`循环的判断处于每次循环过程之后。两者的差别主要在进入循环时是否要先执行一次循环体过程。
+
+在`while`循环体内，与`for`循环类似，可以使用`break`提前跳出循环；使用`continue`跳过循环内语句的后续部分，直接进入下一轮循环过程。
+
+> 建议：在`while`循环中谨慎使用`break`和`continue`等跳转语句以及过于复杂的分值判断，滥用可能过程逻辑变得不够清晰。复杂循环的编写可参考[link](Functional-Programming,函数式编程)部分内容。
+
+
+编写文件读写与字符串处理
+======
+
+文本文件的读写
+------
+
+EWSL的io库中提供了`io.readfile`和`io.savefile`两个函数。`io.readfile`。
+
+下面是一个文本文件示例：（文件名为example.txt）
+```text
+I have a dream that one day this nation will rise up and live out the true meaning of its creed: "We hold these truths to be self-evident: that all men are created equal."
+I have a dream that one day on the red hills of Georgia the sons of former slaves and the sons of former slave owners will be able to sit down together at the table of brotherhood.
+```
+我们在EWSL交互式命令环境下输入：
+```ewsl
+>> content = io.readfile("example.txt")
+```
+返回值赋值给变量`content`，内容就是`"example.txt"`文件的内容。
+
+如果我们要将文件保存出去，可以使用`io.writefile`函数，函数的第一个参数是文件路径（字符串），第二个参数是文件的内容字符串。
+```
+content = "Martin Luther King: \r\n" .. content;
+io.writefile("output.txt", content);
+```
+> 注意：Windows操作系统的换行符是`\r\n`，Linux操作系统的换行符是`\n`，而MacOS操作系统的换行符是`\r`。
+
+
+从文本文件中导入数组（需要改进）
+------
+使用`io.load_txt`函数可以导入文本格式的数组：
+```ewsl
+>> arr = io.load_txt("array.dat");
+```
+反之，使用`io.save_txt`函数将数组导出到一个文本文件。
+```
+>> a = ones(3,3)
+```
+
+
+
+文件流的支持（尚未实现）
+------
+
+
+字符串的处理
+------
+
+字符串的分解和拼接
+......
+
+将读入的文本文件做简单的分析，一般而言，通常我们考虑将文本文件拆分成行(lines)和词(words)。string库提供了`string.lines`函数和`string.words`函数用来分解文本。下列程序：
+```ewsl
+line = content.lines();
+word = map(function(x){return x.words();}, line);
+```
+可以得到一个嵌套数组（`word`），最外层是行，内层是词，`word[i][j]`表示第`i`行、第`j`个词的内容。
+
+反过来，如果我们将词语数组重新组装为一个字符串，需要使用`string.join`函数。`string.join`函数接受一个分隔符和一个字符串数组，将分隔符插入到字符串数组的相邻两个字符串之间，返回最终组装的完整字符串。下列程序：
+```ewsl
+s = string.join("\r\n", map(function(x){return string.join(" ",x);}, [ ["abc", "def"], ["xxx", "yyy"] ]));
+```
+
+可以将嵌套字符串数组中的词语先用空格分隔后连接起来，然后再形成行（插入换行符）。
+
+
+
+
+
+
+编写数值计算程序
+======
+
+数值积分与微分
+------
+
+
+# 附录：常用函数列表
+
+
+* 全局函数：
+  * `pcall`容错函数调用
+  * `map`和`mapkv`函数
+  * `foldl`和`foldr`函数
+  * `filter`过滤器函数
+  * `array_concat`数组拼接函数
+  * `length`和`size`函数
+  * `reverse`函数
+* io库函数
+  * `save_txt`和`load_txt`函数
+  * `save_var`和`load_var`函数
+  * `puts`、`print`、`println`打印函数
+  * `parse_xml`、`parse_json`、`load_json`和`load_xml`函数
+* string库和字符串函数
+  * `string.length`成员函数
+  * `string.upper`和`string.lower`成员函数
+  * `string.substr`成员函数
+  * `string.split`、`string.words`和`string.lines`成员函数
+  * `split_word`和`split_line`函数
+  * `reverse`函数
+  * `format`函数
+  * `join`函数
+* 操作系统API(os库)
+  * `time`函数
+  * `sleep`函数
+  * `shell`函数
+  * `execute`函数
+  * `getenv`函数
+  * `getcwd`、`setcwd`函数
+  * `dir`函数
+  * `remove`、`rename`、`mkdir`、`rmdir`
+  * `exit`函数
+* 数学函数（math库）
+  * `add`、`sub`、`mul`、`div`、`dot_mul`、`dot_div`、`dot_pow`、`pow`、`sqrt`、`log`、`log10`
+  * `sin`、`cos`、`tan`、`sinh`、`cosh`、`tanh`、`sind`、`cosd`、`tand`、`asin`、`acos`、`atan`、`atan2`、`atan2d`、`asinh`、`acosh`、`atanh`
+* 绘图函数（fig库）
+  * `plot`、`imagesc`、`polar`、`polar3d`
+  * `title`、`xlabel`、`ylabel`、`xlim`、`ylim`、`rlim`
+  * `axis`函数

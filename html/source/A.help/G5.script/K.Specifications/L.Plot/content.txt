@@ -1,0 +1,210 @@
+# 绘图函数
+
+
+EWSL提供了数据可视化功能，基本的绘图功能放在`fig`模块中。
+
+## 目录
++ [link]("?.basic", 基本绘图)
+  * [link]("?.figure", 绘图的创建与管理)
+    * [link]("?.new_figure", `fig.new_figure`)
+    * [link]("?.get_figure", `fig.get_figure`)
+    * [link]("?.set_figure", `fig.set_figure`)
+  * [link]("?.plot", 曲线图)
+  * [link]("?.polar", 极坐标图)
+  * [link]("?.spherical", 球坐标图)
+  * [link]("?.imagesc", 二维图像)
+  * [link]("?.surface", 表面图)
+  * [link]("?.contour", 等值线)
++ [link]("?.advanced", 高级)
+  * [link]("?.canvas", 多重画布)
+  * [link]("?.series", 序列图（动态图）)
+  * [link]("?.subplot", 绘制子图)
+  * [link]("?.property", 属性)
+    * [link]("?.coordinate", 坐标系)
+    * [link]("?.axis", 坐标轴)
+    * [link]("?.legend", 图例)
+    * [link]("?.colormap", 颜色表)
+    * [link]("?.linespec", 线条类型)
+
+```block:syntax
+  
+**语法：**  
+```
+
+```block:example
+  
+**例子：**  
+```
+
+```block:reference
+  
+**参考：**  
+```
+[anchor](".basic")
+## 基本绘图
+
+[anchor](".figure")
+[anchor](".new_figure")
+`fig.new_figure`
+创建新的绘图，并作为当前绘图对象
+
+[block-ref]("syntax")
+```ewsl
+fig.new_figure()
+```
+
+[anchor](".get_figure")
+`fig.get_figure`
+取得绘图对象
+
+[block-ref]("syntax")
+```ewsl
+fig.get_figure()
+```
+
+[anchor](".set_figure")
+`fig.set_figure`
+设置当前绘图对象
+
+[block-ref]("syntax")
+```ewsl
+fig.set_figure(f)
+```
+
+
+[anchor](".plot")
+`fig.plot`
+绘制曲线图
+
+[block-ref]("syntax")
+```ewsl
+fig.plot(x,y)
+fig.plot(x,y,PROPERTY_TABLE)
+```
+[block-ref]("reference")
+* 参考[link-ref](".property",属性)。
+
+
+[anchor](".polar")
+`fig.polar`
+`fig.polar_deg`
+绘制二维极坐标曲线图
+
+[block-ref]("syntax")
+```ewsl
+fig.polar(theta,rho)
+fig.polar(theta,rho,PROPERTY_TABLE)
+fig.polar_deg(theta,rho)
+fig.polar_deg(theta,rho,PROPERTY_TABLE)
+```
+* 参考[link-ref](".property",属性)。
+
+[anchor](".spherical")
+`fig.polar3`
+`fig.spherical`
+`fig.polar3_deg`
+`fig.spherical_deg`
+绘制三维球坐标图
+
+[block-ref]("syntax")
+```ewsl
+fig.polar3(theta,phi,rho)
+fig.polar3(theta,phi,rho,PROPERTY_TABLE)
+fig.polar3_deg(theta,phi,rho)
+fig.polar3_deg(theta,phi,rho,PROPERTY_TABLE)
+fig.spherical(theta,phi,rho)
+fig.spherical(theta,phi,rho,PROPERTY_TABLE)
+fig.spherical_deg(theta,phi,rho)
+fig.spherical_deg(theta,phi,rho,PROPERTY_TABLE)
+```
+
+* 参考[link-ref](".property",属性)。
+
+[anchor](".imagesc")
+`fig.imagesc`
+绘制二维图像
+
+[block-ref]("syntax")
+```ewsl
+
+```
+
+
+[anchor](".surface")
+`fig.surface`
+绘制曲面
+
+[block-ref]("syntax")
+```ewsl
+fig.surface(X,Y,Z)
+fig.surface(X,Y,Z,COLOR)
+fig.surface(X,Y,Z,VALUE,RENDER_OPTION)
+fig.surface(MODEL)
+```
+* `X`、`Y`、`Z`均为数组
+* `X`和`Y`是向量（至多只有一个维度的大小大于1）时按照`X`和`Y`构造的网格绘图，`Z`的大小为`X.length() * Y.length()`
+* `X`和`Y`是二维数组时，其大小要求和`Z`匹配，则构造四边形网格进行绘图
+* `fig.surface(MODEL)`使用定义的模型进行渲染
+* `fig.surface(X,Y,Z,COLOR)`，`COLOR`是一个颜色（3维向量，或者颜色字符串）
+* `fig.surface(X,Y,Z,VALUE,RENDER_OPTION)`，`VALUE`表示在表面上的取值，`RENDER_OPTION`是选项字符串，可以是"-vertex"、"-edge-x"、"-edge-y"或"-facet"中的一种情况，它们分别对应在顶点上渲染、在X网格的棱边上渲染、在Y网格的棱边上渲染、在面上渲染。
+* `fig.surface(MODEL)`，`MODEL`是表面建模工具生成的模型对象。
+
+
+[anchor](".contour")
+`fig.contour`
+等值线
+
+[block-ref]("syntax")
+```ewsl
+fig.contour(X,Y,Z,n)
+fig.contour(X,Y,Z,V)
+fig.contour(X,Y,Z,n,CMAP)
+fig.contour(X,Y,Z,v,CMAP)
+```
+* `X`、`Y`、`Z`均为数组
+* `X`和`Y`是向量（至多只有一个维度的大小大于1）时按照`X`和`Y`构造的网格绘图，`Z`的大小为`X.length() * Y.length()`
+* `X`和`Y`是二维数组时，其大小要求和`Z`匹配，则构造四边形网格进行绘图
+* `fig.contour(X,Y,Z,n)`表示在`Z`的取值范围上分割为`n`个点作为等值线的参考值
+* `fig.contour(X,Y,Z,v)`表示非均匀等值线的参考值
+* `CMAP`表示颜色表，参考[link-ref]("?.colormap")
+
+[anchor](".advanced")
+## 高级
+
+[anchor](".canvas")
+```ewsl
+fig.canvas(name)
+```
+设定当前画布的名称，并且结束当前画布的绘制
+
+
+[anchor](".series")
+`fig.series_beg`
+`fig.series_add`
+`fig.series_end`
+序列图
+
+
+[block-ref]("syntax")
+```ewsl
+fig.series_beg(name,time_delta) // time_delta: default value = 0.1 (sec)
+fig.series_add()
+... /* plot procedure */
+fig.series_end()
+```
+
+[anchor](".subplot")
+`fig.subplot`
+绘制子图
+
+```ewsl
+fig.subplot(ROW,COL)              // Create a new layout
+fig.subplot(ROW,COL,ind)          // Select/Create current subplot
+fig.subplot(ROW,COL,RANGE)        // Select/Create current subplot which covers a continuous range of indices
+fig.subplot("position", POSITION) // Create a subplot which position is indicated by `POSITION`
+```
+* `fig.subplot(ROW,COL)`创建布局，网格的大小为`ROW`行、`COL`列。
+* `fig.subplot(ROW,COL,ind)`选择当前布局下的一个一个网格位置（按从左到右，再从上到下的顺序索引）创建或者选择绘图。
+* `fig.subplot(ROW,COL,RANGE)`选择布局下的指定网格坐标的一段范围，`RANGE`为一个向量，包含两个值，表示左上角的网格索引和右下角的网格索引。
+* `fig.subplot("position", POSITION)`直接指定绘图所在的位置，坐标范围为一个向量，包括四个值`[x,y,width,height]`，`x`和`y`表示所处整个画布内的相对坐标（0-1之间），而`width`和`height`表示长度和高度。
+

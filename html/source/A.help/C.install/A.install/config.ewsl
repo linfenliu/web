@@ -1,0 +1,7 @@
+#function(cfg)
+
+local t=table();
+t.title = "安装 EastWave 7 ";
+
+
+return t;

@@ -1,0 +1,7 @@
+#function(cfg)
+
+local t=table();
+t.title = "文本文件编辑器";
+
+
+return t;

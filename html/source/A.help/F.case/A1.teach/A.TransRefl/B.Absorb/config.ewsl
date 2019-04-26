@@ -1,0 +1,4 @@
+﻿#function(cfg)
+local t=table();
+t.title="吸波材料透射反射率计算";
+return t;

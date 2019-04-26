@@ -1,0 +1,17 @@
+# 频率设置
+
+## 界面
+[image]("image/param/freq.png","","频率设置界面")
+
+
+## 参数说明
+
+[block-ref](freq-param-table)
+
+
+
+```block:freq-param-table
+|(L) 参数     |(L) 说明 |(L) 备注 |
+|(L) 最小频率 |(L)      |(L)      |
+|(L) 最大频率 |(L)      |(L)      |
+```

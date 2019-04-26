@@ -1,0 +1,4 @@
+#function(cfg)
+local t=table();
+t.title="完整示例";
+return t;

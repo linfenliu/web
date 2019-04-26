@@ -1,0 +1,56 @@
+# MX 交互编辑器
+
+MX 交互编辑器是一个强大的工具。对于[link]("?help_script", " MX 语言")初学者来说，它简单易用，可以**实时预览代码的效果**，非常适合学习 MX 这门语言。在日常的开发中，
+MX 交互编辑器可以进行快速的原型开发和试错。
+
+
+## 打开方式
+
+EastWave 7 提供了两种方式打开 MX 交互编辑器：
++ **新建 MX 交互编辑器**：打开**文件**菜单栏，选择**新建 > 新建 MX 交互编辑器**。    
++ **打开 MX 脚本源文件**：打开**文件**菜单栏，选择**打开**，弹出的文件对话框中，选择扩展名格式**MX 脚本(`*.mx`)**，最后选取文件打开。
+
+
+## 界面直览
+
+为了向用户提供有关 MX 交互编辑器界面的高级直观概览，下图显示了通过 MX 交互编辑器打开一个工程文件(`example.mx`)后的界面：
+
+
+[image]("image/UI/editor_mx.png","EastWave 7 MX 交互编辑器")
+
+
+其中：
+* 窗口
+  * **[link]("?help_ui_detail_other_window_mxlab", "MXLab 窗口")**
+  * [link]("?help_ui_detail_other_window_variable", "变量窗口")
+  * [link]("?help_ui_detail_other_window_workplace", "工作空间窗口")
+  * [link]("?help_ui_detail_other_window_message", "消息管理窗口")
+* 菜单栏
+  * [link]("?help_ui_detail_menu_file", "文件")
+  * [link]("?help_ui_detail_menu_edit", "编辑")
+  * [link]("?help_ui_detail_menu_view", "视图")
+  * [link]("?help_ui_detail_menu_help", "帮助")
+* 核心部分
+  * 实时代码：实时代码即为开发人员输入的代码，输入完成后按回车键即可出现实时结果。
+  * 实时结果：实时结果展示了代码运行后的结果(函数的创建也有实时结果)。
+
+
+## 进阶交互
+MX 交互编辑器还可以与**独立 MX 窗口**进行交互，开发人员可以在独立 MX 窗口编写代码段，点击**执行**按钮后会在 MX 交互编辑器执行代码段。    
+独立 MX 窗口可以通过菜单栏**视图 > 其它窗口 > MX 窗口**创建。
+
+
+独立 MX 窗口的界面截图：
+
+
+[image]("image/UI/editor_mx_self.png","EastWave 7 独立 MX 窗口")
+
+
+**相关主题：**
+* [link]("?help_script", "MX 语言")
+
+
+
+
+
+

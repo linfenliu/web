@@ -1,0 +1,7 @@
+#function(cfg)
+
+local t=table();
+t.title = "变量窗口";
+
+
+return t;

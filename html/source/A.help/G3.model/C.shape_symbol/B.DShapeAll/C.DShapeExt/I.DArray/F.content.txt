@@ -1,0 +1,26 @@
+参数扫描（Expr）阵列
+=============  
+### 参数扫描阵列示意图
+[image]("image/DShape/DArrayExpr_sample.png","",".e_exampic")
+
+### 参数扫描阵列参数设置对话框
+[image]("image/DShape/DArrayExpr.png","",".e_parawindow")
+   
+### 参数扫描阵列参数含义
+[block-ref](expr-table)
+
+### 如何创建参数扫描阵列
+* [link](?help_model_shape_symbol_DShapeCreate.create-by-GUI, "界面创建参数扫描阵列")
+* [link](?help_model_Advanced_ewsl_model,"脚本创建参数扫描阵列")
+
+
+
+```block:expr-table
+||(,".paratab-e")
+| 参数名称 | 说明 | 备注 |
+| 待处理元件 | 指定参数扫描阵列中单元的元件信息 | - |
+| t0、t1、t2 | 指定参数扫描阵列的三个参数值（范围以及步长） | t0: `0:20:80` |
+| 位置表达式 | 指定参数扫描阵列的位置表达式 | X、Y、Z三个维度 |
+```
+
+

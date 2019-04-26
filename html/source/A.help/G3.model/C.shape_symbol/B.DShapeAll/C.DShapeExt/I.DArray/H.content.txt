@@ -1,0 +1,30 @@
+FSS天线罩（FSS）阵列
+=============  
+### FSS天线罩阵列示意图
+[image]("image/DShape/DArrayRdMaskFss_sample.png","FSS天线罩阵列示意图",".fss_exampic")
+
+### FSS天线罩阵列参数设置对话框
+[image]("image/DShape/DArrayRdMaskFss.png","FSS天线罩阵列参数设置对话框",".fss_parawindow")
+   
+### FSS天线罩阵列参数含义
+[block-ref](fss-table)
+
+### 如何创建FSS天线罩阵列
+* [link](?help_model_shape_symbol_DShapeCreate.create-by-GUI, "界面创建FSS天线罩阵列")
+* [link](?help_model_Advanced_ewsl_model,"脚本创建FSS天线罩阵列")
+
+
+
+```block:fss-table
+||(,".paratab-fss")
+| 参数名称 | 说明 | 备注 |
+| 待处理元件 | 指定FSS中单元的元件信息 | - |
+| 待处理表面 | 指定待处理的FSS天线罩表面 | - |
+| 六的倍数排列 | 指定每一层铺设的元件数量是否六的倍数 | - |
+| Z轴对齐 | 指定是否按Z轴对齐 | Z轴对齐：以Z为高度方向，每一层FSS单元位于等高线上 |
+| 单元宽度 | 指定单元的二维宽度 | X、Y两个方向的宽度 |
+| 铺设范围H1 | 指定FSS单元铺设时的起始高度 | - |
+| 铺设范围H2 | 指定FSS单元铺设时的终止高度 | - |
+| 起始角度 | 指定FSS单元每一层铺设的起始角度 | 单位为角度 |
+```
+

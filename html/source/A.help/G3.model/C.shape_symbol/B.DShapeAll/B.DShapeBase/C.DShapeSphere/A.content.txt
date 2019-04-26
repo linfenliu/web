@@ -1,0 +1,33 @@
+# 球体
+球体可用于生成具有厚度的完整球体或椭圆体。
+
+## 定义方式
+### 球中心——三维半径
+#### 属性对话框
+[image]("image/DShape/DShapeSphere.png","",".parawindow")
+
+#### 参数含义
+[block-ref](sp-middle-center-table)
+
+#### 示意图
+[image]("image/DShape/DShapeSphere_sample.png","",".sample-mc")
+
+
+## 如何创建球体
+* [link](?help_model_shape_symbol_DShapeCreate.create-by-GUI, "界面创建球体")
+* [link](?help_model_Advanced_ewsl_model,"脚本创建球体")
+
+
+
+```block:sp-middle-center-table
+||(,".paratab-mc")
+| 参数名称 | 说明 | 备注 |
+| 体中心 | 指定球体中心点的坐标 | - |
+| 三维半径 | 指定球体X、Y、Z三个方向上的半径 | - |
+| 厚度 | 指定球体表面的厚度 | 厚度为0时，球体为实心 |
+| 纵向层数 | 指定球体的纵向切割份数 | - |
+| 横向片数 | 指定球体的横向切割份数 | - |
+```
+
+
+

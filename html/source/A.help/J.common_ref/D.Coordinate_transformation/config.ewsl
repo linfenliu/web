@@ -1,0 +1,5 @@
+#function(cfg)
+
+local t=table();
+t.title="坐标变换的数学原理";
+return t;

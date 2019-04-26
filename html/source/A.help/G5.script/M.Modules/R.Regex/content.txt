@@ -1,0 +1,184 @@
+# 正则表达式
+
+EastWave V7脚本语言提供了正则表达式（Regular Expression）工具库。
+
+[anchor](".concepts")
+## 正则表达式基本概念
+正则表达式使用一个字符串来描述一个句法规则，基于该句法规则匹配目标文本中的内容字符串。使用正则表达式可以较为方便的从目标文本中匹配或者抓取到需要的内容。  
+
+正则表达式提供了一系列具有逻辑结构含义的“元字符”(meta-characters)，使用元字符和普通字符共同构成一个匹配规则。  
+
+
+```block:n_le_m
+`n<=m`
+```
+
+```block:match-object
+[link]("?.match_object",匹配对象(Match Object))
+```
+
+
+正则表达式的符号包括：
+||(正则表达式元字符表,table-regex-symbols,cl)
+| 元字符            |(c) 说明                           |
+| `\`               | 转义字符                          |
+| `^`               | 匹配输入字符串的开始位置          |
+| `$`               | 匹配输入字符串的结束位置          |
+| `*`               | 匹配前面的子表达式任意次数        |
+| `+`               | 匹配前面子表达式一次或多次        |
+|(2,1) `?`          | 匹配前面表达式零次或一次          |
+|(l)                  `?`前是元字符时，表示[link]("?.greedy_match",非贪婪模式)，即尽可能少的匹配，例如`"o+?"`匹配`"oooo"`时，会优先匹配单个`'o'`。     |
+| `{n}`             | `n`是一个正整数，精确匹配`n`次                                                                        |
+| `{n,m}`           | `n`和`m`都是正整数，且[block-ref]("n_le_m")，匹配次数大等于`n`小于等于`m`                             |
+| `.`               | 匹配除了换行符（`\r\n`）之外的任意字符                                                                |
+| `[xyz]`           | 匹配字符集合(`xyz`)中的任意一个字符                                                                   |
+| `[^xyz]`          | [link]("?.reversed_match",负匹配)字符集合(`xyz`)中的任意一个字符                                      |
+| `[a-z]`           | 匹配字符范围`a`到`z`之间的任意字符                                                                    |
+| `[^a-z]`          | [link]("?.reversed_match",负匹配)字符范围`a`到`z`之间的任意字符                                       |
+| `(pattern)`       | `(...)`符号中间是一个子串模式。该子串模式将在[block-ref]("match-object")中中被索引。                  |
+| `(?:pattern)`     | `(?:...)`在`()`中以`?:`开头。该子串模式不会在[block-ref]("match-object")中被索引。                    |
+| `\b`              | [link]("?.boundary_match",匹配单词的边界)                                                             |
+| `\B`              | 负[link]("?.boundary_match",匹配单词的边界)                                                           |
+| `\cx`             | 控制符匹配，`x`指明具体的控制符。例如：`\cM`表示一个回车符（`Ctrl-M`），`x`要求是26个英文字母（大小写均可）。             |
+| `\d`              | 匹配一个数字字符，等同于`[0-9]`。     |
+| `\D`              | 负匹配一个数字字符，等同于`[^0-9]`。  |
+| `\f`              | 匹配换页符。                          |
+| `\n`              | 匹配换行符。                          |
+| `\r`              | 匹配回车符。                          |
+| `\t`              | 匹配制表符。                          |
+| `\v`              | 匹配垂直制表符。                      |
+| `\s`              | 匹配任何不可见字符，等价于`[ \f\n\r\t\v]`（注意空格）。       |
+| `\S`              | 负匹配任何不可见字符，等价于`[^ \f\n\r\t\v]`（注意空格）。    |
+| `\w`              | 匹配任何单词，单词可用字符在Unicode范围内理解。               |
+| `\W`              | 负匹配任何单词，单词可用字符在Unicode范围内理解。             |
+| `\xn`             | 匹配`n`，其中`n`为十六进制转义值。例如：`\x41`匹配`"A"`。     |
+| `\un`             | 匹配`n`，其中`n`为Unicode字符的编码，例如：`\u00A9`表示:`©`   |
+| `\k`              | [link]("?.reverse_reference",反向引用)前面某个被索引的子串模式的匹配结果                                                          |
+| ``` `pre`  ```    | 引用预定义名为`pre`的匹配子串（[link]("?.named_substring_reference",具名子串)）                                                   |
+| `${k.m}`          | 引用同一级别的第`k`个子串（从`1`开始索引），`.m`表示第`m`次匹配。参考[link]("?.substring_reference",子串引用)，一般用于替换       |
+
+**说明：**
+[anchor](".reversed_match")
+* 负匹配：表示对后面的匹配规则取逻辑非，即将原匹配规则匹配的字符串认为是不匹配，而原匹配规则不匹配的认为是匹配。
+[anchor](".boundary_match")
+* 边界匹配：表示这个匹配位置恰好是一个单词的边界（首部或者尾部，而非中间），例如`"ion\b"`可以匹配`"lion"`但是不可以匹配`"ionization"`。
+[anchor](".substring_reference")
+* `\k`不支持八进制转义字符，使用十六进制转义字符替代。
+[anchor](".greedy_match")
+* 贪婪匹配和非贪婪匹配策略
+  * 正则表达式默认使用贪婪匹配策略，即使用`+`、`\*`以及一个`?`时，尽可能匹配多的字符（并且消耗掉），也可以理解为左侧匹配（消耗）字符后直到不匹配的位置交给右侧的规则。
+  * 在匹配多字符匹配的元字符后加上一个问号`?`实际上会使得问号左侧的匹配规则能够满足最基本的匹配要求的前提下优先考虑问号右侧的匹配规则。
+[anchor](".reverse_reference")
+* 使用`\k`（k是正整数编号）反向引用子串匹配结果
+  * 用来指定当前的位置采用和指定位置子串的匹配结果一致的内容
+  * 并不是模式重复，而是模式匹配的结果重复
+
+[anchor](".usage")
+## 正则表达式库的用法
+
+* EWSL的regex库提供了几个标准函数（[link]("?help_script_Specifications_Module_Regex",库函数具体用法)）：  
+
+||(EWSL-Regex库函数,table-regex-functions,cll)
+| 函数名            |(c) 用法                                                       |(c) 说明                                                                   |
+| `regex.create`    | `regex.create()`,`regex.create(re_str,flag=0)`                | 创建一个正则表达式，允许后续使用`prepare`预定义具名子串模式               |
+| `regex.compile`   | `regex.compile(re_str,flag=0)`                                | 直接编译一个正则表达式                                                    |
+| `regex.match`     | `regex.match(re_str,str,flag=0)`                              | 直接使用一个正则表达式进行匹配，返回[link]("?.match_object",匹配对象)     |
+| `regex.search`    | `regex.search(re_str,str,flag=0)`                             | 直接使用一个正则表达式进行搜索，返回[link]("?.match_object",匹配对象)     |
+| `regex.replace`   | `regex.replace(re_str1,re_str2,str,count=0,flag=0)`           | 直接使用正则表达式进行搜索替换                                            |
+
+
+* 正则表达式对象接口：
+||("EWSL-Regex 对象接口", "EWSL-Regex-Object-Interfaces", "cll")
+|(1,2,l) `reobj`表示一个由regex.compile产生的正则表达式对象                                                          |
+| 函数名               |(c) 用法                                            |(c) 说明                                |
+| `reobj.prepare`      | `reobj.prepare(name, patter)`                      | 预处理：增加预定义子串匹配模式         |
+| `reobj.compile`      | `reobj.compile(flag=0)`                            | 自编译                                 |
+| `reobj.match`        | `reobj.match(target_str)`                          | 返回整体匹配结果的匹配对象             |
+| `reobj.search`       | `reobj.search(target_str)`                         | 返回用于递进搜索的匹配对象             |
+| `reobj.replace`      | `reobj.replace(target_str, pattern, count=0)`      | 替换                                   |
+
+
+```block:regex-id
+`(\w([\w\d_]*))`
+```
+
+```block:regex-int
+`([\\+\\-]0|[1-9][0-9]*)`
+```
+
+[anchor](".named_substring_reference")
+* `reobj.match`和`reobj.search`函数返回的是[link]("?.match_object",匹配对象)。
+* 对于较为复杂的正则表达式，可以利用`reobj.prepare`将一些复杂的子串匹配模式用名字定义起来，然后再行引用。EWSL的具名子串支持递归引用。典型的预定义字符串例如：
+||("EWSL-Regex 预定义子串的例子", "EWSL-Regex-Predefined-Example", cll)
+| 名称      |(c) 正则表达式（未转义）       |(c) 说明                      |
+| `id`      | [block-ref]("regex-id")       | 变量名：采用英文字母（或Unicode符号）开头的，后续允许英文字母（或Unicode符号）、数字和下划线组成的连续子串    |
+| `int`     | [block-ref]("regex-int")      | 整数：符号开头，接一个`1-9`的数字，后面跟着不定数量的`0-9`数字                                              |
+
+
+[anchor](".match_object")
+### 匹配对象
+
+[anchor](".substring_reference")
+匹配对象是一种引用匹配结果的方式，使用面向对象封装。对于使用`match`函数返回的匹配对象，使用子串引用方式来处理结果。见[link]("?.example_1",例子1)。  
+||(Match Object接口,"Match-Object",cl)
+|(1,2,l) `mobj`是一个匹配对象                                                   |
+| 函数名                |(c) 说明                                               |
+| `mobj.sub()`          | 索引匹配的子串，`mobj.sub(k,m)`                       |
+| `mobj.next()`         | 移动到下一个匹配位置，配合`search`和`replace`使用。   |
+| `mobj.start`          | 起始位置                                              |
+| `mobj.end`            | 终止位置                                              |
+| `mobj.result`         | 匹配的结果                                            |
+| `mobj.regex`          | 原始的正则表达式字符串                                |
+
+* `mobj.sub`函数返回子串匹配的情况。
+  * `mobj.sub()`返回最外层的所有子串组成的数组。
+  * `mobj.sub(n)`返回最外层第`n`个括号中的所有匹配子串组成的数组。
+  * `mobj.sub(n,m)`返回最外层`n`个括号中第`m`个括号中的所有匹配子串组成的数组。
+  * `mobj.sub(n,m,p)`返回最外层第`n`个括号中第`m`个括号中第`p`个括号中所有匹配子串组成的数组。
+  * 上述规则可以依次类推。
+  * 最后一层括号由于内部没有更多子串，返回的是空数组，而不会报错。
+  * 最后一层括号中增加括号深度时，会报错。
+  * ```(...)*```这种情况时可能匹配结果为空数组。
+  * ```(...)* (...)+ (...)?```的情况返回的匹配数量是不确定的，并且结果会堆叠在同一层级上，如果要将这种重复模式分级，额外再套一层括号如（```((...)*)```）。
+  * ```(...)\1```这种用法将返回一个匹配，如果要将反向引用```\1```加入到引用列表中，额外加上括号（```(...)(\1)```）。
+* `mobj.next`将`mobj`移动到下一个匹配点，这时候`mobj.start`和`mobj.end`这两个数值会随之更新到下一个匹配位置，如果原始字符串是`str`，那么`str[mobj.start:mobj.end]`可以得到匹配的子串内容。
+
+
+
+[anchor](".examples")
+## 例子
+
+[anchor](".example_1")
+* 简单分词
+> 将如右侧类似的句子`"This is John's family."`分词。（要求去除空格和单引号的子串引用）
+
+```ewsl
+str = "This is John's family.";
+re = regex.compile("((\\w+)(?:[\s.,']*))+");
+obj = re.match(str);
+
+obj.sub()       // => array(1x5):["This ", "is ", "John'", "s ", "family."]
+obj.sub(0)      // => array(1):  ["This"]
+obj.sub(1)      // => array(1):  ["is"]
+obj.sub(2)      // => array(1):  ["John"]
+obj.sub(3)      // => array(1):  ["s"]
+obj.sub(4)      // => array(1):  ["family"]
+```
+
+
+[anchor](".example_2")
+* 电话号码分析
+  * 电话号码为三位或者四位数字开头（区号）加一个连接符`-`，然后再跟着8位数字
+  * 电话号码之间有不确定的空白字符连接
+
+```ewsl
+str = "010-12342222 021-34432223 025-34334223 0519-22234444";
+re = regex.create("([0-9]{3,4}-[0-9]{8}\s*)+");
+obj = re.match(str);
+obj.sub()       // => array(1x4): [ "010-12342222 ", "021-34432223 ", "025-34334223 ", "0519-22234444" ]
+```
+
+
+[anchor](".reference")
+## 参考
+[link]("?help_script_Specifications_Module_Regex",正则表达式函数表)

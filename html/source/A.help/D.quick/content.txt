@@ -1,0 +1,17 @@
+# 快速入门
+
+EastWave 7 的完整仿真流程分为两大类：
+* 专业计算模式仿真；
+* 自定义模式仿真。
+    
+本章节，以**RCS[link]("?help_overview_about_workmode","计算模式")**为例，旨在让用户能够快速熟悉计算模式仿真流程，入门 EastWave 7 。    
+    
+> 关于**自定义模式仿真**，请参看[link]("?help_case_custom", "完整实例 > 自定义模式仿真")。
+
+## 快速入门流程
++ 完成[link]("?help_quick_prepare", "准备工作")；
++ [link]("?help_quick_step_1", "设置计算模式及参数")；
++ [link]("?help_quick_step_2", "建立模型")；
++ [link]("?help_quick_step_3", "设置网格")；
++ [link]("?help_quick_step_4", "启动计算")；
++ [link]("?help_quick_step_5", "查看计算结果及后处理")。

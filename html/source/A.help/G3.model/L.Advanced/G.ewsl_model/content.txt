@@ -1,0 +1,25 @@
+# 脚本建模
+使用 EastWave V7 脚本，用户可以创建所有的几何元件（基础几何元件、扩展几何元件），并且可以为某些几何元件的特殊参数（几何体精密度）赋值。      
+
+## 本节内容
+* [link](?help_model_Advanced_ewsl_model_How, "如何使用脚本建模")
+  + [link](?help_model_Advanced_ewsl_model_How.step1, "新建脚本文件")
+  + [link](?help_model_Advanced_ewsl_model_How.step2, "初始化模型文档")
+  + [link](?help_model_Advanced_ewsl_model_How.step3, "添加几何元件")
+  + [link](?help_model_Advanced_ewsl_model_How.step4, "运行脚本文件")      
+       
+* [link](?help_model_Advanced_ewsl_model_Guide, "几何元件脚本参数")
+  [block-ref](guide-table)
+
+
+
+
+  
+  
+```block:guide-table`endtag1
+|(1,5)几何元件脚本参数说明 |
+| [link](?.cube, "长方体") | [link](?.cylinder, "圆柱体") | [link](?.sphere, "球体") | [link](?.geosphere, "几何球体") | [link](?.cone, "圆锥体") |
+| [link](?.torus, "环体") | [link](?.spin, "实心旋转体") | [link](?.spin2, "空心旋转体") | [link](?.sweeped, "参数扫描体") | [link](?.column, "垂直拉伸体") |
+| [link](?.cad, "导入CAD模型") | [link](?.meshsurface, "强制网格面") | [link](?.multilayer, "多层物体") | [link](?.radome, "天线罩") | [link](?.array, "阵列") |
+```endtag1
+

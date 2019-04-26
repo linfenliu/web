@@ -1,0 +1,8 @@
+﻿# 文本文件编辑窗口
+
+文本文件编辑窗口主要用于编辑或查看可读文件(`*.txt, *.ewp2, *.ewsl, *.cpp等`)。
+
+
+[image]("image/UI/other_wnd/text.png", "文本文件编辑窗口")
+
+

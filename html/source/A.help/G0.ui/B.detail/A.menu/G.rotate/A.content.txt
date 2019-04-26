@@ -1,0 +1,29 @@
+﻿# 旋转 菜单
+
+旋转菜单是[link]("?help_ui_editor_editor_figure", "绘图编辑器")、
+[link]("?help_ui_editor_editor_model", "模型文档编辑器")
+以及[link]("?help_ui_editor_editor_fieldviewer", "实时场观察器")的特有菜单，
+主要用于微调物体的旋转。
+
+
+[image]("image/UI/menu/rotate.png", "旋转菜单")
+
+
+[block-ref](rotate_menu_table)
+
+
+```tips:warning-提示
+旋转菜单的所有操作，只是简单改变观察视角，并不会影响物体内部实际的位置参数。
+```
+
+
+```block:rotate_menu_table`endtag1
+|(L) 菜单项 |(L) 备注 |
+|(L) 旋转 > 自上向下 |(L) 视角上将物体自上向下旋转 |
+|(L) 旋转 > 自下向上 |(L) 视角上将物体自下向上旋转 |
+|(L) 旋转 > 自右往左 |(L) 视角上将物体自右往左旋转 |
+|(L) 旋转 > 自左往右 |(L) 视角上将物体自左往右旋转 |
+|(L) 旋转 > 顺时针 |(L) 视角上将物体顺时针旋转 |
+|(L) 旋转 > 逆时针 |(L) 视角上将物体逆时针旋转 |
+
+```endtag1

@@ -1,0 +1,19 @@
+﻿# 时间控制 工具条
+
+时间控制工具条对应[link]("?", "时间控制菜单")，主要作用于绘图得到的动态图，便于用户控制动态图的情况。
+
+
+[image]("image/UI/bar/timectrl.png", "时间控制工具栏")
+
+
+[block-ref](timectrl_bar_table)
+
+
+```block:timectrl_bar_table`endtag1
+|(L) 图标 |(L) 功能说明 |
+|(L) ``<image src="123.png" />`` |(L) 播放 |
+|(L) ``<image src="123.png" />`` |(L) 停止 |
+|(L) ``<image src="123.png" />`` |(L) 重新开始 |
+|(L) ``<image src="123.png" />`` |(L) 前进 |
+|(L) ``<image src="123.png" />`` |(L) 后退 |
+```endtag1

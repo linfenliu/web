@@ -1,0 +1,6 @@
+#function(cfg)
+
+local t=table();
+t.title = "用户界面";
+
+return t;

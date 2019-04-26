@@ -1,0 +1,4 @@
+local t=table();
+t.title="MathJax语法说明";
+t.mathjax=true;
+return t;

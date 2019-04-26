@@ -1,0 +1,7 @@
+#function(cfg)
+
+local t=table();
+t.title = "完整实例 FAQ";
+
+
+return t;

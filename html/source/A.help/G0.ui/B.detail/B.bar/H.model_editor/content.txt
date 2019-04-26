@@ -1,0 +1,19 @@
+﻿# 模型编辑器 工具条
+
+模型编辑器工具条对应[link]("?", "模型编辑器菜单")，主要是包含求解器设置以及几何结构、材料(`材料库`)相关的功能。
+
+
+[image]("image/UI/bar/model.png", "模型编辑器工具条")
+
+
+[block-ref](model_bar_table)
+
+
+```block:model_bar_table`endtag1
+|(L) 图标 |(L) 功能说明 |
+|(L) ``<image src="123.png" />`` |(L) 设置文档参数 |
+|(L) ``<image src="123.png" />`` |(L) 运行当前工程文件 |
+|(L) ``<image src="123.png" />`` |(L) 生成物体网格信息 |
+|(L) ``<image src="123.png" />`` |(L) 检测当前工程文档所有几何结构的封闭性 |
+|(L) ``<image src="123.png" />`` |(L) 导出当前工程文档所有几何结构体 |
+```endtag1

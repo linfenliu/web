@@ -1,0 +1,520 @@
+
+
+[topic](param)
+
+概述
+============
+
+Markdown的目标是实现易读易写。
+在主流Markdown的基础上进行大量的扩展改进，
+语法严格化，并根据我们的需求扩展出多种语法，
+实现多页面统一生成，跨页面引用等。  
+
+
+Markdown兼容HTML，优先使用HTML解释器对整个文件进行解释。
+对非HTML的内容，再使用Markdwon解释器进行处理。  
+如果某段内容，希望直接使用Markdown语法处理，
+可以在行都使用```"`"```加上一个空格来实现，加上这个后，本行后续的内容直接当使用Markdown解释器处理。
+如果是多行内容，可以使用块定义并设置markdown的标识来处理。  
+
+
+````myblock
+
+` 这里的内容使用markdown来处理
+
+```markdown
+这里一大段的内容使用markdown来处理 
+```
+
+```myblock
+
+
+
+段落和换行
+----------
+
+一个Markdown段落，由一个或多个连续的文本行组成，
+两个或以上的空行，代表新的段落的开始。
+
+
+
+行尾两个或以上的空格，表示换行。
+
+
+
+前置行转义
+-----------
+
+||(前置行转义)
+| 符号 | 作用 |
+| `#` | 标题 |
+` | ``<code>`</code>`` |  代表后续的内容，直接使用markdown解释器处理 |
+` | `>` | 代表后续的内容为引用 |
+| `*` | 无序列表  |
+| `+` | 有序列表  |
+
+前置转义符，后面必须有空格，无空格的情况不认为是前置转义符。  
+其中，除了"#"以外的其他行转义符，可以嵌套使用。  
+后续的行，根据开始内容，做不同的处理：
+* 以两个空格开始，认为是跟上面行转义内容的延续  
+* 以同类转义符开始，认为是新的同级别的项 
+* 其他情况，转义结束
+
+
+示例：
+```
+下面是一个列表
+` * 列表内容中有html特殊字符<hello>哦
+* 列表的第二项
+  * 这是第二项里的一个子列表
+    前面有四个空格，这是子列表第二项内容的延续
+  * 这是子列表的第二项
+  前面有两个空格，这是顶层列表的第二项的延续内容
+* 列表第三项
+  > 前面有两个空格，这是第三项内容的延续，这里是一个引用  
+    第三项引用的内容里又使用了列表
+    * 引用里又使用了列表
+    * 引用里的列表第二项
+
+```
+
+效果：  
+
+下面是一个列表
+` * 列表内容中有html特殊字符<hello>哦
+* 列表的第二项
+  * 这是第二项里的一个子列表
+    前面有四个空格，这是子列表第二项内容的延续
+  * 这是子列表的第二项
+  前面有两个空格，这是顶层列表的第二项的延续内容
+* 列表第三项
+  > 前面有两个空格，这是第三项内容的延续，这里是一个引用  
+    第三项引用的内容里又使用了列表
+    * 引用里又使用了列表
+    * 引用里的列表第二项
+
+   
+语义块
+----------
+
+使用下列方式，可以定义语义块
+````endtag
+```[type[`endtag]]
+content
+```[endtag]
+```endtag
+
+```htmtext`endtag
+
+其中：type指定语义块的类型，endtag为结束标识。
+type目前定义有 markdown、rawtext、htmtext、block和code等。
+对于未定义的type，使用code解释，认为是代码块
+
+```endtag
+
+
+引用
+----------
+
+引用，可用来定义包括超链接，图片引用，表格引用等内容。
+具体有下面三种方式：
+* ``[type](params)``
+* ``[type-def:name](params)``
+* ``[type-ref](name)``
+
+其中，type是引用的类型，params是参数。
+目前已经定义的type有link、image、anchor和block，
+以后可能会引入其他的引用类型。
+带`-def`的为预先定义，不产生真正的内容，但可以被`-ref`引用。   
+具体语法见  
+* [link-ref](.header_3_2)。
+  * [link-ref](.header_3_2_1)
+  * [link-ref](.header_3_2_2)
+  * [link-ref](.header_3_2_3)
+
+||(引用类型说明)
+| 类型 | 作用 |
+| link | 超链接 |
+| image | 图片 |
+| anchor | 位置锚 |
+| block | 内容块 |
+| topic | 目录索引 |
+| template | 模板文件 |
+
+
+
+区块元素
+==========
+
+
+标题
+-----------
+
+有两种方式实现标题。
+* 第一种方式:
+  在标题的后续一行，使用6个或以上的"="、"-"或"."，
+  这种方式下构造出来的标题，会自动生成索引。
+* 第二种方式:
+  是在行的内容，使用一个或多个#号加一个空格开始时，
+  这行的内容会自己作为标题，#的个数为标题的级别。  
+
+ 
+标题效果： 
+# #The largest heading
+## ##The second largest heading
+### ###The thrid heading
+#### ####The fourth heading
+##### #####The fifth heading
+###### ######The smallest heading
+   
+
+引用代码
+-----------
+
+```htmtext`endtag
+
+行内引用 `代码` 或  ```代码```  
+ 
+多行引用，请直接使用特殊的语义块，type为代码的语言，如c++、ewsl等。
+  
+```endtag
+
+
+  
+内容引用
+---------
+
+在行的最前面使用 `>`   
+
+
+```
+引用其他内容:
+
+> 下面又再引用其他内容
+  > hello  
+    world
+    * 引用里的一个列表的第一项
+    * 第二项
+    下面再次再次引用其他内容
+    > hello, world!
+    第二层引用结束
+  第一层引用结束
+
+```
+  
+
+效果:    
+引用其他内容:
+
+> 下面又再引用其他内容
+  > hello  
+    world
+    * 引用里的一个列表的第一项
+    * 第二项
+    下面再次再次引用其他内容
+    > hello, world!
+    第二层引用结束
+  第一层引用结束
+
+   
+   
+   
+   
+列表
+------------
+
+列表1  
+* George Washington
+* John Adams
+* Thomas Jefferson
+
+
+列表2  
+* Make my changes
+  * Fix bug
+  * Improve formatting
+    * Make the heading bigger
+* Push my commits to Github
+* Open a pull request
+  * Describe my changes
+  * Mention all the members of my team
+    * Ask for feedbackk
+   
+有序列表
++ item1
++ item2
++ item3
+
+有序列表嵌套无序列表
++ item1
+  * item1.1
+  * item1.2
++ * item2.1
+  * item2.2
++ item3
+
+表格
+--------------
+
+定义：   
+```htmtext
+| name | value |
+| n1 | v1 |
+| n2 |(2) v2 |
+| v3 |
+```
+  
+效果：   
+| name | value |
+| n1 | v1 |
+| n2 |(2) v2 |
+| v3 |
+   
+
+注意：如果表格中有`|`字符，需要转义，使用`\|`代替。   
+
+块引用
+-----------
+
+定义：   
+
+```htmtext`endtag
+
+```block:table1
+| name | value |
+| n1 | v1 |
+| n2 |(2) v2 |
+| v3 |
+```
+
+```block:table2
+| name | value |
+| n1 | v1 |
+| n2 |(2) [block-ref](table1) |
+| v3 |
+```
+
+```endtag
+
+引用：  
+``[block-ref](table2)``
+
+效果：   
+
+```block:table1
+| name | value |
+| n1 | v1 |
+| n2 |(2) v2 |
+| v3 |
+```
+
+```block:table2
+| name | value |
+| n1 | v1 |
+| n2 |(2) [block-ref](table1) |
+| v3 |
+```
+
+[block-ref](table2)
+
+
+
+区段元素
+============
+
+
+字体效果
+-----------
+
+||(字体效果表,.table_font)
+| 名称 | 语法 | 效果 | 
+| bold | ``**text**`` | **text** |
+| italicized | ``*text*`` | *text* |
+| misstaken | ``~~text~~`` | ~~text~~ |
+| important | ``**_text_**`` | **_text_** |
+   
+   
+
+超链接、图片、锚定义
+-------------
+
+||(定义表,.table_def)
+| 名称 | 语法 |
+| link | ``[link](url,text,title)`` |
+| image | ``[image](url,alt.text,anchor)`` |
+| anchor | ``[anchor](anchor,text,title)`` |
+
+
+
+
+预先定义一些引用: ``[type-def:name](arg_list)``    
+使用预先定义的引用： ``[type-ref](name)``   
+
+
+超链接
+.........
+
+直接定义链接：
+```
+[link]("http://www.eastwave.com.cn","EastWave","go to EastWave homepage")
+```
+ 
+
+
+预定链接并引用：
+```
+[link-def:.mylink]("mylink.url","mylink.text","mylink.title")  
+[link-ref](mylink)
+```
+
+
+自动生成的预定义链接:
+* 每个章节都生自动生成一个预定义链接，名字的规则为 简称用`_`连接起来。比如本页面是```help_doc_markdown```。
+* 每个章节的内容的标题索引，名字为 ```本页面的名称+.header_标题的编号```，比如这里是```help_doc_mardown.header_3_2_1```。
+
+
+引用已有的链接：   
+link: ```[link-ref](".header_2")```   
+效果: [link-ref](".header_2")   
+
+
+
+图片
+.........
+
+image: ```[image]("image.url","alt.text")```
+[image]("image.url","alt.text")  
+
+
+
+   
+锚定义
+............
+
+
+定义方式:
+```
+[anchor](".myposition")
+```
+[anchor](".myposition")
+
+使用`.`开头，前面会自动加上本页面的名称。
+
+要引用上面这个位置，可这样
+```
+[link]("?help_internal_doc_markdown.myposition")
+```
+
+
+模板文件定义
+............
+
+定义方式:
+```
+[template](etching_example.ewp2)
+```
+
+效果：
+[template](etching_example.ewp2)
+
+
+
+
+
+html版帮助系统说明
+=========
+
+source目录为源目录，web目录为目标目录。
+source目录下，
+每一个目录为一个子章节，
+目录组织即为帮助内容的章节组织。
+目录的名称为内部简称，采用prefix.name的方式命名。
+其中prefix为前缀，仅用于排序，无其他意义。
+name为该章节的内部简称。
+每个目录下，有config.ewsl文件，
+这个用于配置该章节的信息，目前仅包括该章节的全称。
+此外，还有很多的内容文件，命名规则为 prefix.content.ext。
+其中prefix为前缀，仅用于排序，无其他意义。
+处理时，按prefix排序，依次生成帮助内容，最后合并为一个文件。
+ext为扩展名，扩展名其中txt时，使用Markdown处理该文件。
+扩展名为htm时，不做任何处理，直接嵌入。
+
+
+
+web/help目录为目标目录，生成的文件，
+全部入在data目录下，其他文件为帮助框架文件，
+需要考虑浏览器兼容问题。
+这里的index.htm文件，是总的框架文件，这个文件，
+可以有多个实现，应对不同的浏览器，或是采用不同的风格。
+最终，我们希望实现为无刷新的版本。
+
+ 
+修改source后，需要执行一次```ewx_help```，重新生成帮助文件。
+这个动作，在使用我们自定义的httpserver服务器的情况，
+可以在某个动态网页上加出这个功能。
+
+
+有些浏览器，没有权限直接访问本地文件，
+这情况下，可以使用ewsl库创建的httpserver。
+使用```ewx_ewsl.exe httpserver.ewsl```的方式来启动，
+启动后可以通过http://localhost或http://127.0.0.1来访问生成的帮助文档。
+
+
+httpserver.ewsl的内容
+
+```ewsl
+local s=net.httpserver();
+local t=table();
+
+// http setting
+t.port=80;
+
+// https setting
+//t.ssl_port=443;
+//t.ssl_cert="ssl_cert.pem";
+//t.ssl_key="ssl_key.pem";
+
+// no cache, for test
+t.maxage=0;
+
+s(t);
+```
+
+
+
+使用ewsl来定义动态网页
+```ewsl
+
+// 文件开头
+#function(session,request,response);
+global server;
+
+// 可以使用response.buffer.write来输出
+// 可以使用response.redirect来重定向到其他文件
+// 一般的情况下，这个动态页面，返回一个json文件，其他功能使用前端脚本实现。
+// ewsl的table，只要不存在特殊类型的数据如函数等，可使用to_json函数转换为json格式。
+
+```
+
+
+
+示例：reload.ewsl，功能为重新生成help文档，然后再重定向到help/index.htm。
+```ewsl
+// file reload.ewsl
+#function(session,request,response);
+global server;
+util.htmlgen("source","web/help")
+response.redirect("help/index.htm");
+```
+
+
+使用动态网页加上我们的ewsl库，可以实现很多功能。
+* 动态报告生成系统
+* 在线题库系统
+* license的internet认证功能
+* 试用版验证码自动计算功能
+* 任务管理系统
+
+
+
+   

@@ -1,0 +1,43 @@
+# 阵列
+阵列用于设计基于某种元件，按照指定的空间排布生成的阵列结构或阵列激励源。      
+
+## 阵列分类 
+[topic](param)
+
+圆周（Circle）阵列
+=============  
+### 圆周阵列示意图
+[image]("image/DShape/DArrayCircle_sample.png","",".c_exampic")
+
+### 圆周阵列参数设置对话框
+[image]("image/DShape/DArrayCircle.png","",".c_parawindow")
+   
+### 圆周阵列参数含义
+[block-ref](circle-table)
+
+### 如何创建圆周阵列
+* [link](?help_model_shape_symbol_DShapeCreate.create-by-GUI, "界面创建圆周阵列")
+* [link](?help_model_Advanced_ewsl_model,"脚本创建圆周阵列")
+
+
+
+```block:circle-table
+||(,".paratab-c")
+| 参数名称 | 说明 | 备注 |
+| 待处理元件 | 指定圆周阵列中单元的元件信息 | - |
+| 旋转半径 | 指定圆周阵列的旋转半径 | 以坐标原点为圆心  |
+| 起始角度 | 指定圆周阵列的旋转起始角度 | 单位为角度 |
+| 终止角度 | 指定圆周阵列的旋转终止角度 | 单位为角度 |
+| 角度步长 | 指定圆周阵列的角度步长 | 单位为角度 |
+| 自旋 | 指定圆周阵列的元件是否需要自旋 | - |
+```
+
+
+
+
+
+
+
+
+
+

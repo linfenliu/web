@@ -1,0 +1,29 @@
+正切卵形（Tangent Ogive）天线罩
+=============  
+### 正切卵形天线罩横截面示意图
+[image]("image/DShape/DRadomeOgive_sample.png","",".o_exampic")
+
+### 正切卵形天线罩参数设置对话框
+[image]("image/DShape/DRadomeOgive.png","",".o_parawindow")
+   
+### 正切卵形天线罩参数含义
+[block-ref](ogive-table)
+
+### 如何创建正切卵形天线罩
+* [link](?help_model_shape_symbol_DShapeCreate.create-by-GUI, "界面创建正切卵形天线罩")
+* [link](?help_model_Advanced_ewsl_model,"脚本创建正切卵形天线罩")
+
+
+```block:ogive-table
+||(,".paratab-ot")
+| 参数名称 | 说明 | 备注 |
+| 厚度（T） | 指定正切卵形天线罩的厚度 | -  |
+| 半径（R） | 指定正切卵形天线罩外形线（圆弧）的半径 | 外（内）形线即正切卵形天线罩的外（内）母线 它是一段圆弧，其圆心落在图中的横轴（灰色）上 |
+| 宽度（W） | 指定正切卵形天线罩外形线距离中轴线最远处的距离 | - |
+| 高度（H） | 指定正切卵形天线罩顶点到底面的高度 | - |
+| 平移距离（D） | 指定正切卵形天线罩沿轴向平移的距离 | 轴向即天线罩头部的朝向 |
+| 边数 | 指定正切卵形天线罩的底面切割份数 | - |
+```
+
+
+

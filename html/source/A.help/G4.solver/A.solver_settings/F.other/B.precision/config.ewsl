@@ -1,0 +1,5 @@
+#function(cfg)
+
+local t=table();
+t.title="精度设置";
+return t;

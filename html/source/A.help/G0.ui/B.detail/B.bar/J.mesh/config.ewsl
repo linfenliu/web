@@ -1,0 +1,7 @@
+#function(cfg)
+
+local t=table();
+t.title = "网格视图";
+
+
+return t;

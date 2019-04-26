@@ -1,0 +1,35 @@
+# 关于 求解器设置
+
+求解器设置是 EastWave 7 仿真计算过程中用到的设置选项。
+
+求解器设置包括：
+* [link]("?help_evaluation_solver_settings_common","常规设置")：
+  * 单位
+  * 背景材料
+  * 频率
+* [link]("?help_evaluation_solver_settings_border","边界设置")：在仿真不同类型电磁波问题时可能使用不同的边界条件，包括：
+  * 开放边界
+  * 周期边界
+  * PEC 边界
+  * PMC 边界
+  * 布洛赫边界
+* [link]("?help_evaluation_solver_settings_mesh","网格设置")：
+  * 常规网格
+  * 均匀网格
+  * 非均匀网格
+  * 共性网格
+  * 强制网格
+* [link]("?help_evaluation_solver_settings_shape","物体优先级设置")
+* [link]("?help_evaluation_solver_settings_variable","变量设置")：
+  * 系统内置常量
+  * 系统内置变量
+  * 自定义常规变量
+  * 自定义数组变量
+  * 扫描优化参数变量
+* [link]("?help_evaluation_solver_settings_other","其它设置")：
+  * 输出设置
+  * 精度设置
+  * 初始化电磁场
+  * 自定义脚本
+  * 采集位置点与测量
+  * 工作平面和坐标系

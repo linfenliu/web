@@ -1,0 +1,37 @@
+<h1> EastWave 7 文档 </h1>
+
+<p>了解 EastWave 7 如何帮助你进行电磁波/光电系统数值仿真。其中带有**参考**的章节，详细介绍了具体模块，属于深入了解部分。</p>
+<div style="float: left; width:300px;margin:10px"><a href="#help_install_install"><img style="margin-right: 5px" src="image/doc/install@50.png" /> 了解如何安装和配置 EastWave 7</a></div>
+<div style="float: left; width:300px;margin:10px"><a href="#help_overview_about_ew7"><img style="margin-right: 5px" src="image/doc/overview@50.png" /> EastWave 7 概览</a></div>
+<div style="clear: both"></div>
+
+## 通过"快速入门"体验 EastWave 7
+<div style="float: left; width:300px;margin:10px"><a href="#help_quick_step_1"><img style="margin-right: 5px" src="image/doc/mode@50.png" /> 设置计算模式和参数</a></div>
+<div style="float: left; width:300px;margin:10px"><a href="#help_quick_step_2"><img style="margin-right: 5px" src="image/doc/model@50.png" /> 建立模型入门</a></div>
+<!--
+<div style="float: left; width:300px;margin:10px"><a href="#"><img style="margin-right: 5px" src="image/doc/src@50.png" /> 设置激励源</a></div>
+<div style="float: left; width:300px;margin:10px"><a href="#"><img style="margin-right: 5px" src="image/doc/monitor@50.png" /> 设置监视器</a></div>
+-->
+<div style="float: left; width:300px;margin:10px"><a href="#help_quick_step_3"><img style="margin-right: 5px" src="image/doc/mesh@50.png" /> 设置网格</a></div>
+<div style="float: left; width:300px;margin:10px"><a href="#help_quick_step_4"><img style="margin-right: 5px" src="image/doc/run@50.png" /> 启动计算</a></div>
+<div style="float: left; width:300px;margin:10px"><a href="#help_quick_step_5"><img style="margin-right: 5px" src="image/doc/result@50.png" /> 结果和后处理</a></div>
+<div style="clear: both"></div>
+
+## 通过"参考指南"深入了解
+<div style="float:left; text-align: center;margin:10px;"><a href="#help_ui"><img style="margin-right: 5px" src="image/doc/UI@32.png" /><p>用户界面</p></a></div>
+<div style="float:left; text-align: center;margin:10px;"><a href="#help_workmode"><img style="margin-right: 5px" src="image/doc/mode@32.png" /><p>计算模式</p></a></div>
+<div style="float:left; text-align: center;margin:10px;"><a href="#help_model_shape_symbol"><img style="margin-right: 5px" src="image/doc/model@32.png" /><p>几何元件</p></a></div>
+<div style="float:left; text-align: center;margin:10px;"><a href="#help_model_material_symbol"><img style="margin-right: 5px" src="image/doc/material@32.png" /><p>材料元件</p></a></div>
+<div style="float:left; text-align: center;margin:10px;"><a href="#help_model_source_symbol"><img style="margin-right: 5px" src="image/doc/src@32.png" /><p>激励源元件</p></a></div>
+<div style="float:left; text-align: center;margin:10px;"><a href="#help_model_monitor_symbol"><img style="margin-right: 5px" src="image/doc/monitor@32.png" /><p>监视器元件</p></a></div>
+<div style="float:left; text-align: center;margin:10px;"><a href="#help_evaluation_solver_settings"><img style="margin-right: 5px" src="image/doc/import@32.png" /><p>求解器设置</p></a></div>
+<div style="float:left; text-align: center;margin:10px;"><a href="#help_evaluation_result"><img style="margin-right: 5px" src="image/doc/result@32.png" /><p>数据后处理</p></a></div>
+<div style="clear: both"></div>
+
+## 高级用户进阶
+<div style="float:left; text-align: center;margin: 0 10px;"><a href="#help_script"><img style="margin-right: 5px" src="image/doc/script@32.png" /><p>EastWave 7 脚本语言</p></a></div>
+<div style="clear: both"></div>
+
+<br />
+<br />
+**相关主题：**[link]("?help_common_ref_system", "文档使用指引")

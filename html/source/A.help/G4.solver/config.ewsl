@@ -1,0 +1,7 @@
+#function(cfg)
+
+local t=table();
+t.title = "仿真分析";
+
+
+return t;

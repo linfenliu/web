@@ -1,0 +1,16 @@
+# 背景材料
+
+## 界面
+[image]("image/param/bgmat.png","","背景材料界面")
+
+
+## 参数说明
+
+[block-ref](bgmat-param-table)
+
+
+
+```block:bgmat-param-table
+|(L) 参数     |(L) 说明 |(L) 备注 |
+|(L) 背景材料 |(L)      |(L)      |
+```

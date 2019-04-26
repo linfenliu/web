@@ -1,0 +1,4 @@
+#function(cfg)
+local t=table();
+t.title="时域有限差分法";
+return t;

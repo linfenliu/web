@@ -1,0 +1,30 @@
+幂次形旋转体（Power Series）天线罩
+=============  
+### 幂次形旋转体天线罩横截面示意图
+[image]("image/DShape/DRadomePowerSeries_sample.png","",".p_exampic")
+
+### 幂次形旋转体天线罩参数设置对话框
+[image]("image/DShape/DRadomePowerSeries.png","",".p_parawindow")
+   
+### 幂次形旋转体天线罩参数含义
+[block-ref](ps-table)
+
+### 如何创建幂次形旋转体天线罩
+* [link](?help_model_shape_symbol_DShapeCreate.create-by-GUI, "界面创建幂次形旋转体天线罩")
+* [link](?help_model_Advanced_ewsl_model,"脚本创建幂次形旋转体天线罩")
+
+
+```block:ps-table
+||(,".paratab-ps")
+| 参数名称 | 说明 | 备注 |
+| 厚度（T） | 指定幂次形旋转体天线罩的厚度 | -  |
+| 半径（R） | 指定幂次形旋转体天线罩底部的半径 | - | 
+| 系数（A） | 指定幂函数 $y = A(\frac{x}{B})^N $的系数A | - | 
+| 系数（B） | 指定幂函数 $y = A(\frac{x}{B})^N $的系数B | - | 
+| 指数（N） | 指定幂函数 $y = A(\frac{x}{B})^N $的指数N | - | 
+| 平移距离（D） | 指定幂次形旋转体天线罩沿轴向平移的距离 | 轴向即天线罩头部的朝向 |
+| 边数 | 指定幂次形旋转体天线罩的底面切割份数 | - |
+```
+
+
+

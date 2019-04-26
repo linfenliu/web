@@ -1,0 +1,247 @@
+# RCS双站模式（介质包裹的金属球）教学案例
+
+> [topic](./)
+
+      
+概述
+============
+本案例通过计算 “ 介质包裹的金属球 ” 的双站 **RCS** 角度来演示如何使用 “ **RCS**（双站）计算模式”。
+该模式对给定频率范围内的每个频率点，计算物体在固定入射角下双站 **RCS** 随接受角度的变化。
+该计算模式示意图如下：
+
+
+<div align=center>
+[image]("image/sample/rcs/sphere/double_rcs.png",""," ")
+<div align=left> 
+
+
+结构图如下：
+
+
+<div align=center>
+[image]("image/sample/rcs/sphere/structure.png",""," ")
+<div align=left> 
+
+
+案例仿真流程如下：
+
+
+* 设置计算模式及参数
+* 建模
+* 设置网格
+* 启动计算
+* 查看计算结果
+
+
+
+设置计算模式及参数
+============
+## 选择计算模式
+
+由菜单选文件进入 “ 向导 ” 界面，选择 “ **RCS**（双站）模式 ”。
+
+
+<div align=center>
+[image]("image/sample/temp.png",""," ")
+<div align=left> 
+
+## 设置模式参数
+
+计算频率范围 $1 $\~$ 2$ **GHz**，间隔 $0.1$ **GHz**。
+
+
+
+发射雷达 $\theta$ 角度设置为 $ 90^\circ $ ，$\phi$ 角度设置为 $ 0^\circ $，极化角度设置为 $ 0^\circ $。
+
+
+
+接受雷达 $\theta$ 角度设置为 $ 0^\circ $ ，$\phi$ 角度范围设置为 $ 0^\circ $\~$ 180^\circ $，极化角度设置为 $ 0^\circ $。
+
+
+
+<div align=center>
+[image]("image/sample/rcs/sphere/workmode_setup.png",""," ")
+<div align=left> 
+
+
+
+## 查看向导报告
+
+“ **RCS** 模式 ” 默认长度单位设置为 **mm**, 时间单位设置成自动关联，频率单位设置为 **GHz**。背景材料为空气，
+其他参数是默认值，点击“完成”即可开始建模。
+
+**注意**：“时间单位”默认和长度单位自动关联，高级用户可自己设置来控制 **FDTD** 仿真对应的真实时间尺度。
+
+
+<div align=center>
+[image]("image/sample/temp.png",""," ")
+<div align=left> 
+
+## 设置文件名和存储路径
+
+进入 “ 设置文件名和存储路径 ” 对话框，选择存储路径，输入文件名。
+
+
+<div align=center>
+[image]("image/sample/rcs/sphere/save.png",""," ")
+<div align=left> 
+
+
+建模
+============
+## 定义常用变量
+
+为了方便参数调节和优化，建议将建模中用到的参数尽量在变量表中定义：
+
+<div align=center>
+[image]("image/sample/rcs/sphere/var.png",""," ")
+<div align=left> 
+
+## 新建材料
+
+新建材料可以通过如下几种操作方式：
+ 
+ 
+* 直接点击工具条 “ 新建材料 ” 图标
+
+* 点击 “ 模型菜单 ” 的 “ 新建材料 ” 选项
+
+* “ 工程管理窗口 ” 的 “ 新建材料 ” 选项
+
+
+<div align=center>
+[image]("image/sample/rcs/sphere/setup_material.png",""," ")
+<div align=left>
+
+材料名设置为 **material_0** ，介质设置为简单的无色散材料中的有耗材料，
+本案例需要使用无色散材料中的有耗材料，材料介电常数 $\varepsilon$ 使用变量表中的 **Reps**。
+
+电损耗角正切为 **Ieps/Reps**，颜色和透明度可以根据自己喜好选取。更多复杂材料的设置请参看 **EastFDTD** 帮助手册 “ 材料模块 ”。 
+
+
+材料完成后工程管理目录树如下：
+
+<div align=center>
+[image]("image/sample/rcs/sphere/manager_material.png",""," ")
+<div align=left>
+
+## 新建模型
+
+本案例通过“ 球体 ”来演示如何建立模型，可以采用如下几种操作方式：
+
+
+* 直接点击次模型工具条 “ 球体 ” 图标
+
+* 点击 “ 模型 ” 菜单，选择 “ 球体 ”
+
+* 点击 “ 工程管理窗口 ” 下的 “ 新建结构 ” ，选择类型 “ 球体 ”
+
+### 新建介质球壳
+
+通过 “ 创建球体 ” 建立介质球壳，而后通过修饰，添加材料为 **material_0**。
+
+
+<div align=center>
+[image]("image/sample/rcs/sphere/big.png",""," ")
+<div align=left>
+
+
+
+### 新建金属球体
+
+通过 “ 立方体 ” 建立贴片天线的介质板，命名 **Mat**，而后通过修饰，添加材料为 **pec**。
+
+<div align=center>
+[image]("image/sample/rcs/sphere/small.png",""," ")
+<div align=left>
+
+
+
+
+
+建立完成后模型窗口如下图所示：
+
+<div align=center>
+[image]("image/sample/rcs/sphere/structure.png",""," ")
+<div align=left> 
+
+
+
+
+设置网格
+============
+使用 **FDTD** 方法仿真，一般要求网格的精度至少为关心频率对应波长的 **1/15** 以上，同时还要求网格能尽量识别模型的几何细节。一般情况下，默认选择 “ 智能网格 ”，**EastWave** 会自动
+根据用户设置的工程频率范围划分网格，用户可以简单选择不同的网格精度即可完成划分。
+
+
+用户也可以自定义网格，可以控制每个维度的计算范围和网格数，并可以修改仿真时间
+步长和总时间步长。
+
+对于有特别精细结构（比如 **1/100** 波长以下）的模型，网格往往需要特别处理，**EastWave** 提供共形网格、非均匀网格、指定网格面、指定网格区域
+等高级控制手段，详细请参看 **EastWave** 帮助手册网格设置部分，或咨询 **EastWave** 工程师。
+
+## 设置网格精度
+
+网格精度可以通过如下两种方式设置修改：
+
+
+* “ 求解器 ” 菜单下的 “ 设置网格 ”
+
+* “ 工程管理窗口 ” 计算模式下的 “ 网格 ”
+
+
+
+选择 “ 均匀网格 ” 、开启 “ 共形网格 ” 进行计算，设置的对话框如下：
+
+<div align=center>
+[image]("image/sample/tr/mesh.png",""," ")
+<div align=left>
+
+<div align=center>
+[image]("image/sample/tr/meshsetting2.png",""," ")
+<div align=left>
+
+
+ 
+该计算模式根据计算区域和物体自动生成频域远场记录器。默认的 “ 智能网格 ” 设置下
+计算区域边界以物体最大包围框向外延拓 **lamda/2** ，若选择了“自定义网格”修改了计算区域边界，
+建议不要使物体超出计算区域边界，否则可能会引起计算错误。
+
+
+## 网格剖分检查
+
+网格精度设置完后，启动计算前可预览网格划分情况，点击图标可得：
+
+<div align=center>
+[image]("image/sample/rcs/sphere/grid.png",""," ")
+<div align=left>
+
+
+启动计算
+============
+点击工具条中的 “ 运行 ” 图标，开始计算。计算开始后，消息窗口给出提示/警告/报错信息，计算任务管理窗口给出计算进度并且可右键管理任务。
+双击指定的计算任务或右键打开观察器以观察电磁波入射到物体上的实时变化情况。
+
+## 消息窗口
+
+计算开始和进行过程中，右下角的消息窗口显示出计算初始化的状态。
+
+## 计算进度
+
+在界面下方消息窗口中可以观察计算任务的完成情况。
+
+## 观察实时场
+
+点击观察实时场图标，可以观察电磁波的散射过程。
+
+
+
+查看计算结果
+============
+计算完成后，在 “工作空间” 生成 “.ewd” 结果文件。
+
+透射/反射率结果图如下:
+
+<div align=center>
+[image]("image/sample/tr/result_tr.png",""," ")
+<div align=left>

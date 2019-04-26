@@ -1,0 +1,4 @@
+#function(cfg)
+local t = table();
+t.title = "所有材料元件";
+return t;

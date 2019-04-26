@@ -1,0 +1,42 @@
+# 实心旋转体
+实心旋转体可用于生成基于外形线旋转一周形成的对称几何体。 
+
+## 定义方式
+### 外形线——底面半径
+#### 属性对话框
+[image]("image/DShape/DShapeSpin.png","",".parawindow")
+
+#### 参数含义
+[block-ref](outline-radius-table)
+
+#### 示意图
+[image]("image/DShape/DShapeSpin_sample.png","",".sample-or")
+
+
+## 如何创建实心旋转体
+* [link](?help_model_shape_symbol_DShapeCreate.create-by-GUI, "界面创建实心旋转体")
+* [link](?help_model_Advanced_ewsl_model,"脚本创建实心旋转体")
+
+
+
+```block:outline-radius-table
+||(,".paratab-or")
+| 参数名称 | 说明 | 备注 |
+| 外形线 | 指定实心旋转体的外形线方程 | `(_x-100.0)*tan(120.0/180.0*3.14159)` |
+| 底面半径步长 | 指定实心旋转体半径的步长 | 用于构造圆滑曲线 |
+| 底面半径 | 指定实心旋转体的半径 | - |
+| 反转 | 是否反转表面 | - |
+```
+
+
+
+
+
+
+
+
+
+
+
+
+

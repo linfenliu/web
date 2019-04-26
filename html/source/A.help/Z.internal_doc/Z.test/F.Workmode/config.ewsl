@@ -1,0 +1,4 @@
+#function(cfg)
+local t=table();
+t.title="计算模式（测试说明）";
+return t;

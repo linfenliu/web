@@ -1,0 +1,24 @@
+﻿# 标准 工具条
+
+标准工具条对应[link]("?", "文件菜单")，主要包含了对工程文件的一些基本操作(`新建、打开、复制、保存等`)。
+
+
+[image]("image/UI/bar/std.png", "标准工具栏")
+
+
+[block-ref](std_bar_table)
+
+
+```block:std_bar_table`endtag1
+|(L) 图标 |(L) 功能说明 |
+|(L) ``<image src="123.png" />`` |(L) 打开工程文件 |
+|(L) ``<image src="123.png" />`` |(L) 新建编辑器 |
+|(L) ``<image src="123.png" />`` |(L) 保存当前工程文件 |
+|(L) ``<image src="123.png" />`` |(L) 保存所有工程文件 |
+|(L) ``<image src="123.png" />`` |(L) 剪切 |
+|(L) ``<image src="123.png" />`` |(L) 复制 |
+|(L) ``<image src="123.png" />`` |(L) 粘贴 |
+|(L) ``<image src="123.png" />`` |(L) 删除 |
+|(L) ``<image src="123.png" />`` |(L) 撤销 |
+|(L) ``<image src="123.png" />`` |(L) 重做 |
+```endtag1

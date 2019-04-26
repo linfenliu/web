@@ -1,0 +1,7 @@
+#function(cfg)
+
+local t=table();
+t.title = "重大故障";
+
+
+return t;

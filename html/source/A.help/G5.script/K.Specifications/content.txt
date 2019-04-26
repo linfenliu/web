@@ -1,0 +1,12 @@
+# 函数表
+
++ [link]("?help_script_Specifications_Common",常用函数)
++ [link]("?help_script_Specifications_Mathematics",数学函数)
++ [link]("?help_script_Specifications_Array",数组函数)
++ [link]("?help_script_Specifications_String",字符串函数)
++ [link]("?help_script_Specifications_VariantTabvle",变量表)
++ [link]("?help_script_Specifications_IO",输入和输出)
++ [link]("?help_script_Specifications_System",系统)
++ [link]("?help_script_Specifications_Comparisons",与几种脚本语言的比较)
+
+

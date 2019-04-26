@@ -1,0 +1,11 @@
+# 长方体 Demo
+
+创建一个中心坐标为(0, 10, 20)，长宽高分别为(30, 40, 50)立方体具体步骤：
++ 在 EastWave V7 中打开**文件**菜单，然后选择**新建 > 新建模型文档**以创建三维建模窗口。
+  [image]("image/DShape/new_model_doc.png","","")
++ 在 EastWave V7 中打开**新建物体**菜单，选择**创建立方体**打开立方体**属性**对话框。
+  [image]("image/DShape/new_cube.png","","")
++ 在**属性**对话框中，设置立方体**参数**，其中中心坐标x、y、z分别输入0、10、20，长宽高分别输入30、40、50。
+  [image]("image/DShape/cube_demo.png","","")
++ 左键单击**确定**完成立方体的创建。
+  [image]("image/DShape/cube_demo_finish.png","","")

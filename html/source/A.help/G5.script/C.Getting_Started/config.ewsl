@@ -1,0 +1,6 @@
+#function(cfg)
+
+local t = table();
+t.title = "入门";
+
+return t;

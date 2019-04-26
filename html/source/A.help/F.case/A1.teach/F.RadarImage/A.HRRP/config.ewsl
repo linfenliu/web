@@ -1,0 +1,4 @@
+﻿#function(cfg)
+local t=table();
+t.title="一维HRRP成像";
+return t;

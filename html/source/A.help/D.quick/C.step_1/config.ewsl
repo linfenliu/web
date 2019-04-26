@@ -1,0 +1,7 @@
+#function(cfg)
+
+local t=table();
+t.title = "步骤 1:设置计算模式及参数";
+
+
+return t;

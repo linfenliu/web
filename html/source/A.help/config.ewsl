@@ -1,0 +1,7 @@
+#function(cfg)
+
+local t=table();
+t.title = "EastWave 7 文档";
+
+
+return t;

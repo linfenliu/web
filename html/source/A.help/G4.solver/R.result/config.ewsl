@@ -1,0 +1,5 @@
+#function(cfg)
+
+local t=table();
+t.title="结果与后处理";
+return t;

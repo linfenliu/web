@@ -1,0 +1,4 @@
+#function(cfg)
+local t=table();
+t.title="集总端口";
+return t;

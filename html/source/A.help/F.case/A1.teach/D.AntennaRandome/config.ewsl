@@ -1,0 +1,4 @@
+﻿#function(cfg)
+local t=table();
+t.title="天线罩模式教学案例";
+return t;

@@ -1,0 +1,7 @@
+#function(cfg)
+
+local t=table();
+t.title = "关于 计算模式";
+
+
+return t;

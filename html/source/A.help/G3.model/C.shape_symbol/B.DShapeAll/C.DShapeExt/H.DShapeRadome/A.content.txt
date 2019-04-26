@@ -1,0 +1,45 @@
+# 天线罩
+EastWave V7 根据常用天线罩形线预定义了内置天线罩模型，用户使用时只需输入模型所对应的外形线参数。      
+      
+> 为避免参数定义混乱，内置天线罩模型作如下约定：         
+  + 天线罩厚度为表面切线的法向厚度，法向厚度等厚；      
+  + 天线罩“头部朝向”默认朝向Z轴正方向（注意：天线罩相关计算模式约定将天线罩头部朝向Z轴正方向）；     
+
+
+## 天线罩分类 
+[topic](param)
+
+尖锥（Conical）天线罩
+=============  
+### 尖锥天线罩横截面示意图
+[image]("image/DShape/DRadomeCone_sample.png","",".c_exampic")
+
+### 尖锥天线罩参数设置对话框
+[image]("image/DShape/DRadomeCone.png","",".c_parawindow")
+   
+### 尖锥天线罩参数含义
+[block-ref](conical-table)
+
+### 如何创建尖锥天线罩
+* [link](?help_model_shape_symbol_DShapeCreate.create-by-GUI, "界面创建尖锥天线罩")
+* [link](?help_model_Advanced_ewsl_model,"脚本创建尖锥天线罩")
+
+
+```block:conical-table
+||(,".paratab-ct")
+| 参数名称 | 说明 | 备注 |
+| 厚度（T） | 指定尖锥天线罩的厚度 | -  |
+| 半锥角（θ） | 指定尖锥的半锥角 | 单位为角度 |
+| 高度（H） | 指定尖锥天线罩顶点到底面的高度 | - |
+| 平移距离（D） | 指定尖锥天线罩沿轴向平移的距离 | 轴向即天线罩头部的朝向 |
+| 边数 | 指定尖锥天线罩的底面切割份数 | - |
+```
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,276 @@
+# 图表库
+
+使用帮助系统提供的 chart 图表库，可绘制多种类型的图表。
+
+
+## 如何使用图表
+
+在 markdown 文本文件中只需引入以下代码即可生成一个类型为`line`的图表：
+
+
+````endtag
+```chart
+{
+	type: 'line',
+	labels: ["物品 A", "物品 B", "物品 C", "物品 D", "物品 E", "物品 F"],
+	datasets: [{label: '城市 A', data: [1000, 500, 300, 500, 200, 300]},{label: '城市 B', data: [500, 400, 700, 2000, 240, 500]}]
+}
+```
+```endtag
+
+
+参数说明：
+|(L) 参数 |(L) 说明 |(L)类型 |(L) 备注 |
+|(L) type |(L) 图表类型 |(L)String |(L) 包括`line bar horizontalBar radar pie doughnut polarArea bubble scatter` |
+|(L) labels |(L) 数据标签 |(L)Array |(L) - |
+|(L) datasets |(L) 数据系列 |(L)Array |(L) - |
+|(L) beginAtZeroX |(L) 强制 X 轴从0开始 |(L)Bool |(L) 默认值为`false` |
+|(L) beginAtZeroY |(L) 强制 Y 轴从0开始 |(L)Bool |(L) 默认值为`false` |
+|(L) tension |(L) 贝塞尔曲线张力设置，设为0时，没有曲线张力 |(L) Number |(L) 默认值为`0.0`，只针对`line`类型图表 |
+|(L) width |(L) 图表宽度(百分比)，取值范围 0-100 |(L) Int |(L) 默认值为`80` |
+|(L) height |(L) 图表高度(百分比)，取值范围 0-100 |(L) Int |(L) 默认值为`60` | 
+
+
+## 完整 Demo
+
+### 创建一个类型为`line`，贝塞尔曲线张力为`0.4`的图表
+
+````endtag
+```chart
+{
+	type: 'line',
+	labels: ["物品A", "物品B", "物品C", "物品D", "物品E", "物品F"],
+	datasets: [{label: '城市A', data: [1000, 500, 300, 500, 200, 300]},{label: '城市B', data: [500, 400, 700, 2000, 240, 500]}],
+	tension: 0.4
+}
+```
+```endtag
+
+
+```chart
+{
+	type: 'line',
+	labels: ["物品A", "物品B", "物品C", "物品D", "物品E", "物品F"],
+	datasets: [{label: '城市A', data: [1000, 500, 300, 500, 200, 300]},{label: '城市B', data: [500, 400, 700, 2000, 240, 500]}],
+	tension: 0.4
+}
+```
+
+
+### 创建一个类型为`line`，自定义背景颜色，贝塞尔曲线张力为默认值`0.0`，Y 轴从0开始的图表
+
+````endtag
+```chart
+{
+	type: 'line',
+	labels: ["物品A", "物品B", "物品C", "物品D", "物品E", "物品F"],
+	datasets: [{label: '城市A', data: [1000, 500, 300, 500, 200, 300], backgroundColor: 'rgba(255,0,0,0.2)'},
+				{label: '城市B', data: [500, 400, 700, 2000, 240, 500], backgroundColor: 'rgba(0,0,255,0.2)'}],
+	beginAtZeroY: true
+}
+```
+```endtag
+
+
+```chart
+{
+	type: 'line',
+	labels: ["物品A", "物品B", "物品C", "物品D", "物品E", "物品F"],
+	datasets: [{label: '城市A', data: [1000, 500, 300, 500, 200, 300], backgroundColor: 'rgba(255,0,0,0.2)'},
+				{label: '城市B', data: [500, 400, 700, 2000, 240, 500], backgroundColor: 'rgba(0,0,255,0.2)'}],
+	beginAtZeroY: true
+}
+```
+
+
+### 创建一个类型为`bar`的图表
+
+````endtag
+```chart
+{
+	type: 'bar',
+	labels: ["物品A", "物品B", "物品C", "物品D", "物品E", "物品F"],
+	datasets: [{label: '城市A',data: [1000, 500, 300, 500, 200, 300]},{label: '城市B',data: [500, 400, 700, 2000, 240, 500]}]
+}
+```
+```endtag
+
+
+```chart
+{
+	type: 'bar',
+	labels: ["物品A", "物品B", "物品C", "物品D", "物品E", "物品F"],
+	datasets: [{label: '城市A',data: [1000, 500, 300, 500, 200, 300]},{label: '城市B',data: [500, 400, 700, 2000, 240, 500]}]
+}
+```
+
+
+### 创建一个类型为`horizontalBar`，高度为`50%`，宽度为`50%`的图表
+
+````endtag
+```chart
+{
+	type: 'horizontalBar',
+	labels: ["物品A", "物品B", "物品C", "物品D", "物品E", "物品F"],
+	datasets: [{label: '城市A',data: [1000, 500, 300, 500, 200, 300]},{label: '城市B',data: [500, 400, 700, 2000, 240, 500]}],
+	width: 50,
+	height: 50
+}
+```
+```endtag
+
+
+```chart
+{
+	type: 'horizontalBar',
+	labels: ["物品A", "物品B", "物品C", "物品D", "物品E", "物品F"],
+	datasets: [{label: '城市A',data: [1000, 500, 300, 500, 200, 300]},{label: '城市B',data: [500, 400, 700, 2000, 240, 500]}],
+	width: 50,
+	height: 50
+}
+```
+
+
+### 创建一个类型为`radar`图表
+
+````endtag
+```chart
+{
+	type: 'radar',
+	labels: ["物品A", "物品B", "物品C", "物品D", "物品E", "物品F"],
+	datasets: [{label: '城市A',data: [1000, 500, 300, 500, 200, 300]},{label: '城市B',data: [500, 400, 700, 2000, 240, 500]}]
+}
+```
+```endtag
+
+
+```chart
+{
+	type: 'radar',
+	labels: ["物品A", "物品B", "物品C", "物品D", "物品E", "物品F"],
+	datasets: [{label: '城市A',data: [1000, 500, 300, 500, 200, 300]},{label: '城市B',data: [500, 400, 700, 2000, 240, 500]}]
+}
+```
+
+
+### 创建一个类型为`pie`图表
+
+````endtag
+```chart
+{
+	type: 'pie',
+	labels: ["物品A", "物品B", "物品C", "物品D", "物品E", "物品F"],
+	datasets: [{label: '城市A',data: [1000, 500, 300, 500, 200, 300]},{label: '城市B',data: [500, 400, 700, 2000, 240, 500]}]
+}
+```
+```endtag
+
+
+```chart
+{
+	type: 'pie',
+	labels: ["物品A", "物品B", "物品C", "物品D", "物品E", "物品F"],
+	datasets: [{label: '城市A',data: [1000, 500, 300, 500, 200, 300]},{label: '城市B',data: [500, 400, 700, 2000, 240, 500]}]
+}
+```
+
+
+### 创建一个类型为`doughnut`图表
+
+````endtag
+```chart
+{
+	type: 'doughnut',
+	labels: ["物品A", "物品B", "物品C", "物品D", "物品E", "物品F"],
+	datasets: [{label: '城市A',data: [1000, 500, 300, 500, 200, 300]},{label: '城市B',data: [500, 400, 700, 2000, 240, 500]}]
+}
+```
+```endtag
+
+
+```chart
+{
+	type: 'doughnut',
+	labels: ["物品A", "物品B", "物品C", "物品D", "物品E", "物品F"],
+	datasets: [{label: '城市A',data: [1000, 500, 300, 500, 200, 300]},{label: '城市B',data: [500, 400, 700, 2000, 240, 500]}]
+}
+```
+
+
+### 创建一个类型为`polarArea`图表
+
+````endtag
+```chart
+{
+	type: 'polarArea',
+	labels: ["物品A", "物品B", "物品C", "物品D", "物品E", "物品F"],
+	datasets: [{label: '城市A',data: [1000, 500, 300, 500, 200, 300]},{label: '城市B',data: [500, 400, 700, 2000, 240, 500]}]
+}
+```
+```endtag
+
+
+```chart
+{
+	type: 'polarArea',
+	labels: ["物品A", "物品B", "物品C", "物品D", "物品E", "物品F"],
+	datasets: [{label: '城市A',data: [1000, 500, 300, 500, 200, 300]},{label: '城市B',data: [500, 400, 700, 2000, 240, 500]}]
+}
+```
+
+
+### 创建一个类型为`bubble`图表
+
+````endtag
+```chart
+{
+	type: 'bubble',
+	labels: ["物品A", "物品B", "物品C", "物品D", "物品E", "物品F"],
+	datasets: [{label: '城市A',data: [{x:0,y:0,r:1}, {x:0,y:1,r:2}, {x:0,y:2,r:3}, {x:0,y:3,r:4}, {x:0,y:4,r:5}, {x:0,y:5,r:6}]},
+			{label: '城市B',data: [{x:2,y:0,r:1}, {x:2,y:1,r:2}, {x:2,y:2,r:10}, {x:2,y:3,r:4}, {x:2,y:4,r:20}, {x:2,y:5,r:6}]},
+			{label: '城市C',data: [{x:5,y:0,r:1}, {x:5,y:1,r:2}, {x:5,y:2,r:3}, {x:5,y:3,r:4}, {x:5,y:4,r:5}, {x:5,y:5,r:6}]}]
+}
+```
+```endtag
+
+
+```chart
+{
+	type: 'bubble',
+	labels: ["物品A", "物品B", "物品C", "物品D", "物品E", "物品F"],
+	datasets: [{label: '城市A',data: [{x:0,y:0,r:1}, {x:0,y:1,r:2}, {x:0,y:2,r:3}, {x:0,y:3,r:4}, {x:0,y:4,r:5}, {x:0,y:5,r:6}]},
+			{label: '城市B',data: [{x:2,y:0,r:1}, {x:2,y:1,r:2}, {x:2,y:2,r:10}, {x:2,y:3,r:4}, {x:2,y:4,r:20}, {x:2,y:5,r:6}]},
+			{label: '城市C',data: [{x:5,y:0,r:1}, {x:5,y:1,r:2}, {x:5,y:2,r:3}, {x:5,y:3,r:4}, {x:5,y:4,r:5}, {x:5,y:5,r:6}]}]
+}
+```
+
+
+### 创建一个类型为`scatter`的图表
+
+````endtag
+```chart
+{
+	type: 'scatter',
+	labels: ["物品A", "物品B", "物品C", "物品D", "物品E", "物品F"],
+	datasets: [{label: '城市A',data: [{x:0,y:0}, {x:0,y:1}, {x:0,y:2}, {x:0,y:3}, {x:0,y:4}, {x:0,y:5}]},
+			{label: '城市B',data: [{x:2,y:0}, {x:2,y:1}, {x:2,y:20}, {x:2,y:3}, {x:2,y:40}, {x:2,y:5}]},
+			{label: '城市C',data: [{x:5,y:0}, {x:5,y:1}, {x:5,y:2}, {x:5,y:3}, {x:5,y:4}, {x:5,y:5}]}]
+}
+```
+```endtag
+
+
+```chart
+{
+	type: 'scatter',
+	labels: ["物品A", "物品B", "物品C", "物品D", "物品E", "物品F"],
+	datasets: [{label: '城市A',data: [{x:0,y:0}, {x:0,y:1}, {x:0,y:2}, {x:0,y:3}, {x:0,y:4}, {x:0,y:5}]},
+			{label: '城市B',data: [{x:2,y:0}, {x:2,y:1}, {x:2,y:20}, {x:2,y:3}, {x:2,y:40}, {x:2,y:5}]},
+			{label: '城市C',data: [{x:5,y:0}, {x:5,y:1}, {x:5,y:2}, {x:5,y:3}, {x:5,y:4}, {x:5,y:5}]}]
+}
+```
+
+
+
+
+

@@ -1,0 +1,4 @@
+#function(cfg)
+return table{
+    title: "变量表函数"
+};

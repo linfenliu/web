@@ -1,0 +1,29 @@
+# 安装 EastWave 7
+EastWave 7 能够被安装在Microsoft Windows 2000/XP/Vista/Windows 7/Windows 8/Windows 10/Server 32-bit or 64-bit操作系统以及Redhat、SUSE等Linux操作系统上。
+
+
+## 步骤 1: 确保计算机支持 EastWave 7
+开始安装 EastWave 7 前：    
++ 查看[link]("?help_src_require", "系统要求")，这些要求有助于了解计算机是否支持 EastWave 7 。
++ 确保没有其它应用程序正在安装。
++ 重新启动计算机可确保挂起的任何安装或更新都不会影响 EastWave 7 安装。
+
+## 步骤 2: 下载 EastWave 7
+接下来，通过东峻官网下载 [link]("https://www.eastfdtd.com/trial.aspx?mid=0","EastWave 7 安装程序文件")，保存到计算机磁盘。
+
+## 步骤 3: 运行 EastWave 7 安装程序文件
+运行已下载的引导安装程序文件以安装 EastWave 7 ，用户可更改安装位置。
+```tips:warning-注意
++ EastWave 7 必须在管理员账户或拥有管理权限的账户下安装；
++ 安装程序默认将 EastWave 7 安装在系统分区下（一般为C盘），如果您的磁盘含有非系统分区，出于权限考虑，建议将软件安装在非系统分区下。
+```
+
+## 步骤 4: 配置许可证
+EastWave 7 安装完成后，打开桌面生成的 EastWave 7 快捷方式，进行许可证的配置。关于许可证，请参看[link]("?help_install_license", "配置 EastWave 7 许可证")。
+
+## 步骤 5: 开始进行仿真
+一切都准备就绪后，用户可以通过[link]("?help_quick","快速入门")，迅速了解使用 EastWave 7。
+
+## 获取支持
+安装 EastWave 7 过程，难免会碰到各种问题，用户可以先自行查看[link]("?help_faq","常见问题")，
+若依然无法解决问题，请[link]("?help_src_contact", "联系我们")。

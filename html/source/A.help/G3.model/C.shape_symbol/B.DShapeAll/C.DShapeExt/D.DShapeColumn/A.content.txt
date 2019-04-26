@@ -1,0 +1,35 @@
+# 垂直拉伸体
+垂直拉伸体支持对给定的平面进行垂直拉伸建模。可用于构造棱柱等几何体。  
+
+## 定义方式
+### 引用表面——拉伸高度
+#### 属性对话框
+[image]("image/DShape/DShapeColumn.png","",".parawindow")
+
+#### 参数含义
+[block-ref](surface--height-table)
+
+#### 示意图
+[image]("image/DShape/DShapeColumn_sample.png","",".sample-sh")
+
+
+## 如何创建参数扫描体
+* [link](?help_model_shape_symbol_DShapeCreate.create-by-GUI, "界面创建垂直拉伸体")
+* [link](?help_model_Advanced_ewsl_model,"脚本创建垂直拉伸体")
+
+
+
+```block:surface--height-table
+||(,".paratab-sh")
+| 参数名称 | 说明 | 备注 |
+| 待拉伸表面 | 指定垂直拉伸体的待拉伸表面 | 可引用内部二维平面或导入的STL平面  |
+| 垂直拉伸高度 | 指定垂直拉伸体的高度 | 高度为负值时反向拉伸 |
+```
+
+
+
+
+
+
+
+

@@ -1,0 +1,42 @@
+# 共形（测试说明）
+共形技术较为复杂，会修改FDTD的迭代形式，错误的实现极易出现计算的稳定性问题，导致计算结果发散;
+即使计算结果未发散，也会出现计算结果精度不高的问题。因此共形测试的主要目的是检测新版共形在各种模型和设置下
+的**稳定性**、**准确性**。共形策略介绍参考此[link]("?help_model_Conformal","链接")。
+## 条件控制
+进行精度对比时，可选用FEM、MoM、快速多级子算法软件结果作为标准解（前提是保证以达到网格收敛），
+而在同FDTD算法类软件进行结果精度对比时除了计算模型相同以外必须保证：
++ 网格尺寸、网格数目相同
++ 计算物理时间相同 
+网格为非均匀网格时：
++ 尽可能保证网格尺寸和数目接近
++ 计算物理时间严格相同
+
+ 
+## 测试目标
++ 普通材料、PEC材料共形稳定性、准确性
++ SC策略（结构必须含PEC或PMC）
+  + 模型在开启SC后时间步长的增加情况
+  + SC策略开启前后的精度对比
+## 测试方法
++ 基本测试
+  + 分别运行标准案例，测试计算过程的稳定性、计算结果的精度
+  + 改变标准案例中的网格设置（如设置为非均匀网格）进行测试
++ 高精度测试
+  + 标准案例为自动透反率模式，需要与至少一款同类FDTD软件进行精度对比，推荐FDTD Solutions；需要一款FEM类软件结果作为标准对比，推荐CST
+  + 更高精度的测试可采用RCS模式的结果与其它非结构网格算法软件（如FEKO、HFSS）结果进行对比  
++ 极端测试    
+  测试用户在极端或异常输入下的稳定性，减小标准案例中各方向网格（传播方向必须大于8），测试求解器是否能运行
+## 标准案例
++ 普通材料共形
+  [link]("javascript:ewdoc.open_editor('internal_files/test/systest/conformal/ew-v7_0_0-conformal-material-0001.ewp2')","测试文档")
++ PEC共形
+  [link]("javascript:ewdoc.open_editor('internal_files/test/systest/conformal/ew-v7_0_0-conformal-pec-0001.ewp2')","测试文档")
++ 普通材料、PEC混合共形
+  [link]("javascript:ewdoc.open_editor('internal_files/test/systest/conformal/ew-v7_0_0-conformal-material-pec-0001.ewp2')","测试文档")
++ SC策略
+  + 纯PEC共形SC策略
+    [link]("javascript:ewdoc.open_editor('internal_files/test/systest/conformal/ew-v7_0_0-conformal-sc-0001.ewp2')","测试文档1")
+  + 普通材料、PEC混合共形SC策略
+    [link]("javascript:ewdoc.open_editor('internal_files/test/systest/conformal/ew-v7_0_0-conformal-sc-0002.ewp2')","测试文档2")
+
+   

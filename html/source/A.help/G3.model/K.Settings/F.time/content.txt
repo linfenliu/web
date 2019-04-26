@@ -1,0 +1,19 @@
+# 时间设置
+
+## 界面
+[image]("image/param/time.png","","时间设置界面")
+
+
+## 参数说明
+
+[block-ref](time-param-table)
+
+
+
+```block:time-param-table
+|(L) 参数         |(L) 说明 |(L) 备注 |
+|(L) 参考比例     |(L)      |(L)      |
+|(L) 最大物理时间 |(L)      |(L)      |
+|(L) 自定义`dt`   |(L)      |(L)      |
+|(L) `dt`参考值   |(L)      |(L)      |
+```

@@ -1,0 +1,20 @@
+﻿# 色度条 工具条
+
+色度条工具条对应[link]("?", "色度条菜单")，主要用于控制计算结果的色度范围。
+
+
+[image]("image/UI/bar/colormap.png", "色度条工具条")
+
+
+[block-ref](colormap_bar_table)
+
+
+
+
+
+```block:colormap_bar_table`endtag1
+|(L) 图标 |(L) 功能说明 |
+|(L) ``<image src="123.png" />`` |(L) 色度条范围自适应 |
+|(L) ``<image src="123.png" />`` |(L) 增加色度条范围 |
+|(L) ``<image src="123.png" />`` |(L) 降低色度条范围 |
+```endtag1

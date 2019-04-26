@@ -1,0 +1,13 @@
+﻿# 前言
+
+EWSL，即EastWave Script Language，是在上海东峻EastWave V3至EastWave V6版本中的数据后处理脚本语言发展而来的一款全新通用脚本语言。EastWave V7不仅仅集成了最新的EWSL脚本语言，而且全新的EastWave架构内核与EWSL的联系更加紧密，从前处理、后处理到界面定义、求解器调度，基本上EastWave的大多数功能都可以通过EWSL进行定义。
+
+新版本EWSL一方面作为EastWave建模的嵌入式编程语言，另一方面由于其高效的核心架构，也可以作为一款通用脚本编程语言，用于数据可视化、文本数据处理、SHELL编程替代以及网络服务器等方面。
+
+如果您在使用中有任何技术问题或者意见，请登陆[link](http://www.eastwave.com.cn,上海东峻信息有限公司主页)，或者投递邮件至[link](mailto:info@eastfdtd.com,公共邮箱)、[link](mailto:support@eastfdtd.com,技术支持)。
+
+如果您对上海东峻的产品或者技术服务感兴趣，请联系[link](mailto:market@eastfdtd.com,市场部门)，联系电话：021-52385879-0。
+
+
+
+

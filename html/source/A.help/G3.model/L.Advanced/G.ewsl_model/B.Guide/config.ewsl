@@ -1,0 +1,4 @@
+#function(cfg)
+local t = table();
+t.title = "几何元件脚本参数";
+return t;

@@ -1,0 +1,25 @@
+自由点（Free）阵列
+=============  
+### 自由点阵列示意图
+[image]("image/DShape/DArrayFree_sample.png","",".f_exampic")
+
+### 自由点阵列参数设置对话框
+[image]("image/DShape/DArrayFree.png","",".f_parawindow")
+   
+### 自由点阵列参数含义
+[block-ref](free-table)
+
+### 如何创建自由点阵列
+* [link](?help_model_shape_symbol_DShapeCreate.create-by-GUI, "界面创建自由点阵列")
+* [link](?help_model_Advanced_ewsl_model,"脚本创建自由点阵列")
+
+
+
+
+```block:free-table
+||(,".paratab-f")
+| 参数名称 | 说明 | 备注 |
+| 待处理元件 | 指定自由点阵列中单元的元件信息 | - |
+| 离散点 | 指定自由点阵列中元件所在的位置集合（点） | X、Y、Z三个维度 |
+```
+

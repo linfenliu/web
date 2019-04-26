@@ -1,0 +1,7 @@
+#function(cfg)
+
+local t=table();
+t.title = "配置许可证";
+
+
+return t;

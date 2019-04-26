@@ -1,0 +1,26 @@
+镜像（Mirror）阵列
+=============  
+### 镜像阵列示意图
+[image]("image/DShape/DArrayMirror_sample.png","",".m_exampic")
+
+### 镜像阵列参数设置对话框
+[image]("image/DShape/DArrayMirror.png","",".m_parawindow")
+   
+### 镜像阵列参数含义
+[block-ref](mirror-table)
+
+### 如何创建镜像阵列
+* [link](?help_model_shape_symbol_DShapeCreate.create-by-GUI, "界面创建镜像阵列")
+* [link](?help_model_Advanced_ewsl_model,"脚本创建镜像阵列")
+
+
+```block:mirror-table
+||(,".paratab-m")
+| 参数名称 | 说明 | 备注 |
+| 待处理元件 | 指定镜像阵列中单元的元件信息 | - |
+| 镜面法向向量 | 指定镜像阵列镜面的法向向量 | - |
+| 镜面所处位置 | 指定镜像阵列镜面的位置 | - |
+```
+
+
+

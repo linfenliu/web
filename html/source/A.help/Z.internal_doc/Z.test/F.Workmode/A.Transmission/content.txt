@@ -1,0 +1,9 @@
+# 自动透反率计算模式（测试说明）
+自动透反率计算模式介绍参考此[link]("?help_workmode_auto_tra_ref","链接")。
+## 测试目标
++ 测试自动透反率的计算精度
+## 测试方法
++ 运行标准案例，改变变量表中**deltaY**值，计算其为0、0.2e-3、0.5e-3、 1e-3时的反射率R；
++ 计算不同**deltaY**下反射率R的**变化值**是否与**deltaY**满足线性关系；
+## 标准案例
+[link]("javascript:ewdoc.open_editor('internal_files/test/systest/workmode/transmission/ew-v7_0_0-workmode-autotransrefl-0001-Lam.ewp2')","测试文档")

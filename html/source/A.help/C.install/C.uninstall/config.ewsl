@@ -1,0 +1,7 @@
+#function(cfg)
+
+local t=table();
+t.title = "卸载 EastWave 7 ";
+
+
+return t;

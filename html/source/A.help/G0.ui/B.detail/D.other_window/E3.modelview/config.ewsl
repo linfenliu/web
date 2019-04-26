@@ -1,0 +1,7 @@
+#function(cfg)
+
+local t=table();
+t.title = "三维模型窗口";
+
+
+return t;

@@ -1,0 +1,327 @@
+# 字符串函数
+
+```block:syntax
+  
+**语法：**  
+```
+
+```block:example
+  
+**例子：**  
+```
+
+```block:reference
+  
+**参考：**  
+```
+
+[anchor](".content")
+## 目录
++ [link]("?.properties",字符串属性)
++ [link]("?.substring",子串与索引)
++ [link]("?.format",格式化字符串)
++ [link]("?.others",其他字符串函数)
+
+[anchor](".properties")
+## 字符串的属性
+
+[anchor](".function.length")
+`length`
+  
+获得字符串中字符的个数，窄字符和宽字符都计算为1个字符。
+
+[block-ref]("syntax")
+```ewsl
+a = "abc";
+length(a)   // output: 3
+```
+
+[anchor](".function.is_alphabet")
+`string.is_alphabet`
+  
+判断字符串是否仅由26个英文字母（包含大小写）构成
+
+[block-ref]("syntax")
+```ewsl
+a = "abcdEFGH";
+string.is_alphabet(a)   // output: true
+b = "def 123"
+string.is_alphabet(b)   // output: false
+```
+
+[anchor](".function.is_digit")
+`string.is_digit`
+  
+判断字符串是否仅由0-9这10个数字构成
+
+[block-ref]("syntax")
+```ewsl
+a = "000325445";
+string.is_digit(a)      // output: true
+```
+
+[anchor](".function.is_alphanum")
+`string.is_alphanum`
+  
+判断字符串是否仅包含数字和字母
+
+[block-ref](".function.is_alphanum")
+```ewsl
+a = "abc123";
+is_alphanum(a)      // output: true
+```
+
+[anchor](".substring")
+[anchor](".index")
+## 子串与索引
+
+[anchor](".function.substr")
+`substr`, `string.substr`
+
+返回字符串的子串
+
+[block-ref]("syntax")
+```ewsl
+a = "abcdefghijk";
+a.substr(0,5)       // output: "abcde"
+a.substr(-3,2)      // output: "ij"
+a.substr(6)         // output: "ghijk"
+```
+
+[block-ref]("reference")
+* [link]("?.operator.index",字符串的索引)
+
+[anchor](".operator.index")
+`[]`
+   
+字符串的索引，用来返回字符串中的子列或者字符  
+
+**说明：**
+* 字符串可以部分的理解为字符的数组，因此允许字符串使用`[]`索引算符来获取字符串的字符元素或者子列。
+* 字符串和数组一样，从0开始索引。
+* 本质上`[]`接收一个整数或者一个整数数组，返回该整数对应的字符或者整数数组对应的字符按照次序组成的子列（新字符串）。
+* 允许使用`end`关键词表示字符串的最后一个位置
+
+[block-ref]("syntax")
+```ewsl
+a = "abcdefghijk";
+a[3]        // output: "d"
+a[0:5]      // output: "abcdef" (6 characters)
+a[end:1]    // output: "kjihgfedcba" (reversing the word)
+```
+
+[anchor](".format")
+## 格式化字符串
+
+`format`, `string.format`
+  
+格式化字符串
+  
+**说明：**
+* 支持`%d`（整数）、`%f`（浮点数）、`%e`（科学计数法）、`%g`（数值自动格式）、`%s`（字符串）等C风格的格式化字符串。
+* 整数16进制使用`%x`标志。
+* 支持`%{1}`、`%{2}`等对格式化字符串参数变量的引用，`%{1}`表示第1个参数，`%{2}`表示第2个参数。
+* 支持符号显示控制、小数位置控制和补零控制等。
+
+[block-ref]("syntax")
+```ewsl
+format(fmt_str, ...)
+```
+
+[block-ref]("example")
+```ewsl
+/* example 1 */
+println(format("x=%d\n",123));
+println(format("y=%g\n",23.3));
+println(format("z=%x\n",1656));
+println(format("w=%s\n","hello");
+println(format("x+y*x=%{1}+%{2}*%{1}",1,2));
+/* output below: */
+x=123
+y=23.3
+z=2fd030
+w=hello
+x+y*x=1+2*1
+```
+
+[anchor](".others")
+## 其他字符串函数
+
+[anchor](".function.lines")
+`lines`, `string.lines`
+  
+将字符串按行分解
+
+[block-ref]("syntax")
+```ewsl
+str.lines()     // call as a member function, str is a string object.
+lines(str)      // call as a common function, str is a string object.
+```
+
+[block-ref]("reference")
+* [link]("?.function.words",`words`)
+* [link]("?.function.split",`split`)
+
+[anchor](".function.words")
+`words`, `string.words`
+  
+将字符串按单词分解
+
+[block-ref]("syntax")
+```ewsl
+str.words()     // call as a member function, str is a string object.
+words(str)      // call as a common function, str is a string object.
+```
+
+[block-ref]("reference")
+* [link]("?.function.lines",`lines`)
+* [link]("?.function.split",`split`)
+
+[anchor](".function.split")
+`split`, `string.split`
+  
+按照指定的分隔符参数分解字符串
+
+[block-ref]("syntax")
+```ewsl
+str.split(sep)  // call as a member function, sep is string of separators.
+split(str,sep)  // call as a common function, sep is string of separators.
+```
+
+[block-ref]("reference")
+* [link]("?.function.words",`words`)
+* [link]("?.function.lines",`lines`)
+
+
+[anchor](".function.concat")
+`concat`, `string.concat`
+  
+连接字符串
+
+[block-ref]("syntax")
+```ewsl
+str.concat(s1,...)  // call as a member function, concatenation of str, s1 and ...
+concat(str,s1,...)  // call as a common function, concatenation of str, s1 and ...
+```
+
+
+[anchor](".function.find")
+`find`, `string.find`
+  
+寻找子串
+
+[anchor](".function.replicate")
+`replicate`, `string.replicate`
+  
+替换子串
+
+[anchor](".function.join")
+`join`, `string.join`
+  
+粘合字符串
+
+[block-ref]("syntax")
+```ewsl
+string.join(sep, str_lst)  // str_lst is an array of string (array_variant type)
+```
+
+[anchor](".function.escape")
+`string.escape`
+  
+将字符串中的特殊字符转换为unicode显式编码
+
+[block-ref]("syntax")
+```ewsl
+string.escape(str)
+```
+
+[block-ref]("reference")
+* [link]("?.function.unescape",`unescape`)
+
+[anchor](".function.unescape")
+`string.unescape`
+
+将字符串中部分采用unicode显式编码的内容转换为原始的字符
+
+[block-ref]("syntax")
+```ewsl
+string.unescape(str)
+```
+
+[block-ref]("reference")
+* [link]("?.function.escape",`escape`)
+
+[anchor](".function.upper")
+`upper`, `string.upper`
+  
+将字符串转换为大写
+
+
+[block-ref]("syntax")
+```ewsl
+str.upper()     // call as a member function.
+upper(str)      // call as a common function.
+```
+
+[block-ref]("reference")
+* [link]("?.function.lower",`lower`)
+
+[anchor](".function.lower")
+`lower`, `string.lower`
+  
+将字符串转换为小写
+
+
+[block-ref]("syntax")
+```ewsl
+str.lower()     // call as a member function.
+lower(str)      // call as a common function.
+```
+
+[block-ref]("reference")
+* [link]("?.function.upper",`upper`)
+
+
+[anchor](".function.reverse")
+`reverse`, `string.reverse`
+
+翻转字符串
+
+[block-ref]("syntax")
+```ewsl
+str.reverse()     // call as a member function.
+reverse(str)      // call as a common function.
+```
+[block-ref]("reference")
+* [link]("?.operator.index",`[]`)
+
+
+[anchor](".function.toIntArray")
+`string.toIntArray`
+  
+将字符串转换为unicode编码的整数序列
+
+[block-ref]("syntax")
+```ewsl
+str.toIntArray()            // call as a member function.
+string.toIntArray(str)      // call as a common function.
+```
+
+[block-ref]("reference")
+* [link]("?.function.fromIntArray",`fromIntArray`)
+
+
+[anchor](".function.fromIntArray")
+`string.fromIntArray`
+
+将整数序列按照unicode编码规则转换到字符串
+
+[block-ref]("syntax")
+```ewsl
+string.fromIntArray(arr)    // return a string from unicode integer array.
+```
+
+[block-ref]("reference")
+* [link]("?.function.toIntArray",`toIntArray`)
+
+

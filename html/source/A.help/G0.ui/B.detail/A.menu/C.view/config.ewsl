@@ -1,0 +1,7 @@
+#function(cfg)
+
+local t=table();
+t.title = "视图";
+
+
+return t;

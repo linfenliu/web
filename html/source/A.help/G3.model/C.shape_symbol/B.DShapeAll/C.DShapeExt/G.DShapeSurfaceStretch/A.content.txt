@@ -1,0 +1,41 @@
+# 多层物体
+多层物体支持对给定的表面按照特定方向生长多层材料的建模。  
+
+## 定义方式
+### 材料——厚度
+#### 属性对话框
+[image]("image/DShape/DShapeSurfaceStretch.png","",".parawindow")
+
+#### 参数含义
+[block-ref](material--thick-table)
+
+#### 示意图
+[image]("image/DShape/DShapeSurfaceStretch_sample.png","",".sample-mt")
+
+
+## 如何创建多层物体
+* [link](?help_model_shape_symbol_DShapeCreate.create-by-GUI, "界面创建多层物体")
+* [link](?help_model_Advanced_ewsl_model,"脚本创建多层物体")
+
+
+
+```block:material--thick-table
+||(多层物体（材料--厚度）参数说明表,".paratab-mt")
+| 参数名称 | 说明 | 备注 |
+| 表面 | 指定多层物体的基础表面 | 支持导入STL格式的平面  |
+| 材料 | 指定当前层的材料 | - |
+| 厚度 | 指定当前层的厚度 | - |
+```
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,21 @@
+# 德拜材料
+德拜色散模型常用于模拟各种金属的色散特性，其表达式如下：
+$$ \epsilon(\omega)=\epsilon_\infty+i\frac{\sigma_{e}}{\omega}+\sum\frac{\Delta\epsilon}{1-i\omega\tau_{e}}  $$
+$$ \mu(\omega)=\mu_\infty+i\frac{\sigma_{m}}{\omega}+\sum\frac{\Delta\mu}{1-i\omega\tau_{m}}  $$
+**其中磁导率德拜色散部分尚未开放**；
+德拜色散模型材料参数设置如下：
+[image]("image/material/material_debye.png","",".atf")
+
+```block:material-params
+||(德拜材料参数)
+| 参数名称      | 说明                                                      | 备注                      |
+| $\Delta\epsilon$      | $\Delta\epsilon=\Delta\epsilon_s-\Delta\epsilon_{\infty}$，$\Delta\epsilon_{s}$其中相对介电常数的零频极限；$\Delta\epsilon_{\infty}$表示相对介电常数的高频极限      |                           |
+| $\Delta\mu$    | $\Delta\mu=\Delta\mu_s-\Delta\mu_{\infty}$，$\Delta\mu_{s}$其中相对磁导率的零频极限；$\Delta\epsilon_{\infty}$表示相对磁导率的高频极限      |                           |
+| $\tau_{p}$  | 驰豫时间                              | 单位为材料单位，若无材料单位则为文档单位                          |
+```
+
+参数含义如下：
+[block-ref](material-params)
+
+**相关主题：**
+[link]("?help_model_physical_symbol",物理元件)

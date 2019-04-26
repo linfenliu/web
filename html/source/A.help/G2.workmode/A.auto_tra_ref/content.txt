@@ -1,0 +1,98 @@
+# 自动透反率计算模式
+## 概述
+计算无穷大周期结构正入射时不同频率的透射/反射率（两端口S参数），这里透射/反射率为**0阶透射/反射率**。
+计算模式根据输入参数（频率范围和入射方向等）和模型结构，自动设置激励源和记录器，计算结束后自动完成后处理，输出透射率/反射率。
+在**计算模式**中选中DWorkmodeTransrefl，即可进入自动透反率模式设置界面。
+## 模式默认设置
+自动透反率模式为用户提前预设了一些必要的参数，具体包括单位、激励源、监视器以及边界条件的设置，其中单位用户可以根据具体需要
+更改为合适的量纲。
++ 单位（默认设置）
+  * 长度单位：mm
+  * 频率单位：GHz
+  * 时间单位：ns
+  * 默认单位修改操作步骤：
+    * 在**模型**悬浮框，点击展开**单位**进入参数设置的单位设置功能；
+    * 在**unit**的下拉框中点击**新建单位**，设置文档单位，按顺序分别为长度(m)、频率(Hz)、时间(s)。
+  [image]("image/workmode/autotransrelf/unit_setting.png","",".atf")
++ 激励源
+  * 空间分布：平面波
+  * 时域波形：脉冲（信号频率范围覆盖输入的频率范围）
+  * 发射方向：根据用户输入的模式参数“入射方向”
+  * 极化角度：激励源偏振角度为**45度**，记录器分别记录0度和90度场分量，**后处理需对入射信号幅度进行归一化处理**
+  * 位置：距离计算区域边界4个网格
++ 监视器
+  * 类型：时域截面场平均
+  * 位置：距离计算区域边界2个网格（透射和反射记录器分别位于激励源的发射方向和背向）
++ 边界设置
+  * 入射/反射方向：开放边界（默认：20层CPML吸收边界）
+  * 其他方向：周期边界
+```tips:warning-注意
++ 入射方向网格数目需要大于8；
++ 文档单位为全局单位，计算文档中的材料、结构在没有设置单位时，其单位为文档单位，如自建Lorentz材料若没有单位，其$\omega_a$、$\omega _c$、$\omega _p$单位为文档中频率单位，详见：[link]("?help_model_Materials", "材料模块") 。
+```
+
+除默认设置外，用户需要根据计算模型和计算要求手动设置一些参数，包括方向和频率范围、计算区域大小、结构模型、网格策略、共形策略等。
+## 方向和频率
+在**模型悬浮**框内双击**计算模式**输入方向和频率范围参数:
+[block-ref](atf-input-table)
+[image]("image/workmode/autotransrelf/freq_setting.png","",".atf")
+## 计算区域设置
+   在**模型悬浮**框内点击展开**模板**，双击**计算区域**输入x、y、z方向计算范围:
+   [image]("image/workmode/autotransrelf/range_setting.png","",".atf")
+## 建立模型
++ 设置结构
+  几何结构设置参看：[link]("?help_model_shape_symbol", "几何元件")；
++ 设置材料
+  设置新材料或导入系统材料参看：[link]("?help_model_material_symbol", "材料元件") ；
++ 绑定材料和结构
+  * 在**模型**悬浮窗内的**显示**、**模型**选项内**右键**点击需要绑定材料的模型，并左键点击**修饰**选项；
+  * 在**模型**悬浮窗内的**显示**、**模型**选项内找到包含原结构的`DSymbolPtr`；  
+  * **右键**点击`DSymbolPtr`，并左键点击**属性**选项，在**mat_name**中选择所要绑定的材料，并点击确定。
++ 模型建立可参看：[link]("?help_model_shape_symbol_DShapeDemo_demo_etching", "刻蚀结构 Demo")； 
+## 网格设置
+在**模型悬浮**框内点击展开**模板**，双击**网格**进行网格和共形设置。
++ 网格设置:    
+  在**网格设置**选项内进行网格数目设置，网格类型可以选用均匀网格和非均匀网格，当**网格类型**选用**均匀网格**时，
+  在**网格**选项内输入x、y、z方向的网格数目:
+  [image]("image/workmode/autotransrelf/mesh_setting.png","",".atf")
++ 共形设置:    
+  在**共形设置**选项内设置共形策略
+  * **PEC共形(PMC共形)**为关闭时，电场(磁场)不采用任何共形策略，计算存在staircase error;
+  * **PEC共形(PMC共形)**非关闭时，PEC(PMC)材料共形开启，非PEC(PMC)材料共形策略进入可选状态；
+  * **非PEC(PMC)材料共形策略**，线共形推荐**segment**，面共形推荐**average**。
+  * 共形具体参数意义参见[link]("?help_internal_doc_test_Conformal", "共形设置") ；
+  [image]("image/workmode/autotransrelf/conformal_setting.png","",".atf")
+## 运行
++ 在主界面**模型编辑器**内选择**运行**;
++ **run_at**选项选择local_cmd_window，**总核数**选项设置计算核数；
++ 矢量加速可以提高计算速度，默认为SSE，若无法运行可选择关闭或选择其它加速方式；
+  [image]("image/workmode/autotransrelf/run.png","",".atf")
+  [image]("image/workmode/autotransrelf/run_core.png","",".atf")
+## 输出结果
+计算结果保存于与计算文档在相同文件夹的**同名ewd文件**中，输出结果为：
+[block-ref](atf-output-table)
+[image]("image/workmode/autotransrelf/result.png","",".atf")
+```tips:warning-极化定义:
+* A极化：电矢量E的振动方向平行于入射轴下一轴；
+* B极化：电矢量E的振动方向垂直于入射轴下一轴；
+* 例如，入射方向为X正方向，则A偏振电场沿Y轴，B偏振电场沿Z轴。
+```
+
+```block:atf-input-table
+||(,".atfi")
+|(L) 输入项 |(L) 描述 |
+|(L) 频率序列 |(L) 最小频率：freq_min，最大频率：freq_max，频率间隔：freq_delta。 |
+|(L) 入射方向 |(L) 选择电磁波的入射方向。``<br \>``垂直于结构周期方向（正入射）。 |
+```
+
+
+```block:atf-output-table
+||(,".atfo")
+|(L) 输出项 |(L) 一级节点 |(L) 二级节点 |(L) 说明 |(L) 备注 |
+|(L) result |(L) source、rcd_ta、rcd_tb、rcd_ra、rcd_rb、freq_max、freq_min、freq_delta|(L) |(L) 模式计算的原始结果 |(L) 在ewsl交互编辑器内获取数据命令为result.source、result.rcd_ta... | 
+|(L) src1 |(L) [0]g_src.g2 |(L) data |(L) 输入信号 |(L) 在ewsl交互编辑器内获取信号数据命令为src1[0].signal; |
+|(L) rcd_trans |(L) [0]g_rcd.g2 |(L) data |(L) 透射方向记录器 |(L) 在ewsl交互编辑器内获取信号数据命令为``avg1[0].data[0](A偏振)，avg1[0].data[1](B偏振)``; |
+|(L) rcd_refl |(L) [0]g_rcd.g2 |(L) data |(L) 反射方向记录器 |(L) 在ewsl交互编辑器内获取信号数据命令为``avg2[0].data[0](A偏振)，avg2[0].data[1](B偏振)``; |
+|(L) smartdata |(L) |(L) |(L) 绘制透反率强度和相位|(L) 绘图策略采用DFT时将采用直接傅里叶变换给出freq_max:freq_delta:freq_min序列的所有结果，采用FFT时只给出freq_min和freq_max频率范围内满足FFT条件的频率点结果。 |
+|(L) dparam|(L) |(L) |(L)模型计算相关信息 |(L) |
+```

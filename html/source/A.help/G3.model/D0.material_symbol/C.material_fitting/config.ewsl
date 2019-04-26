@@ -1,0 +1,4 @@
+#function(cfg)
+local t = table();
+t.title = "拟合生成材料元件";
+return t;

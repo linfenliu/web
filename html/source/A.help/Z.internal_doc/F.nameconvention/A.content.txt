@@ -1,0 +1,377 @@
+[topic](param)
+
+
+
+EastWave文档参数命名规范
+==========
+
+EastWave工程文件中定义各种元件使用规范的名称体系。该体系考虑以下几个因素：
++ 使用标准英文单词
++ 小写英文字母开头，其他合法字符为数字、下划线，此外，使用井号符号`#`限定名词的概念域
++ 前缀表明属性的数据类型（并且基本上指明了空间类型）
++ 前缀和主体名称之间用下划线区分
+
+
+前缀命名规范
+-----------
+
+简单参数的前缀规则如下：
+> 说明：简单参数指的是一个参数对应一个控件的情况。
+
+|  前缀       |  参数类型       |  C++类型                  |  控件类型                    |  英文助记          |
+|  int        |  整型           |  32bit有符号整数          |  单行文本框                  |  integer           |
+|  opt        |  选项型         |  32bit有符号整数          |  下拉列表（不可编辑）        |  option            |
+|  flg        |  标志型         |  Bit标志(32bit)           |  钩选框                      |  flags             |
+|  dbl        |  浮点型         |  双精度浮点               |  单行文本框                  |  double            |
+|  sld        |  浮点型         |  双精度浮点               |  滑动条                      |  slide             |
+|  str        |  字符串         |  字符串                   |  单行文本框                  |  string            |
+|  sym        |  引用符号/元件  |  符号引用                 |  下拉列表（可编辑）          |  symbol            | 
+|  exp        |  表达式         |  字符串                   |  单行表达式控件              |  expression        |
+|  fln        |  文件名         |  字符串                   |  文件控件                    |  filename          |
+|  clr        |  颜色           |  DColor                   |  颜色按钮                    |  color             |
+|  txt        |  多行文本       |  字符串                   |  多行文本框                  |  text              |
+|  nfo        |  多行文本       |  字符串                   |  多行文本框（只读）          |  infomation        |
+
+举例如下：
+* `int_number`表示叫做`number`的文档参数，其类型为整型，控件对应为一个普通的单行文本框。
+* `opt_type`表示叫做`type`的文档参数，类型为整型，并且作为选项（Option），因此控件为一个下拉框。 
+* `dbl_intensity`表示叫做`intensity`的文档参数，类型为浮点数（双精度），控件为一个下拉框。
+* `sld_precision`表示叫做`precision`的文档参数，类型为浮点数（双精度），控件为一个滑动条，其上下限需要额外参数来定义。 
+
+复杂参数的前缀规则如下：
+> 说明：复杂参数指的是一个参数对应多于一个控件的情况（多个控件之间可能存在关联）
+
+|  前缀       |  参数类型       |  C++类型                  |  控件类型                    |  备注                                  |
+|  a{n}n      |  整数向量       |  整数向量                 |  n个单行文本框               |(4, 1) 后缀编号序列为：{a,b,c,...}      |
+|  a{n}d      |  浮点向量       |  浮点向量                 |  n个单行文本框               |
+|  a{n}s      |  字符串向量     |  字符串向量               |  n个单行文本框               |
+|  a{n}e      |  字符串向量     |  字符串向量               |  n个表达式控件               |
+|  x{n}n      |  整数向量       |  整数向量                 |  n个单行文本框               |(4, 1) 后缀编号序列为：{x,y,z,w}        |
+|  x{n}d      |  浮点向量       |  浮点向量                 |  n个单行文本框               |
+|  x{n}s      |  字符串向量     |  字符串向量               |  n个单行文本框               |
+|  x{n}e      |  字符串向量     |  字符串向量               |  n个表达式控件               |
+|  u{n}n      |  整数向量       |  整数向量                 |  n个单行文本框               |(4, 1) 后缀编号序列为：{u,v,n}          |
+|  u{n}d      |  浮点向量       |  浮点向量                 |  n个单行文本框               |
+|  u{n}s      |  字符串向量     |  字符串向量               |  n个单行文本框               |
+|  u{n}e      |  字符串向量     |  字符串向量               |  n个表达式控件               |
+|  mvm        |  多变量矩阵     |  Variable的数组           |  $m\times n$的矩阵形式       |  用户定义子项名称与类型                |
+
+举例如下：
+* `x3e_position`表示叫做`position`的文档参数，其控件为三个表达式控件，标签（Label）名分别为：`position.x`、`position.y`和`position.z`。
+* `u3e_direction`表示叫做`direction`的文档参数，其控件为三个表达式控件，标签名分别为：`direction.u`、`direction.v`和`direction.n`。
+* `mvm_transform_list`表示叫做`transform_list`的文档参数，其控件为一个表格控件，标签由构造控件的其他参数控制。
+* `mvm_children`表示叫做`children`的文档参数（子节点），其控件是个表格控件。
+
+文档参数主体名称规范
+---------
+普通文档参数的主体名称（不考虑`#`扩充的引导翻译的部分），去掉前缀标识后一般按下列规则命名：
++ 一般由小写字母和数字、下划线组成；除特殊缩写外均尽量使用小写字母；
++ 字母开头；
++ 数字表示编号时，用下划线和中心词分开；
++ 过长的词语一般写成缩写（专业术语使用大写字母）；
++ 一般使用名词中心语，而不要使用形容词作中心语（尽管英文是允许的，此时应指明对象集合）；
++ 一般采用定语+中心词结构，下划线最后一个是中心词，不要使用of来倒装；
++ 一般文档参数不推荐采用谓语+宾语结构，可以采用名词化形式的方式或者将动作谓语修改为形容词定义，而宾语改为中心语来命名；
++ 允许动词谓语+状语结构，此时动词是中心词，如果参数的中心词动词相同，建议提升为一个控件组，将状语作为独立的参数命名，此时控件组的名称则为中心词（名词化或者显示表述为状态、策略等名词概念）；
+
+例子：
+> 一个物体长方体（Cuboid）的长宽高，一般可以命名为：`exp_length#Cuboid#Shape`、`exp_width#Cuboid#Shape`、`exp_heigth#Cuboid#Shape`
+  一个物体长方体（Cuboid）用对角线上的两个顶点坐标定义，可以命名为：`u3e_corner_1#Cuboid#Shape`、`u3e_corner_2#Cuboid#Shape`
+  一个记录器盒子，用长宽高定义，一般可以命名为：`exp_length#Box#Monitor`、`exp_width#Box#Monitor`、`exp_height#Box#Monitor`
+
+
+文档参数常见英文名词和中文翻译对照
+
+|  **英文**         |  **中文**     |  **备注**                                     |
+|(1,3) **几何建模**                                                                 |
+|  length           |  长度         |  一般为x/u方向                                |
+|  width            |  宽度         |  一般为y/v方向                                |
+|  height           |  高度         |  一般为z/n方向                                |
+|  depth            |  深度         |                                               |
+|  radius           |  半径         |                                               |
+|  diameter         |  直径         |                                               |
+|  generatrix       |  母线         |  生成线的意思，也扩展到母点、母面             |
+|  directrix        |  准线         |                                               |
+|  focus            |  焦点         |                                               |
+|  focal_length     |  焦距         |                                               |
+|  eccentricity     |  偏心率       |                                               |
+|  void_ratio       |  体空心比     |  适合于能将体空心率换算为建模参数的模型       |
+|  hollow_rate      |  体空心率     |  仅适合于大量空隙存在时的空隙体积和总体积之比 |
+|  length_ratio     |  线度比       |                                               |
+|  convexity        |  凸起点       |                                               |
+|  concavity        |  凹下点       |                                               |
+|  arc              |  弧线         |                                               |
+|  arc_length       |  弧长         |                                               |
+|  control_point    |  控制点       |  用于样条参数方程中的参考点                   |
+|  key_point        |  关键点       |  用于定义物体时的参考点                       |
+|  area             |  面积         |                                               |
+|  area_ratio       |  面积比       |                                               |
+|  volume           |  体积         |                                               |
+|  volume_ratio     |  体积比       |                                               |
+|  start_point      |  起点         |                                               |
+|  end_point        |  终点         |  注意区别于端点endpoint                       |
+|  tangent_line     |  切线         |                                               |
+|  tangent_plane    |  切平面       |                                               |
+|  slope            |  斜率         |                                               |
+|  major_axis       |  主轴/长轴    |                                               |
+|  minor_axis       |  短轴         |                                               |
+|  asymptote        |  渐近线       |                                               |
+|  thickness        |  厚度         |                                               |
+|  curvature        |  曲率         |                                               |
+|  curvature_radius |  曲率半径     |                                               |
+|  CL               |  特征长度     |  Character Length的简称                       |
+|  angle            |  角度         |  一般为角度制                                 |
+|  center           |  中心         |                                               |
+|  corner           |  角点         |                                               |
+|  entity           |  实体         |  广义实体概念                                 |
+|  solid            |  几何实体     |  等价于geometric entity                       |
+|  position         |  位置         |                                               |
+|  point            |  点           |                                               |
+|  triangle         |  三角形       |                                               |
+|  quadrangle       |  四边形       |                                               |
+|  rectangle        |  长方形       |                                               |
+|  polygon          |  多边形       |                                               |
+|  vertex           |  顶点         |  线段、多边形或者多面体的顶点                 |
+|  refpoint         |  参考点       |  reference point的简称                        |
+|  refvertex        |  参考顶点     |  reference vertex的简称                       |
+|  refcenter        |  参考中心     |  reference center的简称                       |
+|  line             |  线           |  可以理解为straight line的简称                |
+|  segment          |  段（分段）   |                                               |
+|  combined_line    |  组合线       |                                               |
+|  edge             |  边缘/边线    |                                               |
+|  boundary         |  边界         |                                               |
+|  boundary_line    |  边界线       |                                               |
+|  boundary_surface |  边界面       |                                               |
+|  endpoint         |  端点         |  注意区别于end_point                          |
+|  sweeping_line    |  扫描线       |                                               |
+|  sweeping_surface |  扫描面       |                                               |
+|  sweeping_angle   |  扫描角       |                                               |
+|  loop             |  回路         |                                               |
+|  line_loop        |  线回路       |                                               |
+|  surface_loop     |  面回路       |                                               |
+|  extrusion        |  拉伸         |                                               |
+|  lofting          |  放样         |                                               |
+|  path             |  路径         |  特指构建折线段的多点路径                     |
+|  guide            |  导引         |  类似路径，但顶点处可以定义复杂行为           |
+|  chamfer          |  倒角         |(2,1)  AutoCAD习惯                             |
+|  fillet           |  圆角         |
+|  shell            |  壳           |                                               |
+|  scale            |  缩放         |                                               |
+|  mirror           |  镜像         |                                               |
+|  reflection       |  中心反射     |                                               |
+|  translation      |  平移         |                                               |
+|  rotation         |  旋转         |                                               |
+|  deformation      |  形变         |                                               |
+|  torsion          |  扭曲（扭转） |                                               |
+|  curve            |  曲线         |  可以理解为curved line的简称                  |
+|  spline           |  样条曲线     |                                               |
+|  bspline          |  B样条        |                                               |
+|  cubic_spline     |  三次样条     |                                               |
+|  NURBS            |  NURBS        |  非均匀有理B样条曲面                          |
+|  interpolation    |  插值         |                                               |
+|  plane            |  平面         |                                               |
+|  surface          |  表面         |  可以作为curved surface的简称                 |
+|  combined_surface |  组合面       |                                               |
+|  regular_surface  |  正规曲面     |                                               |
+|  cuboid           |  长方体       |                                               |
+|  sphere           |  球体         |                                               |
+|  spheroid         |  旋转椭球     |                                               | 
+|  paraboloid       |  抛物面       |                                               |
+|  hyperboloid      |  双曲面       |                                               |
+|  ellipsoid        |  椭球面       |                                               |
+|  array            |  阵列         |                                               |
+|  wcs              |  工作坐标系   |  Working Coordinate System的简称              |
+|  lcs              |  局部坐标系   |  Local Coordinate System的简称                |
+|(1,3) **激励源、记录器等**                                                         |
+|  farfield         |  远场         |                                               |
+|  nearfield        |  近场         |                                               |
+|  kdir             |  波矢方向     |  一般约定为方向单位向量                       |
+|  orientation      |  朝向         |  一般用于定义特征面法向                       |
+|  cartesian_cs     |  笛卡尔坐标系 |                                               |
+|  cylindrical_cs   |  柱坐标       |                                               |
+|  spherical_cs     |  球坐标       |                                               |
+|  distance         |  距离         |                                               |
+|  radial_dist      |  径向距离     |                                               |
+|  azimuth          |  方位角       |                                               |
+|  altitude         |  俯仰角       |                                               |
+|  elevation        |  高度角       |                                               |
+|  longitude        |  经度         |                                               |
+|  latitude         |  纬度         |                                               |
+|  zenith           |  天顶         |                                               |
+|  zenith_point     |  天顶点       |                                               |
+|  zenith_angle     |  天顶角       |                                               |
+|  ISO_z            |  ISO柱坐标$z$ |                                               |
+|  ISO_rho          |  ISO柱坐标$\rho$          |                                   |
+|  ISO_radial       |  ISO球坐标$r$                                                 | 
+|  ISO_theta        |  ISO球坐标$\theta$        |                                   |
+|  ISO_phi          |  ISO球坐标、柱坐标$\phi$  |                                   |
+|  MATH_rho         |  Math球坐标$\rho$         |                                   |
+|  MATH_theta       |  Math球坐标$\theta$       |(2,1) Math的角度规则与ISO相反，Matlab采用此规则      |
+|  MATH_phi         |  Math球坐标$\phi$         |
+|  GCS_radial       |  GCS球坐标$r$             |  地理坐标系的径向距离             |
+|  GCS_theta        |  GCS球坐标$\theta$        |  即高度角/纬度，\[-90, +90\]      |
+|  GCS_phi          |  GCS球坐标$\phi$          |  即精度（方位角），\[-180, +180\] |
+|  HCS_radial       |  同GCS_radial             |  地平坐标系，相对于观测者         |
+|  HCS_theta        |  同GCS_theta              |  俯仰角                           |
+|  HCS_phi          |  同GCS_phi                |  方位角                           |
+|  signal           |  信号         |                                               |
+|  intensity        |  强度         |                                               |
+|  power            |  功率         |                                               |
+|  energy           |  能量         |                                               |
+|  energy_density   |  能量密度     |                                               |
+|  magnitude        |  幅度         |  幅度、强度、量                               |
+|  amplitude        |  振动幅度     |                                               |
+|  phase            |  相位         |  文档相位一般用角度制                         |
+|  phase_rad        |  弧度相位     |  弧度制的相位                                 |
+|  region           |  区域         |                                               |
+|  active_region    |  有源区       |                                               |
+|  passive_region   |  无源区       |                                               |
+|  wire             |  连接线       |                                               |
+|  displacement     |  位移         |                                               |
+|  current          |  电流         |                                               |
+|  mag_current      |  磁流         |  magnetic current的简写                       |
+|  e_field          |  电场         |  $E$                                          |
+|  h_field          |  磁场         |  $H$                                          |
+|  d_field          |  电位移       |  $D$                                          |
+|  b_field          |  磁感应强度   |  $B$                                          |
+|  je_field         |  电流密度     |  $j_e$                                        |
+|  jm_field         |  磁流密度     |  $j_m$                                        |
+|  excitation       |  激励         |  建议用于analyzer定义                         | 
+|  source           |  激励源/馈源  |                                               |
+|  monitor          |  监视器       |  旧称记录器                                   |
+|  probe            |  探针         |  即点监视器                                   |
+|  source_array     |  馈源阵列     |                                               |
+|  analyzer         |  分析器       |                                               |
+|  transient        |  瞬态         |                                               |
+|  modal            |  模态         |  modal analysis 即单频激励分析                |
+|  driven           |  驱动         |                                               |
+|  eigenmode        |  本征模式     |                                               |
+|  cycle            |  循环         |                                               |
+|  reference        |  引用         |                                               |
+|  symbol           |  符号/元件    |                                               |
+|  background       |  背景         |                                               |
+|  setup            |  设置         |                                               |
+|  policy           |  策略         |                                               |
+|  spread           |  展宽         |  用于定义频谱、参数分布宽度                   |
+|  timespan         |  时间宽度     |  用于定义时域信号宽度                         |
+|  rising_edge      |  上升沿       |  t_rising  上升沿时间                         |
+|  falling_edge     |  下降沿       |  t_falling 下降沿时间                         |
+|  holding          |  持续         |  t_holding 持续时间                           |
+|  distribute_width |  分布宽度     |  用于定义空间分布的宽度                       |
+|  aperture_width   |  口径宽度     |  用于定义口径形状，一般对应x/u                |
+|  aperture_length  |  口径长度     |  用于定义口径形状，一般对应y/v                |
+|  aperture_depth   |  口径深度     |  用于定义口径形状，一般对应z/n                |
+|  line_width       |  线宽         |                                               |
+|  aperture_field   |  口径场       |                                               |
+|  field_source     |  场源         |                                               |
+|  spacial_function |  空间函数     |                                               |
+|  time_function    |  时间函数     |                                               |
+|  terminal         |  终端         |                                               |
+|  port             |  端口         |                                               |
+|  mode             |  模式         |  注意和modal区分                              |
+|  network          |  网络         |                                               |
+|(1,3) **程序功能**                                                                 |
+|  template         |  模板         |                                               |
+|  workmode         |  计算模式     |  一般称计算模式，有时可称工作模式             |
+|  script           |  脚本         |                                               |
+|  program          |  程序         |                                               |
+|  code             |  代码         |                                               |
+|  compiler         |  编译器       |                                               |
+|  solver           |  求解器       |                                               |
+|  engine           |  引擎         |                                               |
+|  block            |  分块         |                                               |
+|  thread           |  线程         |                                               |
+|  thread_num       |  线程数       |                                               |
+|  param            |  参数         |  parameter的简写                              |
+|  config           |  配置         |  configuration的简写                          |
+|  hacc             |  硬件加速     |  hardware acceleration的简写                  |
+|  denorm           |  denormal     |  denormal功能                                 |
+|  dt               |  $\delta t$   |  时间步                                       |
+|  dt_ratio         |  $\delta t/\delta t_\text{ref}$  实际时间步/参考时间步        |
+|  dt_ref           |  $\delta t_\text{ref}$  |  参考时间步                         |
+|  dx               |  $\delta x$   |  空间网格大小                                 |
+|  start            |  启动         |                                               |
+|  remote_start     |  远程启动     |                                               |
+|  local_start      |  本地启动     |                                               |
+|  run_solver       |  运行求解器   |                                               |
+|  settings         |  设置         |  区别于setup设置，一般settings针对求解器/界面 |
+|  solver_settings  |  求解器设置   |                                               |
+|  gui_settings     |  界面设置     |                                               |
+|  web_server       |  WEB服务器    |                                               |
+|  web_client       |  WEB客户端    |                                               |
+|  help             |  帮助         |  广义的帮助，可用于针对功能的帮助信息         |
+|  document         |  文档         |  特指工程文档文件                             |
+|  documentation    |  文档         |  区别于工程文档document                       |
+|  manual           |  手册         |                                               |
+|  tutorial         |  入门         |                                               |
+|  sample           |  案例         |                                               |
+|  library          |  库           |                                               |
+|  module           |  模块         |                                               |
+|  address          |  地址         |  一般指网络地址                               |
+|  path             |  路径         |  包括相对路径和绝对路径、网络路径、虚拟路径   |
+|  directory        |  文件夹       |                                               |
+|  link             |  链接         |  指向文件或者文件夹的链接，默认符号链接       |
+|  alias            |  别名         |                                               |
+|  filter           |  过滤器       |                                               |
+|  workspace        |  工作空间     |                                               |
+|  folder           |  文件夹       |  特指workspace里的虚拟folder                  |
+|  project          |  工程         |                                               |
+|  solution         |  解决方案     |                                               |
+|  shell            |  系统命令行   |                                               |
+|  processor        |  处理器       |                                               |
+|  core             |  核心         |                                               |
+|(1,3) **后处理**                                                                   |
+|  result           |  计算结果     |                                               |
+|  report           |  报告         |                                               |
+|  log              |  日志         |                                               |
+|  external_file    |  外部文件     |                                               |
+|  internal_file    |  内部文件     |  将文件嵌入工程后形成内部文件                 |
+|  table            |  数据表       |                                               |
+|  figure           |  绘图         |                                               |
+|  atlas            |  图册         |  figure构成的集合                             |
+|  image            |  图像         |                                               |
+|  curve            |  曲线         |                                               |
+|  spline           |  样条         |                                               |
+|  bspline          |  B样条        |                                               |
+|  stepline         |  阶梯线       |                                               |
+|  dataview         |  数据视图     |                                               |
+|  datamgr          |  数据管理器   |                                               |
+|  datasheet        |  数据表       |  参照Excel的sheet概念                         |
+|  legend           |  图例         |                                               |
+|  axis             |  坐标轴       |                                               |
+|  margin           |  画布边缘     |  很多时候指边距                               |
+|  title            |  标题         |                                               |
+|  xlabel           |  X标签        |                                               |
+|  ylabel           |  Y标签        |                                               |
+|  zlabel           |  Z标签        |                                               |
+|  colormap         |  颜色映射图   |                                               |
+|  colorbar         |  颜色柱       |                                               |
+|  contour          |  等值（线）   |  也可以是等值面                               |
+|  contour_line     |  等值线       |                                               |
+|  contour_surface  |  等值面       |                                               |
+|  column           |  列           |                                               |
+|  row              |  行           |                                               |
+|  location         |  定位位置     |  (x,y)或者(x,y,z)                             |
+|  datatip          |  数据提示     |                                               |
+|  dataitem         |  数据项       |                                               |
+|  plot             |  曲线图       |                                               |
+|  plot3d           |  3D曲线图     |                                               |
+|  surf             |  曲面图       |                                               |
+|  polar            |  极坐标图     |                                               |
+|  polar3d          |  球坐标图     |                                               |
+|  subplot          |  子图         |                                               |
+|  canvas           |  画布         |                                               |
+|  series           |  序列         |                                               |
+|  scatter_plot     |  散点图       |                                               |
+|  scatter3d_plot   |  3D散点图     |                                               |
+|  ARE              |  自回归外推   |  Auto-Regression extrapolation的简写          |
+|  DFT              |  离散傅立叶变换     |                                         |
+|  DCT              |  离散余弦变换       |                                         |
+|  FFT              |  快速傅里叶变换     |  Fast-Fourier Transform的简写           |
+|  FFT2D            |  2D快速傅里叶变换   |                                         |
+|  FFT3D            |  3D快速傅里叶变换   |                                         |
+|  IFFT             |  快速逆傅里叶变换   |                                         |
+|  IFFT2D           |  2D快速逆傅里叶变换 |                                         |
+|  TD_signal        |  时域信号     |  time-domain signal的简写                     |
+|  FD_signal        |  频域信号     |  frequency-domain signal的简写                |
+

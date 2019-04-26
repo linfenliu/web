@@ -1,0 +1,7 @@
+#function(cfg)
+
+local t=table();
+t.title = "知识相关";
+
+
+return t;

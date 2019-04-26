@@ -1,0 +1,557 @@
+# 几何元件脚本参数
+
+## 索引表
+[block-ref](guide-table)
+
+[anchor](".cube")
+## 长方体
+### 中心（定义方式）
+#### 示例代码
+[block-ref](cube0-ewsl-script)
+#### 脚本参数说明
+[block-ref](cube0-table-script)
+
+### 边（定义方式）
+#### 示例代码
+[block-ref](cube1-ewsl-script)
+#### 脚本参数说明
+[block-ref](cube1-table-script)
+
+
+
+[anchor](".cylinder")
+## 圆柱体
+### 中心（定义方式）
+#### 示例代码
+[block-ref](cylinder0-ewsl-script)
+#### 脚本参数说明
+[block-ref](cylinder0-table-script)
+
+### 中心（定义方式）
+#### 示例代码
+[block-ref](cylinder1-ewsl-script)
+#### 脚本参数说明
+[block-ref](cylinder1-table-script)
+
+
+
+[anchor](".sphere")
+## 球体
+### 示例代码
+[block-ref](sphere-ewsl-script)
+### 脚本参数说明
+[block-ref](sphere-table-script)
+
+
+
+[anchor](".geosphere")
+## 几何球体
+### 示例代码
+[block-ref](geosphere-ewsl-script)
+### 脚本参数说明
+[block-ref](geosphere-table-script)
+
+
+[anchor](".cone")
+## 圆锥体
+### 示例代码
+[block-ref](cone-ewsl-script)
+### 脚本参数说明
+[block-ref](cone-table-script)
+
+
+
+[anchor](".torus")
+## 环体
+### 示例代码
+[block-ref](torus-ewsl-script)
+### 脚本参数说明
+[block-ref](torus-table-script)
+
+
+
+[anchor](".spin")
+## 实心旋转体
+### 示例代码
+[block-ref](spin-ewsl-script)
+### 脚本参数说明
+[block-ref](spin-table-script)
+
+
+
+[anchor](".spin2")
+## 空心旋转体
+### 示例代码
+[block-ref](spin2-ewsl-script)
+### 脚本参数说明
+[block-ref](spin2-table-script)
+
+
+
+[anchor](".sweeped")
+## 参数扫描体 
+### 示例代码
+[block-ref](sweeped-ewsl-script)
+### 脚本参数说明
+[block-ref](sweeped-table-script)
+
+
+
+[anchor](".column")
+## 垂直拉伸体
+### 示例代码
+[block-ref](column-ewsl-script)
+### 脚本参数说明
+[block-ref](column-table-script)
+
+
+
+[anchor](".cad")
+## 导入CAD模型 
+### 示例代码
+[block-ref](cad-ewsl-script)
+### 脚本参数说明
+[block-ref](cad-table-script)
+
+
+
+[anchor](".meshsurface")
+## 强制网格
+### 示例代码
+[block-ref](meshsurface-ewsl-script)
+### 脚本参数说明
+[block-ref](meshsurface-table-script)
+
+
+
+[anchor](".multilayer")
+## 多层物体
+### 示例代码
+[block-ref](multilayer-ewsl-script)
+### 脚本参数说明
+[block-ref](multilayer-table-script)
+
+
+
+[anchor](".radome")
+## 天线罩 
+### 示例代码
+[block-ref](radome-ewsl-script)
+### 脚本参数说明
+[block-ref](radome-table-script)
+
+
+
+[anchor](".array")
+## 阵列 
+### 示例代码
+[block-ref](array-ewsl-script)
+### 脚本参数说明
+[block-ref](array-table-script)
+
+
+
+## 相关文档
+* [link](?help_model_Advanced_ewsl_model_How,"如何把几何元件脚本代码添加到模型文档。")
+* [link](?help_model_shape_symbol_DShapeCreate.create-by-GUI,"如何使用更为便捷的界面建模。")
+
+
+
+
+```block:cube0-ewsl-script`endtag1
+```ewsl
+td.beg("cube", "DShapeCube");
+	td.set("unit", "");				//物体单位
+	td.set("opt_type#Cube#Shape", 0x0);		//定义方式
+	//体中心
+	td.set("x3e_center.x#Cube#Shape", "0.0");
+	td.set("x3e_center.y#Cube#Shape", "0.0");
+	td.set("x3e_center.z#Cube#Shape", "0.0");
+	
+	td.set("x3e_width.x#Cube#Shape", "100.0");	//长度
+	td.set("x3e_width.y#Cube#Shape", "100.0");	//宽度
+	td.set("x3e_width.z#Cube#Shape", "100.0");	//高度
+td.end();
+```
+```endtag1
+
+```block:cube0-table-script`endtag1
+| 参数名称 | 说明 | 备注 |
+| opt_type#Cube#Shape | 指定长方体 *定义方式* | *0:中心*  1:边  |
+| x3e_center.[xyz]#Cube#Shape | 指定长方体 *中心点* | - |
+| x3e_width.[xyz]#Cube#Shape | 指定长方体的 *长度、宽度、高度* | - |
+```endtag1
+
+
+
+
+```block:cube1-ewsl-script`endtag1
+```ewsl
+td.beg("cube","DShapeCube");
+	td.set("unit","");			//物体单位
+	td.set("opt_type#Cube#Shape",0x1);	//定义方式
+	//左下前角点
+	td.set("u3e_corner_1.u#Cube#Shape","0.0");
+	td.set("u3e_corner_1.v#Cube#Shape","0.0");
+	td.set("u3e_corner_1.n#Cube#Shape","0.0");
+	
+	//右上后角点
+	td.set("u3e_corner_2.u#Cube#Shape","100.0");
+	td.set("u3e_corner_2.v#Cube#Shape","100.0");
+	td.set("u3e_corner_2.n#Cube#Shape","100.0");
+td.end();
+```
+```endtag1
+
+```block:cube1-table-script`endtag1
+| 参数名称 | 说明 | 备注 |
+| opt_type#Cube#Shape | 指定长方体 *定义方式*  | 0:中心  *1:边* |
+| u3e_corner_1.[uvn]#Cube#Shape | 指定长方体 *左上前角点* | - |
+| u3e_corner_2.[uvn]#Cube#Shape | 指定长方体 *后下后角点* | - |
+```endtag1
+
+
+
+
+
+```block:cylinder0-ewsl-script`endtag1
+```ewsl
+td.beg("cylinder","DShapeCylinder");
+	td.set("unit","");				//物体单位
+	td.set("opt_type#Cylinder#Shape",0x0);		//定义方式
+	td.set("int_sides#Cylinder#Shape",0x24);	//边数
+	td.set("exp_void_ratio#Cylinder#Shape","0.5");	//体空心比
+	//体中心
+	td.set("x3e_center.x#Cylinder#Shape","0.0");
+	td.set("x3e_center.y#Cylinder#Shape","0.0");
+	td.set("x3e_center.z#Cylinder#Shape","0.0");
+	
+	td.set("x3e_width.x#Cylinder#Shape","100.0");	//长度
+	td.set("x3e_width.y#Cylinder#Shape","100.0");	//宽度
+	td.set("x3e_width.z#Cylinder#Shape","100.0");	//高度
+td.end();
+```
+```endtag1
+
+```block:cylinder0-table-script`endtag1
+| 参数名称 | 说明 | 备注 |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+```endtag1
+
+
+
+
+```block:cylinder1-ewsl-script`endtag1
+```ewsl
+td.beg("cylinder","DShapeCylinder");
+	td.set("unit","");				//物体单位
+	td.set("opt_type#Cylinder#Shape",0x1);		//定义方式
+	td.set("int_sides#Cylinder#Shape",0x24);	//边数
+	td.set("exp_void_ratio#Cylinder#Shape","0.5");	//体空心比
+	//底面中心
+	td.set("x3e_center.x#Cylinder#Shape","0.0");
+	td.set("x3e_center.y#Cylinder#Shape","0.0");
+	td.set("x3e_center.z#Cylinder#Shape","0.0");
+	
+	//底面半径
+	td.set("x2e_radius.x#Cylinder#Shape","20.0");	
+	td.set("x2e_radius.y#Cylinder#Shape","20.0");
+	
+	td.set("exp_height#Cylinder#Shape","100.0");	//高度
+td.end();
+```
+```endtag1
+
+```block:cylinder1-table-script`endtag1
+| 参数名称 | 说明 | 备注 |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+```endtag1
+
+
+
+
+
+
+```block:sphere-ewsl-script`endtag1
+```ewsl
+td.beg("sphere","DShapeSphere");
+	td.set("unit","");				//物体单位
+	//体中心
+	td.set("x3e_center.x#Sphere#Shape","0.0");
+	td.set("x3e_center.y#Sphere#Shape","0.0");
+	td.set("x3e_center.z#Sphere#Shape","0.0");
+	
+	//三维半径
+	td.set("x3e_radius.x#Sphere#Shape","10.0");
+	td.set("x3e_radius.y#Sphere#Shape","10.0");
+	td.set("x3e_radius.z#Sphere#Shape","10.0");
+	
+	td.set("exp_thickness#Sphere#Shape","0.0");	//厚度
+	td.set("int_stacks#Sphere#Shape",0x32);		//纵向层数
+	td.set("int_slices#Sphere#Shape",0x64);		//横向片数
+td.end();
+```
+```endtag1
+
+```block:sphere-table-script`endtag1
+| 参数名称 | 说明 | 备注 |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+```endtag1
+
+
+
+
+
+
+```block:geosphere-ewsl-script`endtag1
+```ewsl
+td.beg("geosphere","DShapeGeoSphere");
+	td.set("unit","");				//物体单位
+	//体中心
+	td.set("x3e_center.x#GeoSphere#Shape","0.0");
+	td.set("x3e_center.y#GeoSphere#Shape","0.0");
+	td.set("x3e_center.z#GeoSphere#Shape","0.0");
+	
+	//三维半径
+	td.set("x3e_radius.x#GeoSphere#Shape","100.0");
+	td.set("x3e_radius.y#GeoSphere#Shape","100.0");
+	td.set("x3e_radius.z#GeoSphere#Shape","100.0");
+	
+	td.set("int_segments#GeoSphere#Shape",0x2);	//段数
+td.end();
+```
+```endtag1
+
+```block:geosphere-table-script`endtag1
+| 参数名称 | 说明 | 备注 |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+```endtag1
+
+
+
+
+
+```block:cone-ewsl-script`endtag1
+```ewsl
+td.beg("cone","DShapeCone");
+	td.set("unit","");				//物体单位
+	td.set("int_sides#Spin#Shape",0x24);		//边数
+	td.set("exp_height#Cone#Shape","100.0");	//高度
+	td.set("exp_radius#Cone#Shape","50.0");		//底面半径
+td.end();
+```
+```endtag1
+
+```block:cone-table-script`endtag1
+| 参数名称 | 说明 | 备注 |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+```endtag1
+
+
+
+
+
+```block:torus-ewsl-script`endtag1
+```ewsl
+td.beg("torus","DShapeTorus");
+	td.set("unit","");					//物体单位
+	td.set("exp_cutplane_distance#Torus#Shape","100.0");	//环半径
+	td.set("int_segments#Torus#Shape",0x48);		//环段数
+	td.set("exp_cutplane_radius#Torus#Shape","20.0");	//圆半径
+	td.set("int_sides#Torus#Shape",0x24);			//圆边数
+td.end();
+```
+```endtag1
+
+```block:torus-table-script`endtag1
+| 参数名称 | 说明 | 备注 |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+```endtag1
+
+
+
+
+```block:spin-ewsl-script`endtag1
+```ewsl
+	//代码
+```
+```endtag1
+
+```block:spin-table-script`endtag1
+| 参数名称 | 说明 | 备注 |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+```endtag1
+
+
+
+
+
+```block:spin2-ewsl-script`endtag1
+```ewsl
+	//代码
+```
+```endtag1
+
+```block:spin2-table-script`endtag1
+| 参数名称 | 说明 | 备注 |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+```endtag1
+
+
+
+
+
+
+```block:sweeped-ewsl-script`endtag1
+```ewsl
+	//代码
+```
+```endtag1
+
+```block:sweeped-table-script`endtag1
+| 参数名称 | 说明 | 备注 |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+```endtag1
+
+
+
+
+
+
+```block:column-ewsl-script`endtag1
+```ewsl
+	//代码
+```
+```endtag1
+
+```block:column-table-script`endtag1
+| 参数名称 | 说明 | 备注 |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+```endtag1
+
+
+
+
+
+
+
+
+```block:cad-ewsl-script`endtag1
+```ewsl
+	//代码
+```
+```endtag1
+
+```block:cad-table-script`endtag1
+| 参数名称 | 说明 | 备注 |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+```endtag1
+
+
+
+
+
+
+
+
+```block:meshsurface-ewsl-script`endtag1
+```ewsl
+	//代码
+```
+```endtag1
+
+```block:meshsurface-table-script`endtag1
+| 参数名称 | 说明 | 备注 |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+```endtag1
+
+
+
+
+
+
+
+
+```block:multilayer-ewsl-script`endtag1
+```ewsl
+	//代码
+```
+```endtag1
+
+```block:multilayer-table-script`endtag1
+| 参数名称 | 说明 | 备注 |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+```endtag1
+
+
+
+
+
+
+
+
+
+
+
+```block:radome-ewsl-script`endtag1
+```ewsl
+	//代码 天线罩还需要细分类型
+```
+```endtag1
+
+```block:radome-table-script`endtag1
+| 参数名称 | 说明 | 备注 |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+```endtag1
+
+
+
+
+
+
+
+
+
+
+
+```block:array-ewsl-script`endtag1
+```ewsl
+	//代码 阵列还需要细分类型
+```
+```endtag1
+
+```block:array-table-script`endtag1
+| 参数名称 | 说明 | 备注 |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+```endtag1
+

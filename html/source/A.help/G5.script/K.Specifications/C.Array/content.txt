@@ -1,0 +1,365 @@
+# 数组函数
+
+## 目录
++ [link]("?.properties",数组的属性)
++ [link]("?.constructors",数组的构造函数)
++ [link]("?.vectorization",向量化)
++ [link]("?.formal_operations",形式的操作)
++ [link]("?.others",其他)
+
+```block:syntax
+  
+**语法：**  
+```
+
+```block:example
+  
+**例子：**  
+```
+
+```block:reference
+  
+**参考：**  
+```
+
+[anchor](".properties")
+## 数组的属性
+
+[anchor](".function.length")
+[anchor](".function.numel")
+`length` `numel`
+  
+返回数组元素个数（兼容变量表）
+
+[block-ref]("syntax")
+```ewsl
+length(A)
+numel(A)
+```
+
+**补充说明：**
+* 与**Matlab**的`length`函数行为不同，请阅读[link]("?help_script_Specifications_Comparisons.length",**Matlab**兼容性问题`length`函数)。
+* 如果要使用类似**Matlab**的`length`函数，请使用`math.length_`函数替代。
+
+[block-ref]("reference")
+* [link]("?.function.size",`size`)
+
+
+
+[anchor](".function.size")
+`size`
+  
+返回数组的维度信息，包括指定维度的大小
+
+[block-ref]("syntax")
+```ewsl
+size(A)     // Return a dimension size vector [6x1].
+size(A,DIM) // Return the size of the dimension DIM of A.
+```
+
+[block-ref]("reference")
+* [link]("?.function.length",`length`)
+* [link]("?.function.rwos",`rows`)
+* [link]("?.function.columns",`columns`)
+
+
+`rows`
+  
+返回数组的行数
+
+[block-ref]("syntax")
+```ewsl
+rows(A)      // row(A) == size(A, 0)
+```
+
+[block-ref]("reference")
+* [link]("?.function.length",`length`)
+* [link]("?.function.size",`size`)
+* [link]("?.function.columns",`columns`)
+
+
+`columns`
+  
+返回数组的列数
+
+[block-ref]("syntax")
+```ewsl
+columns(A)  // columns(A) == size(A, 1)
+```
+
+[block-ref]("reference")
+* [link]("?.function.length",`length`)
+* [link]("?.function.rwos",`rows`)
+* [link]("?.function.size",`size`)
+
+
+[anchor](".constructors")
+## 数组的构造函数
+
+[anchor](".function.colon_operator")
+`a:b`, `a:step:b`
+  
+冒号算符，用起止和步长构造等差数列
+
+[block-ref]("syntax")
+```ewsl
+1:10        // [1,2,3,...10], when a < b the default step = 1
+0:(-10)     // [0,-1,...-10], when a > b default step = -1
+1:2:10      // [1,3,5,7,9]
+a:0:b       // [], when the step==0 it returns an empty array.
+```
+
+```block:a_lt_b
+`a<b`
+```
+
+**补充说明：**
+* `a:b`当[block-ref]("a_lt_b")时，默认步长为`1`，如果`ab`默认步长为`-1`
+* `a:0:b`即步长为`0`的时候，返回空数组
+* 输入参数均为整数时，返回的序列为整数序列
+* 不兼容复数类型，除非复数参数的虚部是`0`，则当做实数处理
+
+[block-ref]("reference")
+[link]("?.function.linspace",`linspace`)
+
+
+[anchor](".function.linspace")
+`linspace`
+  
+使用端点和点的个数构造等差数列
+
+[block-ref]("syntax")
+```ewsl
+linspace(0,10,11)       // [0,1,2,3,4,5,6,7,8,9,10]
+linspace(0,10i,11)      // [0,1i,2i,3i,4i,5i,6i,7i,8i,9i,10i]
+linspace(1,2,1)         // Error. Invalid number of points.
+linspace(2,3,0)         // [], when the point number is zero it returns an empty array.
+linspace(a,b,0.5)       // Error. Look below.
+linspace(a,b,-1)        // Error. Invalid number of points.
+```
+
+**补充说明：**
+* 支持复数类型
+* 当点数是`0`的时候，返回空数组
+* 输入端点是整数和浮点数（或者复数的需部为`0`）时，返回值是浮点数组
+* 输入端点至少一个是复数的时候，返回值是复数数组
+* 当点数是`1`或者是负数的时候，抛出错误。
+
+[block-ref]("reference")
+* [link]("?.function.colon_operator",冒号算符`:`)
+* [link]("?.function.logspace",`logspace`)
+
+
+[anchor](".function.logspace")
+`logspace`
+
+使用端点和点的个数构造对数数列
+
+[block-ref]("syntax")
+```ewsl
+logspace(A,B,N)             // 10.^linspace(A,B,N)
+logspace(A,B,0)             // []
+logspace(A,B,1)             // Error. Invalid number of points.
+logspace(A,B,-2)            // Error. Invalid number of points.
+```
+
+**补充说明：**
+* 支持复数类型
+* 当点数`N`等于`0`的时候，返回空数组
+* 当点数`N`等于`1`或者为负数的时候，抛出错误。
+
+[block-ref]("reference")
+* [link]("?.function.logspace",`logspace`)
+* [link]("?help_script_Specifications_Comparisons.matlab_copatibility.logspace",`logspace`函数的**MATLAB**兼容性问题)。
+
+
+[anchor](".function.zeros")
+`zeros`
+  
+构造零数组
+
+[block-ref]("syntax")
+```ewsl
+zeros(s1,s2,...,TYPE='double')     // Return an array with size [s1,s2,...] and its every elements are zeros. The default type is array_double.
+zeros([s1,s2,...],TYPE='double')   // Like above.
+```
+
+**补充说明：**
+* 最后一个参数`TYPE`的取值包括：`int`或者`integer`、`double`或者`real`、`complex`、`variant`分别对应构造出的数组元素类型。
+* 默认的构造类型是浮点数。
+
+[block-ref]("reference")
+* [link]("?.function.ones",`ones`)
+* [link]("?.function.eye",`eye`)
+
+
+[anchor](".function.ones")
+`ones`
+  
+构造元素全为1的数组
+
+
+[block-ref]("syntax")
+```ewsl
+ones(s1,s2,...,TYPE='double')       // Return an array with size [s1,s2,...] and its every elements are ones. The default type is array_double.
+ones([s1,s2,...],TYPE='double')     // Like above.
+```
+
+**补充说明：**
+* 最后一个参数`TYPE`的取值包括：`int`或者`integer`、`double`或者`real`、`complex`、`variant`分别对应构造出的数组元素类型。
+* 默认的构造类型是浮点数。
+
+[block-ref]("reference")
+* [link]("?.function.zeros",`zeros`)
+* [link]("?.function.eye",`eye`)
+
+
+`eye`
+  
+构造单位矩阵
+
+[block-ref]("syntax")
+```ewsl
+eye(s1,s2=s1,TYPE='double')     // Return an array with size [s1,s2] and the dianonal elements are ones. The default type is array_double.
+eye([s1,s2],TYPE='double')      // Like above. 
+```
+
+**补充说明：**
+* 最后一个参数`TYPE`的取值包括：`int`或者`integer`、`double`或者`real`、`complex`、`variant`分别对应构造出的数组元素类型。
+* 默认的构造类型是浮点数。
+
+[block-ref]("syntax")
+* [link]("?.function.eye",`eye`)
+* [link]("?.function.ones",`ones`)
+* [link]("?.function.diag",`diag`)
+
+[anchor](".function.diag")
+`diag`
+  
+构造对角矩阵
+
+[block-ref]("syntax")
+```ewsl
+diag(V,K=0)     // If V is a vector and K is an integer, it returns a K-th diagonal(K=0)/super-diagonal(K>0)/sub-diagonal(K<0) matrix with diangonal elements V.
+diag(V,[M,N])   // Like below.
+diag(V,M,N)     // If V is a vector and both M and N are positive integers, it returns a [M,N]-sized matrix with pseudo-diagonal.
+diag(M,K=0)     // If M is a matrix (2d-array), it returns its K-th diagonal(K=0)/super-diagonal(K>0)/sub-diagonal(K<0) elements as a column-vector.
+```
+
+[block-ref]("example")
+```ewsl
+/* examples: interactive mode */
+println("ex1:", diag([1,2,3]));
+println("ex2:", diag([1,2,3],1));
+println("ex3:", diag([1,2,3],-1));
+
+a = [1,2,3;
+     3,4,5;
+     5,6,7];
+
+println(diag(a));
+println(diag(a,-1));
+
+
+/* output below: */
+ex1:
+1  0  0
+0  2  0
+0  0  3
+
+ex2:
+0  1  0  0
+0  0  2  0
+0  0  0  3
+0  0  0  0
+
+ex3:
+0  0  0  0
+1  0  0  0
+0  2  0  0
+0  0  3  0
+
+ex4:
+1
+4
+7
+
+ex5:
+3
+6
+```
+
+[block-ref]("reference")
+[link]("?.function.eye",`eye`)
+
+
+[anchor](".vectorization")
+## 向量化
+
+
+
+[anchor](".formal_operations")
+## 形式的操作
+
+`transpose`
+  
+转置
+
+
+
+`ctranspose`
+  
+共轭转置
+
+
+
+`flip`, `fliplr`, `flipud`
+  
+数组的翻转
+
+
+`rot90`
+  
+数组的旋转
+
+
+`cat`
+  
+数组的拼接
+
+[block-ref]("syntax")
+```ewsl
+cat(DIM, A, B)  // 在第DIM维度上进行矩阵拼接
+```
+
+
+[anchor](".others")
+`find`  
+
+
+搜索非零元素
+
+[block-ref]("syntax")
+```ewsl
+find((1:10)>5)  // Find all elements of 1:10 that is greater than 5, and it returns the indices of those elements.
+```
+* 搜索数组中的非零元素，返回它们的索引组成的数组。
+* 当输入数组是向量的时候，返回的索引数组保持向量所在的数组维度。
+* 如果没有找到任何非零元素，返回一个空数组。
+
+
+`sort`  
+
+
+排序
+
+[block-ref]("syntax")
+```ewsl
+sort(X)             // Take the first non-singleton dimension as DIM parameter, behave the same as sort(X,DIM)
+sort(X,DIM)         // Take the DIM dimension as the sorting dimension. If DIM==-1 then behave the same as sort(X).
+sort(X,DIM,MODE)    // MODE: "ascending" or "descending"
+```
+
+* `sort(X)`方式默认使用第一个非单元素维度（non-singleton dimension）作为排序维度进行排序，默认升序。
+* `sort(X,DIM)`指定`DIM`为排序维度，如果`DIM==-1`则采用`sort(X)`一致的行为，默认升序。
+* `sort(X,DIM,MODE)`基本同上，`MODE`参数用来选择序关系，`"ascending"`表示升序，`"descending"`表示降序。

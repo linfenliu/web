@@ -1,0 +1,4 @@
+#function(cfg)
+local t=table();
+t.title="长方体 Demo";
+return t;

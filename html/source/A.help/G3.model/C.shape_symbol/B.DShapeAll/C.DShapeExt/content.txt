@@ -1,0 +1,22 @@
+# 扩展几何元件
+扩展几何元件是 EastWave V7 中复杂几何元件的集合。包括各种旋转对称体、天线罩、阵列等。
+
+## 扩展几何元件集合
+* [link]("?help_model_shape_symbol_DShapeAll_DShapeExt_DShapeSpin", 实心旋转体)       
+  实心旋转体可用于生成基于外形线旋转一周制作的对称几何体。
+* [link]("?help_model_shape_symbol_DShapeAll_DShapeExt_DShapeSpin2", 空心旋转体)       
+  空心旋转体可用于生成基于闭合线（外形线以及内形线）旋转给定角度形成的几何体。
+* [link]("?help_model_shape_symbol_DShapeAll_DShapeExt_DShapeSweeped", 参数扫描体)       
+  参数扫描体可用于生成基于给定平面和变换矩阵参数制作的几何体。
+* [link]("?help_model_shape_symbol_DShapeAll_DShapeExt_DShapeColumn", 垂直拉伸体)       
+  垂直拉伸体支持对给定的平面进行垂直拉伸建模。可用于构造棱柱等几何体。
+* [link]("?help_model_shape_symbol_DShapeAll_DShapeExt_DShapeStl", 导入CAD模型)       
+  导入CAD模型支持从外部导入常见CAD格式模型。
+* [link]("?help_model_shape_symbol_DShapeAll_DShapeExt_DShapeForcedMesh", 强制网格面)       
+  强制网格可在所指定的关键网格位置强制生成网格体或网格面或网格线，并加密周围网格。
+* [link]("?help_model_shape_symbol_DShapeAll_DShapeExt_DShapeSurfaceStretch", 多层物体)       
+  多层物体支持对给定的表面按照特定方向生长多层材料的建模。
+* [link]("?help_model_shape_symbol_DShapeAll_DShapeExt_DShapeRadome", 天线罩)       
+  EastWave V7 根据常用天线罩形线预定义了内置天线罩模型，用户使用时只需输入模型所对应的外形线参数。
+* [link]("?help_model_shape_symbol_DShapeAll_DShapeExt_DArray", 阵列)       
+  阵列用于设计基于某种元件，按照指定的空间排布生成的阵列结构或阵列激励源。

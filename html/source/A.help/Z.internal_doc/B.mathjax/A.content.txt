@@ -1,0 +1,656 @@
+﻿[topic](param)      
+
+<center> # MathJax语法 </center>
+
+
+简介
+==================================
+
+　　MathJax是一个JavaScript引擎，用来显示网络上的数学公式。它支持大部分的主流的浏览器，使用MathJax显示数学公式是基于文本的，而非图片。这意味着公式和页面上的文字一样是可以被搜索的。 MathJax允许页面作者使用TeX、LaTeX符号和 MathML 或者 AsciiMath 去书写公式。 MathJax甚至可以将Tex格式转化为MathML格式，使其可以被原生支持MathML格式的浏览器更多的渲染。转化为MathML格式后你可以复制粘贴它们到其他程序中。
+
+基本语法
+==================================
+公式编辑
+----------------------------------
+
+* 正文(inline)中的公式用`$...$`定义。 
+>  例如：`$\sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t$`
+>  显示为$\sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t$
+  * 单独显示公式用 `$$...$$` 定义，此时公式居中并放大显示。
+>  `$$\sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t$$`显示为
+$$
+\sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t
+$$
+
+分组
+----------------------------------
+
+* 使用`{}`将具有相同等级的内容扩入其中，成组处理
+* 例子：`10^{10}`呈现为：$10^{10}$，而`10^10`呈现为：$10^10$
+
+公式中插入文字
+----------------------------------
+
+* 语法：`\text{}`
+* 例子：`\text{插入文字}`呈现为：$\text{插入文字}$
+
+空格
+-----------------------------------
+
+* LaTeX语法本身会忽略空格的存在
+* 小空格 : `a\ b` 呈现为 $a\ b$
+* 4格空格 : `a\quad b` 呈现为$a\quad b$
+* 6格空格：`a\qquad b` 呈现为$a\qquad b$
+
+分段和对齐
+-----------------------------------
+* 分段符号`\\`
+* 对齐符号`&`
+
+例如：
+```
+\begin{aligned}
+  f(x) &= (x+y)^2 \\
+       &= x^2+2xy + y^2 
+\end{aligned}
+```
+呈现为：
+$$
+\begin{aligned}
+  f(x) &= (x+y)^2 \\
+       &= x^2+2xy + y^2 
+\end{aligned}
+$$
+关于公式对齐的详细设置方法，请见后面的“方程组”这一节。
+
+注释
+-----------------------------------
+
+　　百分号`%`后的内容为注释内容。
+
+转义字符
+-----------------------------------
+
+　　这些字符是LATEX 的保留字符：
+`# $ % ^ & _ { } ~ \`
+
+
+前面加反斜线输出保留字符：
+`\#   \%   \_    \{    \}  \~   \&      \$`
+
+
+反斜线 \ 比较特殊: `$\backslash$`
+
+
+上下标
+===================================
+
+
+| 符号 | 命令 | 符号 | 命令 | 符号 | 命令 |
+| $x_i^2$ | x_i^2 | $x^{y^z}$ | x^{y^z}  | ${x^y}^z$ | {x^y}^z |
+| $\bar{a}$ | \bar{a} | $\hat{a}$ | \hat{a}  | $\tilde{a}$ | \tilde{a} |
+| $\dot{a}$ | \dot{a} | $\grave{a}$ | \grave{a}  | $\acute{a}$ | \acute{a} |
+| $\overline{\overline{a}}$ | \overline{\overline{a}} | $\overrightarrow{xy}$ | \overrightarrow{xy}  | $\overleftarrow{xy}$ | \overleftarrow{xy} |
+| $\widehat{xy}$ | \widehat{xy} | $\overline{xy}$ | \overline{xy}  | $\underline{xy}$ | \underline{xy} |
+
+补充：
+
+上括号：$\overbrace{1+2+\cdots+100}$，命令为`\overbrace{1+2+\cdots+100}`；
+
+$\begin{matrix} 5050 \\ \overbrace{ 1+2+\cdots+100 } \end{matrix}$，命令为`\begin{matrix} 5050 \\ \overbrace{ 1+2+\cdots+100 } \end{matrix}`。
+
+下括号：$\underbrace{a+b+\cdots+z}$，命令为`\underbrace{a+b+\cdots+z}`；
+
+$\begin{matrix} \underbrace{ a+b+\cdots+z } \\ 26 \end{matrix}$，命令为`\begin{matrix} \underbrace{ a+b+\cdots+z } \\ 26 \end{matrix}`。
+
+
+括号
+====================================
+常用括号
+------------------------------------
+() 表示为：$()$  
+[] 表示为：$[]$  
+\{ \} 表示为：$\{  \}$  
+||或\vert \vert表示为：$\vert \vert$
+
+\|\| 表示为：$\|\|$  
+\lceil  \rceil 表示为：$\lceil    \rceil$  
+\lfloor  \rfloor 表示为：$\lfloor  \rfloor$ 
+
+
+定界符
+------------------------------------
+　　嵌套多个式子时，外层括号不会自动变大，公式整体显得很不协调，可通过在括号外加一个`\left...\right`进行大小的控制。   
+
+例如：  
+
+$\text{未加定界符：}(\frac{x}{y})\\  \text{加定界符:}\left( \frac{x}{y} \right)$  
+加定界符的命令：`\left(\frac{x}{y}\right)`
+
+公式格式
+====================================
+字体
+------------------------------------
+
+* typewriter字体：` \mathtt{}`
+* blackboard bold字体：`\mathtt{}`
+* boldface字体：` \mathsf{}`
+* Roman字体：`\mathrm{}`
+* calligraphic字体：`\mathcal{}`
+* script字体：`\mathscr{}`
+* Fraktur字体：`\mathfrak{}`
+
+例如：
+```
+$$
+\begin{array}{l}                        %左对齐设置
+  "typewriter" font:: \mathtt{ABCDEF}  \\
+
+  "blackboard bold":: \mathbb{ABCDEF}  \\
+
+  boldface: \mathsf{ABCDEF}  \\
+
+  Roman font:\mathrm{ABCDEF} \\
+
+  "calligraphic" letters: \mathcal{ABCDEFGH}  \\
+
+  script letters:  \mathscr{ABCDEFGH}  \\
+
+  "Fraktur" (old German style) letters: \mathfrak{ABCDEFGH}  \\
+\end{array}
+$$
+```
+呈现为：
+$$
+\begin{array}{l}                        %左对齐设置
+"typewriter" font:: \mathtt{ABCDEF}  \\
+
+"blackboard bold":: \mathbb{ABCDEF}  \\
+
+boldface: \mathsf{ABCDEF}  \\
+
+Roman font:\mathrm{ABCDEF} \\
+
+"calligraphic" letters: \mathcal{ABCDEFGH}  \\
+
+script letters:  \mathscr{ABCDEFGH}  \\
+
+"Fraktur" (old German style) letters: \mathfrak{ABCDEFGH}  \\
+\end{array}
+$$
+
+尺寸
+--------------------------------------
+
+`\tiny{smallest}` ： $\tiny{smallest}$  
+`\scriptsize{very small}` ：$\scriptsize{very small}$  
+`\small{small}` ：   $\small{small}$  
+`\normalsize{normal}` ：  $\normalsize{normal}$  
+`\large{large}` ：   $\large{large}$  
+`\Large{Large}` ：   $\Large{Large}$  
+`\LARGE{LARGE}` ：  $\LARGE{LARGE}$  
+`\huge{huge}` ：  $\huge{huge}$  
+`\Huge{Huge}` ：    $\Huge{Huge}$  
+
+
+
+数学表达式
+======================================
+
+分式
+--------------------------------------
+
+* 基本语法：
+  * 方法1：`\frac ab`或`\frac{a}{b}`表示$\frac ab$ 
+  * 方法2： `{a+1\over b+1 }`表示${a+1\over b+1 }$
+
+向量
+--------------------------------------
+
+`\vec{A}`表示向量$\vec{A}$
+
+
+矩阵和行列式
+--------------------------------------
+
+* 基本语法：起始标记`\begin{matrix} ... \end{matrix}`。
+
+例如：
+```
+$$
+\begin{matrix}
+  1&0&0\\
+  0&1&0\\
+  &0&1\\
+\end{matrix}
+$$
+```
+呈现为：
+$$
+\begin{matrix}
+1&0&0\\
+0&1&0\\
+0&0&1\\
+\end{matrix}
+$$
+
+* 矩阵边框：
+  * `pmatrix` : 小括号边框
+  * `bmatrix` : 中括号边框
+  * `Bmatrix` : 大括号边框
+  * `vmatrix` : 单竖线边框
+  * `Vmatrix` : 多竖线边框
+
+    在起始、结束标记处用上面的词替换`matrix`。例子：
+```
+$$
+\begin{bmatrix}
+  {a_{11}}&{a_{12}}&{\cdots}&{a_{1n}}\\
+  {a_{21}}&{a_{22}}&{\cdots}&{a_{2n}}\\
+  {\vdots}&{\vdots}&{\ddots}&{\vdots}\\
+  {a_{m1}}&{a_{m2}}&{\cdots}&{a_{mn}}\\
+\end{bmatrix} \\
+$$
+```
+呈现为：
+$$
+\begin{bmatrix}
+{a_{11}}&{a_{12}}&{\cdots}&{a_{1n}}\\
+{a_{21}}&{a_{22}}&{\cdots}&{a_{2n}}\\
+{\vdots}&{\vdots}&{\ddots}&{\vdots}\\
+{a_{m1}}&{a_{m2}}&{\cdots}&{a_{mn}}\\
+\end{bmatrix} \\
+$$
+矩阵嵌套的例子：
+```
+$$
+A=\begin{pmatrix}
+    \begin{matrix}
+      1 & 0 \\
+      0 & 1
+    \end{matrix} & \text{\Large{0}} \\
+    \Large{0} & \begin{matrix}
+      1 & 0 \\
+      0 & 1
+    \end{matrix}
+  \end{pmatrix}
+$$
+```
+呈现为：
+$$
+A=\begin{pmatrix}
+\begin{matrix}
+1 & 0 \\
+0 & 1
+\end{matrix} & \Large{0} \\
+\Large{0} & \begin{matrix}
+1 & 0 \\
+0 & 1
+\end{matrix}
+\end{pmatrix}
+$$
+
+* 阵列
+  * 需要array环境：起始、结束处以`array`声明
+  * 对齐方式：在`array`后以`{}`逐行统一声明 
+  * 左对齐：`l`；居中：`c`；右对齐：`r`
+  * 竖直线：在声明对齐方式时，插入|建立竖直线
+  * 插入水平线：`\hline`
+
+例如：
+```
+$$
+\left(\begin{array}{ccc|c}
+  1 & 1 & 1 & 1 \\
+  \hline
+  1 & 1 & 1 & 1 \\
+  1 & 1 & 1 & 1  
+\end{array}\right)
+\\
+$$
+```
+呈现为：
+$$
+\left(\begin{array}{ccc|c}
+1 & 1 & 1 & 1 \\
+\hline
+1 & 1 & 1 & 1 \\
+1 & 1 & 1 & 1  
+\end{array}\right)
+\\
+$$
+
+方程组
+-------------------------------------
+
+* 基本语法：
+  * 方法1：采用 `\begin{cases}…\end{cases}`
+  * 方法2：采用 `\begin{array}…\end{array}` 和 `\left\{…\right.`
+  * 如果想把等号对齐，采用 `\begin{aligned}...\end{aligned}` 和 `\left\{…\right.`
+  * 公式编号：采用`\tag`。仅适用于方法1
+
+例1（方法1）：
+```
+$$
+\begin{cases}
+  a_1x+b_1y+c_1z=d_1\\
+  a_2x+b_2y+c_2z=d_2\\
+  a_3x+b_3y+c_3z=d_3\\
+\tag{1.1}\end{cases} 
+$$
+```
+呈现为：
+$$
+\begin{cases}
+a_1x+b_1y+c_1z=d_1\\
+a_2x+b_2y+c_2z=d_2\\
+a_3x+b_3y+c_3z=d_3\\
+\tag{1.1}\end{cases} 
+$$
+
+例2（方法2）：
+
+```
+\left\{
+\begin{array}{l}
+  a_1x+b_1y+c_1z=d_1 \\
+  a_2x+b_2y+c_2z=d_2 \\
+  a_3x+b_3y+c_3z=d_3
+\end{array}
+\right.
+```
+$$
+\left\{
+\begin{array}{l}
+  a_1x+b_1y+c_1z=d_1 \\
+  a_2x+b_2y+c_2z=d_2 \\
+  a_3x+b_3y+c_3z=d_3
+\end{array}
+\right.
+$$
+
+例3（等号自动对齐）：
+```
+$$
+\left\{
+\begin{aligned} 
+  a_1x+b_1y+c_1z &= d_1+e_1 \\ 
+  a_2x+b_2y &= d_2          \\ 
+  a_3x+b_3y+c_3z &= d_3 
+\end{aligned} 
+\right. 
+$$
+```
+呈现为：
+$$
+\left\{
+\begin{aligned} 
+  a_1x+b_1y+c_1z &= d_1+e_1 \\ 
+  a_2x+b_2y &= d_2          \\ 
+  a_3x+b_3y+c_3z &= d_3 
+\end{aligned} 
+\right. 
+$$
+
+例4（等号对齐，且等号两边式子左对齐）：
+```
+$$
+\left\{
+\begin{array}{ll}
+  a_1x+b_1y+c_1z &=d_1+e_1 \\ 
+  a_2x+b_2y &=d_2          \\ 
+  a_3x+b_3y+c_3z &=d_3 
+\end{array} 
+\right.
+$$
+```
+呈现为：
+$$
+\left\{
+\begin{array}{ll}
+a_1x+b_1y+c_1z &=d_1+e_1 \\ 
+a_2x+b_2y &=d_2 \\ 
+a_3x+b_3y+c_3z &=d_3 
+\end{array} 
+\right.
+$$
+
+分段函数
+------------------------------------
+
+* 基本语法：
+  * 方法1：采用`\begin{cases}…\end{cases}`，用`\\`来换行，用`&`来对齐。
+  * 方法2：采用采用 `\begin{array}…\end{array}` ，`\right.`表示省略右括号，`\left.`表示省略左括号
+  * 扩大行间距：可以用 `\\ [2ex]` 代替 `\\`。注：`ex`是指字母`x`的高度，`\\[2ex]`就表示两倍的字母`x`的高度。
+
+例1：
+```
+$$f(n) =
+\begin{cases}
+  n/2,  & \text{if $n$ is even} \\
+  3n+1, & \text{if $n$ is odd}
+\end{cases}$$
+```
+呈现为：
+$$f(n) =
+\begin{cases}
+n/2,  & \text{if $n$ is even} \\
+3n+1, & \text{if $n$ is odd}
+\end{cases}$$
+
+例2：
+```
+$$
+\left.
+\begin{array}{l}
+  \text{if $n$ is even:}&n/2\\
+  \text{if $n$ is odd:}&3n+1
+\end{array}
+\right\}
+=f(n)
+$$
+```
+呈现为：
+$$
+\left.
+\begin{array}{l}
+\text{if $n$ is even:}&n/2\\
+\text{if $n$ is odd:}&3n+1
+\end{array}
+\right\}
+=f(n)
+$$
+
+例3（扩大行间距）：
+```
+$$
+f(n) =
+\begin{cases}
+  \frac{n}{2},  & \text{if $n$ is even} \\[2ex]
+  3n+1, & \text{if $n$ is odd}
+\end{cases}
+$$
+```
+呈现为：
+$$
+f(n) =
+\begin{cases}
+\frac{n}{2},  & \text{if $n$ is even} \\[2ex]
+3n+1, & \text{if $n$ is odd}
+\end{cases}
+$$
+
+
+排列组合式
+----------------------------------------
+
+　　组合数：$n\choose m$或者$\binom{n}{m}$或者$C_n^m$
+
+
+数学运算
+=======================================
+
+基本数学运算符
+---------------------------------------
+
+| 符号 | 命令 | 符号 | 命令 | 符号 | 命令 |
+| $+$ | + | $-$ | - | $/$ | / |
+| $\div$ | \div | $\cdot$ | \cdot | $\times$ | \time |
+| $\ast$ | `*`或\ast | $\pm$ | \pm | $\mp$ | \mp |
+| $=$ | = | $\neq$ | \neq | $\approx$ | \approx |
+| $\leq$ | \leq | $\geq$ | \geq | $\cong$ | \cong |
+| $\sim$ | \sim | $\ll$ | \ll | $\gg$ | \gg |
+| $\leftarrow$ | \leftarrow | $\Leftarrow$ | \Leftarrow | $\rightarrow$ | \rightarrow |
+| $\Rightarrow$ | \Rightarrow | $\longleftarrow$ | \longleftarrow | $\Longleftarrow$ | \Longleftarrow |
+| $\longrightarrow$ | \longrightarrow | $\Longrightarrow$ | \Longrightarrow | $\leftrightarrow$ | \leftrightarrow |
+| $\longleftrightarrow$ | \longleftrightarrow | $\Leftrightarrow$ | \Leftrightarrow | $\Longleftrightarrow$ | \Longleftrightarrow |
+
+
+常用数学运算符
+-------------------------------------
+
+#### 求和
+　　符号：$\sum$，命令为：`\sum`；
+
+符号：$\sum_{i=1}^n$，命令为：`\sum_{i=1}^n`
+
+#### 求积
+　　符号：$\prod$，命令为：`\prod`；
+
+符号：$\prod_{i=1}^N$，命令为：`\prod_{i=1}^N`
+
+#### 求极限
+　　符号：$\lim_{x\to \infty}$ ，命令为：`\lim_{x\to \infty}`
+
+#### 导数和微分
+　　符号：$f'(x)$，命令为：`f'(x)`或`f^\prime (x)`；  
+
+　　符号：$f''(x)$，命令为：`f''(x)`；  
+
+　　符号：$\dot{f}(x)$，命令为：`\dot{f}(x)`；  
+
+　　符号：$\ddot{f}(x)$，命令为：`\ddot{f}(x)`；  
+
+　　符号：$\frac{\partial{y}}{\partial{x}}$，命令为：`\frac{\partial{y}}{\partial{x}}`
+
+#### 积分
+　　单积分符号：$\int_0^\infty{f(x)dx}$，命令为`\int_0^\infty{f(x)dx}`；  
+
+　　双重积分符号：$\iint_{a}^{b}{f(x)} \, dx\,dy$，命令为`\iint_{a}^{b}{f(x)} \, dx\,dy`；  
+
+　　三重积分符号：$\iiint_{a}^{b} {f(x)}\, dx\,dy\,dz$，命令为`\iiint_{a}^{b} {f(x)}\, dx\,dy\,dz`；  
+
+　　闭合曲线、曲面积分符号：$\oint_{C} x^3\, dx + 4y^2\, dy$，命令为`\oint_{C} x^3\, dx + 4y^2\, dy`
+
+
+特殊数学运算符
+-----------------------------------------
+
+|符号 |命令 |符号 |命令 |
+|$\infty$|\infty |$\partial$ |\partial|
+|$\cup$|\cup |$\cap$ |\cap|
+|$\subset$|\subset |$\supset$ |\subset|
+|$\subseteq$|\subseteq |$\supseteq$ |\subseteq|
+|$\in$|\in |$\notin$ |\notin|
+|$\varnothing$|\varnothing |$\forall$ |\forall|
+|$\exists$|\exists |$\supset$ |\subset|
+|$\Delta$|\Delta |$\nabla$ |\nabla|
+
+常用数学函数
+------------------------------------------
+
+|函数|符号 |命令 |
+|根号|$\sqrt{x},\sqrt[a]{x}$|\sqrt{x}，\sqrt[a]{x}|
+| 对数 | $\log_ax,\ln x,\lg x$ | \log_ax，\ln x ，\lg x|
+| e指数函数 | $\exp(x)$ | \exp(x) |
+| 正弦函数 | $\sin x$ | \sin x |
+| 余弦函数 | $\cos 30^\circ$ | \cos 30^\circ |
+| 正切函数 |$\tan x$  | \tan x |
+| 余切函数 |$\cot x$  | \cot x |
+| 正割函数 |$\sec x$  | \sec x |
+| 余割函数 |$\csc x$  | \csc x |
+| 双曲正弦函数 |$\sinh x$  | \sinh x |
+| 双曲余弦函数 |$\cosh x$  | \cosh x |
+| 双曲正切函数 |$\tanh x$  | \tanh x |
+| 双曲余切函数 |$\coth x$  | \coth x |
+| 反正弦函数 |$\arcsin x$  | \arcsin x |
+| 反余弦函数 |$\arccos x$  | \arccos x |
+| 反正切函数 |$\arctan x$  | \arctan x |
+| 取复数辐角 |$\arg x$  | \arg x |
+| 求方阵的行列式 |$\det A$  | \det A |
+| 求最小值 |$\min A$  | \min A |
+| 求最大值 |$\max A$  | \max A |
+| 弧度 |$\deg$  | \deg |
+| 角度 |$\circ$  | \circ |
+
+希腊字母
+=========================================
+
+|字母 |命令 |字母 |命令 |
+|$\alpha$ |\aplha |$\beta$  |\beta |
+|$\gamma$   |\gamma   |$\delta$  |\delta   |
+|$\epsilon$|\epsilon |$\zeta$|\zeta |
+|$\eta$|\eta |$\theta$|\theta |
+|$\phi$|\phi |$\psi$|\psi |
+|$\omega$|\omega |$\lambda$|\lambda |
+|$\mu$|\mu |$\nu$|\nu |
+|$\xi$|\xi |$\omicron$|\omicron |
+|$\pi$|\pi |$\rho$|\rho |
+|$\sigma$|\sigma |$\tau$|\tau |
+|$\upsilon$|\upsilon |$\iota$|\iota |
+|$\chi$|\chi |$\kappa$|\kappa |
+
+* 若需要大写希腊字母，将命令首字母大写即可；
+* 若需要斜体希腊字母，将命令前加上`var`前缀即可。
+
+
+其它
+========================================
+省略号
+----------------------------------------
+
+* 横省略号 : `\cdots`
+* 竖省略号 : `\vdots`
+* 斜省略号 : `\ddots`
+* 与文本底线对齐的省略号：`\ldots`
+
+例如：
+
+`a\ldots b`:    $a\ldots b$
+
+    `a\cdots b`:    $a\cdots b$
+
+```
+\begin{pmatrix}
+  a      \\
+  \vdots \\
+  b
+\end{pmatrix}
+```
+呈现为：
+$$
+\begin{pmatrix}
+a      \\
+\vdots \\
+b
+\end{pmatrix}
+$$
+```
+\begin{pmatrix}
+  a &      &      \\
+    &\ddots& \\
+    &     &b
+\end{pmatrix}
+```
+呈现为：
+$$
+\begin{pmatrix}
+  a &      &      \\
+    &\ddots& \\
+    &     &b
+\end{pmatrix}
+$$
+
+
+
+

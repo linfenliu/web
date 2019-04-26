@@ -1,0 +1,23 @@
+﻿# 网格视图 工具条
+
+网格视图工具条对应[link]("?", "网格视图菜单")，主要用于控制网格显示相关内容。
+
+
+[image]("image/UI/bar/mesh.png", "网格视图工具栏")
+
+
+[block-ref](mesh_bar_table)
+
+
+
+
+
+```block:mesh_bar_table`endtag1
+|(L) 图标 |(L) 功能说明 |
+|(L) ``<image src="123.png" />`` |(L) 显示物体实体表面 |
+|(L) ``<image src="123.png" />`` |(L) 显示物体线框结构 |
+|(L) ``<image src="123.png" />`` |(L) 显示物体网格情况 |
+|(L) ``<image src="123.png" />`` |(L) 显示XY平面网格 |
+|(L) ``<image src="123.png" />`` |(L) 显示ZX平面网格 |
+|(L) ``<image src="123.png" />`` |(L) 显示YZ平面网格 |
+```endtag1

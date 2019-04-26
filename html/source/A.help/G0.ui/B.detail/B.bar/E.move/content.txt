@@ -1,0 +1,21 @@
+﻿# 移动 工具条
+
+移动工具条对应[link]("?", "移动菜单")，主要包含了在视角上对物体的平移操作。
+
+
+[image]("image/UI/bar/move.png", "移动工具条")
+
+
+[block-ref](move_bar_table)
+
+
+
+```block:move_bar_table`endtag1
+|(L) 图标 |(L) 功能说明 |
+|(L) ``<image src="123.png" />`` |(L) 左移 |
+|(L) ``<image src="123.png" />`` |(L) 右移 |
+|(L) ``<image src="123.png" />`` |(L) 下移 |
+|(L) ``<image src="123.png" />`` |(L) 上移 |
+|(L) ``<image src="123.png" />`` |(L) 后移 |
+|(L) ``<image src="123.png" />`` |(L) 前移 |
+```endtag1

@@ -1,0 +1,34 @@
+# 日志库
+
+脚本语言对日志功能的支持。使用`logger`可以查询日志库的函数，可以阅读[link]("?help_script_Specification_Module_Logger",日志库函数表)。  
+
+
+## 运行时环境中的日志
+
+在一个独立的脚本运行时环境中，都内置了一个小型日志系统。用户可以设定当前运行时环境的日志输出目标和设定输出信息级别标识。
+
+
+## 打印和输出日志
+
+* 使用`logger.log_message`输出普通级别的日志消息
+* 使用`logger.log_warning`输出警告级别的日志消息
+* 使用`logger.log_error`输出错误级别的日志消息
+* 使用`logger.log_fatal`输出致命错误级别的日志消息
+* 使用`logger.print`和`logger.println`打印无标识的日志消息
+
+## 设定日志输出目标
+
+* 使用`logger.target`函数设定输出目标
+```ewsl
+logger.target()             // Just return the current target.
+logger.target("null")       // Return the current target and set the logger target to a null object. (Just discard all messages.)
+logger.target("console")    // Return the current target and set the logger target to the current console output. (io.stdout for common and warning messages and io.stderr for error message.)
+logger.target("file", fn, AppendModeFlag = true)   // Return the current target and set the logger target to an user file named fn. If AppendModeFlag==true the file target will use AppendMode (default: true).
+```
+
+## 日志的缓存
+脚本程序中输出的消息不一定是立即打印出来，有可能预先被缓存起来然后再输出。可以通过设置参数或者强制刷新来控制缓存行为。
+* 使用`logger.cache`获取和设定缓存模式
+* 使用`logger.flush`将缓存的消息立即输出
+
+

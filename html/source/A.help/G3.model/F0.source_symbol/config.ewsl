@@ -1,0 +1,4 @@
+#function(cfg)
+local t = table();
+t.title = "激励源元件";
+return t;

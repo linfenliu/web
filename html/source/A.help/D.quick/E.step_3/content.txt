@@ -1,0 +1,4 @@
+# 步骤 3:设置网格
+
+> 若对网格信息不了解，请参看[link]("?help_evaluation_solver_settings_mesh", "网格设置")。      
+

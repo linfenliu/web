@@ -1,0 +1,17 @@
+# 材料元件
+
+EastWave 的材料元件采用具有严格意义的物理模型，可支持几乎所有的电磁/光电材料，包括电介质材料、金属材料、各向异性材料、激光材料、磁性材料等。
+如果面对的是一种全新的材料，只要有实测的宽频色散曲线，EastWave 就可利用内部引擎进行[link]("?help_model_material_symbol_material_fitting", "色散自动拟合")，进行稳定的 FDTD 求解。
+
+## 如何创建材料元件
+* [link]("?help_model_material_symbol_DMaterialCreate.create-by-GUI", "界面创建材料元件（推荐）")      
+* [link]("?help_model_material_symbol_DMaterialCreate.create-by-EWSL", "脚本创建材料元件（高级建模）")
+
+## 如何从材料库导入材料元件至工程
+打开材料库界面后，选中目标材料元件，点击**导入至当前工程**即可。具体操作，请参看[link]("?help_model_material_symbol_material_depot","材料库导入材料元件")，
+
+## 如何拟合生成材料元件
+材料拟合工具集成于材料库中，需要通过材料库的**拟合生成功能**才可以打开拟合工具。拟合生成材料元件的具体步骤，请参看[link]("?help_model_material_symbol_material_fitting", "拟合生成材料元件")。
+
+## 所有材料元件
+[block-ref](material-types)

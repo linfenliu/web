@@ -1,0 +1,332 @@
+# 常用函数
+
+```block:syntax
+  
+**语法：**  
+```
+
+```block:example
+  
+**例子：**  
+```
+
+```block:reference
+  
+**参考：**  
+```
+
+
+[anchor](".function.print")
+`print`
+  
+打印变量的值
+
+[block-ref]("syntax")
+```
+print(arg1,...)
+```
+
+[block-ref]("example")
+```ewsl
+/* example 1: interactive mode */
+>> a = 1;
+>> b = 2;
+>> print("a = ", a, ", b = ", b, "\n")
+a = 1, b = 2
+```
+
+[block-ref]("reference")
+* [link]("?.function.println",`println`)
+* [link]("?.function.puts",`puts`)
+
+[anchor](".function.println")
+`println`  
+  
+打印变量的值，并且换行
+
+[block-ref]("syntax")
+```
+println(arg1,...)
+```
+
+[block-ref]("example")
+```ewsl
+/* example 1 */
+a = ["abc", "def", "ghc"]
+for_each(_,v in a)
+{
+    println(v);
+}
+
+/* output below: */
+abc
+def
+ghc
+```
+
+[block-ref]("reference")
+* [link]("?.function.print",`print`)
+* [link]("?.function.puts",`puts`)
+
+
+[anchor](".function.puts")
+`puts`  
+  
+打印变量的值
+
+[block-ref]("syntax")
+```
+puts(arg1,...)
+```
+
+[block-ref]("example")
+```ewsl
+/* example 1: interactive mode */
+>> a = 1;
+>> b = 2;
+>> puts("a = ", a, ", b = ", b, "\n")
+a = 1, b = 2
+```
+
+[block-ref]("reference")
+* [link]("?.function.print",`print`)
+* [link]("?.function.puts",`puts`)
+
+
+[anchor](".function.pcall")
+`pcall`  
+  
+保护性调用
+
+[block-ref]("syntax")
+```ewsl
+succ, ret = pcall(fn, arg1, ...)
+```
+
+调用`fn`，并且将`arg1`等后面的参数传给`fn`，如果运行成功，则返回值`succ`为`true`，`ret`为返回结果，否则为`false`，`ret`为错误信息。
+
+[block-ref]("example")
+```ewsl
+/* example 1 */
+function fn(x)
+{
+    if(x>=0)
+    {
+        return sqrt(x);
+    }
+    else
+    {
+        throw "negative_is_not_allowed";
+    }
+}; // use ';' to screen output 'function fn'
+
+pcall(fn, 1)   // unuse ';' to show the result of pcall
+pcall(fn, -1)  // like above
+
+/* output below: */
+results: true,1
+results: false,negative_is_not_allowed
+```
+
+
+[anchor](".function.map")
+`map`  
+  
+映射（高阶函数）
+
+[block-ref]("syntax")
+```ewsl
+ret = map(f,arr)  // directly call, arr can be a variant table.
+g   = map(f)      // lifting f to g. The result of calling g(arr) is the same with that of calling map(f, arr).
+```
+* 用法1：直接调用。将函数`f`映射到数组`arr`的每个元素上，计算的结果按照原先的次序重组为新的数组`ret`。
+* 用法2：函数提升。将作用在元素上的函数`f`提升为作用在数组上的函数`g`，调用`g(arr)`与`map(f,arr)`相同。
+* 说明：对变量表有类似作用。
+
+
+[block-ref]("example")
+```ewsl
+/* example 1 */
+add1 = function(x) { return x + 1; }
+a = 1:10;
+b = map(add1, a);
+map(println, b);
+/* output below: */
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+
+/* example 2 */
+print_elm = function(e) { print(e," "); }
+print_arr = function(arr) { map(print_elm)(arr); println(); }
+print_arr(1:10);
+
+/* output below: */
+1 2 3 4 5 6 7 8 9 10 
+
+```
+
+[block-ref]("reference")
+* [link](?.function.mapkv,`mapkv`)
+* [link](?.function.foldl,`foldl`)
+* [link](?.function.foldr,`foldr`)
+* [link](?.function.filter,`filter`)
+
+
+[anchor](".function.mapkv")
+`mapkv`  
+  
+带键值映射（高阶函数）
+
+[block-ref]("syntax")
+```ewsl
+mapkv(f,arr) // Directly call in which arr can be a variant table.
+mapkv(f)     // Lifting f to g. The result of calling g(arr) is the same with that of calling mapkv(f, arr).
+```
+
+* 用法1：直接调用。将二元函数`f`映射到数组`arr`的每对键值和值上（`f`是二元函数，第一个参数是数组的索引或变量表的键值名称，第二个参数是对应索引或者键值的元素值），计算的结果按照原先的次序重组为新的数组`ret`。
+* 用法2：函数提升。将作用在元素上的函数`f`提升为作用在数组上的函数`g`，调用`g(arr)`与`map(f,arr)`相同。
+* 说明：对变量表有类似作用。
+
+[anchor]("example")
+```ewsl
+/* example 1 */
+
+a = table{
+    x:1;
+    y:2;
+    z:3
+};
+
+print_kv = function(k,v)
+{
+    print(k, " => ", v, "\n");
+};
+
+mapkv(print_kv, a);
+
+/* output below: */
+x => 1
+y => 2
+z => 3
+
+```
+
+[block-ref]("reference")
+* [link](?.function.map,`map`)
+* [link](?.function.foldl,`foldl`)
+* [link](?.function.foldr,`foldr`)
+* [link](?.function.filter,`filter`)
+
+[anchor](".function.foldl")
+`foldl`  
+  
+左折叠  
+
+[block-ref]("syntax")
+```ewsl
+foldl(f,s,arr)
+foldl(f,s)
+```
+
+* 用法1：给一个二元函数`f`和一个初始值`s`，`arr`是个数组或者变量表，每次从`arr`中取一个元素`x`，计算`s=f(s,x)`，如此重复迭代直至遍历完`arr`的全部元素。
+* 用法2：给一个二元函数`f`和一个初始值`s`，返回一个函数`g`，`g(arr)`的效果与`foldl(f,s,arr)`相同。
+
+[block-ref]("example")
+```ewsl
+/* example 1 */
+s = foldl(math.add, 0, 1:10); // sum of 1 to 10
+p = foldl(math.mul, 1, 1:10); // product of 1 to 10
+println(s);
+println(p);
+
+/* output below: */
+55
+3628800
+```
+
+[block-ref]("reference")
+* [link](?.function.map,`map`)
+* [link](?.function.foldr,`foldr`)
+* [link](?.function.filter,`filter`)
+
+[anchor](".function.foldr")
+`foldr`  
+  
+右折叠
+
+
+[block-ref]("syntax")
+```ewsl
+foldr(f,s,arr)
+foldr(f,s)
+```
+
+* 用法1：给一个二元函数`f`和一个初始值`s`，`arr`是个数组或者变量表，每次从`arr`中取一个元素`x`，计算`s=f(x,s)`，如此重复迭代直至遍历完`arr`的全部元素。
+* 用法2：给一个二元函数`f`和一个初始值`s`，返回一个 函数`g`，`g(arr)`的效果与`foldl(f,s,arr)`相同。
+* 注意：`foldl`和`foldr`对第一个参数（函数）的区别在于结合方向，`foldl`是“左结合”，而`foldr`是“右结合”。
+
+[block-ref]("example")
+```ewsl
+/* example 1 */
+a = [1,3,5,7,9,7,5,3,1];
+s = foldr(function(x,y){return ?(x<y,y,x);}, a[0], a);
+println(s);
+/* output below: */
+9
+```
+
+[block-ref]("reference")
+* [link](?.function.map,`map`)
+* [link](?.function.foldr,`foldl`)
+* [link](?.function.filter,`filter`)
+
+[anchor](".function.filter")
+`filter`  
+  
+过滤
+
+[block-ref]("syntax")
+```ewsl
+filter(pred, arr)
+filter(pred)
+```
+
+* 用法1：给一个一元谓词函数（返回bool值的函数被称为**谓词**），和一个数组（或变量表），遍历其中所有元素，将元素传给谓词，如果返回为真加到结果数组中，返回的结果是所有满足谓词条件的元素集合。
+* 用法2：`filter(pred)(x)`和`filter(pred,x)`是等价的。
+
+[block-ref]("example")
+```ewsl
+/* example 1 */
+local a = filter(function(x){return x>=0;}, (-10):10);
+for_each(v in a)
+{
+    print(v, " ");
+}
+println();
+
+/* output below: */
+0 1 2 3 4 5 6 7 8 9 10 
+```
+
+
+[anchor](".function.compose")
+`compose`  
+
+函数的复合（高阶函数）
+
+[block-ref]("syntax")
+```ewsl
+compose(f, g)
+```
+
+* 使用函数的复合可以简单的将两个函数连接成一个新的函数，而新的函数相当于原来两个函数的连续应用
+
+

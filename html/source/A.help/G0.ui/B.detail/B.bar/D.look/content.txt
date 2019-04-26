@@ -1,0 +1,22 @@
+﻿# 观察面 工具条
+
+观察面工具条对应[link]("?", "观察面菜单")，主要用于快速调整模型的观察面。
+
+
+[image]("image/UI/bar/look.png", "观察面工具")
+
+
+[block-ref](look_bar_table)
+
+
+
+```block:look_bar_table`endtag1
+|(L) 图标 |(L) 功能说明 |
+|(L) ``<image src="123.png" />`` |(L) XOY+ |
+|(L) ``<image src="123.png" />`` |(L) XOZ+ |
+|(L) ``<image src="123.png" />`` |(L) YOZ+ |
+|(L) ``<image src="123.png" />`` |(L) XOY- |
+|(L) ``<image src="123.png" />`` |(L) XOZ- |
+|(L) ``<image src="123.png" />`` |(L) YOZ- |
+|(L) ``<image src="123.png" />`` |(L) 3D |
+```endtag1

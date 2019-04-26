@@ -1,0 +1,29 @@
+球形鼻锥（Spherrically-blunted Cone）天线罩
+=============  
+### 球形鼻锥天线罩横截面示意图
+[image]("image/DShape/DRadomeSphCone_sample.png","",".s_exampic")
+
+### 球形鼻锥天线罩参数设置对话框
+[image]("image/DShape/DRadomeSphCone.png","",".s_parawindow")
+   
+### 球形鼻锥天线罩参数含义
+[block-ref](sphcone-table)
+
+### 如何创建球形鼻锥天线罩
+* [link](?help_model_shape_symbol_DShapeCreate.create-by-GUI, "界面创建球形鼻锥天线罩")
+* [link](?help_model_Advanced_ewsl_model,"脚本创建球形鼻锥天线罩")
+
+```block:sphcone-table
+||(,".paratab-st")
+| 参数名称 | 说明 | 备注 |
+| 厚度（T） | 指定球形鼻锥天线罩的厚度 | -  |
+| 半径（R） | 指定球形鼻锥天线罩头部球体的半径 | - | 
+| 半锥角（θ） | 指定球形鼻锥天线罩的半锥角 | 单位为角度 |
+| 高度（H） | 指定球形鼻锥天线罩顶点到底面的高度 | - |
+| 平移距离（D） | 指定球形鼻锥天线罩沿轴向平移的距离 | 轴向即天线罩头部的朝向 |
+| 边数 | 指定球形鼻锥天线罩的底面切割份数 | - |
+```
+
+
+
+

@@ -1,0 +1,207 @@
+# 如何使用脚本建模
+
+## 操作步骤
+[anchor](.step1)
+### 1.新建脚本文件
+任意工作目录下新建文本文档，并将文本文档重命名为`.ewp2`格式。
+
+[anchor](.step2)
+### 2.初始化模型文档
+> EastWave V7 模型文档定义了**计算模式**、**变量表**、**顶层模块**、**基础参数**、**调度器**、**网格属性**。      
+  用户使用脚本建模，实际上就是在**顶层模块**中添加新的几何元件。      
+
+打开并编辑脚本文件，添加以下代码初始化模型文档：
+```ewsl
+td.beg("doc","DDocument");
+	//定义模型文档
+	td.beg("default","DTemplateBasic");
+		td.set("workmode","workmode1");		//工作模式
+		td.set("variable","vartable");		//变量表
+		td.set("topgroup1","topgroup1");	//顶层模块
+		td.set("parameter","param");		//基础参数
+		td.set("dispatcher1","");		//调度器
+		td.set("dispatcher2","");
+		td.set("meshsetting","meshsetting");	//网格属性
+	td.end();
+	
+	//定义工作模式
+	td.beg("workmode1","DWorkmodeCustom");
+		td.set("unit","");
+	td.end();
+	
+	//定义变量表
+	td.beg("vartable","DVariable");
+		td.set("variables",[]);
+	td.end();
+	
+	//定义顶层模块
+	td.beg("topgroup1","DSymbolGrp");
+		td.set("unit","");
+		td.set("meshinfo","");
+		td.set("material","");
+		td.set("n_dp_level",0x0);
+		td.set("transforms",[]);
+		td.set("children",["cube"]);		//添加长方体几何元件到顶层模块
+		td.set("reference","");
+	td.end();
+	
+	//定义长方体几何元件
+	td.beg("cube","DShapeCube");
+		td.set("unit","");
+		td.set("opt_type#Cube#Shape",0x0);
+		td.set("x3e_center.x#Cube#Shape","0.0");
+		td.set("x3e_center.y#Cube#Shape","0.0");
+		td.set("x3e_center.z#Cube#Shape","0.0");
+		td.set("x3e_width.x#Cube#Shape","100.0");
+		td.set("x3e_width.y#Cube#Shape","100.0");
+		td.set("x3e_width.z#Cube#Shape","100.0");
+		td.set("u3e_corner_1.u#Cube#Shape","0.0");
+		td.set("u3e_corner_1.v#Cube#Shape","0.0");
+		td.set("u3e_corner_1.n#Cube#Shape","0.0");
+		td.set("u3e_corner_2.u#Cube#Shape","10.0");
+		td.set("u3e_corner_2.v#Cube#Shape","10.0");
+		td.set("u3e_corner_2.n#Cube#Shape","10.0");
+		td.set("mvm_arrayvec3#Cube#Shape",[["1.0","0.0","0.0",20],["0.0","1.0","0.0",20],["0.0","0.0","1.0",20]]);
+	td.end();
+
+	//定义基础参数
+	td.beg("param","DParameter");
+		td.set("unit","unit");
+		td.set("bgmat","air");
+		td.set("fbox.lo.x","-300");
+		td.set("fbox.lo.y","-300");
+		td.set("fbox.lo.z","-300");
+		td.set("fbox.hi.x","300");
+		td.set("fbox.hi.y","300");
+		td.set("fbox.hi.z","300");
+		td.set("border.lo.x",0x0);
+		td.set("border.lo.y",0x0);
+		td.set("border.lo.z",0x0);
+		td.set("border.hi.x",0x0);
+		td.set("border.hi.y",0x0);
+		td.set("border.hi.z",0x0);
+		td.set("time.step_max","1000");
+		td.set("time.time_max","4000");
+		td.set("time.dt_ratio","1.6/2.25");
+		td.set("time.dt_reference","1.0");
+		td.set("time.policy",0xFFFFFFFFFFFFFFFF);
+		td.set("pml.size","12");
+		td.set("pml.type",0x0);
+		td.set("freq.min","1.0");
+		td.set("freq.max","2.0");
+		td.set("flags",0x0);
+	td.end();
+	
+	//定义单位
+	td.beg("unit","DUnit");
+		td.set("ul.type",0x0);
+		td.set("ul.expr","1.0e-3");
+		td.set("ut.type",0x0);
+		td.set("ut.expr","1.0e-9");
+		td.set("uf.type",0x0);
+		td.set("uf.expr","1.0e9");
+		td.set("flags",0x0);
+	td.end();
+
+	//定义普通材料
+	td.beg("air","DMaterialSimple");
+		td.set("unit","");
+		td.set("material.color",0xFFE09C8B);
+		td.set("material.extra",0x0);
+		td.set("eps","1");
+		td.set("sge","0");
+		td.set("xmu","1");
+		td.set("sgm","0");
+	td.end();
+
+	//定义网格属性
+	td.beg("meshsetting","DMeshsetting");
+		td.set("meshinfo.basic.flags",0x0);
+		td.set("meshinfo.basic.delta.x",10);
+		td.set("meshinfo.basic.delta.y",10);
+		td.set("meshinfo.basic.delta.z",10);
+		td.set("meshinfo.basic.extend.x",0);
+		td.set("meshinfo.basic.extend.y",0);
+		td.set("meshinfo.basic.extend.z",0);
+		td.set("meshinfo.refine.flags",0x27);
+		td.set("meshinfo.refine.edge_factor",1);
+		td.set("meshinfo.refine.vol_factor",1);
+		td.set("meshinfo.snapping.flags",0x1);
+		td.set("meshinfo.config.flags",0x400);
+		td.set("meshinfo.config.edge_fraction",3);
+		td.set("meshinfo.config.vol_smooth_ratio",1.1);
+		td.set("meshinfo.config.edge_additional_fine_cells",0x3);
+		td.set("meshinfo.config.vol_additional_fine_cells",0x3);
+		td.set("meshinfo.config.weight_near.x",1);
+		td.set("meshinfo.config.weight_near.y",1);
+		td.set("meshinfo.config.weight_near.z",1);
+		td.set("meshinfo.config.weight_far.x",1);
+		td.set("meshinfo.config.weight_far.y",1);
+		td.set("meshinfo.config.weight_far.z",1);
+		td.set("meshinfo.config.num_near",15);
+		td.set("meshinfo.config.num_far",15);
+		td.set("meshinfo.mesh.type",0x0);
+		td.set("meshinfo.mesh.grid.x","50");
+		td.set("meshinfo.mesh.grid.y","50");
+		td.set("meshinfo.mesh.grid.z","50");
+		td.set("meshinfo.fillmethod",0x0);
+		td.set("meshinfo.conformal.level_e",0x0);
+		td.set("meshinfo.conformal.level_h",0x0);
+		td.set("meshinfo.conformal.line_policy",0x1);
+		td.set("meshinfo.conformal.line_fc_policy",0x0);
+		td.set("meshinfo.conformal.SC_error",0);
+	td.end();
+
+	td.run(0);
+td.end();
+```
+
+[anchor](.step3)
+### 3.添加几何元件
+对于脚本建模来说，以上脚本代码中，最重要的部分是：
+```ewsl
+//定义顶层模块
+td.beg("topgroup1","DSymbolGrp");
+	......
+	td.set("children",["cube"]);		//添加长方体几何元件到顶层模块
+	......
+td.end();
+
+//定义长方体几何元件
+td.beg("cube","DShapeCube");
+	......
+td.end();
+```
+添加新的几何元件也比较简单：定义了新的几何元件后，只需要把几何元件名称添加到`topgroup1`的`children`属性中即可。
+```ewsl
+/*下面这段脚本代码，定义了一个新的圆柱体几何元件，并将其添加到了顶层模块topgroup1。*/
+
+//定义顶层模块
+td.beg("topgroup1","DSymbolGrp");
+	......
+	td.set("children",["cube","cylinder"]);		//添加新定义的圆柱体到顶层模块中
+	......
+td.end();
+
+//定义长方体几何元件
+td.beg("cube","DShapeCube");
+	......
+td.end();
+
+//定义圆柱体几何元件
+td.beg("cylinder","DShapeCylinder");
+	......
+td.end();
+```
+
+> **相关文档：**      
+  [block-ref](guide-table)
+
+  
+[anchor](.step4)
+### 4.运行脚本文件
+保存脚本文件 > 运行 EastWave V7 软件 > 打开**文件**菜单 > 选择**打开** > 选中脚本文件 > 单击**打开**运行脚本文件。
+
+        
+        
+

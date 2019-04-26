@@ -1,0 +1,20 @@
+﻿# 时间控制 菜单
+
+时间控制菜单为[link]("?help_ui_editor_editor_figure", "绘图编辑器")特有菜单，主要用于控制动态绘图的播放进度。时间控制下拉菜单包含的所有操作命令如下图所示。
+
+
+[image]("image/UI/menu/timectrl.png", "文本菜单")
+
+
+[block-ref](timectrl_menu_table)
+
+
+
+```block:timectrl_menu_table`endtag1
+|(L) 菜单项 |(L) 备注 |
+|(L) 时间控制 > 播放|(L) 开始播放已绘制完毕的动态图 |
+|(L) 时间控制 > 停止|(L) 停止播放已绘制完毕的动态图 |
+|(L) 时间控制 > 重新开始|(L) 重新播放已绘制完毕的动态图 |
+|(L) 时间控制 > 前进|(L) 切换至上一张绘图 |
+|(L) 时间控制 > 后退|(L) 切换至下一张绘图 |
+```endtag1

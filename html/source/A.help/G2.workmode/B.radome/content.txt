@@ -1,0 +1,154 @@
+# 天线罩计算模式
+
+## 概述
+计算天线罩的透波率和BSE的计算模式，可以计算频率响应和（辐射）角度响应。计算模式根据用户输入参数，自动设定内部的激励源和监视器，完成相应的参数扫描。
+
+### 天线罩模式的仿真流程
+* 选择分析类型为透波率或者BSE
+* 设置分析参数
+* 建立天线罩和环境的模型
+* 回到天线罩模式设置对话框，指定好天线罩物体的名称
+* 计算
+* 分析结果
+
+## 模式设定
+1. 单位（建议采用以下单位制）
+   长度单位：mm
+   时间单位：ns
+   频率单位：GHz
+
+2. 激励源
+   场源
+   时域波形：高斯脉冲
+   空间分布：均匀分布或者其他空间函数
+   方向：目前设定为Z+方向初射
+   极化：允许用户设定一个初射极化方向
+
+3. 监视器
+   时域远场监视器（计算透波率）
+   频域远场监视器（计算BSE和方向图）
+
+4. 边界设置
+   自动设置为开放边界
+   建议6层PML/CPML
+
+
+5. 其他
+   无
+
+
+## 模式图示
+模式 **设置** 界面如下：
+
+```block:settings-radome
+| [image]("image/workmode/radome/settings.png","天线罩设置","天线罩设置")             | [image]("image/workmode/radome/settings-aperture.png","口径设置","口径设置")      |
+| [image]("image/workmode/radome/settings-directivity.png","方向图设置","方向图设置") | [image]("image/workmode/radome/settings-miscellaneous.png","杂项设置","杂项设置") |
+```
+
+[block-ref]("settings-radome")
+
+
+
+
+
+## 模式参数
+
+```block:radome-basic-settings
+||(基本设置)
+| 参数名称            | 说明                          | 备注                               | 
+| 分析类型            | 透波率或BSE计算               |                                    |
+| 目标天线罩          | 待分析的天线罩名称            | 要求挂载在模型顶层                 |
+| 频率设定模式        | 选择频率设定方式              |                                    |
+| 角度扫描方式        | 选择角度扫描方式              | Theta扫描或Phi扫描                 |
+| 辐射角$\theta$      | 设定辐射角$\theta$            | 角度制                             |
+| 辐射角$\phi$        | 设定辐射角$\phi$              | 角度制                             |
+| 辐射极化角          | 设定辐射极化角                | 角度制                             |
+```
+
+```block:radome-aperture-settings
+||(口径设置)
+| 参数名称            | 说明                          | 备注                               | 
+| 口径类型            | 等效口径或实体天线            | 目前仅开发等效口径                 |
+| 口径形状类型        | 圆形、矩形或者自定            |                                    |
+| 口径宽度X/Y         | 设定口径的宽度                |                                    |
+| 口径位置X/Y/Z       | 设定口径的位置                |                                    |
+| 口径分布            | 选择分布类型                  | 仅实现均匀分布                     |
+```
+
+```block:radome-directivity-settings
+||(方向图设置)
+| 参数名称            | 说明                          | 备注                               | 
+| 方向图模式          | 选择查看方向图的项目          |                                    |
+| 方向图记录          | 用户自定义的方向图            |                                    |
+```
+
+```block:radome-miscellaneous-settings
+||(杂项)
+| 参数名称            | 说明                          | 备注                               | 
+| 远场距离            | 外推距离                      |                                    |
+| 延拓空间（监视器）  | 监视器包围框相对位置设定      | 填写相对波长的比例                 |
+| 延拓空间（计算区域）| 计算区域相对位置设定          | 填写相对波长的比例                 |
+| 计算策略            | 选择计算策略                  | 见[link]("?.commentary",补充说明)  |
+| BSE预扫角范围       | 设定BSE计算时在初射方向附近的扫描角度宽度 | 默认8度                |
+| BSE预扫角分辨率     | 设定BSE计算时的扫描精度       | 默认1分                            |
+```
+
+[block-ref]("radome-basic-settings")
+[block-ref]("radome-aperture-settings")
+[block-ref]("radome-directivity-settings")
+[block-ref]("radome-miscellaneous-settings")
+
+
+[anchor](".commentary")
+**补充说明：**
++ 三种计算策略
+  * 严格模式：计算透波率两次的各种计算参数保持一致。
+  * 准严格模式：计算透波率两次的大部分参数保持一致，但是计算区域会重新计算。
+  * 理想无环境：计算无罩模型的时候仅考虑口径本身的远场，不考虑其他非罩结构的影响。
+
+## 输出结果
+**天线罩模式目前使用智能数据对计算结果进行分析。**
+
+```block:image-radome-transmission-result
+[image]("image/workmode/radome/result-transmission-example-1.png","透波率结果（按频率）","透波率结果-例子1（智能数据）")
+[image]("image/workmode/radome/result-transmission-example-2.png","透波率结果（按角度）","透波率结果-例子2（智能数据）")
+```
+
+```block:image-radome-bse-result
+[image]("image/workmode/radome/result-bse-example-1.png","瞄准线误差结果（智能数据）","瞄准线误差结果（智能数据）")
+```
+
+### 透波率
+在计算模式参数设置中选择计算“透波率”，软件将按照计算透波率的预设流程进行计算。计算结束后，用户可以点击结果文件，打开后双击“Transmission”节点。
+
+[block-ref]("image-radome-transmission-result")
+
+**说明：**
+* **总透波率**定义为有罩和无罩情况下，给定某个口面激励条件下，远场某个方向上指定电磁场的强度比例（按电场或者按模式）
+* **同极化**和**交叉极化**的计算的是透波率中同极化部分和交叉极化部分的贡献部分。
+* 定义公式如下：
+$$
+\begin{align*}
+T_\text{total}      &= \dfrac{E_\text{total,w}}{E_\text{total,wo}} \\
+T_\text{copolar}    &= \dfrac{E_\text{copolar,w}}{E_\text{total,wo}} \\
+T_\text{crosspolar} &= \dfrac{E_\text{crosspolar,w}}{E_\text{total,wo}} \\
+\end{align*}
+$$
+公式项意义见下表：
+|项|意义|
+|w|有罩|
+|wo|无罩|
+|total|总透波率|
+|copolar|同极化|
+|crosspolar|交叉极化|
+
+
+### 瞄准线误差（BSE）
+在计算模式参数设置中选择计算“瞄准线误差”（BSE），软件将按照计算BSE的预设流程进行计算。计算结束后，用户可以点击结果文件，打开后双击“BSE”节点。
+[block-ref]("image-radome-bse-result")
+
+**说明：**
+* 瞄准线误差（BSE）定义为在差波束条件下，有罩状态的远场零点（最低点）与无罩状态的远场零点（最低点）之间的角度差，一般按**角度分**单位度量。
+* 微分瞄准线误差（DBSE）定义为BSE值对待预期角度坐标取导数。
+
+

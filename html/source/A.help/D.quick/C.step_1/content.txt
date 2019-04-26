@@ -1,0 +1,15 @@
+# 步骤 1:设置计算模式及参数
+
+> 若对计算模式不了解，请参看[link]("?help_overview_about_workmode", "关于 EastWave 7 计算模式")。    
+
+
+首先需在模式设置对话框中根据问题的需要进行简单设置，主要是内置激励源和记录器的简单设置。    
+    
+由主菜单选择**文件 > 新建 > FDTD向导**插入 FDTD 工程，选择合适的计算模式，如图。    
+[image]("image/quick/workmode", "计算模式选择界面")    
+    
+点击“下一步”，在“计算模式”对话框中输入必要参数，主要用来设置内置激励源和记录器，如图。    
+[image]("image/quick/workmode_param", "RCS参数界面")        
+     
+点击“下一步”，显示计算模式参数设置报告，如图。    
+[image]("image/quick/workmode_report", "向导：报告")        

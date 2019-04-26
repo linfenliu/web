@@ -1,0 +1,4 @@
+#function(cfg)
+local t = table();
+t.title = "常用函数";
+return t;

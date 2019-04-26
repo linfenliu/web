@@ -1,0 +1,4 @@
+#function(cfg)
+local t = table();
+t.title = "材料库导入材料元件";
+return t;

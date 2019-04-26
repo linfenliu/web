@@ -1,0 +1,33 @@
+# 几何球体
+几何球体可用于生成基于正二十多面体制作的球体。
+
+## 定义方式
+### 球中心——三维半径
+#### 属性对话框
+[image]("image/DShape/DShapeGeoSphere.png","",".parawindow")
+
+#### 参数含义
+[block-ref](geosp-middle-center-table)
+
+#### 示意图
+[image]("image/DShape/DShapeGeoSphere_sample.png","",".sample-mc")
+
+
+## 如何创建几何球体
+* [link](?help_model_shape_symbol_DShapeCreate.create-by-GUI, "界面创建几何球体")
+* [link](?help_model_Advanced_ewsl_model,"脚本创建几何球体")
+
+
+
+
+```block:geosp-middle-center-table
+||(,".paratab-mc")
+| 参数名称 | 说明 | 备注 |
+| 体中心 | 指定几何球体中心点的坐标 | - |
+| 三维半径 | 指定几何球体X、Y、Z三个方向上的半径 | - |
+| 段数 | 指定几何球体的段数 | 段数越高则越接近规则球体 |
+```
+
+
+
+

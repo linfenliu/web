@@ -1,0 +1,7 @@
+#function(cfg)
+
+local t=table();
+t.title = "MXLab 窗口";
+
+
+return t;

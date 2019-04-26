@@ -1,0 +1,7 @@
+#function(cfg)
+
+local t=table();
+t.title = "文档使用指引";
+
+
+return t;

@@ -1,0 +1,4 @@
+#function(cfg)
+local t=table();
+t.title="物理光学方法";
+return t;

@@ -1,0 +1,7 @@
+#function(cfg)
+
+local t=table();
+t.title = "自定义模式仿真";
+
+
+return t;

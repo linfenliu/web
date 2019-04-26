@@ -1,0 +1,35 @@
+# 环体
+环体可用于生成一个具有圆形截面的环。
+
+## 定义方式
+### 外环半径——圆母线半径
+#### 属性对话框
+[image]("image/DShape/DShapeTorus.png","",".parawindow")
+
+#### 参数含义
+[block-ref](oradius-iradius-table)
+
+#### 示意图
+[image]("image/DShape/DShapeTorus_sample.png","",".sample-oi")
+
+
+## 如何创建环体
+* [link](?help_model_shape_symbol_DShapeCreate.create-by-GUI, "界面创建环体")
+* [link](?help_model_Advanced_ewsl_model,"脚本创建环体")
+
+
+
+```block:oradius-iradius-table
+||(,".paratab-oi")
+| 参数名称 |  说明 | 备注 |
+| 环半径 | 指定环体的外环半径 | - |
+| 环段数 | 指定环体的段数 | - |
+| 圆半径 | 指定环体圆母线半径 | - |
+| 圆边数 | 指定环体圆母线边数 | - |
+```
+
+
+
+
+
+

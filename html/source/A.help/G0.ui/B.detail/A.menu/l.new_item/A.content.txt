@@ -1,0 +1,33 @@
+﻿# 新建物体 菜单
+
+新建物体菜单为[link]("?help_ui_editor_editor_model", "模型文档编辑器")特有菜单，主要提供了一系列几何结构的快速构造方式，不仅包含长方体、圆柱体等基础几何结构，也包含
+拉伸体、FFS、复杂旋转体等扩展几何结构。新建物体下拉菜单包含的所有操作命令如下图所示。
+
+
+[image]("image/UI/menu/new_item.png", "新建物体菜单")
+
+
+[block-ref](new_item_menu_table)
+
+
+```tips:indicate-提示
+关于几何元件的具体介绍，请参看[link]("?help_model_shape_symbol", "几何元件")。
+```
+
+
+```block:new_item_menu_table`endtag1
+|(L) 菜单项 |(L) 备注 |
+|(L) 新建物体 > 创建立方体 |(L) 参看[link]("?help_model_shape_symbol_DShapeAll_DShapeBase_DShapeCube", "立方体") |
+|(L) 新建物体 > 创建柱体 |(L) 参看[link]("?help_model_shape_symbol_DShapeAll_DShapeBase_DShapeCylinder", "柱体") |
+|(L) 新建物体 > 创建球体 |(L) 参看[link]("?help_model_shape_symbol_DShapeAll_DShapeBase_DShapeSphere", "球体") |
+|(L) 新建物体 > 创建圆台 |(L) 参看[link]("?help_model_shape_symbol_DShapeAll_DShapeBase_DShapeCone", "圆台") |
+|(L) 新建物体 > 创建拉伸体 |(L) 参看[link]("?help_model_shape_symbol_DShapeAll_DShapeExt_DShapeColumn", "拉伸体") |
+|(L) 新建物体 > 创建实心旋转体 |(L) 参看[link]("?help_model_shape_symbol_DShapeAll_DShapeExt_DShapeSpin", "实心旋转体") |
+|(L) 新建物体 > 创建空洞旋转体 |(L) 参看[link]("?help_model_shape_symbol_DShapeAll_DShapeExt_DShapeSpin2", "空洞旋转体") |
+|(L) 新建物体 > 创建扫描体 |(L) 参看[link]("?help_model_shape_symbol_DShapeAll_DShapeExt_DShapeSweeped", "扫描体") |
+|(L) 新建物体 > 创建环体 |(L) 参看[link]("?help_model_shape_symbol_DShapeAll_DShapeBase_DShapeTorus", "环体") |
+|(L) 新建物体 > 创建天线罩 > 尖锥(Conical)天线罩  |(L) 参看[link]("?help_model_shape_symbol_DShapeAll_DShapeExt_DShapeRadome.header_1", "尖锥(Conical)天线罩") |
+|(L) 新建物体 > 创建天线罩 > 正切卵形(Tangent Ogive)天线罩  |(L) 参看[link]("?help_model_shape_symbol_DShapeAll_DShapeExt_DShapeRadome.header_2", "正切卵形(Tangent Ogive)天线罩") |
+|(L) 新建物体 > 创建天线罩 > 球形鼻锥(Spherrically-blunted Cone)天线罩  |(L) 参看[link]("?help_model_shape_symbol_DShapeAll_DShapeExt_DShapeRadome.header_3", "球形鼻锥(Spherrically-blunted Cone)天线罩") |
+|(L) 新建物体 > 创建天线罩 > 幂次形旋转体(Power Series)天线罩  |(L) 参看[link]("?help_model_shape_symbol_DShapeAll_DShapeExt_DShapeRadome.header_4", "幂次形旋转体(Power Series)天线罩") |
+```endtag1

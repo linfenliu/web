@@ -1,0 +1,7 @@
+#function(cfg)
+
+local t=table();
+t.title = "模型树窗口";
+
+
+return t;

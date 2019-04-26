@@ -1,0 +1,29 @@
+# 空心旋转体
+空心旋转体可用于生成基于给定表面旋转一定角度形成的几何体。  
+
+## 定义方式
+### 旋转表面——旋转角度
+#### 属性对话框
+[image]("image/DShape/DShapeSpin2.png","",".parawindow")
+
+#### 参数含义
+[block-ref](stangle-edangle-table)
+
+#### 示意图
+[image]("image/DShape/DShapeSpin2_sample.png","",".sample-se")
+
+
+## 如何创建空心旋转体
+* [link](?help_model_shape_symbol_DShapeCreate.create-by-GUI, "界面创建空心旋转体")
+* [link](?help_model_Advanced_ewsl_model,"脚本创建空心旋转体")
+
+
+
+```block:stangle-edangle-table
+||(,".paratab-se")
+| 参数名称 | 说明 | 备注 |
+| 引用表面 | 指定空心旋转体的待旋转表面 | 可引用内部二维平面或导入的STL平面 |
+| 起始角度 | 指定实心旋转体的旋转起始角度 | 角度制 |
+| 终止角度 | 指定实心旋转体的旋转终止角度 | 角度制 |
+| 反转 | 是否反转表面 | - |
+```

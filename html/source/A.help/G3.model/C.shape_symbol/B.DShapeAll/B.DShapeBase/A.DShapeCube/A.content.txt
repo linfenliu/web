@@ -1,0 +1,32 @@
+# 长方体
+长方体可用于生成最简单的基本几何体。包括长方体面板、立方体小块等。
+
+## 定义方式
+
+| 定义方式 | 中心（中心点——长宽高） | 边（左下前角点——右上后角点） |
+| 属性对话框 | [image]("image/DShape/DShapeCube_ctw.png","",".parawindow-ctw") | [image]("image/DShape/DShapeCube_cncn.png", "",".parawindow-cncn") | 
+| 参数含义 | [block-ref](center-width-table) | [block-ref](corner-corner-table) |
+| 示意图 | [image]("image/DShape/DShapeCube_sample_ctw.png","",".sample-ctw") | [image]("image/DShape/DShapeCube_sample_cncn.png","",".sample-cncn") | 
+
+## 如何创建长方体
+* [link](?help_model_shape_symbol_DShapeCreate.create-by-GUI, "界面创建长方体")
+* [link](?help_model_Advanced_ewsl_model,"脚本创建长方体")
+
+
+
+
+```block:center-width-table
+||(,".paratab-ctwt")
+| 参数名称 | 说明 | 备注 |
+| 中心点   | 指定长方体中心点的坐标 | - |
+| 长宽高   | 指定长方体的长度、宽度、高度 | - |
+```
+ 
+
+```block:corner-corner-table
+||(,".paratab-cncnt")
+| 参数 | 说明 | 备注 |
+| 左下前角点  | 指定长方体的左下前角点坐标 | - |
+| 右上后角点 | 指定长方体的右上后角点坐标 | - |
+```
+ 

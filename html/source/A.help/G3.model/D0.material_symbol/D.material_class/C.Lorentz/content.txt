@@ -1,0 +1,20 @@
+# 洛伦兹材料
+$$ \epsilon(\omega)=\epsilon_\infty+i\frac{\sigma_{e}}{\omega}+\sum_{i=1}^n \frac{(2\pi f_{p,i})^2}{(2\pi f_{a,i})^2-i\omega(2\pi f_{c,i})-\omega^2}  $$
+$$ \mu(\omega)=\mu_\infty+i\frac{\sigma_{m}}{\omega}+\sum_{i=1}^n \frac{(2\pi f^{'}_{p,i})^2}{(2\pi f^{'}_{a,i})^2-i\omega(2\pi f^{'}_{c,i})-\omega^2}  $$洛伦兹(Lorentz)色散模型涵盖了所有电磁色散模型，其中$f_{p,i}$表示第i个谐振子的等离子体频率，$f_{a,i}$表示第i个谐振子的谐振角频率，$f_{c,i}$表示第i个谐振子的阻尼频率。
+**其中磁导率洛伦兹色散部分尚未开放**；
+洛伦兹色散模型材料参数设置如下：
+[image]("image/material/material_lorentz.png","",".atf")
+
+```block:material-params
+||(洛伦兹材料参数)
+| 参数名称      | 说明                                                      | 备注                      |
+| $f_{a}$、$f^{'}_{a}$    | 谐振频率$f_{a}=\omega_{a}/2\pi$                                 |(3,1) 单位为材料单位，若无材料单位则为文档单位 |
+| $f_{c}$、$f^{'}_{c}$    | 阻尼频率$f_{c}=\omega_{c}/2\pi$                                 |                                          
+| $f_{p}$、$f^{'}_{p}$    | 等离子体谐振频率$f_{p}=\omega_{p}/2\pi$                         |  
+```
+
+参数含义如下：
+[block-ref](material-params)
+
+**相关主题：**
+[link]("?help_model_physical_symbol",物理元件)

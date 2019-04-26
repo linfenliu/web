@@ -1,0 +1,4 @@
+﻿#function(cfg)
+local t=table();
+t.title="平板透射反射率计算";
+return t;

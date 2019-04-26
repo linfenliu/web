@@ -1,0 +1,4 @@
+#function(cfg)
+local t=table();
+t.title="雷达目标成像计算模式";
+return t;

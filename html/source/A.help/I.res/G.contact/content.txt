@@ -1,0 +1,43 @@
+# 联系我们
+
+## 公司信息
+**上海东峻信息科技有限公司**    
+地	址：	上海市长宁区长宁路855号9B室    
+邮	编：	200050    
+总	机：	021-52385879    
+传	真：	021-52385879-0    
+
+## 线上交流
+* **网站：**[link]("http://www.eastfdtd.com")    
+  东峻科技的官方网站，用于展示有关东峻科技及其产品EastWave的全部内容，
+  主要包括公司介绍、市场活动及招聘，产品介绍、更新及使用下载，以及公司研究成果及经典案例等。
+* **微信平台：**“东峻科技EW”    
+  官方微信主要用于推送最新案例、技术突破和疑难解答等，可及时与用户进行互动交流。
+  此外，还可以查看公司的招聘及市场活动、软件 EastWave 的更新、经典案例等。
+* **论坛：**《微波仿真论坛》东峻科技企业板块    
+  主要用于行业相关研究及案例的分享。
+* **官方群：**东峻科技QQ官方群（49420005/110622281）     
+  官方群是公司内部与用户直接交流的平台，主要用于解答用户疑问，分享研究成果和发送公司最新进展和论文奖励信息等。
+
+
+## 部门联系人
+[block-ref](contact-staff0-table)
+
+
+## 发表论文奖励
+凡购买东峻科技公司软件产品 EastWave 的正式用户，在国内外学术期刊发表学术文章并注明软件贡献，
+且用户为第一作者或老师是第一作者均可获得该项奖励，提交材料详细内容与相应负责人联系。
+[block-ref](contact-staff1-table)
+
+ 
+```block:contact-staff0-table`endtag1
+|(L)部门       |(L)联系人 |(L)联系方式 |
+|(L)技术支持部 |(L)姚工 |(L)固话: 021-52385879-802``<br>``邮箱: [link]("mailto:support@eastfdtd.com","support@eastfdtd.com","email") |
+|(L)市场部     |(L)赵工 |(L)固话: 021-52385879-810 / 15901773309``<br>``邮箱: [link]("mailto:market@eastfdtd.com","market@eastfdtd.com","email") |
+|(L)人力资源部 |(L)陈女士 |(L)固话: 021-52385879-803``<br>``邮箱: [link]("mailto:hr@eastfdtd.com","hr@eastfdtd.com","email") |
+```endtag1
+ 
+```block:contact-staff1-table`endtag1
+|(L)联系人 |(L)联系方式 |
+|(L)王工 |(L)固话: 021-52385879-808``<br>``邮箱: [link]("mailto:market@eastfdtd.com","market@eastfdtd.com","email") |
+```endtag1

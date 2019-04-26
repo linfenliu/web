@@ -1,0 +1,7 @@
+#function(cfg)
+
+local t=table();
+t.title = "联系我们";
+
+
+return t;

@@ -1,0 +1,4 @@
+#function(cfg)
+local t = table();
+t.title = "远场监视器";
+return t;

@@ -1,0 +1,4 @@
+﻿#function(cfg)
+local t=table();
+t.title="RCS模式教学案例";
+return t;

@@ -1,0 +1,4 @@
+#function(cfg)
+local t = table();
+t.title = "EWSL程序设计阶段 II";
+return t;

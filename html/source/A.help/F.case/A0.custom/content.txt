@@ -1,0 +1,36 @@
+# 自定义模式仿真
+
+自定义模式可适用于普遍的电磁仿真问题，在该模式下，用户需手动设置激励源、记录器和边界条件。    
+    
+> 关于**专业计算模式仿真**，请参看[link]("?help_quick", "快速入门")。
+
+本节以贴片天线为案例，简要介绍自定义仿真流程：
+> + [link]("?.custom_case_step_1", "设置计算模式和参数")
+  + [link]("?.custom_case_step_2", "建立模型")
+  + [link]("?.custom_case_step_3", "设置激励源")
+  + [link]("?.custom_case_step_4", "设置记录器")
+  + [link]("?.custom_case_step_5", "设置网格")
+  + [link]("?.custom_case_step_6", "启动计算")
+  + [link]("?.custom_case_step_7", "查看结果及后处理")
+
+
+[anchor](.custom_case_step_1)
+## 设置计算模式和参数
+
+[anchor](.custom_case_step_2)
+## 建立模型
+
+[anchor](.custom_case_step_3)
+## 设置激励源
+
+[anchor](.custom_case_step_4)
+## 设置记录器
+
+[anchor](.custom_case_step_5)
+## 设置网格
+
+[anchor](.custom_case_step_6)
+## 启动计算
+
+[anchor](.custom_case_step_7)
+## 查看结果及后处理

@@ -1,0 +1,17 @@
+# 输出设置
+
+## 界面
+[image]("image/param/output.png","","输出设置界面")
+
+
+## 参数说明
+
+[block-ref](output-param-table)
+
+
+
+```block:output-param-table
+|(L) 参数         |(L) 说明 |(L) 备注 |
+|(L) 输出文件路径 |(L)      |(L)      |
+|(L) 输出文件名称 |(L)      |(L)      |
+```

@@ -1,0 +1,4 @@
+﻿#function(cfg)
+local t=table();
+t.title="二维SAR成像";
+return t;

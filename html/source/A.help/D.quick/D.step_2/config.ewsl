@@ -1,0 +1,7 @@
+#function(cfg)
+
+local t=table();
+t.title = "步骤 2:建立模型";
+
+
+return t;

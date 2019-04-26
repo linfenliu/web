@@ -1,0 +1,25 @@
+# 物理元件
+
+物理元件（通俗的可以理解为“物体”）是赋予了材料属性的几何元件，同时物理元件可以在坐标系中进行一系列的坐标变换。
+
+```style-table:property-table-style
+'align=left'
+```
+
+```block:physical-entity-parameters
+||(物理元件参数表)
+| 参数          | 参数类型      | 参数分类      | 说明      |
+| 几何元件      | 元件引用      | 基本参数      |           |
+| 材料          | 材料引用      | 基本参数      |           |
+| 坐标变换      | 坐标变换列表  | 高级参数      |           |
+| 局部网格      | 局部网格参数  | 高级参数      |           |
+| 单位集        | 单位参数      | 杂项          |           |
+```
+
+物理元件的参数定义如下表：
+[block-ref]("physical-entity-parameters")
+
+**相关主题**
++ [link]("?help_model_shape_symbol", "几何元件")
++ [link]("?help_model_material_symbol", "材料元件")
++ [link]("?help_model_Advanced_active_group",活动组)

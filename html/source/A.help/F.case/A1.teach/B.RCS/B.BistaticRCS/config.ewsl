@@ -1,0 +1,4 @@
+﻿#function(cfg)
+local t=table();
+t.title="双站RCS";
+return t;

@@ -1,0 +1,82 @@
+# EastWave V7 测试说明
+
+
+本文档用于内部功能测试。
+
+
+## 目录
++ [link]("?help_internal_doc_test_UI","用户界面")
++ [link]("?help_internal_doc_test_Geometry","几何结构")
++ [link]("?help_internal_doc_test_Source","激励源")
++ [link]("?help_internal_doc_test_Monitor","监视器")
++ [link]("?help_internal_doc_test_Port","端口")
++ [link]("?help_internal_doc_test_Workmode","计算模式")
++ [link]("?help_internal_doc_test_Wire","导线")
++ [link]("?help_internal_doc_test_Material","材料")
++ [link]("?help_internal_doc_test_Conformal","共形")
++ [link]("?help_internal_doc_test_LumpedPort","集总端口")
++ [link]("?help_internal_doc_test_Others","其他")
+
+## 关于测试说明文档的说明
+
+**测试说明分成下列几部分：**
++ 测试内容简要说明和直接相关的帮助页面
++ 测试要点和测试项，指出相关的测试案例（只需要页面内链接即可）
++ 测试案例及案例的简要说明
++ 其他补充内容，如引用有关的章节信息
+
+**测试说明的其他注意事项：**
++ 测试的项目覆盖功能的主要运行逻辑和分支
++ 测试的预期结果需要写清楚
++ 测试案例的原始文件，放在`ew7/web/help/files/internal_files`中，区别于普通帮助中携带的内部文件
++ 测试案例中附带外部模型文件的，放在`ew7/web/help/files/internal_files/model`中，建模时使用相对路径
++ 测试案例中附带的其他外部文件的，放在`ew7/web/help/files/internal_files/data`中，建模时使用相对路径
+
+
+ 
+**文件链接代码示例：**
+```
+[link]("javascript:ewdoc.open_editor('internal_files/test.ewp2')","测试文档")
+```
+
+**效果：(使用 EastWave 7 内嵌浏览器打开)**
+ [link]("javascript:ewdoc.open_editor('internal_files/test.ewp2')","测试文档")
+
+
+## 系统测试用例命名规范
+**系统测试用例命名规则为：**软件名-v版本号-功能模块名称-测试子项目名称-ID.后缀名
+* 软件名、版本号、功能模块名、子项目名称等中间断词采用下划线
+* 版本号参考：`7_0_0_build_20190114`这样的形式，现阶段不必区分`build`版本号，所以只需要写成`...-v7_0_0-...`即可
+* 文件夹组织形式：测试类型/软件名_版本号（仅大版本）/功能模块名/子项目名/
+* 内部测试案例放置文件夹：`internal_files/test/`
+  * 系统测试`internal_files/test/systest/`
+  * 单元测试（部分工程文件）`internal_files/test/unittest/`
+  * 集成测试`internal_files/test/inttest/`
+* 每个子项目增加一个changelog.txt文件，主要用来在测试周期结束前后编写案例内容的变化情况，简要说明案例的变化情况（只需要说明增加、修改案例的主要原因，如果是来自测试系统，应填写有关的测试报告链接），该文件采用简单文本格式和追加方式编写，不得对过去内容进行修改。如果需要归档，则备份并且用备份时间重命名changelog-20190101.txt，保留在原路径下。
+* 本文档不定期对说明内容进行修订
+
+```block:test_conventions
+||(测试类型)
+| 类型      | 说明   | 备注          |
+| systest   | 系统测试  |           |
+| unittest  | 单元测试  |           |
+| inttest   | 集成测试  | （暂无）   |
+
+||(系统测试案例命名规范)
+| 功能模块 | 说明 | 备注 |
+| workmode | 计算模式 | |
+| source   | 馈源 |     |
+| monitor  | 监视器 |   |
+| geometry | 几何结构 |  |
+| gui      | 图形界面 |  |
+| port     | 端口     |  |
+| wire     | 导线     |  |
+```
+
+命名名称参考下表：
+[block-ref]("test_conventions")
+
+**注意：**
+* 大部分单元测试放在代码其他地方，但是要求运行整体工程文件的单元测试项目参考案例也放在这里方便管理
+* 结果文件原则上不上传，但是非常重要的参考数据在剪裁不必要的信息后可以以`.ewd`文件形式保存上传，一般是经过严格确认后的充分精确的结果，用于对比
+* `internal_files/model`文件夹保存的是公共模型，局部的模型放在子项目文件夹下的`model`文件下，`data`文件夹同理

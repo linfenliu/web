@@ -1,0 +1,665 @@
+# 数学函数
+
+## 目录
++ [link]("?.constants",数学常数)
++ [link]("?.arithmetics",算术函数)
++ [link]("?.triangular",三角函数)
++ [link]("?.anti_triangular",反三角函数)
++ [link]("?.hyperbolic",双曲函数)
++ [link]("?.complex",复数相关函数)
++ [link]("?.exponential_and_logarithm",指数与对数函数)
++ [link]("?.others",其他常用函数)
++ [link]("?.transform",函数变换)
++ [link]("?.special",特殊函数)
+
+
+```block:syntax
+  
+**语法：**  
+```
+
+```block:example
+  
+**例子：**  
+```
+
+```block:reference
+  
+**参考：**  
+```
+
+[anchor](".constants")
+## 数学常数
+
+[anchor](".constant.pi")
+`pi`, `math.pi`
+  
+圆周率$\pi=3.14159\ldots$
+
+
+[anchor](".constant.e")
+`math.e`
+  
+自然对数的底$e=\exp(1)=2.7172\ldots$
+
+[anchor](".arithmetics")
+## 算术运算
+
+EWSL提供基本的算术运算函数，通常情况下使用[link]("?help_script_Programming_I.operator-arithmetics",算术运算符)。
+
+[anchor](".function.add")
+`math.add`, `+`
+  
+加法
+
+[block-ref]("syntax")
+```ewsl
+math.add(x,y)  // function
+x + y          // operator
+```
+
+
+[anchor](".function.sub")
+`math.sub`, `-`
+  
+减法
+
+[block-ref]("syntax")
+```ewsl
+math.sub(x,y)  // function
+x - y          // operator
+```
+  
+[anchor](".function.mul")
+`math.mul`, `*`
+  
+乘法
+
+[block-ref]("syntax")
+```ewsl
+math.mul(x,y)  // function
+x * y          // operator
+```
+
+
+[anchor](".function.div")
+`math.div`, `/`
+  
+除法
+
+[block-ref]("syntax")
+```ewsl
+math.div(x,y)  // function
+x / y          // operator
+```
+
+**注意事项：**
+* 两个整数之间除法如果出不进
+
+[anchor](".function.pow")
+`math.pow`, `^`
+  
+乘方
+
+[block-ref]("syntax")
+```ewsl
+math.pow(x,n)  // function
+x ^ n          // operator
+```
+
+**参考：**
+* [link]("?.function.exp",指数函数`exp`)。
+
+
+[anchor](".function.pow")
+`math.neg`, `-`（一元算符）
+  
+取负
+
+[block-ref]("syntax")
+```ewsl
+math.neg(x)  // function
+-x           // operator
+```
+
+[anchor](".function.mod")
+`math.mod`, `%`
+  
+取模
+
+[block-ref]("syntax")
+```ewsl
+math.mod(a,b)
+a % b
+```
+
+
+[block-ref]("example")
+```ewsl
+math.mod( 7, 3)  //  1
+math.mod(-7, 3)  //  2
+math.mod( 7,-3)  // -2
+math.mod(-7,-3)  // -1
+```
+
+**注意事项：**
+* EWSL的取模运算与**Matlab**语言和**GNU Octave**保持一致，符合数学约定，但是与C/C++的约定是不同的。
+* 在数学中，“模”的概念与周期性有关系，因此并不是简单的除法取余。在实数轴上，对一个非零常数取余，得到的是一个周期重复，而不是中心对称的分布。
+* 取模运算中，第二个参数是负数的时候，得到的模值也是负的。
+* 如果需要使用类似C/C++的`fmod`函数，参考[link]("?.function.rem",取余`rem`)。
+
+[block-ref]("reference")
+* [link]("?.function.rem",`rem`)
+* [link]("?.function.div",`div`)
+
+
+[anchor](".function.rem")
+`math.rem`
+  
+取余数
+
+[block-ref]("syntax")
+```ewsl
+math.rem(a,b)
+```
+
+[block-ref]("example")
+```ewsl
+math.rem( 7, 3)  //  1
+math.rem(-7, 3)  // -1
+math.rem( 7,-3)  //  1
+math.rem(-7,-3)  // -1
+```
+
+
+
+**注意事项：**
+* 当第二个参数是负数的结果与其正数是相同的。
+* 余数的符号与第一个参数相同。
+* 余数函数关于`0`具有中心对称性，这与除法函数保持一致。
+* 余数函数的行为与C/C++中的`fmod`函数一致。
+
+
+[block-ref]("reference")
+* [link]("?.function.mod",`mod`)
+* [link]("?.function.div",`div`)
+
+[anchor](".triangular")
+## 三角函数
+
+[anchor](".function.sin")
+[anchor](".function.sind")
+[anchor](".function.sindeg")
+`sin`, `sind`, `sindeg`
+  
+正弦函数
+
+[block-ref]("syntax")
+```ewsl
+sin(pi/2)   //  1
+sind(180)   //  0
+sindeg(30)  //  0.5
+sin(1+1i)   //  1.29846+0.634964i
+```
+
+
+[anchor](".function.cos")
+[anchor](".function.cosd")
+[anchor](".function.cosdeg")
+`cos`, `cosd`, `cosdeg`
+  
+余弦函数
+
+[block-ref]("syntax")
+```ewsl
+cos(pi/2)   //  0
+cosd(180)   // -1
+cosdeg(60)  //  0.5
+cos(1+1i)   //  0.83373-0.988898i
+```
+
+[anchor](".function.tan")
+[anchor](".function.tand")
+[anchor](".function.tandeg")
+`tan`, `tand`, `tandeg`
+  
+正切函数
+
+
+[block-ref]("syntax")
+```ewsl
+tan(0)      //  0
+tand(45)    //  1
+tandeg(135) // -1
+tan(1+1i)   //  0.271753+1.08392i
+```
+
+
+[anchor](".function.cot")
+[anchor](".function.cotd")
+[anchor](".function.cotdeg")
+`cot`, `cotd`, `cotdeg`
+  
+余切函数
+
+
+[block-ref]("syntax")
+```ewsl
+cot(0)      //  0
+cotd(45)    //  1
+cotdeg(135) // -1
+cot(1+1i)   //  0.271753+1.08392i
+```
+
+[anchor](".function.cot")
+[anchor](".function.cotd")
+[anchor](".function.cotdeg")
+[anchor](".function.sec")
+[anchor](".function.secd")
+[anchor](".function.secdeg")
+[anchor](".function.csc")
+[anchor](".function.cscd")
+[anchor](".function.cscdeg")
+### 其它三角函数
+下列函数存放于`math`变量表中，也可以在全局使用
+* `cot = 1/tan(x)`
+* `sec = 1/cos(x)`
+* `csc = 1/sin(x)`
+* `cotd(x) = cotdeg(x) = cot(deg2rad(x))`
+* `secd(x) = secdeg(x) = sec(deg2rad(x))`
+* `cscd(x) = cscdeg(x) = csc(deg2rad(x))`
+
+[anchor](".function.deg2rad")
+[anchor](".function.rad2deg")
+### 弧度制与角度制的转换
+下列函数存放于`math`变量表中，也可以在全局使用
+* `deg2rad(x) = x / 180 * pi`
+* `rad2deg(x) = x / pi * 180`
+
+
+[anchor](".anti_triangular")
+## 反三角函数
+
+[anchor](".function.asin")
+[anchor](".function.asind")
+[anchor](".function.asindeg")
+`asin`, `asind`, `asindeg`
+  
+反正弦函数
+
+[block-ref]("syntax")
+```ewsl
+asin(1)                 // pi/2
+asind(sqrt(2)/2)        // 45
+asindeg(0.5)            // 30
+asin(2)                 //  1.5708-1.31696i
+asin(-2)                // -1.5708+1.31696i
+```
+
+
+[anchor](".function.acos")
+[anchor](".function.acosd")
+[anchor](".function.acosdeg")
+`acos`, `acosd`, `acosdeg`
+  
+反余弦函数
+
+[block-ref]("syntax")
+```ewsl
+acos(1)                 // 0
+acosd(sqrt(2)/2)        // 45
+acosdeg(0.5)            // 60
+acos(2)                 // -0+1.31696i
+acos(-2)                // 3.14159+1.31696i
+```
+
+[anchor](".hyperbolic")
+## 双曲函数
+
+
+[anchor](".complex")
+## 复数相关函数
+
+[anchor](".function.sign")
+`math.sign`
+  
+取符号函数、复数单位化
+
+
+[block-ref]("syntax")
+```ewsl
+sign(1.5)   //  1
+sign(0)     //  0
+sign(-1.5)  // -1
+sign(1+1i)  // 0.7071 + 0.7071i
+```
+
+**注意事项：**
+* `sign`函数对复数的意义相当于取单位复数。
+* `sign`函数不改变输入参数的数值类型。
+
+
+[anchor](".function.abs")
+`math.abs`
+  
+绝对值函数、复数的模
+
+[block-ref]("syntax")
+```ewsl
+abs(7)      // 7
+abs(-3)     // 3
+abs(0)      // 0
+abs(1+1i)   // 1.4142...
+```
+
+**注意事项：**
+* `abs`函数对复数的意义与数学习惯一致。
+* `abs`作用于复数上的返回值类型是浮点数。
+
+
+[anchor](".function.arg")
+[anchor](".function.angle")
+`math.arg`, `math.angle`
+  
+复数的辐角
+
+[block-ref]("syntax")
+```ewsl
+arg(1)      // 0
+arg(-1)     // pi
+arg(1i)     // pi/2
+arg(-1i)    // -pi/2
+```
+
+**注意事项：**
+* 取值范围为弧度制角度$(-\pi,+\pi]$，负实数取$-\pi$。
+
+
+[anchor](".function.real")
+[anchor](".function.imag")
+`math.real`, `math.imag`
+
+复数的实部与虚部
+
+[block-ref]("syntax")
+```ewsl
+real(1+1i)  //  1
+imag(1-1i)  // -1
+```
+
+
+[anchor](".function.conj")
+`math.conj`
+
+复数的共轭
+
+[block-ref]("syntax")
+```ewsl
+conj(1+1i)  // 1-1i
+```
+
+[anchor](".exponential_and_logarithm")
+## 指数、对数函数
+
+[anchor](".function.exp")
+`math.exp`
+  
+以$e$为底数的指数函数
+
+[block-ref]("syntax")
+```ewsl
+exp(0)          //  1
+exp(1)          //  2.7172
+exp(1i*pi/2)    // -1
+```
+
+**参考：**
+* [link]("?.function.pow",乘方`pow`)
+
+
+[anchor](".function.log")
+`math.log`
+  
+自然对数（以$e$为底数的对数）
+
+[block-ref]("syntax")
+```ewsl
+log(exp(1))     // 0
+log(1+1i)       // 0.346574+0.785398i
+log(-1)         // 0 + 3.14159i
+```
+
+**注意事项：**
+* 对负数的操作将转换为对复数的操作。
+* 复数计算结果取角度时与`arg`函数一致。
+* 参考[link]("?.function.arg",俯角函数`arg`、`angle`)
+* 参考[link]("?.function.log10",以10为底的对数`log10`)
+
+
+[anchor](".function.log10")
+`math.log10`
+  
+对数（以10为底）
+  
+数学上保证：
+
+$$
+\log_{10} x = \dfrac{\log x}{\log 10}
+$$
+
+[block-ref]("syntax")
+```ewsl
+log10(0)        // 0
+log10(10)       // 1
+log10(-10)      // 1+1.36438i
+```
+
+**注意事项：**
+* 对负数的操作将转换为对复数的操作。
+* 参考[link]("?.function.arg",俯角函数`arg`、`angle`)
+* 参考[link]("?.function.log",自然对数`log`)
+
+
+[anchor](".others")
+## 其他常用数学函数
+
+[anchor](".function.sqrt")
+`math.sqrt`
+  
+平方根函数
+
+[block-ref]("syntax")
+```ewsl
+sqrt(2)         // 1.41421
+sqrt(1+1i)      // 1.09868+0.45509i
+```
+
+**注意事项：**
+* 对复数的运算，取角度时与`arg`函数一致。
+* 参考[link]("?.function.arg",俯角函数`arg`、`angle`)
+* 参考[link]("?.function.log",自然对数`log`)
+
+
+[anchor](".function.max")
+`max`
+  
+取最大值  
+
+[block-ref]("syntax")
+```ewsl
+max(a)          // If a is an array, return the maximum of a's all elements; if a is a scalar, just return itself.
+max(a,nil,N)    // If a is an array, return the maximum of a's elements in the N-dim; if a is a scalar, just return itself.
+max(A,B)        // If A or B is an array (or both of them are arrays), do element-by-element compare; if A and B are scalars, just return the maximum of A and B
+max(a,b,c...)   // 
+```
+
+**补充说明：**  
+* 不支持直接在复数中取最大最小值，参阅[link]("?help_script_Specifications_Comparisons.relation_operations",**Matlab**关系运算符问题)。
+
+
+[anchor](".function.min")
+`min`
+  
+取最小值
+
+[block-ref]("syntax")
+```ewsl
+min(a)          // If a is an array, return the minimum of a's all elements.
+min(a,nil,N)    // If a is an array, return the minimum of a's elements in the N-dim
+min(A,B)        // If A or B is an array (or both of them are arrays), do element-by-element compare; if A and B are scalars, just return the minimum of A and B
+```
+
+**补充说明：**  
+* 不支持直接在复数中取最大最小值，参阅[link]("?help_script_Specifications_Comparisons.relation_operations",**Matlab**关系运算符问题)。
+
+
+[anchor](".function.sum")
+`sum`
+
+求和
+  
+[block-ref]("syntax")
+```ewsl
+sum(a)          // If a is an array, return the summation of a's all elements.
+sum(a,N)        // If a is an array, return the summation of a's elements in the N-dim.
+sum(a,b,c,...)  // a,b,c,... are scalars and return the summation of them.
+```
+
+
+[anchor](".function.product")
+`product`
+
+求积
+[block-ref]("syntax")
+```ewsl
+product(a)          // If a is an array, return the product of a's all elements.
+product(a,N)        // If a is an array, return the product of a's elements in the N-dim.
+product(a,b,c,...)  // a,b,c,... are scalars and return the product of them.
+```
+
+[anchor](".transform")
+## 函数变换
+
+[anchor](".fourier_transform")
+### 傅里叶变换
+
+傅里叶变换原理和快速傅里叶变换的算法参看[link]("?help_script_Appendix.fft",傅里叶变换与快速傅里叶变换算法)
+
+[anchor](".function.fft")
+`fft`
+  
+快速傅里叶变换
+
+[block-ref]("syntax")
+```ewsl
+fft(X)                    // N-Point Fast Fourier Transform, N is the length of the first non-singleton dimension.
+fft(X,N)                  // N-Point Fast Fourier Transform under the first non-singleton dimension.
+fft(X,N,DIM)              // N-Point Fast Fourier Transform under the dimension DIM. 
+```
+
+* 用法1：N点FFT，对第一个非退化维度进行傅里叶变换，N是该维度的大小。
+* 用法2：N点FFT，对第一个非退化维度进行傅里叶变换，N由用户设定。
+* 用法3：N点FFT，对第DIM维度进行傅里叶变换，如果N是`nil`，则自动根据X数组的DIM维大小来确定。
+
+[block-ref]("reference")
+* [link]("?.function.ifft",`ifft`)
+* [link]("?.function.fftshift",`fftshift`)
+* [link]("?.function.ifftshift",`ifftshift`)
+
+[anchor](".function.ifft")
+`ifft`
+
+快速逆傅里叶变换
+
+[block-ref]("syntax")
+```ewsl
+ifft(X)                    // N-Point Fast Fourier Transform, N is the length of the first non-singleton dimension.
+ifft(X,N)                  // N-Point Fast Fourier Transform under the first non-singleton dimension.
+ifft(X,N,DIM)              // N-Point Fast Fourier Transform under the dimension DIM. 
+```
+
+* 用法1：N点IFFT，对第一个非退化维度进行逆傅里叶变换，N是该维度的大小。
+* 用法2：N点IFFT，对第一个非退化维度进行逆傅里叶变换，N由用户设定。
+* 用法3：N点IFFT，对第DIM维度进行逆傅里叶变换，如果N是`nil`，则自动根据X数组的DIM维大小来确定。
+
+[block-ref]("reference")
+* [link]("?.function.fft",`fft`)
+* [link]("?.function.fftshift",`fftshift`)
+* [link]("?.function.ifftshift",`ifftshift`)
+
+[anchor](".function.fftshift")
+`fftshift`
+  
+快速傅里叶变换的数据移动
+
+[block-ref]("syntax")
+```ewsl
+fftshift(X)  
+fftshift(X,N)
+```
+
+* 用法1：对`X`数组的各个维度进行傅里叶变换移位
+* 用法2：对`X`数组的指定第`N`维度进行傅里叶变换移位
+
+**具体移位规则如下：**
+* 对于偶数长度的维度，将其分割为相等的左右两半部分，将左半部分与右半部分平移交换
+* 对于奇数长度的维度，将其分割为左右两半部分，左部分比右部分**多**1，然后再将左半部分与有半部分平移交换
+> 说明：时域信号傅里叶变换的频域数据对应的频点可以如下计算
+```ewsl
+// st is time-domain signal series
+// dt is delta t
+nt = length(st);
+df = 1/(dt*nt);
+left = (nt+1)/2;
+right = nt - left;
+f = double([]);
+f[0:(left-1)] = df * (0:(left-1));
+f[left:(nt-1)] = df * (0:(right-1)) + (-df * right)
+```
+
+[block-ref]("reference")
+* [link]("?.function.fft", `fft`)
+* [link]("?.function.ifft", `ifft`)
+* [link]("?.function.ifftshift", `ifftshift`)
+
+[anchor](".function.ifftshift")
+`ifftshift`
+  
+快速逆傅里叶变换的数据移动，正好是`fftshift`的逆操作。
+
+
+[block-ref]("syntax")
+```ewsl
+ifftshift(X)
+ifftshift(X,N)
+```
+* 用法1：对`X`数组的各个维度进行逆傅里叶变换移位
+* 用法2：对`X`数组的指定第`N`维度进行逆傅里叶变换移位
+
+**具体移位规则如下：**
+* 对于偶数长度的维度，将其分割为相等的左右两半部分，将左半部分与右半部分平移交换
+* 对于奇数长度的维度，将其分割为左右两半部分，左部分比右部分**少**1，然后再将左半部分与有半部分平移交换
+
+[block-ref]("reference")
+* [link]("?.function.fft", `fft`)
+* [link]("?.function.ifft", `ifft`)
+* [link]("?.function.fftshift", `fftshift`)
+
+
+[anchor](".special")
+## 特殊函数
+
+
+[anchor](".function.fftshift")
+`fftshift`
+
+
+
+[anchor](".function.ifftshift")
+`ifftshift`
+
+[anchor](".special")
+## 特殊函数
+
+
+

@@ -1,0 +1,42 @@
+# 实时场观察器
+
+EastWave 7 提供的实时场观察器，主要用于实时观察当前仿真的具体情况。
+
+
+## 打开方式
+
+通过菜单栏**文件 > 新建 > 实时场观察器**，用户可以新建一个实时场观察器。
+
+
+开启 FDTD 计算后，用户通过设置**IP 地址**以及**端口**可以对指定 FDTD 计算任务进行链接，链接成功后即可观察实时场数据。
+
+
+## 界面直览
+
+为了向用户提供有关实时场观察器的高级直观概览，下图显示了通过实时场观察器中链接一个 FDTD 计算后的界面：
+
+
+[image]("image/UI/editor_fieldviewer.png","EastWave 7 实时场观察器")
+
+
+其中：
+* 窗口
+  * **[link]("?help_ui_detail_other_window_truetime", "实时场观察器窗口")**
+  * [link]("?help_ui_detail_other_window_modeltree", "模型树窗口")
+  * [link]("?help_ui_detail_other_window_workplace", "工作空间窗口")
+  * [link]("?help_ui_detail_other_window_message", "消息管理窗口")
+* 菜单栏
+  * **[link]("?help_ui_detail_menu_colormap", "色度条")**
+  * **[link]("?help_ui_detail_menu_mesh", "网格视图")**
+  * [link]("?help_ui_detail_menu_look", "观察面")
+  * [link]("?help_ui_detail_menu_move", "移动")
+  * [link]("?help_ui_detail_menu_rotate", "旋转")
+  * [link]("?help_ui_detail_menu_scale", "缩放")
+  * [link]("?help_ui_detail_menu_file", "文件")
+  * [link]("?help_ui_detail_menu_edit", "编辑")
+  * [link]("?help_ui_detail_menu_view", "视图")
+  * [link]("?help_ui_detail_menu_help", "帮助")
+* 核心部分
+  * 链接 FDTD 计算：设置 IP 地址、端口后，对指定 FDTD 计算进行链接。
+  * 色度条：运算结果数值范围对应的色度条范围。
+

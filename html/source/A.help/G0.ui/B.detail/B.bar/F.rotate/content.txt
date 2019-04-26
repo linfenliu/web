@@ -1,0 +1,21 @@
+﻿# 旋转 工具条
+
+旋转工具条对应[link]("?", "旋转菜单")，主要包含了在视角上对物体的旋转操作。
+
+
+[image]("image/UI/bar/rotate.png", "旋转工具条")  
+
+
+[block-ref](rotate_bar_table)
+
+
+
+```block:rotate_bar_table`endtag1
+|(L) 图标 |(L) 功能说明 |
+|(L) ``<image src="123.png" />`` |(L) 自上向下 |
+|(L) ``<image src="123.png" />`` |(L) 自下向上 |
+|(L) ``<image src="123.png" />`` |(L) 自右往左 |
+|(L) ``<image src="123.png" />`` |(L) 自左往右 |
+|(L) ``<image src="123.png" />`` |(L) 顺时针 |
+|(L) ``<image src="123.png" />`` |(L) 逆时针 |
+```endtag1

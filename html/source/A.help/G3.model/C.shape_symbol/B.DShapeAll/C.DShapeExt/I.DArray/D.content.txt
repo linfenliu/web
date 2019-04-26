@@ -1,0 +1,24 @@
+正交（Orthorhombic）阵列
+=============  
+### 正交阵列示意图
+[image]("image/DShape/DArrayOrthorhombic_sample.png","",".o_exampic")
+
+### 正交阵列参数设置对话框
+[image]("image/DShape/DArrayOrthorhombic.png","",".o_parawindow")
+   
+### 正交阵列参数含义
+[block-ref](Orthorhombic-table)
+
+### 如何创建正交阵列
+* [link](?help_model_shape_symbol_DShapeCreate.create-by-GUI, "界面创建正交阵列")
+* [link](?help_model_Advanced_ewsl_model,"脚本创建正交阵列")
+
+
+```block:Orthorhombic-table
+||(,".paratab-o")
+| 参数名称 | 说明 | 备注 |
+| 待处理元件 | 指定正交阵列中单元的元件信息 | - |
+| 栅格范围 | 指定正交阵列的三维栅格范围 | X、Y、Z三个维度的格子数 |
+| 元件间隔 | 指定正交阵列的元件间隔 | X、Y、Z三个方向的间隔 |
+```
+

@@ -1,0 +1,17 @@
+# 计算区域
+
+## 界面
+[image]("image/param/fbox.png","","计算区域界面")
+
+
+## 参数说明
+
+[block-ref](fbox-param-table)
+
+
+
+```block:fbox-param-table
+|(L) 参数             |(L) 说明 |(L) 备注 |
+|(L) 计算区域设置策略 |(L)      |(L)      |
+|(L) 计算区域         |(L)      |(L)      |
+```

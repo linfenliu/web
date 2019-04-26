@@ -1,0 +1,5 @@
+#function(cfg)
+
+local t=table();
+t.title="采集位置点与测量";
+return t;

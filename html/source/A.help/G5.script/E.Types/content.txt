@@ -1,0 +1,275 @@
+# 类型
+
+EWSL是一种动态类型语言，因此一个变量在其生命周期中类型可能会发生变化。此外，部分脚本函数对输入参数进行了隐式类型转换，不要球输入参数的类型是某种唯一确定的类型。
+
+[anchor](".primitive_types")
+## 基本类型
+
+EWSL支持以下几种基本数据类型：
++ [link]("?.nil",空类型)
++ [link]("?.boolean",布尔类型)
++ [link]("?.integer",整数类型)
++ [link]("?.double",双精度浮点数)
++ [link]("?.complex",复数类型)
++ [link]("?.string",字符串类型)
++ [link]("?.array",数组类型)
+  + [link]("?.array_integer",整数数组)
+  + [link]("?.array_double",双精度浮点数组)
+  + [link]("?.array_complex",复数数组)
+  + [link]("?.array_variant",动态类型数组)
++ [link]("?.variant_table",变量表类型)
++ [link]("?.others",其他类型)
+
+
+基本类型拥有其独特的类型ID号，使用`typeid(var)`函数来获取变量`var`的类型ID。在交互式编程环境下输入下面的命令会返回相应的类型ID号：
+```ewsl
+>> typeid(true)
+results: 1
+>> typeid(1)
+results: 2
+>> typeid("abc")
+results: 5
+```
+
+```block:typelist
+||(EWSL支持的类型的符号与ID)
+| 类型名        | 类型符号          | ID    |
+| 空类型        | nil               |  0    |
+| 布尔型        | bool              |  1    |
+| 整数型        | integer           |  2    |
+| 浮点型        | double            |  3    |
+| 复数型        | complex           |  4    |
+| 字符串        | string            |  5    |
+| 变量表        | variant_table     |  6    |
+| 整数数组      | array_integer     |  7    |
+| 浮点数组      | array_double      |  8    |
+| 复数数组      | array_complex     |  9    |
+| 动态类型数组  | array_variant     | 10    |
+| 其他类型      |                   | 15    |
+```
+
+[anchor](".typelist")
+[block-ref]("typelist")
+
+> EWSL支持[link]("help_ewsl_Programming_I.htm#function","函数")、[link]("help_ewsl_Programming_II.htm#closure","闭包")、[link]("#help_ewsl_Programming_II.htm#class","类和对象")等复杂类型，这些类型使用`typeid`函数获取ID，返回15。
+
+普通[link]("help_ewsl_Variables.htm","变量")可以直接通过赋值行为进行定义，在EWSL中使用等号`=`表示赋值过程：
+```
+a = 1;          // 变量a赋值为一个整数，值为1
+b = 2.0;        // 变量b赋值为一个浮点数，值为2.0
+c = 1+2i;       // 变量c赋值为一个复数，值为1+2i
+d = "hello";    // 变量d赋值为一个字符串，值为"hello"
+e = false;      // 变量e赋值为一个布尔值，值为false（假），另外true表示真
+t = table{ x:1; y:2.0; z:"abc" };   // 将变量t赋值为一个变量表，包括三个子变量t.x、t.y、t.z
+h = [1,2,3,"abc"];      // 变量h赋值为一个动态类型变量
+g = integer([1,2,3]);   // 变量g赋值为一个整数数组
+u = double([1,2,3]);    // 变量u赋值为一个浮点数组
+v = complex([1,2,3]);   // 变量v赋值为一个复数数组
+```
+**注意事项：**
+* 使用方括号`[]`和逗号`,`直接构造的数组是动态类型数组，必须使用相应的类型转换函数才能将其转换为确定的数值类型数组。
+* 变量表的定义要求使用关键词`table`开头，然后用大括号对`{}`将内容括起来，中间的内容必须使用冒号`:`作为子变量定义的符号，并且使用分号`;`作为不同子变量定义的分隔符。
+* 使用`table()`函数可以创建一个空变量表。
+
+[anchor](".type_specs")
+## 类型说明
+
+[anchor](".nil")
+## 空类型NIL
+空类型是一种特殊的类型，可以认为是一种只有一种取值，而这个值（`nil`）恰好又等于该类型本身的一种类型。有时空类型可以被称为“底类型”（Bottom Type）。为了区别含义，大写的`NIL`表示空类型的类型，而小写的`nil`表示空类型的数值。
+  
+* 空类型具有一些特殊的性质和用法，例如清除一个变量的内容，可以对这个变量赋值一个`nil`。如：
+
+```ewsl
+a = [1,2,3,4];
+a = nil; // clear a's content
+```
+
+* 利用空类型可以参与布尔运算的特点，作为函数参数默认值定义的一种方案。例如：
+```ewsl
+function(a,b,flag)
+{
+    a = a || 0;         // default value is 0
+    b = b || 'xyz';     // default value is a string 'xyz'
+    flag = c || true;   // default value is true
+}
+```
+
+* 利用空类型可以产生特殊的语法规则，避免歧义。例如[link]("?help_script_Specifications_Mathematics.function.max",`max`)函数：
+```ewsl
+max(A,nil,0)            // the second argument is nil, it means to calculate the maximum along DIM 0
+max(A,0)                // it means to calculate the max of A and 0 
+```
+[anchor](".boolean")
+## 布尔类型
+
+布尔类型是逻辑代数（布尔代数）的取值类型，包括`true`和`false`两种类型，分别对应“真”和“假”的概念。
+  
+在布尔代数中主要包括了逻辑或、与、非、异或等运算，一般我们使用逻辑运算符表示：
+
+
+```block:operator-logicals
+||(逻辑运算符)
+| 算符              | 意义      | 备注  |
+| &&                | 逻辑与    |       |
+| [block-ref](dd)   | 逻辑或    |       |
+| ^^                | 逻辑异或  |       |
+| !                 | 逻辑非    |       |
+```
+
+**说明：**
+* 利用[link]("?help_script_Programming_I.operator-logicals",关系运算符)可以得到布尔值。
+* 布尔类型是[link]("?help_script_Programming_I.branch",条件分支结构)和[link]("?.help_ewsl_Programming_I.conditional_loop",条件循环结构)必须的数值类型。
+
+[block-ref]("operator-logicals")
+
+例如：
+```ewsl
+b = 0;
+a = 1 >= b;     // evaluate a relation expression to get a boolean value
+if(a)           // if-else structure
+{
+    println("1>=b");
+}else
+{
+    println("1<b");
+}
+```
+
+**布尔值类型转换规则：**
+* 空值`nil`转换为`false`。
+* 整数、浮点数、复数转换规则：非零数转换为`true`，零转换为`false`。
+* 字符串转换规则：空字符串转换为`false`，非空转换为`true`。
+* 其他类型转换为布尔值的**行为未定义**。
+* 布尔值不能向上转换为其他数值类型。
+
+
+[anchor](".integer")
+## 整数型
+
+整数类型是表达有符号整数的一种方式，使用64bit的内存空间储存一个整数值。整数类型是最基本的算术计算。使用`integer.MAX_VALUE`和`integer.MIN_VALUE`获得整数类型的上界和下界。
+  
+
+[anchor](".double")
+## 双精度浮点数
+  
+双精度浮点数是实数的离散表达形式，使用64bit的内存空间储存一个双精度浮点数。浮点数类型支持算术计算。使用`double.MAX_VALUE`和`double.MIN_VALUE`可以获得正浮点数的最大表示和最小表示（注意并不是最大浮点数和最小浮点数）。程序中引用浮点数常量数值时可以使用科学技术法如：`+1.500e--3`表示`0.0015`。
+
+[anchor](".complex")
+## 复数型
+
+复数类型是由两个双精度浮点数分别表示实部和虚部，使用128bit的内存空间储存一个复数。复数支持算术计算。使用`complex.i_unit`可以获得单位纯虚数。引用复数常量数值时可以用`i`表示虚数，例如：`1+1i`表示复数$1+i$，单位虚数`1i`要在符号`i`前加上数字`1`以区别于普通变量符号`i`。
+
+
+[anchor](".string")
+## 字符串类型
+
+字符串类型是基本类型之一，EWSL没有提供专门的字符类型，也没有将字符串等同于字符数组类型。字符串类型的常量使用单引号对`''`、双引号对`""`或者三个单引号对`''' ... '''`来定义。使用双引号和单引号时需要考虑转义字符，使用`\\`作为转移符号；使用三个单引好时，可以定义多行字符串，程序中的字面字符串将不考虑转义直接转化为常量字符串，但是其中不能再出现三个连续单引号。
+
+* 双引号和单引好定义字符串：
+```ewsl
+a = "abc"       // a word abc
+b = '"abc"'     // a string "abc" (with double quote)
+c = "'"         // just a single quote '
+```
+
+* C风格多行字符串：（双引号可以用单引号替换掉）
+```ewsl
+a = "Johny is a good boy.\n"
+    "Marry is a nice girl.\n"
+    "Their father is an engineer."
+```
+
+* 三个单引号定义
+```ewsl
+'''
+China is a greate nation.
+Beijing is the capital of China.
+Shanghai is another city of China.
+'''
+```
+[anchor](".array")
+## 数组类型
+
+* 数组类型将一组同类型或不同类型元素按照数组的形式组织起来，并且可以使用下标引用数组中的每个元素。数组类型使用算符`[]`获得数组中的元素或者子数组。当数组变量使用`[]`引用元素或者子数组并且处于赋值符号`=`的左侧，即作为左值引用的时候，相应下标的元素成为左值引用的对象，即可以对数组的元素和子数组进行局部赋值。一些赋值自操作的运算符（诸如`+=`、`-=`、`*=`之类）也有类似的作用。例如：
+  
+```ewsl
+a = 1:10;
+a[5] = 20;
+a[7] -= 10;
+/* a = [1,2,3,4,5,20,7,-2,9,10]
+ */
+```
+
+* EWSL支持二维数组的直接定义语法，使用逗号`,`表示列分隔，`;`表示行分隔的方式（类似于**Matlab**）来实现，例如：
+```ewsl
+a = [1,2,3;
+     4,5,6;
+     7,8,9]
+```
+> 上面的例子定义了一个3x3的二维数组。
+
+
+**注意：**
+* EWSL的数组下标从`0`开始索引，不同于**Matlab**。
+* EWSL的数组下标中可以使用`end`关键词来表示这个维度下标的最后一个索引编号。例如`a = 0:9`则`a[end]==9`。
+* 阅读[link]("?help_script_Specifications_Array",数组函数)相关内容。  
+
+[anchor](".array_integer")
+### 整数数组
+
+每个元素都是整数的数组。类型名为`array_integer`。
+
+[anchor](".array_double")
+### 双精度浮点数数组
+  
+每个元素都是双精度浮点数。类型名为`array_double`。
+
+
+[anchor](".array_complex")
+### 复数数组
+  
+每个元素都是复数。类型名为`array_complex`。
+
+[anchor](".array_variant")
+### 动态类型数组
+
+每个元素的类型为动态变量类型，即可以是任何类型。类型名为`array_variant`。可以用动态类型数组来表示字符串数组、变量表数组、函数数组、类实例数组等。使用方括号构造算符`[...]`可以直接构造一个动态类型数组，例如`a = [1,2,3,4,"abc"]`构造的是一个动态类型数组，数组中包含了整数和字符串两种类型的数值。`[...]`可以递归调用，即可以定义数组的数组，例如：
+
+```ewsl
+a = [[1,2,3],[2,3,4]]
+```
+
+
+[anchor](".variant_table")
+## 变量表类型
+
+变量表类型是一种将键值（key，字符串类型）和一个数值（value，任意类型）关联起来的一种数据类型，非常适合存储具有特定含义的参数集，例如配置文件、字典文件等。
+
+
+* 变量表使用`.`和`[]`来索引数据。`a.x`和`a["x"]`的效果是一样的，他们的差别在于：使用`.`要求键值必须是程序字符串的字面值，而使用`[]`时键值可以是字符串变量。
+* 变量表构造方式有两种，一种是调用函数`table(key1,val1,key2,val2,...)`，另一种是利用`table{...}`语法糖，具体例子如下：
+```ewsl
+a = table("name",   "John",
+          "age",    18,
+          "height", 180);
+
+b = table{ name:    "John";
+           age:     18;
+           height:  180 };
+```
+> 上面的两个例子构造的`a`和`b`变量表的内容是完全相同的。
+
+
+
+[anchor](".others")
+## 其他类型
+
+EWSL支持其他类型，例如函数、闭包、类和对象实例等。
+
+[anchor](".read_more")
+## 相关阅读
+* [link]("?help_script_Getting_Started", "入门")
+* [link]("?help_script_Programming_I","EWSL程序设计阶段 I")
+* [link]("?help_script_Programming_II","EWSL程序设计阶段 II")
+

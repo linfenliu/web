@@ -1,0 +1,4 @@
+﻿#function(cfg)
+local t=table();
+t.title="阵罩联合仿真模式教学案例二";
+return t;

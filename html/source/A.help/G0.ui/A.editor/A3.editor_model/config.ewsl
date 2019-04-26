@@ -1,0 +1,7 @@
+#function(cfg)
+
+local t=table();
+t.title = "模型文档编辑器";
+
+
+return t;

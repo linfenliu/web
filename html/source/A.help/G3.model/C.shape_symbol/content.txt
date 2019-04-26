@@ -1,0 +1,95 @@
+# 几何元件
+几何元件是 EastWave 7 提供的作为参数化对象的结构信息元件。       
+    
+> 使用 EastWave 几何元件功能可快速生成适合特定工程问题的物体模型，大大减小建模的复杂度。
+
+
+## 如何创建几何元件
+* [link]("?help_model_shape_symbol_DShapeCreate.create-by-GUI", "界面创建几何元件（推荐）")      
+* [link]("?help_model_shape_symbol_DShapeCreate.create-by-EWSL", "脚本创建几何元件（高级建模）")
+      
+[anchor](".kind-of-geometry")
+## 所有几何元件
+除了[link]("?.base", "基础几何元件")外，EastWave 从工程应用角度出发，还开发了[link]("?.ext", "扩展几何元件")。
+
+[anchor](.base)
+### 基础几何元件
+[block-ref](baseshape-table)
+
+[anchor](.ext)
+### 扩展几何元件
+[block-ref](extshape-table)
+
+
+
+```block:baseshape-table`endtag1
+| 元件分类 | 元件名称 |(L) 元件说明 |
+|(6) [link]("?help_model_shape_symbol_DShapeAll_DShapeBase", "基础几何元件")| [link]("?help_model_shape_symbol_DShapeAll_DShapeBase_DShapeCube", 长方体) |(L) 长方体可用于生成最简单的基本几何体。包括长方体面板、立方体小块等。 |
+| [link]("?help_model_shape_symbol_DShapeAll_DShapeBase_DShapeCylinder", 圆柱体) |(L) 圆柱体可用于生成截面为正圆或椭圆的实心或空心的柱形几何体。 |
+| [link]("?help_model_shape_symbol_DShapeAll_DShapeBase_DShapeSphere", 球体) |(L) 球体可用于生成具有厚度的完整球体或椭圆体。 |
+| [link]("?help_model_shape_symbol_DShapeAll_DShapeBase_DShapeGeoSphere", 几何球体) |(L) 几何球体可用于生成基于正二十多面体制作的球体。 |
+| [link]("?help_model_shape_symbol_DShapeAll_DShapeBase_DShapeCone", 圆锥体) |(L) 圆锥体可用于生成圆形圆锥体。 |
+| [link]("?help_model_shape_symbol_DShapeAll_DShapeBase_DShapeTorus", 环体) |(L) 圆环体可用于生成一个具有圆形截面的环。 |
+```endtag1
+
+```block:extshape-table`endtag1
+| 元件分类 | 元件名称 |(L) 元件说明 |
+|(9) [link]("?help_model_shape_symbol_DShapeAll_DShapeExt", "扩展几何元件")| [link]("?help_model_shape_symbol_DShapeAll_DShapeExt_DShapeSpin", 实心旋转体) |(L) 实心旋转体可用于生成基于外形线旋转一周形成的对称几何体。 |
+| [link]("?help_model_shape_symbol_DShapeAll_DShapeExt_DShapeSpin2", 空心旋转体) |(L) 空心旋转体可用于生成基于给定表面旋转一定角度形成的几何体。 |
+| [link]("?help_model_shape_symbol_DShapeAll_DShapeExt_DShapeSweeped", 参数扫描体) |(L) 参数扫描体可用于生成基于给定平面和变换矩阵参数构造的几何体。 |
+| [link]("?help_model_shape_symbol_DShapeAll_DShapeExt_DShapeColumn", 垂直拉伸体) |(L) 垂直拉伸体支持对给定的平面进行垂直拉伸建模。可用于构造棱柱等几何体。 |
+| [link]("?help_model_shape_symbol_DShapeAll_DShapeExt_DShapeStl", 导入CAD模型) |(L) 导入CAD模型支持从外部导入常见CAD格式模型。 |
+| [link]("?help_model_shape_symbol_DShapeAll_DShapeExt_DShapeForcedMesh", 强制网格面) |(L) 强制网格可在所指定的关键网格位置强制生成网格体或网格面或网格线，并加密周围网格。 |
+| [link]("?help_model_shape_symbol_DShapeAll_DShapeExt_DShapeSurfaceStretch", 多层物体) |(L) 多层物体支持对给定的表面按照特定方向生长多层材料的建模。 |
+| [link]("?help_model_shape_symbol_DShapeAll_DShapeExt_DShapeRadome", 天线罩) |(L) EastWave V7 根据常用天线罩形线预定义了内置天线罩模型，用户使用时只需输入模型所对应的外形线参数。 |
+| [link]("?help_model_shape_symbol_DShapeAll_DShapeExt_DArray", 阵列) |(L) 阵列用于设计基于某种元件，按照指定的空间排布生成的阵列结构或阵列激励源。 |
+```endtag1
+
+```block:shape-table`endtag1
+| 元件分类 | 元件名称 |(L) 元件说明 |
+|(6) [link]("?help_model_shape_symbol_DShapeAll_DShapeBase", "基础几何元件")| [link]("?help_model_shape_symbol_DShapeAll_DShapeBase_DShapeCube", 长方体) |(L) 长方体可用于生成最简单的基本几何体。包括长方体面板、立方体小块等。 |
+| [link]("?help_model_shape_symbol_DShapeAll_DShapeBase_DShapeCylinder", 圆柱体) |(L) 圆柱体可用于生成截面为正圆或椭圆的实心或空心的柱形几何体。 |
+| [link]("?help_model_shape_symbol_DShapeAll_DShapeBase_DShapeSphere", 球体) |(L) 球体可用于生成具有厚度的完整球体或椭圆体。 |
+| [link]("?help_model_shape_symbol_DShapeAll_DShapeBase_DShapeGeoSphere", 几何球体) |(L) 几何球体可用于生成基于正二十多面体制作的球体。 |
+| [link]("?help_model_shape_symbol_DShapeAll_DShapeBase_DShapeCone", 圆锥体) |(L) 圆锥体可用于生成圆形圆锥体。 |
+| [link]("?help_model_shape_symbol_DShapeAll_DShapeBase_DShapeTorus", 环体) |(L) 圆环体可用于生成一个具有圆形截面的环。 |
+|(9) [link]("?help_model_shape_symbol_DShapeAll_DShapeExt", "扩展几何元件")| [link]("?help_model_shape_symbol_DShapeAll_DShapeExt_DShapeSpin", 实心旋转体) |(L) 实心旋转体可用于生成基于外形线旋转一周形成的对称几何体。 |
+| [link]("?help_model_shape_symbol_DShapeAll_DShapeExt_DShapeSpin2", 空心旋转体) |(L) 空心旋转体可用于生成基于给定表面旋转一定角度形成的几何体。 |
+| [link]("?help_model_shape_symbol_DShapeAll_DShapeExt_DShapeSweeped", 参数扫描体) |(L) 参数扫描体可用于生成基于给定平面和变换矩阵参数构造的几何体。 |
+| [link]("?help_model_shape_symbol_DShapeAll_DShapeExt_DShapeColumn", 垂直拉伸体) |(L) 垂直拉伸体支持对给定的平面进行垂直拉伸建模。可用于构造棱柱等几何体。 |
+| [link]("?help_model_shape_symbol_DShapeAll_DShapeExt_DShapeStl", 导入CAD模型) |(L) 导入CAD模型支持从外部导入常见CAD格式模型。 |
+| [link]("?help_model_shape_symbol_DShapeAll_DShapeExt_DShapeForcedMesh", 强制网格面) |(L) 强制网格可在所指定的关键网格位置强制生成网格体或网格面或网格线，并加密周围网格。 |
+| [link]("?help_model_shape_symbol_DShapeAll_DShapeExt_DShapeSurfaceStretch", 多层物体) |(L) 多层物体支持对给定的表面按照特定方向生长多层材料的建模。 |
+| [link]("?help_model_shape_symbol_DShapeAll_DShapeExt_DShapeRadome", 天线罩) |(L) EastWave V7 根据常用天线罩形线预定义了内置天线罩模型，用户使用时只需输入模型所对应的外形线参数。 |
+| [link]("?help_model_shape_symbol_DShapeAll_DShapeExt_DArray", 阵列) |(L) 阵列用于设计基于某种元件，按照指定的空间排布生成的阵列结构或阵列激励源。 |
+```endtag1
+
+
+ 
+  
+```block:example-ewsl-script`endtag1
+```ewsl
+//添加相应的几何元件。
+td.beg("cube","DShapeCube");
+	td.set("unit","");
+	td.set("opt_type#Cube#Shape",0x1);
+	td.set("u3e_corner_1.u#Cube#Shape","0.0");
+	td.set("u3e_corner_1.v#Cube#Shape","0.0");
+	td.set("u3e_corner_1.n#Cube#Shape","0.0");
+	td.set("u3e_corner_2.u#Cube#Shape","100.0");
+	td.set("u3e_corner_2.v#Cube#Shape","100.0");
+	td.set("u3e_corner_2.n#Cube#Shape","100.0");
+td.end();
+
+td.beg("topgroup1","DSymbolGrp");
+	td.set("unit","");
+	td.set("meshinfo","");
+	td.set("material","");
+	td.set("n_dp_level",0x0);
+	td.set("transforms",[]);
+	//把新构造的几何元件"cube"添加到该节点。
+	td.set("children",["cube"]);
+	td.set("reference","");
+td.end();
+```
+```endtag1

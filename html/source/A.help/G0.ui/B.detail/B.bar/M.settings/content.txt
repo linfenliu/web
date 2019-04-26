@@ -1,0 +1,22 @@
+﻿# 显示控制 工具条
+
+显示控制工具条，主要用于控制[link]("?", "实时场观察器")的观察数据以及观察面。
+
+
+[image]("image/UI/bar/setting.png", "时间控制工具栏")
+
+
+[block-ref](setting_bar_table)
+
+
+```block:setting_bar_table`endtag1
+|(L) 图标 |(L) 功能说明 |
+|(L) ``<image src="123.png" />`` |(L) 播放 |
+|(L) ``<image src="123.png" />`` |(L) 停止 |
+|(L) ``<image src="123.png" />`` |(L) 选择数据 |
+|(L) ``<image src="123.png" />`` |(L) 选择观察分量 |
+|(L) ``<image src="123.png" />`` |(L) 选择观察平面 |
+|(L) ``<image src="123.png" />`` |(L) - |
+|(L) ``<image src="123.png" />`` |(L) 更新观察值 |
+|(L) ``<image src="123.png" />`` |(L) 关闭 |
+```endtag1

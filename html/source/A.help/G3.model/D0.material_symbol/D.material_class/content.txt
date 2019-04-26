@@ -1,0 +1,48 @@
+# 所有材料元件
+
+EastWave 中，材料作为元件进行定义。赋予了材料的[link]("?help_model_shape_symbol",几何元件)成为[link]("?help_model_physical_symbol",物理元件)。    
+
+## 材料属性
+* 显示属性
+  * 颜色
+  * 透明度
+  * 反射方式
+  * 绘制方式（线框模型、面模型、纹理）
+* 基本电属性
+  * $\varepsilon$、$\sigma_e$
+  * $\mu$、$\sigma_m$
+* 高级属性
+  * 由材料的物理模型决定参数
+  * 其他物理参数
+  * 其他参数
+
+## 材料类型
+[anchor](".material_types")
+[block-ref](material-types)
+
+```tips:indicate-常用
+EastWave 提供了三种默认材料，其中的`vacuum`和`pec`两种材料在大多数电磁波工程仿真中会用到。
+```
+
+**相关主题：**
+[link]("?help_model_physical_symbol",物理元件)
+
+
+
+
+```block:material-types
+||(材料类别表)
+| 材料类别      | 特点                                                      | 备注                      |
+| 普通材料      | 具有常数的$\varepsilon$、$\mu$、$\sigma_e$和$\sigma_m$    |                           |
+| 洛仑兹材料    | 具备洛仑兹色散关系的材料                                  |                           |
+| 空间相关材料  | 物理属性与空间分布有关的材料                              |                           |
+| 涂敷材料      | 用来定义薄板或者物体表面加油指定厚度或者电磁属性的材料    | 多层材料和阻抗材料        |
+```
+
+```block:default-materials
+||(默认材料)
+| 材料名称      | 说明                                          |
+| Vacuum        | 真空                                          |
+| PEC           | 理想电导体（Perfect Electric Conductor）      |
+| PMC           | 理想磁导体（Perfect Magnetic Conductor）      |
+```

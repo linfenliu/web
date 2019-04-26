@@ -1,0 +1,18 @@
+﻿# 缩放 工具条
+
+缩放工具条对应[link]("?", "缩放菜单")，主要包含了在视角上对物体的缩放操作。
+
+
+[image]("image/UI/bar/scale.png", "缩放工具条")  
+
+
+[block-ref](scale_bar_table)
+
+
+
+```block:scale_bar_table`endtag1
+|(L) 图标 |(L) 功能说明 |
+|(L) ``<image src="123.png" />`` |(L) 放大 |
+|(L) ``<image src="123.png" />`` |(L) 缩小 |
+|(L) ``<image src="123.png" />`` |(L) 合适比例 |
+```endtag1

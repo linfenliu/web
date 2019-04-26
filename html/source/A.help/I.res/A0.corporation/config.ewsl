@@ -1,0 +1,5 @@
+#function(cfg)
+
+local t=table();
+t.title="公司介绍";
+return t;

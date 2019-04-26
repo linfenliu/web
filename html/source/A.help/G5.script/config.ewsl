@@ -1,0 +1,7 @@
+#function(cfg)
+
+local t=table();
+t.title = "MXΩ≈±æ”Ô—‘"
+
+
+return t;

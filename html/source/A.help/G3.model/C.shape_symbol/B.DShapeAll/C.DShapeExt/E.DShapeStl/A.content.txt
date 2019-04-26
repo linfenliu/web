@@ -1,0 +1,32 @@
+# 导入CAD模型
+导入CAD模型支持从外部导入常见CAD格式模型。  
+
+## 定义方式
+### 导入模型
+#### STL文件格式
+[image]("image/DShape/DShapeStl.png","",".parawindow")
+
+#### 参数含义
+[block-ref](import--file-table)
+
+
+## 如何导入CAD模型
+* [link](?help_model_shape_symbol_DShapeCreate.create-by-GUI, "界面导入CAD模型")
+* [link](?help_model_Advanced_ewsl_model,"脚本导入CAD模型")
+
+
+```block:import--file-table
+||(,".paratab-if")
+| 参数名称 | 说明 | 备注 |
+| 文件路径 | 指定导入CAD模型的文件路径 | STL格式  |
+| 分块载入 | 超大型文件内存不足以一次性加载模型时，可通过分块载入导入CAD模型 | - |
+```
+
+
+
+
+
+
+
+
+

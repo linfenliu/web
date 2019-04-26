@@ -1,0 +1,38 @@
+# 参数扫描体
+参数扫描体可用于生成基于给定平面和变换矩阵参数构造的几何体。  
+
+## 定义方式
+### 中心——坐标变换矩阵
+#### 属性对话框
+[image]("image/DShape/DShapeSweeped.png","",".parawindow")
+
+#### 参数含义
+[block-ref](center--matrix-table)
+
+#### 示意图
+[image]("image/DShape/DShapeSweeped_sample.png","",".sample-cm")
+
+
+## 如何创建参数扫描体
+* [link](?help_model_shape_symbol_DShapeCreate.create-by-GUI, "界面创建参数扫描体")
+* [link](?help_model_Advanced_ewsl_model,"脚本创建参数扫描体")
+
+
+```block:center--matrix-table
+||(,".paratab-cm")
+| 参数名称 | 说明 | 备注 |
+| 待旋转表面 | 指定参数扫描体的待旋转表面 | 可引用内部二维平面或导入的STL平面  |
+| 扫描表达式 | 指定参数扫描体的扫描长度以及间隔 | 例如：`0：1：30` |
+| 中心表达式 | 指定参数扫描体的中心表达式 | 中心有X、Y、Z三个维度 |
+| 变换矩阵表达式 | 指定参数扫描体的变换矩阵表达式 | `T(transformation matrix)`[block-ref](matrix-table) |
+| 反转 | 是否反转表面 | - |
+```
+
+```block:matrix-table
+| u2x | v2x | n2x | 0 |
+| u2y | v2y | n2y | 0 |
+| u2z | v2z | n2z | 0 |
+| 0 | 0 | 0 | 1 |
+```
+
+

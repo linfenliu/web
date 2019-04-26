@@ -1,0 +1,19 @@
+## ++item_name
+++item_name++item_introduction。++item_name的参数设置对话框：
+[image]("image/++item_document_name.png","++item_name参数设置",".parawindow")
+
+
+各参数含义：
+||(++item_name参数说明表,".paratab")
+| **参数**     | **说明**                            | **备注** |
+| 物体名   	   | 指定物体的名称                      |     -    |
+|      		   |        |     -    |
+|          |      |     -    |  
+|          |      |     -    |
+|          |      |     -    |
+|          |      |     -    |
+
+++item_name参数示意图：
+[image]("image/++item_document_name_sample.png","++item_name参数示意图",".sample")
+
+

@@ -1,0 +1,5 @@
+#function(cfg)
+
+local t=table();
+t.title="Lorentz 材料模型相关公式推导";
+return t;

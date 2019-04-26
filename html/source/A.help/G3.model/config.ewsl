@@ -1,0 +1,7 @@
+#function(cfg)
+
+local t=table();
+t.title = "建模";
+
+
+return t;

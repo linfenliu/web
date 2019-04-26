@@ -1,0 +1,4 @@
+#function(cfg)
+local t = table();
+t.title = "表面场监视器（频域）";
+return t;

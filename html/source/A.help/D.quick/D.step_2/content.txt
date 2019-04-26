@@ -1,0 +1,4 @@
+# 步骤 2:建立模型
+
+> 若对模型编辑器不了解，请参看[link]("?help_overview_about_model", "关于 EastWave 7 模型编辑器")。    
+

@@ -1,0 +1,46 @@
+# props 界面库
+
+在 KMaker 的基础上，根据通用程度扩展出了三个层级的高级接口，用来简化窗口的定义，并对风格进行整体控制。
+
+
+## 第一层级高级接口
+
+
+
+
+## 第二层级高级接口
+
+
+
+
+
+## 第三层级高级接口
+
+|(L) 接口 				|(L) 备注									|
+|(L) km.new_container	|(L) 创建新的控件容器，内部控件按**行**解析。	|
+|(L) km.new_book		|(L) 创建可切换页面，通常配合`combo_book`或`radiobox`使用 |
+|(L) km.new_note		|(L) 创建可切换标签页，内部控件使用`new_page`构造新页面 |
+|(L) km.new_page		|(L) 创建新的页面 |
+|(L) km.new_fieldset	|(L) 创建带标签的包围框 |
+|(L) km.combo_book		|(L) 创建绑定`book`控件的下拉框 |
+|(L) km.combo_optdata	|(L) 创建绑定`optdata`的下拉框  |
+|(L) km.combo_readonly	|(L) 创建绑定`optdata`的只读下拉框 |
+|(L) km.expression		|(L) 表达式控件 |
+|(L) km.expression2		|(L) `x,y`表达式控件 |
+|(L) km.expression3		|(L) `x,y,z`表达式控件 |
+|(L) km.box				|(L) `lo,hi`表达式控件 |
+|(L) km.textctrl		|(L) 单行文本控件 |
+|(L) km.multitext		|(L) 多行文本控件 |
+|(L) km.button			|(L) 按钮控件 |
+|(L) km.dataview		|(L) 数据组控件	|
+|(L) km.radiobox		|(L) 单选框控件	|
+|(L) km.checkbox		|(L) 复选框控件 |
+|(L) km.filectrl		|(L) 文件控件	|
+|(L) km.colorctrl		|(L) 颜色控件	|
+|(L) km.spinctrl		|(L) 滑动条控件	|
+|(L) km.hline			|(L) 水平分割线 |
+|(L) km.vline			|(L) 垂直分割线 |
+
+
+
+

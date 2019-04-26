@@ -1,0 +1,4 @@
+﻿#function(cfg)
+local t=table();
+t.title="瞄准线误差";
+return t;

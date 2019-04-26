@@ -1,0 +1,115 @@
+# 雷达成像计算模式
+
+
+## 概述
+雷达回波数据主要是指雷达照射目标的散射场，它真实地反映了目标结构和材料的散射特性，对回波数据的图像化处理就是雷达成像，
+通过雷达图像提取目标散射特性，识别雷达目标和指导目标隐身设计是雷达目标成像的目的。
+
+对于高分辨率距离（HRRP）成像，目标在雷达距离向上的散射特性体现在这个方向上散射强点构成的曲线图上；
+对于逆合成孔径雷达（ISAR）成像，虽然空间目标的表面特性复杂，但是通常可以看成是有很多不同位置、不同反射系数的散射点
+构成的。ISAR成像的目标就是要正确显示各散射点的相对位置和回波强度。
+
+**仿真流程：**
+* 设置基本参数（单位、工作频率、发射雷达扫描中心角、极化方式、雷达分辨率等）
+* 建立模型（几何建模和材料设置）
+* 网格设置
+* 计算
+* 结果显示和后处理
+
+
+## 模式设置
+
++ 基本设置
+  * 单位（默认设置）
+    * 长度单位：mm
+    * 频率单位：GHz
+    * 时间单位：ns
+    * 默认单位修改步骤：
+      * 在**模型**悬浮框，依次点击展开**doc**-->**定义**；
+      * 双击**单位** -->选择**设置单位**-->点击单位对话框右边的编辑按钮-->设置长度、频率和时间单位。
+        [image]("image/workmode/radarImaging/UnitSetting.png")
+  * 空间分布：平面波
+  * 时域波形：根据用户模式界面选择的信号类型（目前仅实现了Gauss信号）
+  * 发射方向：根据用户模式界面输入的角度参数$\theta$，$\phi$
+  * 极化角度：根据用户模式界面选择的极化：垂直极化和水平极化
+  * 分辨率
+    * 距离分辨率：根据用户模式界面输入的距离向分辨率值
+    * 方位分辨率：根据用户模式界面输入的方位向分辨率值	   
+  * 画布尺寸
+    * 距离向尺寸：根据用户模式界面输入的距离向尺寸值
+    * 方位向尺寸：根据用户模式界面输入的方位向尺寸值
+  * 远场外推位置：	默认1e8[mm]
++ 监视器
+  * 类型：时域远场记录器
+  * 位置：距离计算区域边界2个网格
++ 边界设置
+  * 吸收边界（默认：12层CPML吸收边界）
+
+
+## 模式界面
+**模型**-->鼠标右击**计算模式**，并点击**新建计算模式**-->在**类型**下拉框里选择**DworkmodeImaging2**,现在在**计算模式**栏里可见该计算模式，然后鼠标右击该计算模式菜单，
+点击**激活**，才能启动该模式，双击该计算模式，出现模式界面：
+[image]("image/workmode/radarImaging/ModeInterface.png")
+
+## 输入参数设置
+
+主要设置参数如下图所示：  
+[image]("image/workmode/radarImaging/ParamSetting.png")      
+
+**雷达成像子模式选择：**
+ ImagingMode: 成像模式，可选ISAR（二维成像）和HRRP（一维距离成像）；   
+ 
+```block:RadarImaging-signal
+|参数|说明|
+|signal.type|信号类型，可选Gauss(高斯脉冲)、Chirp(啁啾信号)、SFCW（频率步进连续波信号）|
+|signal.frequency|中心频率|
+|signal.theta|$\theta$角|
+|signal.phi|$\phi$角，中心扫描角|
+|signal.amplitude|信号幅度值|
+|signal.polarization|信号极化类型，可选vertical(垂直极化)、horization(水平极化)|
+|signal.scsmode|扫角方式，可选ISO、HCS、GCS|
+```
+**雷达发射信号参数设置:**
+[block-ref]("RadarImaging-signal")
+
+**注：**信号类型目前仅实现了Gauss信号。
+
+```block:RadarImaging-image
+|参数|说明|
+|image.range_rsl|雷达图像距离分辨率|
+|image.cross_rsl|雷达图像方位分辨率|
+|image.range_size|雷达图像距离像尺寸|
+|image.cross_size|雷达图像方位像尺寸|
+
+```
+  **雷达图像参数设置:**
+[block-ref]("RadarImaging-image")
+
+**图像处理参数设置：**  
+algorithm.window: 窗函数。
+
+**杂项设置：**
+
+
+
+## 输出结果
+一维成像结果：  
+[image]("image/workmode/radarImaging/HRRP_Image.png")   
+
+一维成像数据：  
+[image]("image/workmode/radarImaging/HRRP_data.png")   
+
+二维成像结果：  
+[image]("image/workmode/radarImaging/SAR_Image.png")   
+
+二维成像数据：  
+[image]("image/workmode/radarImaging/SAR_data.png")   
+
+
+
+
+	
+
+
+
+

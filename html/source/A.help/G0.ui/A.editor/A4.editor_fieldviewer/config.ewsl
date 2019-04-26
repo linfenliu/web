@@ -1,0 +1,7 @@
+#function(cfg)
+
+local t=table();
+t.title = "实时场观察器";
+
+
+return t;

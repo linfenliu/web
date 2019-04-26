@@ -1,0 +1,24 @@
+﻿# 链接 工具条
+
+链接工具条主要用于链接当前正在进行的 FDTD 计算任务，输入需要链接的 IP 地址以及端口后即可创建链接。
+
+
+[image]("image/UI/bar/link.png", "链接工具栏")
+
+
+[block-ref](link_bar_table)
+
+
+
+
+
+
+
+
+```block:link_bar_table`endtag1
+|(L) 图标 |(L) 功能说明 |
+|(L) ``<image src="123.png" />`` |(L) IP 地址输入框 |
+|(L) ``<image src="123.png" />`` |(L) 端口输入框 |
+|(L) ``<image src="123.png" />`` |(L) 开始链接按钮 |
+|(L) ``<image src="123.png" />`` |(L) 断开链接按钮 |
+```endtag1

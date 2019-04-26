@@ -1,0 +1,20 @@
+﻿# 色度条 菜单
+
+色度条菜单是[link]("?help_ui_editor_editor_figure", "绘图编辑器")和[link]("?help_ui_editor_editor_fieldviewer", "实时场观察器")特有的菜单，主要用于控制计算结果数值与色度范围的对应值，以便于直观地观察计算结果。
+色度条下拉菜单包含的所有操作命令如下图所示。
+
+
+[image]("image/UI/menu/colormap.png", "色度条菜单")
+
+
+[block-ref](colormap_menu_table)
+
+
+
+```block:colormap_menu_table`endtag1
+|(L) 菜单项 |(L) 备注 |
+|(L) 色度条 > 自动适应 |(L) 自适应色度条范围 |
+|(L) 色度条 > 增加范围 |(L) 增加色度条范围值 |
+|(L) 色度条 > 降低范围 |(L) 降低色度条范围值 |
+
+```endtag1

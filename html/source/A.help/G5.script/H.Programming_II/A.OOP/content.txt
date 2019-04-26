@@ -1,0 +1,149 @@
+# 面向对象编程
+
+
+[anchor](".concept")
+## 基本概念
+
+EWSL支持较为简洁的面向对象设计范式。包括支持**类**（class）、**类的继承**、成员变量与方法、类方法等概念。面向对象编程的核心概念是类和对象。其中类可以看成构造对象实例的模板，而对象则是根据类的规则将一组数据和方法组合成起来的一种数据结构。每个类都为各自的类实例定义了一系列的成员对象和方法，相同类的对象实例具有类似的行为特征。面向对象编程比较适合对真实世界行为的模拟和概念抽象，例如动物、人类、汽车、建筑都可以抽象为类的概念。类的概念又衍生出了子类的概念，例如我们可以定义“人”是一个类，那么“男人”就可以定义成一个子类，而“女人”可以定义成另一个子类。在许多时候，类的设计很容让程序员理解代码的含义。合理使用面向对象编程技术有利于提高程序的可读性、封装性和重用能力。
+
+
+* 一个简单的类和对象的定义与使用的例子
+```ewsl
+class Person
+{
+    self.name   = "noname";
+    self.age    = 18;
+    self.height = 175;
+    self.gender = "male";
+};
+
+John = Person();
+John.name = "John";
+John.age = 18;
+John.height = 180;
+John.gender = "male";
+
+Marry = Person();
+Marry.name = "Marry";
+Marry.age  = 22;
+Marry.height = 165;
+Marry.gender = "female";
+```
+> 上面的例子定义了一个叫做`Person`的类，并且定义了两个对象实例分别叫做`John`和`Mary`。
+
+
+* 定义一个类
+  * `class`关键词后跟着类名，如例子中的`Point`。
+  * 在类名后跟上大括号对`{}`，大括号之间书写类的定义。
+  * `self`关键词表示的是类的对象实例的成员域，并且是动态绑定（即每个对象实例均有一份该名字的成员），并且运行期是可变的(mutable)。
+  * `mfun`关键词表示的是类的对象实例的成员域，但是是静态绑定（即每个对象实例均共享同名的成员），在运行期是不可变的(immutable)。
+  * `meta`关键词表示类本身成员的定义，必须使用类而不是对象实例来引用（`Point.length`是合法的，而`Point().length`是非法的）。
+```ewsl
+class Point
+{
+    self.x = 0;
+    self.y = 0;
+    self.z = 0;
+    
+    // meta-method
+    // it is used as `Point.length(...)`
+    // `Point.length` is immutable (cannot be modified)
+    meta.length = function(p)
+    {
+        return sqrt(p.x*p.x + p.y*p.y + p.z*p.z);
+    };
+
+    // static-binded member-method
+    // it is used as `obj.length()`
+    // `obj.length` is immutable (cannot be modified)
+    // predicate: (Point().length1 === Point().length1) == true (always)
+    mfun.length1 = function()
+    {
+        return meta.length(this): 
+    }
+
+    // dynamic-binded member-method
+    // it is used as `obj.len()`
+    // `obj.length2` is mutable (can be modified) like `obj.x`
+    self.length2 = function()
+    {
+        return this.length1();
+    }
+};
+```
+* 使用类构造对象实例
+  * 定义好类以后，把类当作函数调用运行一次即可得到默认构造的对象
+  * 如果希望构造方法多样化，建议在类的元方法中增加专用的构造函数，或者可以考虑使用独立函数进行构造。
+  * 对象实例和普通的变量表比较相似，可以使用`[]`也可以使用`.`来引用其内部成员。
+```ewsl
+p1 = Point();
+p2 = Point();
+
+p1.x = 100;
+p1.y = -50;
+p1.z = +30;
+
+p2["x"] = -100;
+p2["y"] = -20;
+p2["z"] = 30;
+```
+
+```block:relation-operators
+`>`, `>=`, `<`, `<=`
+```
+
+* 特殊成员方法的重载
+  * `mfun.__fun_call`或者`self.__fun_call`可以定义一个对象当作函数调用时的行为。
+  * `mfun.__add`、`mfun.__sub`、`mfun.__mul`、`mfun.__div`可以定义该对象接受算符`+`、`-`、`*`、`/`时的行为。
+  * `mfun.__gt`、`mfun.__ge`、`mfun.lt`、`mfun.le`、`mfun.ne`、`mfun.eq`可以定义该对象接受算符[block-ref]("relation-operators")的行为。
+* 类的继承
+  * 当一个类`B`从另一个类`A`继承的时候，类`B`将拥有类`A`的全部特性，一般认为`B`是`A`的子类
+  * 可以使用多继承，但是不推荐，对于动态绑定的对象来说，如果出现同名成员方法将会使得对象实例的行为难以理解，应当在不至于产生混淆和歧义的前提下谨慎使用多继承。
+```ewsl
+class A
+{
+    self.x = 0;
+    self.y = 0;
+};
+
+class B
+{
+    self.func1 = function() { return 0; };
+    self.func2 = function() { return 1; };
+};
+
+class C : A
+{
+    self.func1x = function() { return this.x; };
+    self.func1y = function() { return this.y; };
+};
+
+class D : B, C
+{
+    self.g = function() { return "g"; };
+    self.k = function() { return "k"; };
+};
+
+```
+> 上面提供了一个简单的继承和多继承的例子
+
+## 作为值的类
+
+作为动态类型的脚本语言，类也是一种特殊的值，与函数类似，可以动态定义和构造和赋值、拷贝。我们可以定义一种函数，其返回值是类，然后再用这个类去定义一系列对象实例。  
+
+```ewsl
+function make_class(member_name1, member_name2)
+{
+    local c = class
+    {
+        self[member_name1] = "member1";
+        self[member_name2] = "member2";
+    };
+    return c;
+};
+
+```
+
+> 上面的例子定义了一个可以根据参数来动态创建类的函数。这样的用法相当于创造了一种类模板的概念，即可以使用参数来生成类，再用类生成具体实例对象。这在将数据转换为对象的时候较为有用。
+
+

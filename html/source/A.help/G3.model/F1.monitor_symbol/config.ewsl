@@ -1,0 +1,4 @@
+#function(cfg)
+local t = table();
+t.title = "监视器元件";
+return t;

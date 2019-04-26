@@ -1,0 +1,4 @@
+# 步骤 5:查看计算结果及后处理
+
+> 若对后处理不了解，请参看[link]("?help_overview_about_result", "关于 EastWave 7 结果与后处理")。    
+
