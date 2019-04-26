@@ -1,0 +1,159 @@
+<div class="markdown-body"><p>
+	<h1>绘图函数
+	</h1></p>EWSL提供了数据可视化功能，基本的绘图功能放在<code>fig</code>模块中。<p>
+	<h2>目录
+	</h2>
+	<ol>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Plot.basic"> 基本绘图
+			</a>
+			<ul>
+				<li>
+					<a target="_top" href="#help_script_Specifications_Plot.figure"> 绘图的创建与管理
+					</a>
+					<ul>
+						<li>
+							<a target="_top" href="#help_script_Specifications_Plot.new_figure"> <code>fig.new_figure</code>
+							</a>
+						</li>
+						<li>
+							<a target="_top" href="#help_script_Specifications_Plot.get_figure"> <code>fig.get_figure</code>
+							</a>
+						</li>
+						<li>
+							<a target="_top" href="#help_script_Specifications_Plot.set_figure"> <code>fig.set_figure</code>
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a target="_top" href="#help_script_Specifications_Plot.plot"> 曲线图
+					</a>
+				</li>
+				<li>
+					<a target="_top" href="#help_script_Specifications_Plot.polar"> 极坐标图
+					</a>
+				</li>
+				<li>
+					<a target="_top" href="#help_script_Specifications_Plot.spherical"> 球坐标图
+					</a>
+				</li>
+				<li>
+					<a target="_top" href="#help_script_Specifications_Plot.imagesc"> 二维图像
+					</a>
+				</li>
+				<li>
+					<a target="_top" href="#help_script_Specifications_Plot.surface"> 表面图
+					</a>
+				</li>
+				<li>
+					<a target="_top" href="#help_script_Specifications_Plot.contour"> 等值线
+					</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Plot.advanced"> 高级
+			</a>
+			<ul>
+				<li>
+					<a target="_top" href="#help_script_Specifications_Plot.canvas"> 多重画布
+					</a>
+				</li>
+				<li>
+					<a target="_top" href="#help_script_Specifications_Plot.series"> 序列图（动态图）
+					</a>
+				</li>
+				<li>
+					<a target="_top" href="#help_script_Specifications_Plot.subplot"> 绘制子图
+					</a>
+				</li>
+				<li>
+					<a target="_top" href="#help_script_Specifications_Plot.property"> 属性
+					</a>
+					<ul>
+						<li>
+							<a target="_top" href="#help_script_Specifications_Plot.coordinate"> 坐标系
+							</a>
+						</li>
+						<li>
+							<a target="_top" href="#help_script_Specifications_Plot.axis"> 坐标轴
+							</a>
+						</li>
+						<li>
+							<a target="_top" href="#help_script_Specifications_Plot.legend"> 图例
+							</a>
+						</li>
+						<li>
+							<a target="_top" href="#help_script_Specifications_Plot.colormap"> 颜色表
+							</a>
+						</li>
+						<li>
+							<a target="_top" href="#help_script_Specifications_Plot.linespec"> 线条类型
+							</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ol></p><a name="help_script_Specifications_Plot.basic"> </a><h2>基本绘图</h2><a name="help_script_Specifications_Plot.figure"> </a><a name="help_script_Specifications_Plot.new_figure"> </a><code>fig.new_figure</code>创建新的绘图，并作为当前绘图对象<br /><strong>语法：</strong>  <pre><code code-language="ewsl">fig.new_figure()</code></pre><a name="help_script_Specifications_Plot.get_figure"> </a><code>fig.get_figure</code>取得绘图对象<br /><strong>语法：</strong>  <pre><code code-language="ewsl">fig.get_figure()</code></pre><a name="help_script_Specifications_Plot.set_figure"> </a><code>fig.set_figure</code>设置当前绘图对象<br /><strong>语法：</strong>  <pre><code code-language="ewsl">fig.set_figure(f)</code></pre><a name="help_script_Specifications_Plot.plot"> </a><code>fig.plot</code>绘制曲线图<br /><strong>语法：</strong>  <pre><code code-language="ewsl">fig.plot(x,y)<br />fig.plot(x,y,PROPERTY_TABLE)</code></pre><p><br />
+	<strong>参考：
+	</strong>  
+	<ul>
+		<li>参考
+			<a target="_blank" href="!error-reference: help_script_Specifications_Plot.property">!error-reference: help_script_Specifications_Plot.property
+			</a>。
+		</li>
+	</ul></p><a name="help_script_Specifications_Plot.polar"> </a><code>fig.polar</code><code>fig.polar_deg</code>绘制二维极坐标曲线图<br /><strong>语法：</strong>  <pre><code code-language="ewsl">fig.polar(theta,rho)<br />fig.polar(theta,rho,PROPERTY_TABLE)<br />fig.polar_deg(theta,rho)<br />fig.polar_deg(theta,rho,PROPERTY_TABLE)</code></pre><ul>
+	<li>参考
+		<a target="_blank" href="!error-reference: help_script_Specifications_Plot.property">!error-reference: help_script_Specifications_Plot.property
+		</a>。
+	</li></ul><a name="help_script_Specifications_Plot.spherical"> </a><code>fig.polar3</code><code>fig.spherical</code><code>fig.polar3_deg</code><code>fig.spherical_deg</code>绘制三维球坐标图<br /><strong>语法：</strong>  <pre><code code-language="ewsl">fig.polar3(theta,phi,rho)<br />fig.polar3(theta,phi,rho,PROPERTY_TABLE)<br />fig.polar3_deg(theta,phi,rho)<br />fig.polar3_deg(theta,phi,rho,PROPERTY_TABLE)<br />fig.spherical(theta,phi,rho)<br />fig.spherical(theta,phi,rho,PROPERTY_TABLE)<br />fig.spherical_deg(theta,phi,rho)<br />fig.spherical_deg(theta,phi,rho,PROPERTY_TABLE)</code></pre><ul>
+	<li>参考
+		<a target="_blank" href="!error-reference: help_script_Specifications_Plot.property">!error-reference: help_script_Specifications_Plot.property
+		</a>。
+	</li></ul><a name="help_script_Specifications_Plot.imagesc"> </a><code>fig.imagesc</code>绘制二维图像<br /><strong>语法：</strong>  <pre><code code-language="ewsl"></code></pre><a name="help_script_Specifications_Plot.surface"> </a><code>fig.surface</code>绘制曲面<br /><strong>语法：</strong>  <pre><code code-language="ewsl">fig.surface(X,Y,Z)<br />fig.surface(X,Y,Z,COLOR)<br />fig.surface(X,Y,Z,VALUE,RENDER_OPTION)<br />fig.surface(MODEL)</code></pre><p>
+	<ul>
+		<li><code>X</code>、<code>Y</code>、<code>Z</code>均为数组
+		</li>
+		<li><code>X</code>和<code>Y</code>是向量（至多只有一个维度的大小大于1）时按照<code>X</code>和<code>Y</code>构造的网格绘图，<code>Z</code>的大小为<code>X.length() * Y.length()</code>
+		</li>
+		<li><code>X</code>和<code>Y</code>是二维数组时，其大小要求和<code>Z</code>匹配，则构造四边形网格进行绘图
+		</li>
+		<li><code>fig.surface(MODEL)</code>使用定义的模型进行渲染
+		</li>
+		<li><code>fig.surface(X,Y,Z,COLOR)</code>，<code>COLOR</code>是一个颜色（3维向量，或者颜色字符串）
+		</li>
+		<li><code>fig.surface(X,Y,Z,VALUE,RENDER_OPTION)</code>，<code>VALUE</code>表示在表面上的取值，<code>RENDER_OPTION</code>是选项字符串，可以是"-vertex"、"-edge-x"、"-edge-y"或"-facet"中的一种情况，它们分别对应在顶点上渲染、在X网格的棱边上渲染、在Y网格的棱边上渲染、在面上渲染。
+		</li>
+		<li><code>fig.surface(MODEL)</code>，<code>MODEL</code>是表面建模工具生成的模型对象。
+		</li>
+	</ul></p><a name="help_script_Specifications_Plot.contour"> </a><code>fig.contour</code>等值线<br /><strong>语法：</strong>  <pre><code code-language="ewsl">fig.contour(X,Y,Z,n)<br />fig.contour(X,Y,Z,V)<br />fig.contour(X,Y,Z,n,CMAP)<br />fig.contour(X,Y,Z,v,CMAP)</code></pre><ul>
+	<li><code>X</code>、<code>Y</code>、<code>Z</code>均为数组
+	</li>
+	<li><code>X</code>和<code>Y</code>是向量（至多只有一个维度的大小大于1）时按照<code>X</code>和<code>Y</code>构造的网格绘图，<code>Z</code>的大小为<code>X.length() * Y.length()</code>
+	</li>
+	<li><code>X</code>和<code>Y</code>是二维数组时，其大小要求和<code>Z</code>匹配，则构造四边形网格进行绘图
+	</li>
+	<li><code>fig.contour(X,Y,Z,n)</code>表示在<code>Z</code>的取值范围上分割为<code>n</code>个点作为等值线的参考值
+	</li>
+	<li><code>fig.contour(X,Y,Z,v)</code>表示非均匀等值线的参考值
+	</li>
+	<li><code>CMAP</code>表示颜色表，参考
+		<a target="_blank" href="!error-reference: ?.colormap">!error-reference: ?.colormap
+		</a>
+	</li></ul><a name="help_script_Specifications_Plot.advanced"> </a><h2>高级</h2><a name="help_script_Specifications_Plot.canvas"> </a><pre><code code-language="ewsl">fig.canvas(name)</code></pre><p>设定当前画布的名称，并且结束当前画布的绘制</p><p>
+	<a name="help_script_Specifications_Plot.series"> 
+	</a><code>fig.series_beg</code><code>fig.series_add</code><code>fig.series_end</code>序列图</p><br /><strong>语法：</strong>  <pre><code code-language="ewsl">fig.series_beg(name,time_delta) // time_delta: default value = 0.1 (sec)<br />fig.series_add()<br />... /* plot procedure */<br />fig.series_end()</code></pre><p>
+	<a name="help_script_Specifications_Plot.subplot"> 
+	</a><code>fig.subplot</code>绘制子图</p><pre><code code-language="ewsl">fig.subplot(ROW,COL)              // Create a new layout<br />fig.subplot(ROW,COL,ind)          // Select/Create current subplot<br />fig.subplot(ROW,COL,RANGE)        // Select/Create current subplot which covers a continuous range of indices<br />fig.subplot("position", POSITION) // Create a subplot which position is indicated by `POSITION`</code></pre><p>
+	<ul>
+		<li><code>fig.subplot(ROW,COL)</code>创建布局，网格的大小为<code>ROW</code>行、<code>COL</code>列。
+		</li>
+		<li><code>fig.subplot(ROW,COL,ind)</code>选择当前布局下的一个一个网格位置（按从左到右，再从上到下的顺序索引）创建或者选择绘图。
+		</li>
+		<li><code>fig.subplot(ROW,COL,RANGE)</code>选择布局下的指定网格坐标的一段范围，<code>RANGE</code>为一个向量，包含两个值，表示左上角的网格索引和右下角的网格索引。
+		</li>
+		<li><code>fig.subplot("position", POSITION)</code>直接指定绘图所在的位置，坐标范围为一个向量，包括四个值<code>[x,y,width,height]</code>，<code>x</code>和<code>y</code>表示所处整个画布内的相对坐标（0-1之间），而<code>width</code>和<code>height</code>表示长度和高度。
+		</li>
+	</ul></p></div>

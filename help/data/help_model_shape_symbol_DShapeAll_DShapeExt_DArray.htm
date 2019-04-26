@@ -1,0 +1,871 @@
+<div class="markdown-body">
+	<h1>阵列
+	</h1>阵列用于设计基于某种元件，按照指定的空间排布生成的阵列结构或阵列激励源。<br />
+
+	<h2>阵列分类 
+	</h2>
+	<ul>
+		<li>
+			<a href="#help_model_shape_symbol_DShapeAll_DShapeExt_DArray.header_1">1. 圆周（Circle）阵列
+			</a>
+		</li>
+		<li>
+			<a href="#help_model_shape_symbol_DShapeAll_DShapeExt_DArray.header_2">2. 镜像（Mirror）阵列
+			</a>
+		</li>
+		<li>
+			<a href="#help_model_shape_symbol_DShapeAll_DShapeExt_DArray.header_3">3. 普通（Simple）阵列
+			</a>
+		</li>
+		<li>
+			<a href="#help_model_shape_symbol_DShapeAll_DShapeExt_DArray.header_4">4. 正交（Orthorhombic）阵列
+			</a>
+		</li>
+		<li>
+			<a href="#help_model_shape_symbol_DShapeAll_DShapeExt_DArray.header_5">5. 自由点（Free）阵列
+			</a>
+		</li>
+		<li>
+			<a href="#help_model_shape_symbol_DShapeAll_DShapeExt_DArray.header_6">6. 参数扫描（Expr）阵列
+			</a>
+		</li>
+		<li>
+			<a href="#help_model_shape_symbol_DShapeAll_DShapeExt_DArray.header_7">7. 三角（Trigonal）阵列
+			</a>
+		</li>
+		<li>
+			<a href="#help_model_shape_symbol_DShapeAll_DShapeExt_DArray.header_8">8. FSS天线罩（FSS）阵列
+			</a>
+		</li>
+	</ul>
+	<a name="help_model_shape_symbol_DShapeAll_DShapeExt_DArray.header_1">
+		<h1>1. 圆周（Circle）阵列
+		</h1>
+	</a>
+	<h3>圆周阵列示意图
+	</h3>
+	<div class="markdown-block">
+		<table width="100%" style="border:0px">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<a name="help_model_shape_symbol_DShapeAll_DShapeExt_DArray.c_exampic"><img src="image/DShape/DArrayCircle_sample.png" />
+					</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<h3>圆周阵列参数设置对话框
+	</h3>
+	<div class="markdown-block">
+		<table width="100%" style="border:0px">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<a name="help_model_shape_symbol_DShapeAll_DShapeExt_DArray.c_parawindow"><img src="image/DShape/DArrayCircle.png" />
+					</a>
+				</td>
+			</tr>
+		</table>
+	</div><br />
+	<h3>圆周阵列参数含义
+	</h3>
+	<div class="markdown-block">
+		<table width="100%">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<div class="markdown-table">
+						<table width="100%" class="markdown-table" style="border:1px">
+							<thead>
+								<tr>
+									<td align="center"> 参数名称 
+									</td>
+									<td align="center"> 说明 
+									</td>
+									<td align="center"> 备注 
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td align="center"> 待处理元件 
+									</td>
+									<td align="center"> 指定圆周阵列中单元的元件信息 
+									</td>
+									<td align="center"> - 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 旋转半径 
+									</td>
+									<td align="center"> 指定圆周阵列的旋转半径 
+									</td>
+									<td align="center"> 以坐标原点为圆心<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 起始角度 
+									</td>
+									<td align="center"> 指定圆周阵列的旋转起始角度 
+									</td>
+									<td align="center"> 单位为角度 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 终止角度 
+									</td>
+									<td align="center"> 指定圆周阵列的旋转终止角度 
+									</td>
+									<td align="center"> 单位为角度 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 角度步长 
+									</td>
+									<td align="center"> 指定圆周阵列的角度步长 
+									</td>
+									<td align="center"> 单位为角度 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 自旋 
+									</td>
+									<td align="center"> 指定圆周阵列的元件是否需要自旋 
+									</td>
+									<td align="center"> - 
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<p>
+		<h3>如何创建圆周阵列
+		</h3>
+		<ul>
+			<li>
+				<a target="_top" href="#help_model_shape_symbol_DShapeCreate.create-by-GUI">界面创建圆周阵列
+				</a>
+			</li>
+			<li>
+				<a target="_top" href="#help_model_Advanced_ewsl_model">脚本创建圆周阵列
+				</a>
+			</li>
+		</ul>
+	</p>
+	<a name="help_model_shape_symbol_DShapeAll_DShapeExt_DArray.header_2">
+		<h1>2. 镜像（Mirror）阵列
+		</h1>
+	</a>
+	<h3>镜像阵列示意图
+	</h3>
+	<div class="markdown-block">
+		<table width="100%" style="border:0px">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<a name="help_model_shape_symbol_DShapeAll_DShapeExt_DArray.m_exampic"><img src="image/DShape/DArrayMirror_sample.png" />
+					</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<h3>镜像阵列参数设置对话框
+	</h3>
+	<div class="markdown-block">
+		<table width="100%" style="border:0px">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<a name="help_model_shape_symbol_DShapeAll_DShapeExt_DArray.m_parawindow"><img src="image/DShape/DArrayMirror.png" />
+					</a>
+				</td>
+			</tr>
+		</table>
+	</div><br />
+	<h3>镜像阵列参数含义
+	</h3>
+	<div class="markdown-block">
+		<table width="100%">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<div class="markdown-table">
+						<table width="100%" class="markdown-table" style="border:1px">
+							<thead>
+								<tr>
+									<td align="center"> 参数名称 
+									</td>
+									<td align="center"> 说明 
+									</td>
+									<td align="center"> 备注 
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td align="center"> 待处理元件 
+									</td>
+									<td align="center"> 指定镜像阵列中单元的元件信息 
+									</td>
+									<td align="center"> - 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 镜面法向向量 
+									</td>
+									<td align="center"> 指定镜像阵列镜面的法向向量 
+									</td>
+									<td align="center"> - 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 镜面所处位置 
+									</td>
+									<td align="center"> 指定镜像阵列镜面的位置 
+									</td>
+									<td align="center"> - 
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<p>
+		<h3>如何创建镜像阵列
+		</h3>
+		<ul>
+			<li>
+				<a target="_top" href="#help_model_shape_symbol_DShapeCreate.create-by-GUI">界面创建镜像阵列
+				</a>
+			</li>
+			<li>
+				<a target="_top" href="#help_model_Advanced_ewsl_model">脚本创建镜像阵列
+				</a>
+			</li>
+		</ul>
+	</p>
+	<a name="help_model_shape_symbol_DShapeAll_DShapeExt_DArray.header_3">
+		<h1>3. 普通（Simple）阵列
+		</h1>
+	</a>
+	<h3>普通阵列示意图
+	</h3>
+	<div class="markdown-block">
+		<table width="100%" style="border:0px">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<a name="help_model_shape_symbol_DShapeAll_DShapeExt_DArray.s_exampic"><img src="image/DShape/DArraySimple_sample.png" />
+					</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<h3>普通阵列参数设置对话框
+	</h3>
+	<div class="markdown-block">
+		<table width="100%" style="border:0px">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<a name="help_model_shape_symbol_DShapeAll_DShapeExt_DArray.s_parawindow"><img src="image/DShape/DArraySimple.png" />
+					</a>
+				</td>
+			</tr>
+		</table>
+	</div><br />
+	<h3>普通阵列参数含义
+	</h3>
+	<div class="markdown-block">
+		<table width="100%">
+			<tr style="border:0px">
+				<td align="center" style="border:0px">
+					<a name="help.paratab-s">table 1: 普通阵列参数说明表
+					</a>
+				</td>
+			</tr>
+			<tr style="border:0px">
+				<td style="border:0px">
+					<div class="markdown-table">
+						<table width="100%" class="markdown-table" style="border:1px">
+							<thead>
+								<tr>
+									<td align="center"> 参数名称 
+									</td>
+									<td align="center"> 说明 
+									</td>
+									<td align="center"> 备注 
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td align="center"> 待处理元件 
+									</td>
+									<td align="center"> 指定普通阵列中单元的元件信息 
+									</td>
+									<td align="center"> - 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 栅格范围 
+									</td>
+									<td align="center"> 指定普通阵列的三维栅格范围 
+									</td>
+									<td align="center"> X、Y、Z三个维度的格子数 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> a1 
+									</td>
+									<td align="center"> 指定普通阵列中元件在X维度的排列情况 
+									</td>
+									<td align="center"> a1有X、Y、Z三个方向的长度 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> a2 
+									</td>
+									<td align="center"> 指定普通阵列中元件在Y维度的排列情况 
+									</td>
+									<td align="center"> a2有X、Y、Z三个方向的长度 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> a3 
+									</td>
+									<td align="center"> 指定普通阵列中元件在Z维度的排列情况 
+									</td>
+									<td align="center"> a3有X、Y、Z三个方向的长度 
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<p>
+		<h3>如何创建普通阵列
+		</h3>
+		<ul>
+			<li>
+				<a target="_top" href="#help_model_shape_symbol_DShapeCreate.create-by-GUI">界面创建普通阵列
+				</a>
+			</li>
+			<li>
+				<a target="_top" href="#help_model_Advanced_ewsl_model">脚本创建普通阵列
+				</a>
+			</li>
+		</ul>
+	</p>
+	<a name="help_model_shape_symbol_DShapeAll_DShapeExt_DArray.header_4">
+		<h1>4. 正交（Orthorhombic）阵列
+		</h1>
+	</a>
+	<h3>正交阵列示意图
+	</h3>
+	<div class="markdown-block">
+		<table width="100%" style="border:0px">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<a name="help_model_shape_symbol_DShapeAll_DShapeExt_DArray.o_exampic"><img src="image/DShape/DArrayOrthorhombic_sample.png" />
+					</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<h3>正交阵列参数设置对话框
+	</h3>
+	<div class="markdown-block">
+		<table width="100%" style="border:0px">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<a name="help_model_shape_symbol_DShapeAll_DShapeExt_DArray.o_parawindow"><img src="image/DShape/DArrayOrthorhombic.png" />
+					</a>
+				</td>
+			</tr>
+		</table>
+	</div><br />
+	<h3>正交阵列参数含义
+	</h3>
+	<div class="markdown-block">
+		<table width="100%">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<div class="markdown-table">
+						<table width="100%" class="markdown-table" style="border:1px">
+							<thead>
+								<tr>
+									<td align="center"> 参数名称 
+									</td>
+									<td align="center"> 说明 
+									</td>
+									<td align="center"> 备注 
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td align="center"> 待处理元件 
+									</td>
+									<td align="center"> 指定正交阵列中单元的元件信息 
+									</td>
+									<td align="center"> - 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 栅格范围 
+									</td>
+									<td align="center"> 指定正交阵列的三维栅格范围 
+									</td>
+									<td align="center"> X、Y、Z三个维度的格子数 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 元件间隔 
+									</td>
+									<td align="center"> 指定正交阵列的元件间隔 
+									</td>
+									<td align="center"> X、Y、Z三个方向的间隔 
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<p>
+		<h3>如何创建正交阵列
+		</h3>
+		<ul>
+			<li>
+				<a target="_top" href="#help_model_shape_symbol_DShapeCreate.create-by-GUI">界面创建正交阵列
+				</a>
+			</li>
+			<li>
+				<a target="_top" href="#help_model_Advanced_ewsl_model">脚本创建正交阵列
+				</a>
+			</li>
+		</ul>
+	</p>
+	<a name="help_model_shape_symbol_DShapeAll_DShapeExt_DArray.header_5">
+		<h1>5. 自由点（Free）阵列
+		</h1>
+	</a>
+	<h3>自由点阵列示意图
+	</h3>
+	<div class="markdown-block">
+		<table width="100%" style="border:0px">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<a name="help_model_shape_symbol_DShapeAll_DShapeExt_DArray.f_exampic"><img src="image/DShape/DArrayFree_sample.png" />
+					</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<h3>自由点阵列参数设置对话框
+	</h3>
+	<div class="markdown-block">
+		<table width="100%" style="border:0px">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<a name="help_model_shape_symbol_DShapeAll_DShapeExt_DArray.f_parawindow"><img src="image/DShape/DArrayFree.png" />
+					</a>
+				</td>
+			</tr>
+		</table>
+	</div><br />
+	<h3>自由点阵列参数含义
+	</h3>
+	<div class="markdown-block">
+		<table width="100%">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<div class="markdown-table">
+						<table width="100%" class="markdown-table" style="border:1px">
+							<thead>
+								<tr>
+									<td align="center"> 参数名称 
+									</td>
+									<td align="center"> 说明 
+									</td>
+									<td align="center"> 备注 
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td align="center"> 待处理元件 
+									</td>
+									<td align="center"> 指定自由点阵列中单元的元件信息 
+									</td>
+									<td align="center"> - 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 离散点 
+									</td>
+									<td align="center"> 指定自由点阵列中元件所在的位置集合（点） 
+									</td>
+									<td align="center"> X、Y、Z三个维度 
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<p>
+		<h3>如何创建自由点阵列
+		</h3>
+		<ul>
+			<li>
+				<a target="_top" href="#help_model_shape_symbol_DShapeCreate.create-by-GUI">界面创建自由点阵列
+				</a>
+			</li>
+			<li>
+				<a target="_top" href="#help_model_Advanced_ewsl_model">脚本创建自由点阵列
+				</a>
+			</li>
+		</ul>
+	</p>
+	<a name="help_model_shape_symbol_DShapeAll_DShapeExt_DArray.header_6">
+		<h1>6. 参数扫描（Expr）阵列
+		</h1>
+	</a>
+	<h3>参数扫描阵列示意图
+	</h3>
+	<div class="markdown-block">
+		<table width="100%" style="border:0px">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<a name="help_model_shape_symbol_DShapeAll_DShapeExt_DArray.e_exampic"><img src="image/DShape/DArrayExpr_sample.png" />
+					</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<h3>参数扫描阵列参数设置对话框
+	</h3>
+	<div class="markdown-block">
+		<table width="100%" style="border:0px">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<a name="help_model_shape_symbol_DShapeAll_DShapeExt_DArray.e_parawindow"><img src="image/DShape/DArrayExpr.png" />
+					</a>
+				</td>
+			</tr>
+		</table>
+	</div><br />
+	<h3>参数扫描阵列参数含义
+	</h3>
+	<div class="markdown-block">
+		<table width="100%">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<div class="markdown-table">
+						<table width="100%" class="markdown-table" style="border:1px">
+							<thead>
+								<tr>
+									<td align="center"> 参数名称 
+									</td>
+									<td align="center"> 说明 
+									</td>
+									<td align="center"> 备注 
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td align="center"> 待处理元件 
+									</td>
+									<td align="center"> 指定参数扫描阵列中单元的元件信息 
+									</td>
+									<td align="center"> - 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> t0、t1、t2 
+									</td>
+									<td align="center"> 指定参数扫描阵列的三个参数值（范围以及步长） 
+									</td>
+									<td align="center"> t0: <code>0:20:80</code> 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 位置表达式 
+									</td>
+									<td align="center"> 指定参数扫描阵列的位置表达式 
+									</td>
+									<td align="center"> X、Y、Z三个维度 
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<p>
+		<h3>如何创建参数扫描阵列
+		</h3>
+		<ul>
+			<li>
+				<a target="_top" href="#help_model_shape_symbol_DShapeCreate.create-by-GUI">界面创建参数扫描阵列
+				</a>
+			</li>
+			<li>
+				<a target="_top" href="#help_model_Advanced_ewsl_model">脚本创建参数扫描阵列
+				</a>
+			</li>
+		</ul>
+	</p>
+	<a name="help_model_shape_symbol_DShapeAll_DShapeExt_DArray.header_7">
+		<h1>7. 三角（Trigonal）阵列
+		</h1>
+	</a>
+	<h3>三角阵列示意图
+	</h3>
+	<div class="markdown-block">
+		<table width="100%" style="border:0px">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<a name="help_model_shape_symbol_DShapeAll_DShapeExt_DArray.t_exampic"><img src="image/DShape/DArrayTrigonal_sample.png" alt="image 1: 三角阵列示意图" />
+					</a>
+				</td>
+			</tr>
+			<tr style="border:0px">
+				<td style="border:0px" align="center">image 1: 三角阵列示意图
+				</td>
+			</tr>
+		</table>
+	</div>
+	<h3>三角阵列参数设置对话框
+	</h3>
+	<div class="markdown-block">
+		<table width="100%" style="border:0px">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<a name="help_model_shape_symbol_DShapeAll_DShapeExt_DArray.t_parawindow"><img src="image/DShape/DArrayTrigonal.png" alt="image 2: 三角阵列参数设置对话框" />
+					</a>
+				</td>
+			</tr>
+			<tr style="border:0px">
+				<td style="border:0px" align="center">image 2: 三角阵列参数设置对话框
+				</td>
+			</tr>
+		</table>
+	</div><br />
+	<h3>三角阵列参数含义
+	</h3>
+	<div class="markdown-block">
+		<table width="100%">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<div class="markdown-table">
+						<table width="100%" class="markdown-table" style="border:1px">
+							<thead>
+								<tr>
+									<td align="center"> 参数名称 
+									</td>
+									<td align="center"> 说明 
+									</td>
+									<td align="center"> 备注 
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td align="center"> 待处理元件 
+									</td>
+									<td align="center"> 指定三角阵列中单元的元件信息 
+									</td>
+									<td align="center"> - 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 栅格范围 
+									</td>
+									<td align="center"> 指定三角阵列的三维栅格范围 
+									</td>
+									<td align="center"> X、Y、Z三个维度的格子数 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 元件间隔 
+									</td>
+									<td align="center"> 指定三角阵列的元件间隔 
+									</td>
+									<td align="center"> X、Y、Z三个方向的间隔 
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<p>
+		<h3>如何创建三角阵列
+		</h3>
+		<ul>
+			<li>
+				<a target="_top" href="#help_model_shape_symbol_DShapeCreate.create-by-GUI">界面创建三角阵列
+				</a>
+			</li>
+			<li>
+				<a target="_top" href="#help_model_Advanced_ewsl_model">脚本创建三角阵列
+				</a>
+			</li>
+		</ul>
+	</p>
+	<a name="help_model_shape_symbol_DShapeAll_DShapeExt_DArray.header_8">
+		<h1>8. FSS天线罩（FSS）阵列
+		</h1>
+	</a>
+	<h3>FSS天线罩阵列示意图
+	</h3>
+	<div class="markdown-block">
+		<table width="100%" style="border:0px">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<a name="help_model_shape_symbol_DShapeAll_DShapeExt_DArray.fss_exampic"><img src="image/DShape/DArrayRdMaskFss_sample.png" alt="image 3: FSS天线罩阵列示意图" />
+					</a>
+				</td>
+			</tr>
+			<tr style="border:0px">
+				<td style="border:0px" align="center">image 3: FSS天线罩阵列示意图
+				</td>
+			</tr>
+		</table>
+	</div>
+	<h3>FSS天线罩阵列参数设置对话框
+	</h3>
+	<div class="markdown-block">
+		<table width="100%" style="border:0px">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<a name="help_model_shape_symbol_DShapeAll_DShapeExt_DArray.fss_parawindow"><img src="image/DShape/DArrayRdMaskFss.png" alt="image 4: FSS天线罩阵列参数设置对话框" />
+					</a>
+				</td>
+			</tr>
+			<tr style="border:0px">
+				<td style="border:0px" align="center">image 4: FSS天线罩阵列参数设置对话框
+				</td>
+			</tr>
+		</table>
+	</div><br />
+	<h3>FSS天线罩阵列参数含义
+	</h3>
+	<div class="markdown-block">
+		<table width="100%">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<div class="markdown-table">
+						<table width="100%" class="markdown-table" style="border:1px">
+							<thead>
+								<tr>
+									<td align="center"> 参数名称 
+									</td>
+									<td align="center"> 说明 
+									</td>
+									<td align="center"> 备注 
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td align="center"> 待处理元件 
+									</td>
+									<td align="center"> 指定FSS中单元的元件信息 
+									</td>
+									<td align="center"> - 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 待处理表面 
+									</td>
+									<td align="center"> 指定待处理的FSS天线罩表面 
+									</td>
+									<td align="center"> - 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 六的倍数排列 
+									</td>
+									<td align="center"> 指定每一层铺设的元件数量是否六的倍数 
+									</td>
+									<td align="center"> - 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> Z轴对齐 
+									</td>
+									<td align="center"> 指定是否按Z轴对齐 
+									</td>
+									<td align="center"> Z轴对齐：以Z为高度方向，每一层FSS单元位于等高线上 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 单元宽度 
+									</td>
+									<td align="center"> 指定单元的二维宽度 
+									</td>
+									<td align="center"> X、Y两个方向的宽度 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 铺设范围H1 
+									</td>
+									<td align="center"> 指定FSS单元铺设时的起始高度 
+									</td>
+									<td align="center"> - 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 铺设范围H2 
+									</td>
+									<td align="center"> 指定FSS单元铺设时的终止高度 
+									</td>
+									<td align="center"> - 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 起始角度 
+									</td>
+									<td align="center"> 指定FSS单元每一层铺设的起始角度 
+									</td>
+									<td align="center"> 单位为角度 
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<p>
+		<h3>如何创建FSS天线罩阵列
+		</h3>
+		<ul>
+			<li>
+				<a target="_top" href="#help_model_shape_symbol_DShapeCreate.create-by-GUI">界面创建FSS天线罩阵列
+				</a>
+			</li>
+			<li>
+				<a target="_top" href="#help_model_Advanced_ewsl_model">脚本创建FSS天线罩阵列
+				</a>
+			</li>
+		</ul>
+	</p></div>

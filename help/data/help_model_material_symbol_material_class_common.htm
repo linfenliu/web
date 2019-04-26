@@ -1,0 +1,106 @@
+<div class="markdown-body"><h1>材料公共属性</h1>光电材料的频域电磁性质由复介电系数$\epsilon(\omega)$和复磁导率$\mu(\omega)$决定的。介质的损耗、色散、吸收、增益、非线性等特性均可以通过$\epsilon(\omega)$和$\mu(\omega)$来描述，EastWave根据严格的物理模型，内建了描述各种不同材料不同特性的介电系数和磁导率模型，并提供了灵活直观的设置方式，完美支持模拟计算各种材料的电磁学特性。EastWave中，材料作为元件进行定义。赋予了材料的<a target="_top" href="#help_model_Gemometric_Entity">几何元件</a>成为<a target="_top" href="#help_model_physical_symbol">物理元件</a>。材料公共参数设置对话框如下图所示：<div class="markdown-block">
+	<table width="100%" style="border:0px">
+		<tr style="border:0px">
+			<td style="border:0px">
+				<a name="help_model_material_symbol_material_class_common.atf"><img src="image/material/material_common.png" />
+				</a>
+			</td>
+		</tr>
+	</table></div><p>材料复介电系数$\epsilon(\omega)$和复磁导率$\mu(\omega)$包含公共部分：$$ \epsilon(\omega)=\epsilon_\infty+i\frac{\sigma_{e}}{\omega}$$$$ \mu(\omega)=\mu_\infty+i\frac{\sigma_{m}}{\omega}$$其中$\sigma_{e}$和$\sigma_{m}$代表材料电损耗和磁损耗；</p><br /><p>
+	<a name="help_model_material_symbol_material_class_common.material_common"> 
+	</a>EastWave材料公共属性说明：
+	<div class="markdown-block">
+		<table width="100%">
+			<tr style="border:0px">
+				<td align="center" style="border:0px">
+					<a name="">材料公共属性
+					</a>
+				</td>
+			</tr>
+			<tr style="border:0px">
+				<td style="border:0px">
+					<div class="markdown-table">
+						<table width="100%" class="markdown-table" style="border:1px">
+							<thead>
+								<tr>
+									<td align="center"> 参数<br />
+
+									</td>
+									<td align="center"> 说明<br />
+
+									</td>
+									<td align="center"> 备注<br />
+
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td align="center"> 名称<br />
+
+									</td>
+									<td align="center"> 材料名称<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 单位<br />
+
+									</td>
+									<td align="center"> 材料参数的单位 
+									</td>
+									<td align="center">  EastWave的材料在设置时可以同时设置单位，若此处不设置单位，则材料的参数单位为文档单位； 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 类型<br />
+
+									</td>
+									<td align="center"> 材料类型可选普通材料、各种色散材料<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 颜色<br />
+
+									</td>
+									<td align="center"> 材料在模型中的颜色<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> sg_compatible<br />
+
+									</td>
+									<td align="center"> 用来定义$\sigma_{e}$和$\sigma_{m}$的单位<br />
+
+									</td>
+									<td align="center">  当此选项勾选时，$\sigma_{e}$和$\sigma_{m}$单位为国际单位，即$S/m$和$1/Sm$;当为勾选时，
+										<strong>$\sigma_{e}$和$\sigma_{m}$
+										</strong>重新定义为满足$\frac{\sigma_e}{f_{e}}=1$和$\frac{\sigma_m}{f_{m}}$=1的频率值，该频率单位和材料其它参数单位规则相同。<br />
+
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>EastWave提供了三种默认材料，在大多数电磁波工程仿真中会用到其中的<code>vacuum</code>和<code>pec</code>两种材料。</p><div class="markdown-warning"><p>&nbsp;&nbsp;注意</p>
+	<ol>
+		<li>材料参数单位只与材料属性中的单位和文档单位相关，当材料属性中未定义文档时，材料参数单位参考文档单位；
+		</li>
+		<li>sg_compatible选中时，只影响$\sigma_e$和$\sigma_m$，材料其余参数不受影响。<br />
+
+		</li>
+	</ol></div><strong>相关主题：</strong><a target="_top" href="#help_model_physical_symbol">物理元件</a></div>

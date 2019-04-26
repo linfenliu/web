@@ -1,0 +1,204 @@
+<div class="markdown-body"><h1>发行说明</h1><h2>系统平台</h2><ul>
+	<li>Microsoft Windows 2000/XP/Vista/Windows 7 32-bit or 64-bit和Linux系统。
+	</li>
+	<li>Intel/AMD CPU主频不低于1GHz。
+	</li>
+	<li>内存不低于256MB，磁盘空间不低于1GB。
+	</li>
+	<li>并行技术：支持多操作环境下的多种并行技术（MPI和Windows多线程等）；同时可根据用户需求实现不同的并行方式，如单机多核并行、多机多核并行等。
+	</li></ul><h2>计算模式</h2><ul>
+	<li>EastWave 提供两种电磁波仿真算法：时域有限差分法（FDTD）和物理光学法（PO）。
+		<ul>
+			<li>FDTD算法：全波算法，是 EastWave 主要采用的算法，主要适用于整个电磁波、光波波段的电磁及电磁兼容仿真计算，特别适用于各种电大尺寸目标的精确求解。对于2D平面的仿真模拟，两个偏振模式可以同时进行，一次计算即可得到两个偏振模式的结果。
+			</li>
+			<li>PO算法：高频算法，主要用于结构、材料较为简单的超电大尺寸物体的快速求解。
+			</li>
+		</ul>
+	</li>
+	<li>EastWave 还可进行FDTD+PO混合仿真计算，可仿真超电大体系的电磁参数，如大型反射面天线、航空母舰的RCS等。
+	</li>
+	<li>EastWave 目前共有14种计算模式（含自定义），请参看
+		<a target="_top" href="#help_workmode"> 计算模式
+		</a>。
+	</li></ul><p>
+	<h2>核心功能
+	</h2>
+	<ul>
+		<li>EastWave 支持CAD建模功能，包括3D模型创建、编辑导入和坐标变换等。EastWave支持STL、IGS、STP等模型格式导入。请参看
+			<a target="_top" href="#help_model_shape_symbol"> 几何元件
+			</a>。
+		</li>
+		<li>EastWave 支持多种色散、非色散、各向异性、非线性、增益、空间相关等材料模型，且支持材料库管理功能。请参看
+			<a target="_top" href="#help_model_material_symbol"> 材料元件
+			</a>。
+		</li>
+		<li>EastWave 支持多种激励源定义，支持文本格式作为激励源数据导入。请参看
+			<a target="_top" href="#help_model_source_symbol"> 激励源模块
+			</a>。
+		</li>
+		<li>EastWave 的脚本语言支持对计算结果进行数学、绘图处理。请参看
+			<a target="_top" href="#help_model_monitor_symbol"> 监视器模块
+			</a>、
+			<a target="_top" href="#help_analysis_result">数据后处理
+			</a>、
+			<a target="_top" href="#help_script"> EastWave 脚本语言
+			</a>。
+		</li>
+	</ul></p><p>
+	<h2>版本说明
+	</h2>EastWave 7 版本对外发布的版本包括：xxxx版（面向xxxx）、xxxx版（面向xxxx），xxxx种版本的部分功能有差异列举如下：
+	<div class="markdown-block">
+		<table width="100%">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<div class="markdown-table">
+						<table width="100%" class="markdown-table" style="border:1px">
+							<thead>
+								<tr>
+									<td rowspan="1" colspan="2" align="center">模块			
+									</td>
+									<td align="center">xxxx版
+									</td>
+									<td align="center">xxxx版
+									</td>
+									<td align="center">xxxx版
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td rowspan="6" colspan="1" align="center">计算模式 
+									</td>
+									<td align="center"> 自定义模式<br />
+
+									</td>
+									<td align="center"> √ 
+									</td>
+									<td align="center">  
+									</td>
+									<td align="center">  
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 自动计算透反率模式<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+									<td align="center">  
+									</td>
+									<td align="center"> √ 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 天线罩(功率传输系数，扫频/扫角，相扫）
+									</td>
+									<td align="center"> √ 
+									</td>
+									<td align="center">  
+									</td>
+									<td align="center">  
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 天线罩（功率传输系数，快速扫角，相扫）
+									</td>
+									<td align="center"><br />
+
+									</td>
+									<td align="center"> √ 
+									</td>
+									<td align="center">  
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 天线罩（功率传输系数，快速扫角，机扫）
+									</td>
+									<td align="center"><br />
+
+									</td>
+									<td align="center"> √ 
+									</td>
+									<td align="center">  
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 天线罩（瞄准线误差，快速扫角，相扫）<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+									<td align="center"> √ 
+									</td>
+									<td align="center">  
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="3" colspan="1" align="center">建模 
+									</td>
+									<td align="center"> 天线罩（全部）<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+									<td align="center"> √ 
+									</td>
+									<td align="center">  
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 多层物体<br />
+
+									</td>
+									<td align="center">  √ 
+									</td>
+									<td align="center">  
+									</td>
+									<td align="center">  
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 参数多边形曲线柱体 
+									</td>
+									<td align="center"><br />
+
+									</td>
+									<td align="center">  
+									</td>
+									<td align="center">  
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="2" colspan="1" align="center">激励源 
+									</td>
+									<td align="center"> 馈源阵列<br />
+
+									</td>
+									<td align="center">  √ 
+									</td>
+									<td align="center">  
+									</td>
+									<td align="center">  
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 等效同轴波导<br />
+
+									</td>
+									<td align="center">  √ 
+									</td>
+									<td align="center"> √ 
+									</td>
+									<td align="center"> √ 
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div></p></div>

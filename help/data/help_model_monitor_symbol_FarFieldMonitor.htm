@@ -1,0 +1,488 @@
+<div class="markdown-body"><p>
+	<h1>远场监视器
+	</h1></p><p>
+	<h2>频域远场监视器
+	</h2>频域远场监视器通过等效原理计算出指定频率的电磁波在指定距离（按无限远近似处理）处的电磁波场强度。</p>参数如下：<div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td align="center" style="border:0px">
+				<a name="">频域远场监视器
+				</a>
+			</td>
+		</tr>
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center"> 参数<br />
+
+								</td>
+								<td align="center"> 英文<br />
+
+								</td>
+								<td align="center"> 参数类型<br />
+
+								</td>
+								<td align="center"> 参数分类<br />
+
+								</td>
+								<td align="center"> 说明<br />
+
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="center"> 频率<br />
+
+								</td>
+								<td align="center"> Frequency<br />
+
+								</td>
+								<td align="center"> 浮点数组<br />
+
+								</td>
+								<td align="center"> 基本设置<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 区域<br />
+
+								</td>
+								<td align="center"> Box<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+								<td align="center"> 基本设置<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 远场参数列表<br />
+
+								</td>
+								<td align="center"> Far Field Parameters 
+								</td>
+								<td align="center"><br />
+
+								</td>
+								<td align="center"> 基本设置<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div>设置窗口：<div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center"> 
+									<div class="markdown-block">
+										<table width="100%" style="border:0px">
+											<tr style="border:0px">
+												<td style="border:0px">
+													<a name="频域远场监视器设置"><img src="image/settings/ffar/ffar-settings.png" alt="image 1: 频域远场监视器设置" />
+													</a>
+												</td>
+											</tr>
+											<tr style="border:0px">
+												<td style="border:0px" align="center">image 1: 频域远场监视器设置
+												</td>
+											</tr>
+										</table>
+									</div> 
+								</td>
+								<td align="center"> 
+									<div class="markdown-block">
+										<table width="100%" style="border:0px">
+											<tr style="border:0px">
+												<td style="border:0px">
+													<a name="时间设置"><img src="image/settings/ffar/ffar-time-settings.png" alt="image 2: 时间设置" />
+													</a>
+												</td>
+											</tr>
+											<tr style="border:0px">
+												<td style="border:0px" align="center">image 2: 时间设置
+												</td>
+											</tr>
+										</table>
+									</div> 
+								</td>
+							</tr>
+						</thead>
+						<tbody />
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div><p>时间设置包括
+	<strong>自动设置时间步
+	</strong>和
+	<strong>按频率宽度
+	</strong>设置时间步。</p><p>原始数据见下表：
+	<div class="markdown-block">
+		<table width="100%">
+			<tr style="border:0px">
+				<td align="center" style="border:0px">
+					<a name="">频域远场监视器原始数据
+					</a>
+				</td>
+			</tr>
+			<tr style="border:0px">
+				<td style="border:0px">
+					<div class="markdown-table">
+						<table width="100%" class="markdown-table" style="border:1px">
+							<thead>
+								<tr>
+									<td align="center"> 节点<br />
+
+									</td>
+									<td align="center"> 说明<br />
+
+									</td>
+									<td align="center"> 单位<br />
+
+									</td>
+									<td align="center"> 备注<br />
+
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td align="center"> <code>data</code><br />
+
+									</td>
+									<td align="center"> 数据包<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+									<td align="center"> 可用于脚本外推计算<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> <code>freq</code><br />
+
+									</td>
+									<td align="center"> 记录的频点序列<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+									<td align="center"> 数组<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> <code>ff_param</code><br />
+
+									</td>
+									<td align="center"> 远场参数<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+									<td align="center"> 数组<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> <code>pout</code><br />
+
+									</td>
+									<td align="center"> 各个频率成分通过记录面的能量<br />
+
+									</td>
+									<td align="center"> J/Hz<br />
+
+									</td>
+									<td align="center"> 每个频点附近的平均能量<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> <code>pout_im</code><br />
+
+									</td>
+									<td align="center"> 各个频率成分在记录面附近振荡的能量<br />
+
+									</td>
+									<td align="center"> J/Hz<br />
+
+									</td>
+									<td align="center"> 每个频点附近的平均能量<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> <code>power0</code><br />
+
+									</td>
+									<td align="center"> 各个频率成分通过记录面的平均功率<br />
+
+									</td>
+									<td align="center"> J/s<br />
+
+									</td>
+									<td align="center"> 平均有功功率在最大计算时间内对应分析频宽内的贡献<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> <code>power1</code><br />
+
+									</td>
+									<td align="center"> 各个频率成分通过记录面的平均功率<br />
+
+									</td>
+									<td align="center"> J/s<br />
+
+									</td>
+									<td align="center"> 平均有功功率在有效记录时间内对应分析频宽内的贡献<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> <code>when</code><br />
+
+									</td>
+									<td align="center"> 监视器的时间设置<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+									<td align="center"> 变量表<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> <code>far_result</code><br />
+
+									</td>
+									<td align="center"> 预先外推的计算结果<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+									<td align="center"> 数组<br />
+
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div></p><p>
+	<strong>说明：
+	</strong><code>data</code>节点可调用下列方法或数据：
+	<div class="markdown-block">
+		<table width="100%">
+			<tr style="border:0px">
+				<td align="center" style="border:0px">
+					<a name="">`data`节点
+					</a>
+				</td>
+			</tr>
+			<tr style="border:0px">
+				<td style="border:0px">
+					<div class="markdown-table">
+						<table width="100%" class="markdown-table" style="border:1px">
+							<thead>
+								<tr>
+									<td align="center"> 子节点<br />
+
+									</td>
+									<td align="center"> 说明<br />
+
+									</td>
+									<td align="center"> 备注<br />
+
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td align="center"> <code>ntff</code><br />
+
+									</td>
+									<td align="center"> 外推器<br />
+
+									</td>
+									<td align="center"> 对象<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> <code>pout</code><br />
+
+									</td>
+									<td align="center"> 获取$\text{P}_\text{out}$<br />
+
+									</td>
+									<td align="center"> 函数，通过记录面的能量，复数。实部为有功部分，虚部为无功部分。仅考虑正频率的贡献，考虑正负频率贡献时需按双倍计算。<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> <code>power</code><br />
+
+									</td>
+									<td align="center"> 获取$\text{Power}$<br />
+
+									</td>
+									<td align="center"> 函数，通过记录面的功率，复数。实部为有功部分，虚部为无功部分。仅考虑正频率的贡献，考虑正负频率贡献时需按双倍计算。<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> <code>freq</code><br />
+
+									</td>
+									<td align="center"> 频率数据<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> <code>size</code><br />
+
+									</td>
+									<td align="center"> 频点个数<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div></p><p>
+	<h2>时域远场监视器
+	</h2>频域远场监视器通过等效原理计算出电磁波在指定距离（按无限远近似处理）处的电磁波场的信号波形。</p><div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center"> 
+									<div class="markdown-block">
+										<table width="100%" style="border:0px">
+											<tr style="border:0px">
+												<td style="border:0px">
+													<a name="频域远场监视器设置"><img src="image/settings/tfar/tfar-settings.png" alt="image 3: 频域远场监视器设置" />
+													</a>
+												</td>
+											</tr>
+											<tr style="border:0px">
+												<td style="border:0px" align="center">image 3: 频域远场监视器设置
+												</td>
+											</tr>
+										</table>
+									</div> 
+								</td>
+								<td align="center"> 
+									<div class="markdown-block">
+										<table width="100%" style="border:0px">
+											<tr style="border:0px">
+												<td style="border:0px">
+													<a name="时间设置"><img src="image/settings/tfar/tfar-time-settings.png" alt="image 4: 时间设置" />
+													</a>
+												</td>
+											</tr>
+											<tr style="border:0px">
+												<td style="border:0px" align="center">image 4: 时间设置
+												</td>
+											</tr>
+										</table>
+									</div> 
+								</td>
+							</tr>
+						</thead>
+						<tbody />
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div>时间设置包括：<ol>
+	<li>自动设置时间步
+	</li>
+	<li>按整数步设置（整数）
+		<ul>
+			<li>起始
+			</li>
+			<li>结束
+			</li>
+			<li>步长
+			</li>
+		</ul>
+	</li>
+	<li>按物理时间步设置（浮点数，物理时间，文档时间单位）
+		<ul>
+			<li>起始
+			</li>
+			<li>结束
+			</li>
+			<li>采样时间间隔
+			</li>
+		</ul>
+	</li>
+	<li>按频率宽度设置（浮点数，物理时间，文档时间单位、频率单位）
+		<ul>
+			<li>起始
+			</li>
+			<li>结束
+			</li>
+			<li>频率宽度
+			</li>
+		</ul>
+	</li>
+	<li>设定时间序列（浮点数，物理时间，文档时间单位）
+		<ul>
+			<li>设定时间序列
+			</li>
+		</ul>
+	</li></ol><p>
+	<h2>频域准远场监视器
+	</h2></p><p>
+	<h2>时域准远场监视器
+	</h2></p><p>
+	<h2>频域准远场监视器
+	</h2></p></div>

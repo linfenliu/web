@@ -1,0 +1,241 @@
+<div class="markdown-body"><h1>区域场监视器（频域）</h1>区域场监视器（频域）是用于记录计算区域中一个范围内的场在指定时间区间和采样间隔下的指定频率信号的成分。对于电场和磁场的标量分量，其结果为复数。<h2>基本参数设置如下：</h2><p>
+	<div class="markdown-block">
+		<table width="100%">
+			<tr style="border:0px">
+				<td align="center" style="border:0px">
+					<a name="">区域场监视器（频域）
+					</a>
+				</td>
+			</tr>
+			<tr style="border:0px">
+				<td style="border:0px">
+					<div class="markdown-table">
+						<table width="100%" class="markdown-table" style="border:1px">
+							<thead>
+								<tr>
+									<td align="center"> 基本设置<br />
+
+									</td>
+									<td align="center"> 参数类型<br />
+
+									</td>
+									<td align="center"> 说明<br />
+
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td align="center"> 频率<br />
+
+									</td>
+									<td align="center"> 浮点表达式<br />
+
+									</td>
+									<td align="center"> 数组或单值<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 场量<br />
+
+									</td>
+									<td align="center"> 选项<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 截面<br />
+
+									</td>
+									<td align="center"> 选项<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 场分量按局部定义<br />
+
+									</td>
+									<td align="center"> 开关<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> X上界<br />
+
+									</td>
+									<td align="center"> 单值浮点表达式<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> Y上界<br />
+
+									</td>
+									<td align="center"> 单值浮点表达式<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> Z上界<br />
+
+									</td>
+									<td align="center"> 单值浮点表达式<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> X下界<br />
+
+									</td>
+									<td align="center"> 单值浮点表达式<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> Y下界<br />
+
+									</td>
+									<td align="center"> 单值浮点表达式<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> Z下界<br />
+
+									</td>
+									<td align="center"> 单值浮点表达式<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div></p><div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center"> 
+									<div class="markdown-block">
+										<table width="100%" style="border:0px">
+											<tr style="border:0px">
+												<td style="border:0px">
+													<a name="基本参数设置"><img src="image/settings/fslicecpx/fslicecpx-settings.png" alt="image 1: 基本参数设置" />
+													</a>
+												</td>
+											</tr>
+											<tr style="border:0px">
+												<td style="border:0px" align="center">image 1: 基本参数设置
+												</td>
+											</tr>
+										</table>
+									</div> 
+								</td>
+								<td align="center"> 
+									<div class="markdown-block">
+										<table width="100%" style="border:0px">
+											<tr style="border:0px">
+												<td style="border:0px">
+													<a name="时间参数设置"><img src="image/settings/fslicecpx/fslicecpx-time.png" alt="image 2: 时间参数设置" />
+													</a>
+												</td>
+											</tr>
+											<tr style="border:0px">
+												<td style="border:0px" align="center">image 2: 时间参数设置
+												</td>
+											</tr>
+										</table>
+									</div> 
+								</td>
+							</tr>
+						</thead>
+						<tbody />
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div><h2>时间参数设置</h2>频域监视器的时间设置基本相同，分为两种情况：<h3>自动设置时间步</h3>自动设定。由监视器自身默认设置方式来设定，截面场监视器（时域）的默认设置策略是记录计算周期的所有时间步上的数据。<h3>按频率宽度</h3>按物理时间设定。用户需要设定起始物理时间和结束物理时间以及参考的频率宽度。根据傅里叶变换的对应关系：$$
+\Delta t = \dfrac{1}{f_{\text{max}}-f_{\text{min}}}
+$$<h2>杂项</h2><div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center"> 参数<br />
+
+								</td>
+								<td align="center"> 参数类型<br />
+
+								</td>
+								<td align="center"> 说明<br />
+
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="center"> 记录面偏移策略<br />
+
+								</td>
+								<td align="center"> 选项<br />
+
+								</td>
+								<td align="center"> 默认为向原点收缩<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 计算区域策略<br />
+
+								</td>
+								<td align="center"> 选项<br />
+
+								</td>
+								<td align="center"> 默认不延展CBOX<br />
+
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div><p>
+	<img src="image/settings/fslicecpx/fslicecpx-miscellaneous.png" /></p><strong>记录面偏移策略</strong><p>该参数通常不需要特殊设定。记录面偏移策略是针对FDTD网格而言，平行于网格的记录面选择精确网格位置时需要。如果用户需要记录面恰好定在网格位置上，可以使用修视器，给监视器增加相应的网格控制。</p><strong>计算区域策略</strong><p>确定计算区域是否影响CBOX的参数。当用户选择延展CBOX时，如果该元件所在的组没有限制更新阶段，那么添加该物体可能会导致在某些方向上延展计算区域。对于该监视器，默认不延展计算区域。</p></div>

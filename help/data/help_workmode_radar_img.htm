@@ -1,0 +1,215 @@
+<div class="markdown-body"><p>
+	<h1>雷达成像计算模式
+	</h1></p><h2>概述</h2>雷达回波数据主要是指雷达照射目标的散射场，它真实地反映了目标结构和材料的散射特性，对回波数据的图像化处理就是雷达成像，通过雷达图像提取目标散射特性，识别雷达目标和指导目标隐身设计是雷达目标成像的目的。对于高分辨率距离（HRRP）成像，目标在雷达距离向上的散射特性体现在这个方向上散射强点构成的曲线图上；对于逆合成孔径雷达（ISAR）成像，虽然空间目标的表面特性复杂，但是通常可以看成是有很多不同位置、不同反射系数的散射点构成的。ISAR成像的目标就是要正确显示各散射点的相对位置和回波强度。<p>
+	<strong>仿真流程：
+	</strong>
+	<ul>
+		<li>设置基本参数（单位、工作频率、发射雷达扫描中心角、极化方式、雷达分辨率等）
+		</li>
+		<li>建立模型（几何建模和材料设置）
+		</li>
+		<li>网格设置
+		</li>
+		<li>计算
+		</li>
+		<li>结果显示和后处理
+		</li>
+	</ul></p><h2>模式设置</h2><p>
+	<ol>
+		<li>基本设置
+			<ul>
+				<li>单位（默认设置）
+					<ul>
+						<li>长度单位：mm
+						</li>
+						<li>频率单位：GHz
+						</li>
+						<li>时间单位：ns
+						</li>
+						<li>默认单位修改步骤：
+							<ul>
+								<li>在
+									<strong>模型
+									</strong>悬浮框，依次点击展开
+									<strong>doc
+									</strong>--&gt;
+									<strong>定义
+									</strong>；
+								</li>
+								<li>双击
+									<strong>单位
+									</strong> --&gt;选择
+									<strong>设置单位
+									</strong>--&gt;点击单位对话框右边的编辑按钮--&gt;设置长度、频率和时间单位。
+									<img src="image/workmode/radarImaging/UnitSetting.png" />
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li>空间分布：平面波
+				</li>
+				<li>时域波形：根据用户模式界面选择的信号类型（目前仅实现了Gauss信号）
+				</li>
+				<li>发射方向：根据用户模式界面输入的角度参数$\theta$，$\phi$
+				</li>
+				<li>极化角度：根据用户模式界面选择的极化：垂直极化和水平极化
+				</li>
+				<li>分辨率
+					<ul>
+						<li>距离分辨率：根据用户模式界面输入的距离向分辨率值
+						</li>
+						<li>方位分辨率：根据用户模式界面输入的方位向分辨率值	<br />
+
+						</li>
+					</ul>
+				</li>
+				<li>画布尺寸
+					<ul>
+						<li>距离向尺寸：根据用户模式界面输入的距离向尺寸值
+						</li>
+						<li>方位向尺寸：根据用户模式界面输入的方位向尺寸值
+						</li>
+					</ul>
+				</li>
+				<li>远场外推位置：	默认1e8[mm]
+				</li>
+			</ul>
+		</li>
+		<li>监视器
+			<ul>
+				<li>类型：时域远场记录器
+				</li>
+				<li>位置：距离计算区域边界2个网格
+				</li>
+			</ul>
+		</li>
+		<li>边界设置
+			<ul>
+				<li>吸收边界（默认：12层CPML吸收边界）
+				</li>
+			</ul>
+		</li>
+	</ol></p><h2>模式界面</h2><strong>模型</strong>--&gt;鼠标右击<strong>计算模式</strong>，并点击<strong>新建计算模式</strong>--&gt;在<strong>类型</strong>下拉框里选择<strong>DworkmodeImaging2</strong>,现在在<strong>计算模式</strong>栏里可见该计算模式，然后鼠标右击该计算模式菜单，点击<strong>激活</strong>，才能启动该模式，双击该计算模式，出现模式界面：<img src="image/workmode/radarImaging/ModeInterface.png" /><h2>输入参数设置</h2>主要设置参数如下图所示：<br />
+<img src="image/workmode/radarImaging/ParamSetting.png" /><br />
+<strong>雷达成像子模式选择：</strong> ImagingMode: 成像模式，可选ISAR（二维成像）和HRRP（一维距离成像）；<br />
+<br /><strong>雷达发射信号参数设置:</strong><div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center">参数
+								</td>
+								<td align="center">说明
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="center">signal.type
+								</td>
+								<td align="center">信号类型，可选Gauss(高斯脉冲)、Chirp(啁啾信号)、SFCW（频率步进连续波信号）
+								</td>
+							</tr>
+							<tr>
+								<td align="center">signal.frequency
+								</td>
+								<td align="center">中心频率
+								</td>
+							</tr>
+							<tr>
+								<td align="center">signal.theta
+								</td>
+								<td align="center">$\theta$角
+								</td>
+							</tr>
+							<tr>
+								<td align="center">signal.phi
+								</td>
+								<td align="center">$\phi$角，中心扫描角
+								</td>
+							</tr>
+							<tr>
+								<td align="center">signal.amplitude
+								</td>
+								<td align="center">信号幅度值
+								</td>
+							</tr>
+							<tr>
+								<td align="center">signal.polarization
+								</td>
+								<td align="center">信号极化类型，可选vertical(垂直极化)、horization(水平极化)
+								</td>
+							</tr>
+							<tr>
+								<td align="center">signal.scsmode
+								</td>
+								<td align="center">扫角方式，可选ISO、HCS、GCS
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div><p>
+	<strong>注：
+	</strong>信号类型目前仅实现了Gauss信号。</p>  <strong>雷达图像参数设置:</strong><div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center">参数
+								</td>
+								<td align="center">说明
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="center">image.range_rsl
+								</td>
+								<td align="center">雷达图像距离分辨率
+								</td>
+							</tr>
+							<tr>
+								<td align="center">image.cross_rsl
+								</td>
+								<td align="center">雷达图像方位分辨率
+								</td>
+							</tr>
+							<tr>
+								<td align="center">image.range_size
+								</td>
+								<td align="center">雷达图像距离像尺寸
+								</td>
+							</tr>
+							<tr>
+								<td align="center">image.cross_size
+								</td>
+								<td align="center">雷达图像方位像尺寸
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div><strong>图像处理参数设置：</strong>  algorithm.window: 窗函数。<p>
+	<strong>杂项设置：
+	</strong></p><h2>输出结果</h2>一维成像结果：<br />
+<img src="image/workmode/radarImaging/HRRP_Image.png" /><br />
+一维成像数据：<br />
+<img src="image/workmode/radarImaging/HRRP_data.png" /><br />
+二维成像结果：<br />
+<img src="image/workmode/radarImaging/SAR_Image.png" /><br />
+<p>二维成像数据：<br />
+
+	<img src="image/workmode/radarImaging/SAR_data.png" /><br />
+</p><p>	</p></div>

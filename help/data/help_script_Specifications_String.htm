@@ -1,0 +1,116 @@
+<div class="markdown-body"><p>
+	<h1>字符串函数
+	</h1></p><a name="help_script_Specifications_String.content"> </a><h2>目录</h2><ol>
+	<li>
+		<a target="_top" href="#help_script_Specifications_String.properties">字符串属性
+		</a>
+	</li>
+	<li>
+		<a target="_top" href="#help_script_Specifications_String.substring">子串与索引
+		</a>
+	</li>
+	<li>
+		<a target="_top" href="#help_script_Specifications_String.format">格式化字符串
+		</a>
+	</li>
+	<li>
+		<a target="_top" href="#help_script_Specifications_String.others">其他字符串函数
+		</a>
+	</li></ol><a name="help_script_Specifications_String.properties"> </a><h2>字符串的属性</h2><a name="help_script_Specifications_String.function.length"> </a><code>length</code><br />获得字符串中字符的个数，窄字符和宽字符都计算为1个字符。<br /><strong>语法：</strong>  <pre><code code-language="ewsl">a = "abc";<br />length(a)   // output: 3</code></pre><a name="help_script_Specifications_String.function.is_alphabet"> </a><code>string.is_alphabet</code><br />判断字符串是否仅由26个英文字母（包含大小写）构成<br /><strong>语法：</strong>  <pre><code code-language="ewsl">a = "abcdEFGH";<br />string.is_alphabet(a)   // output: true<br />b = "def 123"<br />string.is_alphabet(b)   // output: false</code></pre><a name="help_script_Specifications_String.function.is_digit"> </a><code>string.is_digit</code><br />判断字符串是否仅由0-9这10个数字构成<br /><strong>语法：</strong>  <pre><code code-language="ewsl">a = "000325445";<br />string.is_digit(a)      // output: true</code></pre><a name="help_script_Specifications_String.function.is_alphanum"> </a><code>string.is_alphanum</code><br />判断字符串是否仅包含数字和字母!error-reference: help_script_Specifications_String.function.is_alphanum<pre><code code-language="ewsl">a = "abc123";<br />is_alphanum(a)      // output: true</code></pre><a name="help_script_Specifications_String.substring"> </a><a name="help_script_Specifications_String.index"> </a><h2>子串与索引</h2><a name="help_script_Specifications_String.function.substr"> </a><code>substr</code>, <code>string.substr</code>返回字符串的子串<br /><strong>语法：</strong>  <pre><code code-language="ewsl">a = "abcdefghijk";<br />a.substr(0,5)       // output: "abcde"<br />a.substr(-3,2)      // output: "ij"<br />a.substr(6)         // output: "ghijk"</code></pre><br /><strong>参考：</strong>  <ul>
+	<li>
+		<a target="_top" href="#help_script_Specifications_String.operator.index">字符串的索引
+		</a>
+	</li></ul><a name="help_script_Specifications_String.operator.index"> </a><code>[]</code><br />字符串的索引，用来返回字符串中的子列或者字符<br />
+<strong>说明：</strong><ul>
+	<li>字符串可以部分的理解为字符的数组，因此允许字符串使用<code>[]</code>索引算符来获取字符串的字符元素或者子列。
+	</li>
+	<li>字符串和数组一样，从0开始索引。
+	</li>
+	<li>本质上<code>[]</code>接收一个整数或者一个整数数组，返回该整数对应的字符或者整数数组对应的字符按照次序组成的子列（新字符串）。
+	</li>
+	<li>允许使用<code>end</code>关键词表示字符串的最后一个位置
+	</li></ul><br /><strong>语法：</strong>  <pre><code code-language="ewsl">a = "abcdefghijk";<br />a[3]        // output: "d"<br />a[0:5]      // output: "abcdef" (6 characters)<br />a[end:1]    // output: "kjihgfedcba" (reversing the word)</code></pre><a name="help_script_Specifications_String.format"> </a><h2>格式化字符串</h2><code>format</code>, <code>string.format</code><br />格式化字符串<br /><strong>说明：</strong><ul>
+	<li>支持<code>%d</code>（整数）、<code>%f</code>（浮点数）、<code>%e</code>（科学计数法）、<code>%g</code>（数值自动格式）、<code>%s</code>（字符串）等C风格的格式化字符串。
+	</li>
+	<li>整数16进制使用<code>%x</code>标志。
+	</li>
+	<li>支持<code>%{1}</code>、<code>%{2}</code>等对格式化字符串参数变量的引用，<code>%{1}</code>表示第1个参数，<code>%{2}</code>表示第2个参数。
+	</li>
+	<li>支持符号显示控制、小数位置控制和补零控制等。
+	</li></ul><br /><strong>语法：</strong>  <pre><code code-language="ewsl">format(fmt_str, ...)</code></pre><br /><strong>例子：</strong>  <pre><code code-language="ewsl">/* example 1 */<br />println(format("x=%d\n",123));<br />println(format("y=%g\n",23.3));<br />println(format("z=%x\n",1656));<br />println(format("w=%s\n","hello");<br />println(format("x+y*x=%{1}+%{2}*%{1}",1,2));<br />/* output below: */<br />x=123<br />y=23.3<br />z=2fd030<br />w=hello<br />x+y*x=1+2*1</code></pre><a name="help_script_Specifications_String.others"> </a><h2>其他字符串函数</h2><a name="help_script_Specifications_String.function.lines"> </a><code>lines</code>, <code>string.lines</code><br />将字符串按行分解<br /><strong>语法：</strong>  <pre><code code-language="ewsl">str.lines()     // call as a member function, str is a string object.<br />lines(str)      // call as a common function, str is a string object.</code></pre><br /><strong>参考：</strong>  <ul>
+	<li>
+		<a target="_top" href="#help_script_Specifications_String.function.words"><code>words</code>
+		</a>
+	</li>
+	<li>
+		<a target="_top" href="#help_script_Specifications_String.function.split"><code>split</code>
+		</a>
+	</li></ul><a name="help_script_Specifications_String.function.words"> </a><code>words</code>, <code>string.words</code><br />将字符串按单词分解<br /><strong>语法：</strong>  <pre><code code-language="ewsl">str.words()     // call as a member function, str is a string object.<br />words(str)      // call as a common function, str is a string object.</code></pre><br /><strong>参考：</strong>  <ul>
+	<li>
+		<a target="_top" href="#help_script_Specifications_String.function.lines"><code>lines</code>
+		</a>
+	</li>
+	<li>
+		<a target="_top" href="#help_script_Specifications_String.function.split"><code>split</code>
+		</a>
+	</li></ul><a name="help_script_Specifications_String.function.split"> </a><code>split</code>, <code>string.split</code><br />按照指定的分隔符参数分解字符串<br /><strong>语法：</strong>  <pre><code code-language="ewsl">str.split(sep)  // call as a member function, sep is string of separators.<br />split(str,sep)  // call as a common function, sep is string of separators.</code></pre><p><br />
+	<strong>参考：
+	</strong>  
+	<ul>
+		<li>
+			<a target="_top" href="#help_script_Specifications_String.function.words"><code>words</code>
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Specifications_String.function.lines"><code>lines</code>
+			</a>
+		</li>
+	</ul></p><a name="help_script_Specifications_String.function.concat"> </a><code>concat</code>, <code>string.concat</code><br />连接字符串<br /><strong>语法：</strong>  <pre><code code-language="ewsl">str.concat(s1,...)  // call as a member function, concatenation of str, s1 and ...<br />concat(str,s1,...)  // call as a common function, concatenation of str, s1 and ...</code></pre><a name="help_script_Specifications_String.function.find"> </a><code>find</code>, <code>string.find</code><br />寻找子串<a name="help_script_Specifications_String.function.replicate"> </a><code>replicate</code>, <code>string.replicate</code><br />替换子串<a name="help_script_Specifications_String.function.join"> </a><code>join</code>, <code>string.join</code><br />粘合字符串<br /><strong>语法：</strong>  <pre><code code-language="ewsl">string.join(sep, str_lst)  // str_lst is an array of string (array_variant type)</code></pre><a name="help_script_Specifications_String.function.escape"> </a><code>string.escape</code><br />将字符串中的特殊字符转换为unicode显式编码<br /><strong>语法：</strong>  <pre><code code-language="ewsl">string.escape(str)</code></pre><br /><strong>参考：</strong>  <ul>
+	<li>
+		<a target="_top" href="#help_script_Specifications_String.function.unescape"><code>unescape</code>
+		</a>
+	</li></ul><a name="help_script_Specifications_String.function.unescape"> </a><code>string.unescape</code>将字符串中部分采用unicode显式编码的内容转换为原始的字符<br /><strong>语法：</strong>  <pre><code code-language="ewsl">string.unescape(str)</code></pre><br /><strong>参考：</strong>  <ul>
+	<li>
+		<a target="_top" href="#help_script_Specifications_String.function.escape"><code>escape</code>
+		</a>
+	</li></ul><p>
+	<a name="help_script_Specifications_String.function.upper"> 
+	</a><code>upper</code>, <code>string.upper</code><br />将字符串转换为大写</p><br /><strong>语法：</strong>  <pre><code code-language="ewsl">str.upper()     // call as a member function.<br />upper(str)      // call as a common function.</code></pre><br /><strong>参考：</strong>  <ul>
+	<li>
+		<a target="_top" href="#help_script_Specifications_String.function.lower"><code>lower</code>
+		</a>
+	</li></ul><p>
+	<a name="help_script_Specifications_String.function.lower"> 
+	</a><code>lower</code>, <code>string.lower</code><br />将字符串转换为小写</p><br /><strong>语法：</strong>  <pre><code code-language="ewsl">str.lower()     // call as a member function.<br />lower(str)      // call as a common function.</code></pre><p><br />
+	<strong>参考：
+	</strong>  
+	<ul>
+		<li>
+			<a target="_top" href="#help_script_Specifications_String.function.upper"><code>upper</code>
+			</a>
+		</li>
+	</ul></p><a name="help_script_Specifications_String.function.reverse"> </a><code>reverse</code>, <code>string.reverse</code>翻转字符串<br /><strong>语法：</strong>  <pre><code code-language="ewsl">str.reverse()     // call as a member function.<br />reverse(str)      // call as a common function.</code></pre><p><br />
+	<strong>参考：
+	</strong>  
+	<ul>
+		<li>
+			<a target="_top" href="#help_script_Specifications_String.operator.index"><code>[]</code>
+			</a>
+		</li>
+	</ul></p><a name="help_script_Specifications_String.function.toIntArray"> </a><code>string.toIntArray</code><br />将字符串转换为unicode编码的整数序列<br /><strong>语法：</strong>  <pre><code code-language="ewsl">str.toIntArray()            // call as a member function.<br />string.toIntArray(str)      // call as a common function.</code></pre><p><br />
+	<strong>参考：
+	</strong>  
+	<ul>
+		<li>
+			<a target="_top" href="#help_script_Specifications_String.function.fromIntArray"><code>fromIntArray</code>
+			</a>
+		</li>
+	</ul></p><a name="help_script_Specifications_String.function.fromIntArray"> </a><code>string.fromIntArray</code>将整数序列按照unicode编码规则转换到字符串<br /><strong>语法：</strong>  <pre><code code-language="ewsl">string.fromIntArray(arr)    // return a string from unicode integer array.</code></pre><p><br />
+	<strong>参考：
+	</strong>  
+	<ul>
+		<li>
+			<a target="_top" href="#help_script_Specifications_String.function.toIntArray"><code>toIntArray</code>
+			</a>
+		</li>
+	</ul></p></div>

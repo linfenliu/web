@@ -1,0 +1,641 @@
+<div class="markdown-body"><h1>图表库</h1><p>使用帮助系统提供的 chart 图表库，可绘制多种类型的图表。</p><h2>如何使用图表</h2><p>在 markdown 文本文件中只需引入以下代码即可生成一个类型为<code>line</code>的图表：</p><pre><code>```chart<br />{<br />	type: 'line',<br />	labels: ["物品 A", "物品 B", "物品 C", "物品 D", "物品 E", "物品 F"],<br />	datasets: [{label: '城市 A', data: [1000, 500, 300, 500, 200, 300]},{label: '城市 B', data: [500, 400, 700, 2000, 240, 500]}]<br />}<br />```</code></pre><p>参数说明：
+	<div class="markdown-block">
+		<table width="100%">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<div class="markdown-table">
+						<table width="100%" class="markdown-table" style="border:1px">
+							<thead>
+								<tr>
+									<td align="left"> 参数 
+									</td>
+									<td align="left"> 说明 
+									</td>
+									<td align="left">类型 
+									</td>
+									<td align="left"> 备注 
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td align="left"> type 
+									</td>
+									<td align="left"> 图表类型 
+									</td>
+									<td align="left">String 
+									</td>
+									<td align="left"> 包括<code>line bar horizontalBar radar pie doughnut polarArea bubble scatter</code> 
+									</td>
+								</tr>
+								<tr>
+									<td align="left"> labels 
+									</td>
+									<td align="left"> 数据标签 
+									</td>
+									<td align="left">Array 
+									</td>
+									<td align="left"> - 
+									</td>
+								</tr>
+								<tr>
+									<td align="left"> datasets 
+									</td>
+									<td align="left"> 数据系列 
+									</td>
+									<td align="left">Array 
+									</td>
+									<td align="left"> - 
+									</td>
+								</tr>
+								<tr>
+									<td align="left"> beginAtZeroX 
+									</td>
+									<td align="left"> 强制 X 轴从0开始 
+									</td>
+									<td align="left">Bool 
+									</td>
+									<td align="left"> 默认值为<code>false</code> 
+									</td>
+								</tr>
+								<tr>
+									<td align="left"> beginAtZeroY 
+									</td>
+									<td align="left"> 强制 Y 轴从0开始 
+									</td>
+									<td align="left">Bool 
+									</td>
+									<td align="left"> 默认值为<code>false</code> 
+									</td>
+								</tr>
+								<tr>
+									<td align="left"> tension 
+									</td>
+									<td align="left"> 贝塞尔曲线张力设置，设为0时，没有曲线张力 
+									</td>
+									<td align="left"> Number 
+									</td>
+									<td align="left"> 默认值为<code>0.0</code>，只针对<code>line</code>类型图表 
+									</td>
+								</tr>
+								<tr>
+									<td align="left"> width 
+									</td>
+									<td align="left"> 图表宽度(百分比)，取值范围 0-100 
+									</td>
+									<td align="left"> Int 
+									</td>
+									<td align="left"> 默认值为<code>80</code> 
+									</td>
+								</tr>
+								<tr>
+									<td align="left"> height 
+									</td>
+									<td align="left"> 图表高度(百分比)，取值范围 0-100 
+									</td>
+									<td align="left"> Int 
+									</td>
+									<td align="left"> 默认值为<code>60</code> 
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div></p><h2>完整 Demo</h2><p>
+	<h3>创建一个类型为<code>line</code>，贝塞尔曲线张力为<code>0.4</code>的图表
+	</h3></p><pre><code>```chart<br />{<br />	type: 'line',<br />	labels: ["物品A", "物品B", "物品C", "物品D", "物品E", "物品F"],<br />	datasets: [{label: '城市A', data: [1000, 500, 300, 500, 200, 300]},{label: '城市B', data: [500, 400, 700, 2000, 240, 500]}],<br />	tension: 0.4<br />}<br />```</code></pre><div class='chart_wrapper'>
+	<canvas id = 'chart_30' data-chart='{
+	"type":"line",
+	"labels":[
+		"%u7269%u54C1A",
+		"%u7269%u54C1B",
+		"%u7269%u54C1C",
+		"%u7269%u54C1D",
+		"%u7269%u54C1E",
+		"%u7269%u54C1F"
+	],
+	"datasets":[
+		{
+			"label":"%u57CE%u5E02A",
+			"data":[
+				1000,
+				500,
+				300,
+				500,
+				200,
+				300
+			]
+		},
+		{
+			"label":"%u57CE%u5E02B",
+			"data":[
+				500,
+				400,
+				700,
+				2000,
+				240,
+				500
+			]
+		}
+	],
+	"tension":0.4
+}'></canvas>
+</div><p>
+	<h3>创建一个类型为<code>line</code>，自定义背景颜色，贝塞尔曲线张力为默认值<code>0.0</code>，Y 轴从0开始的图表
+	</h3></p><pre><code>```chart<br />{<br />	type: 'line',<br />	labels: ["物品A", "物品B", "物品C", "物品D", "物品E", "物品F"],<br />	datasets: [{label: '城市A', data: [1000, 500, 300, 500, 200, 300], backgroundColor: 'rgba(255,0,0,0.2)'},<br />				{label: '城市B', data: [500, 400, 700, 2000, 240, 500], backgroundColor: 'rgba(0,0,255,0.2)'}],<br />	beginAtZeroY: true<br />}<br />```</code></pre><div class='chart_wrapper'>
+	<canvas id = 'chart_31' data-chart='{
+	"type":"line",
+	"labels":[
+		"%u7269%u54C1A",
+		"%u7269%u54C1B",
+		"%u7269%u54C1C",
+		"%u7269%u54C1D",
+		"%u7269%u54C1E",
+		"%u7269%u54C1F"
+	],
+	"datasets":[
+		{
+			"label":"%u57CE%u5E02A",
+			"data":[
+				1000,
+				500,
+				300,
+				500,
+				200,
+				300
+			],
+			"backgroundColor":"rgba%28255%2C0%2C0%2C0.2%29"
+		},
+		{
+			"label":"%u57CE%u5E02B",
+			"data":[
+				500,
+				400,
+				700,
+				2000,
+				240,
+				500
+			],
+			"backgroundColor":"rgba%280%2C0%2C255%2C0.2%29"
+		}
+	],
+	"beginAtZeroY":true
+}'></canvas>
+</div><p>
+	<h3>创建一个类型为<code>bar</code>的图表
+	</h3></p><pre><code>```chart<br />{<br />	type: 'bar',<br />	labels: ["物品A", "物品B", "物品C", "物品D", "物品E", "物品F"],<br />	datasets: [{label: '城市A',data: [1000, 500, 300, 500, 200, 300]},{label: '城市B',data: [500, 400, 700, 2000, 240, 500]}]<br />}<br />```</code></pre><div class='chart_wrapper'>
+	<canvas id = 'chart_32' data-chart='{
+	"type":"bar",
+	"labels":[
+		"%u7269%u54C1A",
+		"%u7269%u54C1B",
+		"%u7269%u54C1C",
+		"%u7269%u54C1D",
+		"%u7269%u54C1E",
+		"%u7269%u54C1F"
+	],
+	"datasets":[
+		{
+			"label":"%u57CE%u5E02A",
+			"data":[
+				1000,
+				500,
+				300,
+				500,
+				200,
+				300
+			]
+		},
+		{
+			"label":"%u57CE%u5E02B",
+			"data":[
+				500,
+				400,
+				700,
+				2000,
+				240,
+				500
+			]
+		}
+	]
+}'></canvas>
+</div><p>
+	<h3>创建一个类型为<code>horizontalBar</code>，高度为<code>50%</code>，宽度为<code>50%</code>的图表
+	</h3></p><pre><code>```chart<br />{<br />	type: 'horizontalBar',<br />	labels: ["物品A", "物品B", "物品C", "物品D", "物品E", "物品F"],<br />	datasets: [{label: '城市A',data: [1000, 500, 300, 500, 200, 300]},{label: '城市B',data: [500, 400, 700, 2000, 240, 500]}],<br />	width: 50,<br />	height: 50<br />}<br />```</code></pre><div class='chart_wrapper'>
+	<canvas id = 'chart_33' data-chart='{
+	"type":"horizontalBar",
+	"labels":[
+		"%u7269%u54C1A",
+		"%u7269%u54C1B",
+		"%u7269%u54C1C",
+		"%u7269%u54C1D",
+		"%u7269%u54C1E",
+		"%u7269%u54C1F"
+	],
+	"datasets":[
+		{
+			"label":"%u57CE%u5E02A",
+			"data":[
+				1000,
+				500,
+				300,
+				500,
+				200,
+				300
+			]
+		},
+		{
+			"label":"%u57CE%u5E02B",
+			"data":[
+				500,
+				400,
+				700,
+				2000,
+				240,
+				500
+			]
+		}
+	],
+	"width":50,
+	"height":50
+}'></canvas>
+</div><p>
+	<h3>创建一个类型为<code>radar</code>图表
+	</h3></p><pre><code>```chart<br />{<br />	type: 'radar',<br />	labels: ["物品A", "物品B", "物品C", "物品D", "物品E", "物品F"],<br />	datasets: [{label: '城市A',data: [1000, 500, 300, 500, 200, 300]},{label: '城市B',data: [500, 400, 700, 2000, 240, 500]}]<br />}<br />```</code></pre><div class='chart_wrapper'>
+	<canvas id = 'chart_34' data-chart='{
+	"type":"radar",
+	"labels":[
+		"%u7269%u54C1A",
+		"%u7269%u54C1B",
+		"%u7269%u54C1C",
+		"%u7269%u54C1D",
+		"%u7269%u54C1E",
+		"%u7269%u54C1F"
+	],
+	"datasets":[
+		{
+			"label":"%u57CE%u5E02A",
+			"data":[
+				1000,
+				500,
+				300,
+				500,
+				200,
+				300
+			]
+		},
+		{
+			"label":"%u57CE%u5E02B",
+			"data":[
+				500,
+				400,
+				700,
+				2000,
+				240,
+				500
+			]
+		}
+	]
+}'></canvas>
+</div><p>
+	<h3>创建一个类型为<code>pie</code>图表
+	</h3></p><pre><code>```chart<br />{<br />	type: 'pie',<br />	labels: ["物品A", "物品B", "物品C", "物品D", "物品E", "物品F"],<br />	datasets: [{label: '城市A',data: [1000, 500, 300, 500, 200, 300]},{label: '城市B',data: [500, 400, 700, 2000, 240, 500]}]<br />}<br />```</code></pre><div class='chart_wrapper'>
+	<canvas id = 'chart_35' data-chart='{
+	"type":"pie",
+	"labels":[
+		"%u7269%u54C1A",
+		"%u7269%u54C1B",
+		"%u7269%u54C1C",
+		"%u7269%u54C1D",
+		"%u7269%u54C1E",
+		"%u7269%u54C1F"
+	],
+	"datasets":[
+		{
+			"label":"%u57CE%u5E02A",
+			"data":[
+				1000,
+				500,
+				300,
+				500,
+				200,
+				300
+			]
+		},
+		{
+			"label":"%u57CE%u5E02B",
+			"data":[
+				500,
+				400,
+				700,
+				2000,
+				240,
+				500
+			]
+		}
+	]
+}'></canvas>
+</div><p>
+	<h3>创建一个类型为<code>doughnut</code>图表
+	</h3></p><pre><code>```chart<br />{<br />	type: 'doughnut',<br />	labels: ["物品A", "物品B", "物品C", "物品D", "物品E", "物品F"],<br />	datasets: [{label: '城市A',data: [1000, 500, 300, 500, 200, 300]},{label: '城市B',data: [500, 400, 700, 2000, 240, 500]}]<br />}<br />```</code></pre><div class='chart_wrapper'>
+	<canvas id = 'chart_36' data-chart='{
+	"type":"doughnut",
+	"labels":[
+		"%u7269%u54C1A",
+		"%u7269%u54C1B",
+		"%u7269%u54C1C",
+		"%u7269%u54C1D",
+		"%u7269%u54C1E",
+		"%u7269%u54C1F"
+	],
+	"datasets":[
+		{
+			"label":"%u57CE%u5E02A",
+			"data":[
+				1000,
+				500,
+				300,
+				500,
+				200,
+				300
+			]
+		},
+		{
+			"label":"%u57CE%u5E02B",
+			"data":[
+				500,
+				400,
+				700,
+				2000,
+				240,
+				500
+			]
+		}
+	]
+}'></canvas>
+</div><p>
+	<h3>创建一个类型为<code>polarArea</code>图表
+	</h3></p><pre><code>```chart<br />{<br />	type: 'polarArea',<br />	labels: ["物品A", "物品B", "物品C", "物品D", "物品E", "物品F"],<br />	datasets: [{label: '城市A',data: [1000, 500, 300, 500, 200, 300]},{label: '城市B',data: [500, 400, 700, 2000, 240, 500]}]<br />}<br />```</code></pre><div class='chart_wrapper'>
+	<canvas id = 'chart_37' data-chart='{
+	"type":"polarArea",
+	"labels":[
+		"%u7269%u54C1A",
+		"%u7269%u54C1B",
+		"%u7269%u54C1C",
+		"%u7269%u54C1D",
+		"%u7269%u54C1E",
+		"%u7269%u54C1F"
+	],
+	"datasets":[
+		{
+			"label":"%u57CE%u5E02A",
+			"data":[
+				1000,
+				500,
+				300,
+				500,
+				200,
+				300
+			]
+		},
+		{
+			"label":"%u57CE%u5E02B",
+			"data":[
+				500,
+				400,
+				700,
+				2000,
+				240,
+				500
+			]
+		}
+	]
+}'></canvas>
+</div><p>
+	<h3>创建一个类型为<code>bubble</code>图表
+	</h3></p><pre><code>```chart<br />{<br />	type: 'bubble',<br />	labels: ["物品A", "物品B", "物品C", "物品D", "物品E", "物品F"],<br />	datasets: [{label: '城市A',data: [{x:0,y:0,r:1}, {x:0,y:1,r:2}, {x:0,y:2,r:3}, {x:0,y:3,r:4}, {x:0,y:4,r:5}, {x:0,y:5,r:6}]},<br />			{label: '城市B',data: [{x:2,y:0,r:1}, {x:2,y:1,r:2}, {x:2,y:2,r:10}, {x:2,y:3,r:4}, {x:2,y:4,r:20}, {x:2,y:5,r:6}]},<br />			{label: '城市C',data: [{x:5,y:0,r:1}, {x:5,y:1,r:2}, {x:5,y:2,r:3}, {x:5,y:3,r:4}, {x:5,y:4,r:5}, {x:5,y:5,r:6}]}]<br />}<br />```</code></pre><div class='chart_wrapper'>
+	<canvas id = 'chart_38' data-chart='{
+	"type":"bubble",
+	"labels":[
+		"%u7269%u54C1A",
+		"%u7269%u54C1B",
+		"%u7269%u54C1C",
+		"%u7269%u54C1D",
+		"%u7269%u54C1E",
+		"%u7269%u54C1F"
+	],
+	"datasets":[
+		{
+			"label":"%u57CE%u5E02A",
+			"data":[
+				{
+					"x":0,
+					"y":0,
+					"r":1
+				},
+				{
+					"x":0,
+					"y":1,
+					"r":2
+				},
+				{
+					"x":0,
+					"y":2,
+					"r":3
+				},
+				{
+					"x":0,
+					"y":3,
+					"r":4
+				},
+				{
+					"x":0,
+					"y":4,
+					"r":5
+				},
+				{
+					"x":0,
+					"y":5,
+					"r":6
+				}
+			]
+		},
+		{
+			"label":"%u57CE%u5E02B",
+			"data":[
+				{
+					"x":2,
+					"y":0,
+					"r":1
+				},
+				{
+					"x":2,
+					"y":1,
+					"r":2
+				},
+				{
+					"x":2,
+					"y":2,
+					"r":10
+				},
+				{
+					"x":2,
+					"y":3,
+					"r":4
+				},
+				{
+					"x":2,
+					"y":4,
+					"r":20
+				},
+				{
+					"x":2,
+					"y":5,
+					"r":6
+				}
+			]
+		},
+		{
+			"label":"%u57CE%u5E02C",
+			"data":[
+				{
+					"x":5,
+					"y":0,
+					"r":1
+				},
+				{
+					"x":5,
+					"y":1,
+					"r":2
+				},
+				{
+					"x":5,
+					"y":2,
+					"r":3
+				},
+				{
+					"x":5,
+					"y":3,
+					"r":4
+				},
+				{
+					"x":5,
+					"y":4,
+					"r":5
+				},
+				{
+					"x":5,
+					"y":5,
+					"r":6
+				}
+			]
+		}
+	]
+}'></canvas>
+</div><p>
+	<h3>创建一个类型为<code>scatter</code>的图表
+	</h3></p><pre><code>```chart<br />{<br />	type: 'scatter',<br />	labels: ["物品A", "物品B", "物品C", "物品D", "物品E", "物品F"],<br />	datasets: [{label: '城市A',data: [{x:0,y:0}, {x:0,y:1}, {x:0,y:2}, {x:0,y:3}, {x:0,y:4}, {x:0,y:5}]},<br />			{label: '城市B',data: [{x:2,y:0}, {x:2,y:1}, {x:2,y:20}, {x:2,y:3}, {x:2,y:40}, {x:2,y:5}]},<br />			{label: '城市C',data: [{x:5,y:0}, {x:5,y:1}, {x:5,y:2}, {x:5,y:3}, {x:5,y:4}, {x:5,y:5}]}]<br />}<br />```</code></pre><div class='chart_wrapper'>
+	<canvas id = 'chart_39' data-chart='{
+	"type":"scatter",
+	"labels":[
+		"%u7269%u54C1A",
+		"%u7269%u54C1B",
+		"%u7269%u54C1C",
+		"%u7269%u54C1D",
+		"%u7269%u54C1E",
+		"%u7269%u54C1F"
+	],
+	"datasets":[
+		{
+			"label":"%u57CE%u5E02A",
+			"data":[
+				{
+					"x":0,
+					"y":0
+				},
+				{
+					"x":0,
+					"y":1
+				},
+				{
+					"x":0,
+					"y":2
+				},
+				{
+					"x":0,
+					"y":3
+				},
+				{
+					"x":0,
+					"y":4
+				},
+				{
+					"x":0,
+					"y":5
+				}
+			]
+		},
+		{
+			"label":"%u57CE%u5E02B",
+			"data":[
+				{
+					"x":2,
+					"y":0
+				},
+				{
+					"x":2,
+					"y":1
+				},
+				{
+					"x":2,
+					"y":20
+				},
+				{
+					"x":2,
+					"y":3
+				},
+				{
+					"x":2,
+					"y":40
+				},
+				{
+					"x":2,
+					"y":5
+				}
+			]
+		},
+		{
+			"label":"%u57CE%u5E02C",
+			"data":[
+				{
+					"x":5,
+					"y":0
+				},
+				{
+					"x":5,
+					"y":1
+				},
+				{
+					"x":5,
+					"y":2
+				},
+				{
+					"x":5,
+					"y":3
+				},
+				{
+					"x":5,
+					"y":4
+				},
+				{
+					"x":5,
+					"y":5
+				}
+			]
+		}
+	]
+}'></canvas>
+</div></div>

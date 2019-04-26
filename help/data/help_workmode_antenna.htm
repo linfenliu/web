@@ -1,0 +1,454 @@
+<div class="markdown-body"><p>
+	<h1>天线计算模式
+	</h1></p><p>
+	<h2>概述
+	</h2>计算单个天线结构在指定范围扫描角下的，可一次完成宽频范围内多个频点计算。</p><strong>天线模式的仿真流程</strong>：<p>
+	<ul>
+		<li>设置工作频率
+		</li>
+		<li>创建天线结构及馈源
+		</li>
+		<li>设置天线端口（选择馈源端口，设置端口的功率、强度、延迟、相位等）
+		</li>
+		<li>设置监视器（设置扫描角度等）
+		</li>
+		<li>计算（计算模式根据设定完成扫频扫角）
+		</li>
+		<li>分析结果（智能数据处理得到空间场特性（方向图等）及天线端口特性（S参数、端口阻抗等））
+		</li>
+	</ul></p><h2>模式设定</h2><ol>
+	<li>
+		<strong>单位
+		</strong>：默认单位设置如下，也可修改文档单位。
+		<ul>
+			<li>长度单位：
+				<strong>mm
+				</strong>
+			</li>
+			<li>时间单位：
+				<strong>ns
+				</strong>
+			</li>
+			<li>频率单位：
+				<strong>GHz
+				</strong> 
+			</li>
+		</ul>
+	</li>
+	<li>
+		<strong>记录器
+		</strong>：
+		<ul>
+			<li>类型：默认设置为
+				<strong>频域远场记录器
+				</strong>。
+			</li>
+			<li>远场方向：根据用户输入的模式参数远场记录器 $\theta$ 、$\phi$ 确定。
+			</li>
+			<li>位置：记录器的默认设置位置为距离物体包围框的 
+				<strong>LAMBDA / 4
+				</strong> 处，用户也可以在
+				<strong>杂项
+				</strong>中自定义记录器的位置。
+			</li>
+		</ul>
+	</li>
+	<li>
+		<strong>边界设置
+		</strong>：
+		<ul>
+			<li>开放边界，默认设置为 12 层 
+				<strong>PML
+				</strong> 吸收边界。
+			</li>
+		</ul>
+	</li>
+	<li>
+		<strong>其他
+		</strong>：
+		<ul>
+			<li>是否绘制三维方向图（如勾选3D方向图选项，则计算模式内部会另外创建一个 $\theta$-$\phi$ 角度同时扫描的频域远场记录器）。
+			</li>
+		</ul>
+	</li></ol><br /><h2>模式图示</h2><p>模式 
+	<strong>设置
+	</strong> 界面如下：</p><p>
+	<div class="markdown-block">
+		<table width="100%">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<div class="markdown-table">
+						<table width="100%" class="markdown-table" style="border:1px">
+							<thead>
+								<tr>
+									<td align="center"> 
+										<div class="markdown-block">
+											<table width="100%" style="border:0px">
+												<tr style="border:0px">
+													<td style="border:0px">
+														<a name="天线模式设置"><img src="image/workmode/antenna/antenna_bisic.png" alt="image 1: 天线模式设置" />
+														</a>
+													</td>
+												</tr>
+												<tr style="border:0px">
+													<td style="border:0px" align="center">image 1: 天线模式设置
+													</td>
+												</tr>
+											</table>
+										</div><br />
+
+									</td>
+									<td align="center"> 
+										<div class="markdown-block">
+											<table width="100%" style="border:0px">
+												<tr style="border:0px">
+													<td style="border:0px">
+														<a name="杂项设置"><img src="image/workmode/antenna/antenna_misc.png" alt="image 2: 杂项设置" />
+														</a>
+													</td>
+												</tr>
+												<tr style="border:0px">
+													<td style="border:0px" align="center">image 2: 杂项设置
+													</td>
+												</tr>
+											</table>
+										</div><br />
+
+									</td>
+								</tr>
+							</thead>
+							<tbody />
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div></p><p>
+	<h2>模式参数
+	</h2></p><strong>频率设置</strong>：<div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center"> 频率设置<br />
+
+								</td>
+								<td align="center">  参数<br />
+
+								</td>
+								<td align="center"> 说明<br />
+
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="center"> 单一频点<br />
+
+								</td>
+								<td align="center">  频率单值<br />
+
+								</td>
+								<td align="center"> 单一频点模式下，仅需要设置单一频率，即为工作频率<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 线性步进<br />
+
+								</td>
+								<td align="center">  最小频率、最大频率、频率间隔 
+								</td>
+								<td align="center"> 生成（最小频率：频率间隔：最大频率）的频率序列<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 均匀采样<br />
+
+								</td>
+								<td align="center">  最小频率、最大频率、频率数<br />
+
+								</td>
+								<td align="center"> 生成以最小频率、最大频率、频率数构造的等差频率序列<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 频率列表<br />
+
+								</td>
+								<td align="center">  频率列表<br />
+
+								</td>
+								<td align="center"> 离散的频率点<br />
+
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div><strong>天线端口设置</strong>：<div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center">  参数<br />
+
+								</td>
+								<td align="center"> 说明<br />
+
+								</td>
+								<td align="center">   备注<br />
+
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="center">  引用<br />
+
+								</td>
+								<td align="center"> 绑定激励源端口<br />
+
+								</td>
+								<td align="center">   选择已定义的激励源
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  功率<br />
+
+								</td>
+								<td align="center"> 修改绑定激励源端口的输入功率<br />
+
+								</td>
+								<td align="center">   暂时无效<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  强度<br />
+
+								</td>
+								<td align="center"> 修改绑定激励源端口的信号强度<br />
+
+								</td>
+								<td align="center">   暂时无效<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  相位<br />
+
+								</td>
+								<td align="center"> 修改绑定激励源端口的信号相位<br />
+
+								</td>
+								<td align="center">   暂时无效<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  延迟<br />
+
+								</td>
+								<td align="center"> 修改绑定激励源端口的信号延迟<br />
+
+								</td>
+								<td align="center">   暂时无效<br />
+
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div><p>
+	<strong>天线远场监视器设置
+	</strong>：
+	<div class="markdown-block">
+		<table width="100%">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<div class="markdown-table">
+						<table width="100%" class="markdown-table" style="border:1px">
+							<thead>
+								<tr>
+									<td align="center"> 远场设置<br />
+
+									</td>
+									<td align="center">  参数<br />
+
+									</td>
+									<td align="center"> 说明<br />
+
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td align="center"> 角度模式<br />
+
+									</td>
+									<td align="center">  $\theta$ 扫描 / $\phi$ 扫描<br />
+
+									</td>
+									<td align="center"> 远场监视器角度扫描模式<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 球坐标模式<br />
+
+									</td>
+									<td align="center">  ISO / HCS / GCS<br />
+
+									</td>
+									<td align="center"> 球坐标系模式<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> $\theta$ 角度<br />
+
+									</td>
+									<td align="center">  $\theta$<br />
+
+									</td>
+									<td align="center"> 远场监视器 $\theta$ 角度<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> $\phi$ 角度<br />
+
+									</td>
+									<td align="center">  $\phi$<br />
+
+									</td>
+									<td align="center"> 远场监视器 $\phi$   角度<br />
+
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div></p><p>杂项中主要包括自定义激励源、自定义监视器等其他一些高级设置选项：
+	<ul>
+		<li>激励源设置：自定义信号波形设置（中心频率、频率宽度、相位、延迟）
+		</li>
+		<li>监视器设置：1. 自动设置延拓空间  2. 自定义区域大小（ 设置 x、y、z 上下边界）
+		</li>
+		<li>其他和计算相关的设置（如计算精度，计算区域位置等）
+		</li>
+	</ul></p><div class="markdown-warning"><p>&nbsp;&nbsp;注意</p>
+	<ul>
+		<li>天线模式结合阵列修饰器功能，也能部分实现天线阵结构的仿真分析功能。
+		</li>
+		<li>目前天线端口设置中，功率、强度、相位、延迟设置暂时均不起作用，不能修改指定激励源端口的信号。
+		</li>
+		<li>启用S参数部分，暂时仅能计算端口的s11参数。
+		</li>
+		<li>杂项设置中，功率记录框目前默认设置为与 Bbox 大小相同，暂时不支持自定义功率记录框功能。
+		</li>
+	</ul></div><p>
+	<h2>输出结果：
+	</h2></p>输出结果主要分为两大部分：<ul>
+	<li>空间参数智能数据（方向图及场图）
+	</li>
+	<li>端口特性智能数据（S参数、端口阻抗等）
+	</li></ul>空间参数智能数据结果如下（方向图）：<div class="markdown-block">
+	<table width="100%" style="border:0px">
+		<tr style="border:0px">
+			<td style="border:0px">
+				<a name="方向性系数"><img src="image/workmode/antenna/antenna_dire.png" alt="image 1: 方向性系数" />
+				</a>
+			</td>
+		</tr>
+		<tr style="border:0px">
+			<td style="border:0px" align="center">image 1: 方向性系数
+			</td>
+		</tr>
+	</table></div><div class="markdown-block">
+	<table width="100%" style="border:0px">
+		<tr style="border:0px">
+			<td style="border:0px">
+				<a name="增益"><img src="image/workmode/antenna/antenna_gain.png" alt="image 2: 增益" />
+				</a>
+			</td>
+		</tr>
+		<tr style="border:0px">
+			<td style="border:0px" align="center">image 2: 增益
+			</td>
+		</tr>
+	</table></div><p>端口特性智能数据结果如下（s参数）：</p><p>
+	<div class="markdown-block">
+		<table width="100%" style="border:0px">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<a name="S参数"><img src="image/workmode/antenna/antenna_s11.png" alt="image 3: S参数" />
+					</a>
+				</td>
+			</tr>
+			<tr style="border:0px">
+				<td style="border:0px" align="center">image 3: S参数
+				</td>
+			</tr>
+		</table>
+	</div></p><p>
+	<h2>公式定义
+	</h2></p><p>
+	<strong>辐射功率密度
+	</strong>：$$ S_\text{rad}(\theta,\phi)  = \frac{1}{2} Re[E(\theta,\phi)\times H^*(\theta,\phi)] $$表示 $ (\theta,\phi) $ 方向上的时间平均功率密度，单位：$W/m^2$。</p><p>
+	<strong>辐射强度
+	</strong>：$$ U(\theta,\phi)= r^2 S_\text{rad}(\theta,\phi)   $$表示天线在 $(\theta,\phi)$ 方向上单位立体角内的辐射功率，单位：$W$。</p><p>
+	<strong>方向性
+	</strong>：$$ D(\theta,\phi)= \frac{4 \pi U(\theta,\phi)}{P_\text{rad}} $$ 表示天线在$(\theta,\phi)$方向上辐射强度与所辐射功率在全部方向上的平均辐射强度之比。</p><p>
+	<strong>绝对增益
+	</strong>：$$ G_\text{abs}(\theta,\phi) = \frac{4 \pi U(\theta,\phi)}{P_\text{acc}} $$表示天线在 $(\theta,\phi)$ 方向上的辐射强度与资用功率在全向上的平均辐射强度之比，此种增益定义方式考虑了天线系统的匹配问题。</p><p>
+	<strong>增益
+	</strong>：$$ G_\text{in}(\theta,\phi) = \frac{4 \pi U(\theta,\phi)}{P_\text{in}} $$表示天线在 $(\theta,\phi)$ 方向上的辐射强度与其输入功率在全向上的平均辐射强度之比，此种增益定义方式不考虑天线系统的失配损失。</p><p>
+	<strong>辐射效率
+	</strong>：$$ \eta_r = \frac{P_\text{rad}}{P_\text{acc}} $$表示辐射功率与进入到天线系统的功率之比。</p><strong>匹配效率</strong>：$$ \eta_m = \frac{P_\text{acc}}{P_\text{in}} $$表示进入到天线系统的功率与总输入功率之比。<p>
+	<h3>参数说明
+	</h3></p><div class="markdown-indicate"><p>&nbsp;&nbsp;公式参数说明</p>
+	<ul>
+		<li>$ P_\text{in} $ 表示
+			<strong>总输入功率
+			</strong>。
+		</li>
+		<li>$ P_\text{rad} $ 表示
+			<strong>总辐射功率
+			</strong>。
+		</li>
+		<li>$ P_\text{acc} $ 表示进入到天线系统的功率。
+		</li>
+		<li>$ P_\text{availabel} $ 表示
+			<strong>资用功率
+			</strong>，意义为：当信号源和天线与传输线均匹配时，也就是共轭匹配条件下，信号源传输给天线的功率。
+		</li>
+		<li>$pout$ 表示给定频点附近的，单位 $Hz$ 电磁波贡献的总能量，单位：$J$。
+		</li>
+		<li>$power0$ 表示给定频点附近，$df$ 范围（由$T_\text{max}$决定）的电磁波贡献的总功率，单位：$W$。
+		</li>
+		<li>$power1$ 表示给定频点附近，$df$ 范围（由$T_\text{mon}$决定）的电磁波贡献的总功率，单位：$W$。
+		</li>
+		<li>$pout$、$power0$、$power1$ 均挂载在频域远场记录器结果文件节点下。
+		</li>
+	</ul></div><p>
+	<strong>案例：
+	</strong></p><p>
+	<a target="_top" href="javascript:ewdoc.open_editor('samples/project/偶极子天线.ewp2')">偶极子天线
+	</a></p></div>

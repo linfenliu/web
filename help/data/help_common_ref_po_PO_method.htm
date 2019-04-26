@@ -1,0 +1,49 @@
+<div class="markdown-body"><h1>基本原理</h1><p>用物理光学方法计算一个散射体的远场（如 
+	<strong>RCS
+	</strong> ）时，需要以下几个假定：</p><ul>
+	<li>照射到物体表面的电磁波波长较物体中主要散射结构的尺度要小，并且不处于谐振区。
+	</li></ul><ul>
+	<li>物体表面一部分被照射，另一部分没有被照射到，只有被照射到的区域产生表面电流。
+	</li></ul><p>
+	<ul>
+		<li>物体表面区域的任何一个局部都可以近似地看成是一个切平面。
+		</li>
+	</ul></p><p>在满足上述假定的条件下，可以从 
+	<strong>Stratton–Chu
+	</strong> 方程推出物理光学的基本公式。对于物体表面是理想电导体 
+	<strong>PEC
+	</strong>（Perfect Electric Conductor）时，散射体表面满足条件：</p>$$  \hat{\vec{n}} \times \vec{E}= \vec{0}       \tag{1-1}      $$$$  \hat{\vec{n}} \times \vec{H}= 2 \hat {\vec{n}} \times {\vec{H^i}}      \tag{1-2}      $$上式中 $\vec{H^i}$ 表示入射场的磁场分量，表示照射表面的法向量。<p>已知物体表面电流分布 $\vec{J}(\vec{r'})$ （源）的情况下，将所有面元在观察点 $\vec{r}$ 处的磁矢势积分：</p>$$  \vec{A}(\vec{r})= \mu \int_S \vec{J}(\vec{r'}) G(\vec{r},\vec{r'})ds'        \tag{1-3}      $$进一步可算出 $\vec{r}$ 磁场：$$
+\begin{split}
+\vec{H}(\vec{r})&=\frac{1}{\mu} \vec{\nabla} \times \vec{A}  \\
+                &=[(\hat{\vec{n}} \times \vec{H^i}) \times \hat{\vec{R}}](ik+\frac{1}{R}) \cdot \frac{e^{ikR}}{2 \pi R} ds'
+\end{split}
+\tag{1-4}
+$$<p>而电场的计算方式类似磁场。该方程称为物理光学积分公式，适用于近场和远场。上式中 $\hat{\vec{R}}$ 表示散射方位的单位向量。</p><p>对于远场散射问题，只有传播波分量，远区电场表达式和磁场表达可以进一步简化为：</p>$$  \vec{E}(\vec{r})= \frac{ik}{2 \pi} \sqrt{\frac{\mu}{\varepsilon}} \int_S [\hat{\vec{R}}\times \hat{\vec{R}} \times (\hat{\vec{n}} \times \vec{H^i}) \cdot \frac{e^{-ikR}}{R} ] ds'      \tag{1-5}        $$<p>$$  \vec{H}(\vec{r})= -\frac{ik}{2 \pi} \sqrt{\frac{\mu}{\varepsilon}}\int_S [\hat{\vec{R}}\times (\hat{\vec{n}} \times \vec{H^i}) \cdot \frac{e^{-ikR}}{R}] ds'     \tag{1-6}        $$ </p>使用物理光学方法可以计算出电大尺寸圆形平板的后向 <strong>RCS</strong>：$$   \sigma= \frac{\pi a^2}{\tan^2 \theta} [J_1 (\frac{4 \pi a \sin \theta }{\lambda}) ]^2   \tag{1-7} $$<p>圆盘的参数和坐标如下：</p><div align="center">
+	<p>
+		<div class="markdown-block">
+			<table width="100%" style="border:0px">
+				<tr style="border:0px">
+					<td style="border:0px">
+						<a name=" "><img src="image/FDTD/parameter_circle.png" alt="image 1:  圆形平板的参数和坐标" />
+						</a>
+					</td>
+				</tr>
+				<tr style="border:0px">
+					<td style="border:0px" align="center">image 1:  圆形平板的参数和坐标
+					</td>
+				</tr>
+			</table>
+		</div>
+	</p>
+	<div align="left">上式中 $J_1(x)$ 为一阶 
+		<strong>Bessel
+		</strong> 函数。当 $x \rightarrow 0 $ 时，$J_1(x)\rightarrow x/2$ 可得：$$  \sigma|_{\theta=0} = 4 \pi \frac{A^2}{\lambda^2}     \tag{1-8}     $$<br />详细了解相关内容请参考《电磁散射的计算和测量》
+		<a target="_top" href="#help_tech_notes_po_PO_method.cite1">[1]
+		</a>。
+		<a name="help_common_ref_po_PO_method.cite1"> 
+		</a>
+		<h5>参考文献
+		</h5>
+		<p>[1] 何国瑜、卢才成、洪家才、邓晖 编著，《电磁场散射的计算和测量》，北京航空航天大学出版社，2006年12月第1版，第224页–第226页
+		</p>
+	</div></div></div>

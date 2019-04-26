@@ -1,0 +1,378 @@
+<div class="markdown-body"><h1>自动透反率计算模式</h1><h2>概述</h2>计算无穷大周期结构正入射时不同频率的透射/反射率（两端口S参数），这里透射/反射率为<strong>0阶透射/反射率</strong>。计算模式根据输入参数（频率范围和入射方向等）和模型结构，自动设置激励源和记录器，计算结束后自动完成后处理，输出透射率/反射率。在<strong>计算模式</strong>中选中DWorkmodeTransrefl，即可进入自动透反率模式设置界面。<h2>模式默认设置</h2>自动透反率模式为用户提前预设了一些必要的参数，具体包括单位、激励源、监视器以及边界条件的设置，其中单位用户可以根据具体需要更改为合适的量纲。<ol>
+	<li>单位（默认设置）
+		<ul>
+			<li>长度单位：mm
+			</li>
+			<li>频率单位：GHz
+			</li>
+			<li>时间单位：ns
+			</li>
+			<li>默认单位修改操作步骤：
+				<ul>
+					<li>在
+						<strong>模型
+						</strong>悬浮框，点击展开
+						<strong>单位
+						</strong>进入参数设置的单位设置功能；
+					</li>
+					<li>在
+						<strong>unit
+						</strong>的下拉框中点击
+						<strong>新建单位
+						</strong>，设置文档单位，按顺序分别为长度(m)、频率(Hz)、时间(s)。
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<div class="markdown-block">
+			<table width="100%" style="border:0px">
+				<tr style="border:0px">
+					<td style="border:0px">
+						<a name="help_workmode_auto_tra_ref.atf"><img src="image/workmode/autotransrelf/unit_setting.png" />
+						</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</li>
+	<li>激励源
+		<ul>
+			<li>空间分布：平面波
+			</li>
+			<li>时域波形：脉冲（信号频率范围覆盖输入的频率范围）
+			</li>
+			<li>发射方向：根据用户输入的模式参数“入射方向”
+			</li>
+			<li>极化角度：激励源偏振角度为
+				<strong>45度
+				</strong>，记录器分别记录0度和90度场分量，
+				<strong>后处理需对入射信号幅度进行归一化处理
+				</strong>
+			</li>
+			<li>位置：距离计算区域边界4个网格
+			</li>
+		</ul>
+	</li>
+	<li>监视器
+		<ul>
+			<li>类型：时域截面场平均
+			</li>
+			<li>位置：距离计算区域边界2个网格（透射和反射记录器分别位于激励源的发射方向和背向）
+			</li>
+		</ul>
+	</li>
+	<li>边界设置
+		<ul>
+			<li>入射/反射方向：开放边界（默认：20层CPML吸收边界）
+			</li>
+			<li>其他方向：周期边界
+			</li>
+		</ul>
+	</li></ol><div class="markdown-warning"><p>&nbsp;&nbsp;注意</p>
+	<ol>
+		<li>入射方向网格数目需要大于8；
+		</li>
+		<li>文档单位为全局单位，计算文档中的材料、结构在没有设置单位时，其单位为文档单位，如自建Lorentz材料若没有单位，其$\omega_a$、$\omega _c$、$\omega _p$单位为文档中频率单位，详见：
+			<a target="_top" href="#help_model_Materials">材料模块
+			</a> 。
+		</li>
+	</ol></div>除默认设置外，用户需要根据计算模型和计算要求手动设置一些参数，包括方向和频率范围、计算区域大小、结构模型、网格策略、共形策略等。<h2>方向和频率</h2>在<strong>模型悬浮</strong>框内双击<strong>计算模式</strong>输入方向和频率范围参数:<div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="left"> 输入项 
+								</td>
+								<td align="left"> 描述 
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="left"> 频率序列 
+								</td>
+								<td align="left"> 最小频率：freq_min，最大频率：freq_max，频率间隔：freq_delta。 
+								</td>
+							</tr>
+							<tr>
+								<td align="left"> 入射方向 
+								</td>
+								<td align="left"> 选择电磁波的入射方向。<br \>垂直于结构周期方向（正入射）。 
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div><div class="markdown-block">
+	<table width="100%" style="border:0px">
+		<tr style="border:0px">
+			<td style="border:0px">
+				<a name="help_workmode_auto_tra_ref.atf"><img src="image/workmode/autotransrelf/freq_setting.png" />
+				</a>
+			</td>
+		</tr>
+	</table></div><h2>计算区域设置</h2>   在<strong>模型悬浮</strong>框内点击展开<strong>模板</strong>，双击<strong>计算区域</strong>输入x、y、z方向计算范围:   <div class="markdown-block">
+	<table width="100%" style="border:0px">
+		<tr style="border:0px">
+			<td style="border:0px">
+				<a name="help_workmode_auto_tra_ref.atf"><img src="image/workmode/autotransrelf/range_setting.png" />
+				</a>
+			</td>
+		</tr>
+	</table></div><h2>建立模型</h2><ol>
+	<li>设置结构几何结构设置参看：
+		<a target="_top" href="#help_model_shape_symbol">几何元件
+		</a>；
+	</li>
+	<li>设置材料设置新材料或导入系统材料参看：
+		<a target="_top" href="#help_model_material_symbol">材料元件
+		</a> ；
+	</li>
+	<li>绑定材料和结构
+		<ul>
+			<li>在
+				<strong>模型
+				</strong>悬浮窗内的
+				<strong>显示
+				</strong>、
+				<strong>模型
+				</strong>选项内
+				<strong>右键
+				</strong>点击需要绑定材料的模型，并左键点击
+				<strong>修饰
+				</strong>选项；
+			</li>
+			<li>在
+				<strong>模型
+				</strong>悬浮窗内的
+				<strong>显示
+				</strong>、
+				<strong>模型
+				</strong>选项内找到包含原结构的<code>DSymbolPtr</code>；<br />
+
+			</li>
+			<li>
+				<strong>右键
+				</strong>点击<code>DSymbolPtr</code>，并左键点击
+				<strong>属性
+				</strong>选项，在
+				<strong>mat_name
+				</strong>中选择所要绑定的材料，并点击确定。
+			</li>
+		</ul>
+	</li>
+	<li>模型建立可参看：
+		<a target="_top" href="#help_model_shape_symbol_DShapeDemo_demo_etching">刻蚀结构 Demo
+		</a>； 
+	</li></ol><h2>网格设置</h2>在<strong>模型悬浮</strong>框内点击展开<strong>模板</strong>，双击<strong>网格</strong>进行网格和共形设置。<ol>
+	<li>网格设置:<br />
+在
+		<strong>网格设置
+		</strong>选项内进行网格数目设置，网格类型可以选用均匀网格和非均匀网格，当
+		<strong>网格类型
+		</strong>选用
+		<strong>均匀网格
+		</strong>时，在
+		<strong>网格
+		</strong>选项内输入x、y、z方向的网格数目:
+		<div class="markdown-block">
+			<table width="100%" style="border:0px">
+				<tr style="border:0px">
+					<td style="border:0px">
+						<a name="help_workmode_auto_tra_ref.atf"><img src="image/workmode/autotransrelf/mesh_setting.png" />
+						</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</li>
+	<li>共形设置:<br />
+在
+		<strong>共形设置
+		</strong>选项内设置共形策略
+		<ul>
+			<li>
+				<strong>PEC共形(PMC共形)
+				</strong>为关闭时，电场(磁场)不采用任何共形策略，计算存在staircase error;
+			</li>
+			<li>
+				<strong>PEC共形(PMC共形)
+				</strong>非关闭时，PEC(PMC)材料共形开启，非PEC(PMC)材料共形策略进入可选状态；
+			</li>
+			<li>
+				<strong>非PEC(PMC)材料共形策略
+				</strong>，线共形推荐
+				<strong>segment
+				</strong>，面共形推荐
+				<strong>average
+				</strong>。
+			</li>
+			<li>共形具体参数意义参见
+				<a target="_top" href="#help_internal_doc_test_Conformal">共形设置
+				</a> ；
+			</li>
+		</ul>
+		<div class="markdown-block">
+			<table width="100%" style="border:0px">
+				<tr style="border:0px">
+					<td style="border:0px">
+						<a name="help_workmode_auto_tra_ref.atf"><img src="image/workmode/autotransrelf/conformal_setting.png" />
+						</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</li></ol><h2>运行</h2><ol>
+	<li>在主界面
+		<strong>模型编辑器
+		</strong>内选择
+		<strong>运行
+		</strong>;
+	</li>
+	<li>
+		<strong>run_at
+		</strong>选项选择local_cmd_window，
+		<strong>总核数
+		</strong>选项设置计算核数；
+	</li>
+	<li>矢量加速可以提高计算速度，默认为SSE，若无法运行可选择关闭或选择其它加速方式；
+		<div class="markdown-block">
+			<table width="100%" style="border:0px">
+				<tr style="border:0px">
+					<td style="border:0px">
+						<a name="help_workmode_auto_tra_ref.atf"><img src="image/workmode/autotransrelf/run.png" />
+						</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="markdown-block">
+			<table width="100%" style="border:0px">
+				<tr style="border:0px">
+					<td style="border:0px">
+						<a name="help_workmode_auto_tra_ref.atf"><img src="image/workmode/autotransrelf/run_core.png" />
+						</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</li></ol><h2>输出结果</h2>计算结果保存于与计算文档在相同文件夹的<strong>同名ewd文件</strong>中，输出结果为：<div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="left"> 输出项 
+								</td>
+								<td align="left"> 一级节点 
+								</td>
+								<td align="left"> 二级节点 
+								</td>
+								<td align="left"> 说明 
+								</td>
+								<td align="left"> 备注 
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="left"> result 
+								</td>
+								<td align="left"> source、rcd_ta、rcd_tb、rcd_ra、rcd_rb、freq_max、freq_min、freq_delta
+								</td>
+								<td align="left"> 
+								</td>
+								<td align="left"> 模式计算的原始结果 
+								</td>
+								<td align="left"> 在ewsl交互编辑器内获取数据命令为result.source、result.rcd_ta... 
+								</td>
+							</tr>
+							<tr>
+								<td align="left"> src1 
+								</td>
+								<td align="left"> [0]g_src.g2 
+								</td>
+								<td align="left"> data 
+								</td>
+								<td align="left"> 输入信号 
+								</td>
+								<td align="left"> 在ewsl交互编辑器内获取信号数据命令为src1[0].signal; 
+								</td>
+							</tr>
+							<tr>
+								<td align="left"> rcd_trans 
+								</td>
+								<td align="left"> [0]g_rcd.g2 
+								</td>
+								<td align="left"> data 
+								</td>
+								<td align="left"> 透射方向记录器 
+								</td>
+								<td align="left"> 在ewsl交互编辑器内获取信号数据命令为avg1[0].data[0](A偏振)，avg1[0].data[1](B偏振); 
+								</td>
+							</tr>
+							<tr>
+								<td align="left"> rcd_refl 
+								</td>
+								<td align="left"> [0]g_rcd.g2 
+								</td>
+								<td align="left"> data 
+								</td>
+								<td align="left"> 反射方向记录器 
+								</td>
+								<td align="left"> 在ewsl交互编辑器内获取信号数据命令为avg2[0].data[0](A偏振)，avg2[0].data[1](B偏振); 
+								</td>
+							</tr>
+							<tr>
+								<td align="left"> smartdata 
+								</td>
+								<td align="left"> 
+								</td>
+								<td align="left"> 
+								</td>
+								<td align="left"> 绘制透反率强度和相位
+								</td>
+								<td align="left"> 绘图策略采用DFT时将采用直接傅里叶变换给出freq_max:freq_delta:freq_min序列的所有结果，采用FFT时只给出freq_min和freq_max频率范围内满足FFT条件的频率点结果。 
+								</td>
+							</tr>
+							<tr>
+								<td align="left"> dparam
+								</td>
+								<td align="left"> 
+								</td>
+								<td align="left"> 
+								</td>
+								<td align="left">模型计算相关信息 
+								</td>
+								<td align="left"> 
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div><div class="markdown-block">
+	<table width="100%" style="border:0px">
+		<tr style="border:0px">
+			<td style="border:0px">
+				<a name="help_workmode_auto_tra_ref.atf"><img src="image/workmode/autotransrelf/result.png" />
+				</a>
+			</td>
+		</tr>
+	</table></div><div class="markdown-warning"><p>&nbsp;&nbsp;极化定义:</p>
+	<ul>
+		<li>A极化：电矢量E的振动方向平行于入射轴下一轴；
+		</li>
+		<li>B极化：电矢量E的振动方向垂直于入射轴下一轴；
+		</li>
+		<li>例如，入射方向为X正方向，则A偏振电场沿Y轴，B偏振电场沿Z轴。
+		</li>
+	</ul></div></div>

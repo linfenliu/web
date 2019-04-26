@@ -1,0 +1,418 @@
+<div class="markdown-body"><h1>RCS双站模式（介质包裹的金属球）教学案例</h1><blockquote><ul><li><a href="#help_case_teach_RCS_BistaticRCS.header_1">1. 概述</a></li><li><a href="#help_case_teach_RCS_BistaticRCS.header_2">2. 设置计算模式及参数</a></li><li><a href="#help_case_teach_RCS_BistaticRCS.header_3">3. 建模</a></li><li><a href="#help_case_teach_RCS_BistaticRCS.header_4">4. 设置网格</a></li><li><a href="#help_case_teach_RCS_BistaticRCS.header_5">5. 启动计算</a></li><li><a href="#help_case_teach_RCS_BistaticRCS.header_6">6. 查看计算结果</a></li></ul></blockquote><br /><a name="help_case_teach_RCS_BistaticRCS.header_1">
+	<h1>1. 概述
+	</h1></a><p>本案例通过计算 “ 介质包裹的金属球 ” 的双站 
+	<strong>RCS
+	</strong> 角度来演示如何使用 “ 
+	<strong>RCS
+	</strong>（双站）计算模式”。该模式对给定频率范围内的每个频率点，计算物体在固定入射角下双站 
+	<strong>RCS
+	</strong> 随接受角度的变化。该计算模式示意图如下：</p><div align="center">
+	<div class="markdown-block">
+		<table width="100%" style="border:0px">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<a name=" "><img src="image/sample/rcs/sphere/double_rcs.png" />
+					</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div align="left">
+		<p>结构图如下：
+		</p>
+		<div align="center">
+			<div class="markdown-block">
+				<table width="100%" style="border:0px">
+					<tr style="border:0px">
+						<td style="border:0px">
+							<a name=" "><img src="image/sample/rcs/sphere/structure.png" />
+							</a>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div align="left">
+				<p>案例仿真流程如下：
+				</p>
+				<p>
+					<ul>
+						<li>设置计算模式及参数
+						</li>
+						<li>建模
+						</li>
+						<li>设置网格
+						</li>
+						<li>启动计算
+						</li>
+						<li>查看计算结果
+						</li>
+					</ul>
+				</p>
+				<a name="help_case_teach_RCS_BistaticRCS.header_2">
+					<h1>2. 设置计算模式及参数
+					</h1>
+				</a>
+				<h2>选择计算模式
+				</h2>
+				<p>由菜单选文件进入 “ 向导 ” 界面，选择 “ 
+					<strong>RCS
+					</strong>（双站）模式 ”。
+				</p>
+				<div align="center">
+					<div class="markdown-block">
+						<table width="100%" style="border:0px">
+							<tr style="border:0px">
+								<td style="border:0px">
+									<a name=" "><img src="image/sample/temp.png" />
+									</a>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div align="left">
+						<h2>设置模式参数
+						</h2>
+						<p>计算频率范围 $1 $~$ 2$ 
+							<strong>GHz
+							</strong>，间隔 $0.1$ 
+							<strong>GHz
+							</strong>。
+						</p>
+						<p>发射雷达 $\theta$ 角度设置为 $ 90^\circ $ ，$\phi$ 角度设置为 $ 0^\circ $，极化角度设置为 $ 0^\circ $。
+						</p>
+						<p>接受雷达 $\theta$ 角度设置为 $ 0^\circ $ ，$\phi$ 角度范围设置为 $ 0^\circ $~$ 180^\circ $，极化角度设置为 $ 0^\circ $。
+						</p>
+						<div align="center">
+							<div class="markdown-block">
+								<table width="100%" style="border:0px">
+									<tr style="border:0px">
+										<td style="border:0px">
+											<a name=" "><img src="image/sample/rcs/sphere/workmode_setup.png" />
+											</a>
+										</td>
+									</tr>
+								</table>
+							</div>
+							<div align="left">
+								<h2>查看向导报告
+								</h2>“ 
+								<strong>RCS
+								</strong> 模式 ” 默认长度单位设置为 
+								<strong>mm
+								</strong>, 时间单位设置成自动关联，频率单位设置为 
+								<strong>GHz
+								</strong>。背景材料为空气，其他参数是默认值，点击“完成”即可开始建模。
+								<p>
+									<strong>注意
+									</strong>：“时间单位”默认和长度单位自动关联，高级用户可自己设置来控制 
+									<strong>FDTD
+									</strong> 仿真对应的真实时间尺度。
+								</p>
+								<div align="center">
+									<div class="markdown-block">
+										<table width="100%" style="border:0px">
+											<tr style="border:0px">
+												<td style="border:0px">
+													<a name=" "><img src="image/sample/temp.png" />
+													</a>
+												</td>
+											</tr>
+										</table>
+									</div>
+									<div align="left">
+										<h2>设置文件名和存储路径
+										</h2>
+										<p>进入 “ 设置文件名和存储路径 ” 对话框，选择存储路径，输入文件名。
+										</p>
+										<div align="center">
+											<div class="markdown-block">
+												<table width="100%" style="border:0px">
+													<tr style="border:0px">
+														<td style="border:0px">
+															<a name=" "><img src="image/sample/rcs/sphere/save.png" />
+															</a>
+														</td>
+													</tr>
+												</table>
+											</div>
+											<div align="left">
+												<a name="help_case_teach_RCS_BistaticRCS.header_3">
+													<h1>3. 建模
+													</h1>
+												</a>
+												<h2>定义常用变量
+												</h2>
+												<p>为了方便参数调节和优化，建议将建模中用到的参数尽量在变量表中定义：
+												</p>
+												<div align="center">
+													<div class="markdown-block">
+														<table width="100%" style="border:0px">
+															<tr style="border:0px">
+																<td style="border:0px">
+																	<a name=" "><img src="image/sample/rcs/sphere/var.png" />
+																	</a>
+																</td>
+															</tr>
+														</table>
+													</div>
+													<div align="left">
+														<h2>新建材料
+														</h2>新建材料可以通过如下几种操作方式：<br /><br />
+														<ul>
+															<li>直接点击工具条 “ 新建材料 ” 图标
+															</li>
+														</ul>
+														<ul>
+															<li>点击 “ 模型菜单 ” 的 “ 新建材料 ” 选项
+															</li>
+														</ul>
+														<p>
+															<ul>
+																<li>“ 工程管理窗口 ” 的 “ 新建材料 ” 选项
+																</li>
+															</ul>
+														</p>
+														<div align="center">
+															<div class="markdown-block">
+																<table width="100%" style="border:0px">
+																	<tr style="border:0px">
+																		<td style="border:0px">
+																			<a name=" "><img src="image/sample/rcs/sphere/setup_material.png" />
+																			</a>
+																		</td>
+																	</tr>
+																</table>
+															</div>
+															<div align="left">材料名设置为 
+																<strong>material_0
+																</strong> ，介质设置为简单的无色散材料中的有耗材料，本案例需要使用无色散材料中的有耗材料，材料介电常数 $\varepsilon$ 使用变量表中的 
+																<strong>Reps
+																</strong>。
+																<p>电损耗角正切为 
+																	<strong>Ieps/Reps
+																	</strong>，颜色和透明度可以根据自己喜好选取。更多复杂材料的设置请参看 
+																	<strong>EastFDTD
+																	</strong> 帮助手册 “ 材料模块 ”。 
+																</p>
+																<p>材料完成后工程管理目录树如下：
+																</p>
+																<div align="center">
+																	<div class="markdown-block">
+																		<table width="100%" style="border:0px">
+																			<tr style="border:0px">
+																				<td style="border:0px">
+																					<a name=" "><img src="image/sample/rcs/sphere/manager_material.png" />
+																					</a>
+																				</td>
+																			</tr>
+																		</table>
+																	</div>
+																	<div align="left">
+																		<h2>新建模型
+																		</h2>
+																		<p>本案例通过“ 球体 ”来演示如何建立模型，可以采用如下几种操作方式：
+																		</p>
+																		<ul>
+																			<li>直接点击次模型工具条 “ 球体 ” 图标
+																			</li>
+																		</ul>
+																		<ul>
+																			<li>点击 “ 模型 ” 菜单，选择 “ 球体 ”
+																			</li>
+																		</ul>
+																		<ul>
+																			<li>点击 “ 工程管理窗口 ” 下的 “ 新建结构 ” ，选择类型 “ 球体 ”
+																			</li>
+																		</ul>
+																		<h3>新建介质球壳
+																		</h3>
+																		<p>通过 “ 创建球体 ” 建立介质球壳，而后通过修饰，添加材料为 
+																			<strong>material_0
+																			</strong>。
+																		</p>
+																		<div align="center">
+																			<div class="markdown-block">
+																				<table width="100%" style="border:0px">
+																					<tr style="border:0px">
+																						<td style="border:0px">
+																							<a name=" "><img src="image/sample/rcs/sphere/big.png" />
+																							</a>
+																						</td>
+																					</tr>
+																				</table>
+																			</div>
+																			<div align="left">
+																				<h3>新建金属球体
+																				</h3>
+																				<p>通过 “ 立方体 ” 建立贴片天线的介质板，命名 
+																					<strong>Mat
+																					</strong>，而后通过修饰，添加材料为 
+																					<strong>pec
+																					</strong>。
+																				</p>
+																				<div align="center">
+																					<div class="markdown-block">
+																						<table width="100%" style="border:0px">
+																							<tr style="border:0px">
+																								<td style="border:0px">
+																									<a name=" "><img src="image/sample/rcs/sphere/small.png" />
+																									</a>
+																								</td>
+																							</tr>
+																						</table>
+																					</div>
+																					<div align="left">
+																						<p>建立完成后模型窗口如下图所示：
+																						</p>
+																						<div align="center">
+																							<div class="markdown-block">
+																								<table width="100%" style="border:0px">
+																									<tr style="border:0px">
+																										<td style="border:0px">
+																											<a name=" "><img src="image/sample/rcs/sphere/structure.png" />
+																											</a>
+																										</td>
+																									</tr>
+																								</table>
+																							</div>
+																							<div align="left">
+																								<a name="help_case_teach_RCS_BistaticRCS.header_4">
+																									<h1>4. 设置网格
+																									</h1>
+																								</a>
+																								<p>使用 
+																									<strong>FDTD
+																									</strong> 方法仿真，一般要求网格的精度至少为关心频率对应波长的 
+																									<strong>1/15
+																									</strong> 以上，同时还要求网格能尽量识别模型的几何细节。一般情况下，默认选择 “ 智能网格 ”，
+																									<strong>EastWave
+																									</strong> 会自动根据用户设置的工程频率范围划分网格，用户可以简单选择不同的网格精度即可完成划分。
+																								</p>用户也可以自定义网格，可以控制每个维度的计算范围和网格数，并可以修改仿真时间步长和总时间步长。对于有特别精细结构（比如 
+																								<strong>1/100
+																								</strong> 波长以下）的模型，网格往往需要特别处理，
+																								<strong>EastWave
+																								</strong> 提供共形网格、非均匀网格、指定网格面、指定网格区域等高级控制手段，详细请参看 
+																								<strong>EastWave
+																								</strong> 帮助手册网格设置部分，或咨询 
+																								<strong>EastWave
+																								</strong> 工程师。
+																								<h2>设置网格精度
+																								</h2>
+																								<p>网格精度可以通过如下两种方式设置修改：
+																								</p>
+																								<ul>
+																									<li>“ 求解器 ” 菜单下的 “ 设置网格 ”
+																									</li>
+																								</ul>
+																								<p>
+																									<ul>
+																										<li>“ 工程管理窗口 ” 计算模式下的 “ 网格 ”
+																										</li>
+																									</ul>
+																								</p>
+																								<p>选择 “ 均匀网格 ” 、开启 “ 共形网格 ” 进行计算，设置的对话框如下：
+																								</p>
+																								<div align="center">
+																									<div class="markdown-block">
+																										<table width="100%" style="border:0px">
+																											<tr style="border:0px">
+																												<td style="border:0px">
+																													<a name=" "><img src="image/sample/tr/mesh.png" />
+																													</a>
+																												</td>
+																											</tr>
+																										</table>
+																									</div>
+																									<div align="left">
+																										<div align="center">
+																											<div class="markdown-block">
+																												<table width="100%" style="border:0px">
+																													<tr style="border:0px">
+																														<td style="border:0px">
+																															<a name=" "><img src="image/sample/tr/meshsetting2.png" />
+																															</a>
+																														</td>
+																													</tr>
+																												</table>
+																											</div>
+																											<div align="left">
+																												<p>该计算模式根据计算区域和物体自动生成频域远场记录器。默认的 “ 智能网格 ” 设置下计算区域边界以物体最大包围框向外延拓 
+																													<strong>lamda/2
+																													</strong> ，若选择了“自定义网格”修改了计算区域边界，建议不要使物体超出计算区域边界，否则可能会引起计算错误。
+																												</p>
+																												<h2>网格剖分检查
+																												</h2>
+																												<p>网格精度设置完后，启动计算前可预览网格划分情况，点击图标可得：
+																												</p>
+																												<div align="center">
+																													<div class="markdown-block">
+																														<table width="100%" style="border:0px">
+																															<tr style="border:0px">
+																																<td style="border:0px">
+																																	<a name=" "><img src="image/sample/rcs/sphere/grid.png" />
+																																	</a>
+																																</td>
+																															</tr>
+																														</table>
+																													</div>
+																													<div align="left">
+																														<a name="help_case_teach_RCS_BistaticRCS.header_5">
+																															<h1>5. 启动计算
+																															</h1>
+																														</a>点击工具条中的 “ 运行 ” 图标，开始计算。计算开始后，消息窗口给出提示/警告/报错信息，计算任务管理窗口给出计算进度并且可右键管理任务。双击指定的计算任务或右键打开观察器以观察电磁波入射到物体上的实时变化情况。
+																														<h2>消息窗口
+																														</h2>计算开始和进行过程中，右下角的消息窗口显示出计算初始化的状态。
+																														<h2>计算进度
+																														</h2>在界面下方消息窗口中可以观察计算任务的完成情况。
+																														<h2>观察实时场
+																														</h2>
+																														<p>点击观察实时场图标，可以观察电磁波的散射过程。
+																														</p>
+																														<a name="help_case_teach_RCS_BistaticRCS.header_6">
+																															<h1>6. 查看计算结果
+																															</h1>
+																														</a>计算完成后，在 “工作空间” 生成 “.ewd” 结果文件。
+																														<p>透射/反射率结果图如下:
+																														</p>
+																														<div align="center">
+																															<div class="markdown-block">
+																																<table width="100%" style="border:0px">
+																																	<tr style="border:0px">
+																																		<td style="border:0px">
+																																			<a name=" "><img src="image/sample/tr/result_tr.png" />
+																																			</a>
+																																		</td>
+																																	</tr>
+																																</table>
+																															</div>
+																															<div align="left" />
+																														</div>
+																													</div>
+																												</div>
+																											</div>
+																										</div>
+																									</div>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div></div></div>

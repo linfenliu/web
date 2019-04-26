@@ -1,0 +1,262 @@
+<div class="markdown-body"><p>
+	<h1>EastWave V7 测试说明
+	</h1></p><p>本文档用于内部功能测试。</p><h2>目录</h2><ol>
+	<li>
+		<a target="_top" href="#help_internal_doc_test_UI">用户界面
+		</a>
+	</li>
+	<li>
+		<a target="_top" href="#help_internal_doc_test_Geometry">几何结构
+		</a>
+	</li>
+	<li>
+		<a target="_top" href="#help_internal_doc_test_Source">激励源
+		</a>
+	</li>
+	<li>
+		<a target="_top" href="#help_internal_doc_test_Monitor">监视器
+		</a>
+	</li>
+	<li>
+		<a target="_top" href="#help_internal_doc_test_Port">端口
+		</a>
+	</li>
+	<li>
+		<a target="_top" href="#help_internal_doc_test_Workmode">计算模式
+		</a>
+	</li>
+	<li>
+		<a target="_top" href="#help_internal_doc_test_Wire">导线
+		</a>
+	</li>
+	<li>
+		<a target="_top" href="#help_internal_doc_test_Material">材料
+		</a>
+	</li>
+	<li>
+		<a target="_top" href="#help_internal_doc_test_Conformal">共形
+		</a>
+	</li>
+	<li>
+		<a target="_top" href="#help_internal_doc_test_LumpedPort">集总端口
+		</a>
+	</li>
+	<li>
+		<a target="_top" href="#help_internal_doc_test_Others">其他
+		</a>
+	</li></ol><h2>关于测试说明文档的说明</h2><strong>测试说明分成下列几部分：</strong><ol>
+	<li>测试内容简要说明和直接相关的帮助页面
+	</li>
+	<li>测试要点和测试项，指出相关的测试案例（只需要页面内链接即可）
+	</li>
+	<li>测试案例及案例的简要说明
+	</li>
+	<li>其他补充内容，如引用有关的章节信息
+	</li></ol><p>
+	<strong>测试说明的其他注意事项：
+	</strong>
+	<ol>
+		<li>测试的项目覆盖功能的主要运行逻辑和分支
+		</li>
+		<li>测试的预期结果需要写清楚
+		</li>
+		<li>测试案例的原始文件，放在<code>ew7/web/help/files/internal_files</code>中，区别于普通帮助中携带的内部文件
+		</li>
+		<li>测试案例中附带外部模型文件的，放在<code>ew7/web/help/files/internal_files/model</code>中，建模时使用相对路径
+		</li>
+		<li>测试案例中附带的其他外部文件的，放在<code>ew7/web/help/files/internal_files/data</code>中，建模时使用相对路径
+		</li>
+	</ol></p><br /><strong>文件链接代码示例：</strong><pre><code>[link]("javascript:ewdoc.open_editor('internal_files/test.ewp2')","测试文档")</code></pre><p>
+	<strong>效果：(使用 EastWave 7 内嵌浏览器打开)
+	</strong> 
+	<a target="_top" href="javascript:ewdoc.open_editor('internal_files/test.ewp2')">测试文档
+	</a></p><p>
+	<h2>系统测试用例命名规范
+	</h2>
+	<strong>系统测试用例命名规则为：
+	</strong>软件名-v版本号-功能模块名称-测试子项目名称-ID.后缀名
+	<ul>
+		<li>软件名、版本号、功能模块名、子项目名称等中间断词采用下划线
+		</li>
+		<li>版本号参考：<code>7_0_0_build_20190114</code>这样的形式，现阶段不必区分<code>build</code>版本号，所以只需要写成<code>...-v7_0_0-...</code>即可
+		</li>
+		<li>文件夹组织形式：测试类型/软件名_版本号（仅大版本）/功能模块名/子项目名/
+		</li>
+		<li>内部测试案例放置文件夹：<code>internal_files/test/</code>
+			<ul>
+				<li>系统测试<code>internal_files/test/systest/</code>
+				</li>
+				<li>单元测试（部分工程文件）<code>internal_files/test/unittest/</code>
+				</li>
+				<li>集成测试<code>internal_files/test/inttest/</code>
+				</li>
+			</ul>
+		</li>
+		<li>每个子项目增加一个changelog.txt文件，主要用来在测试周期结束前后编写案例内容的变化情况，简要说明案例的变化情况（只需要说明增加、修改案例的主要原因，如果是来自测试系统，应填写有关的测试报告链接），该文件采用简单文本格式和追加方式编写，不得对过去内容进行修改。如果需要归档，则备份并且用备份时间重命名changelog-20190101.txt，保留在原路径下。
+		</li>
+		<li>本文档不定期对说明内容进行修订
+		</li>
+	</ul></p>命名名称参考下表：<div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td align="center" style="border:0px">
+				<a name="">测试类型
+				</a>
+			</td>
+		</tr>
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center"> 类型<br />
+
+								</td>
+								<td align="center"> 说明<br />
+
+								</td>
+								<td align="center"> 备注<br />
+
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="center"> systest<br />
+
+								</td>
+								<td align="center"> 系统测试<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> unittest<br />
+
+								</td>
+								<td align="center"> 单元测试<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> inttest<br />
+
+								</td>
+								<td align="center"> 集成测试<br />
+
+								</td>
+								<td align="center"> （暂无）<br />
+
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div><div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td align="center" style="border:0px">
+				<a name="">系统测试案例命名规范
+				</a>
+			</td>
+		</tr>
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center"> 功能模块 
+								</td>
+								<td align="center"> 说明 
+								</td>
+								<td align="center"> 备注 
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="center"> workmode 
+								</td>
+								<td align="center"> 计算模式 
+								</td>
+								<td align="center"> 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> source<br />
+
+								</td>
+								<td align="center"> 馈源 
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> monitor<br />
+
+								</td>
+								<td align="center"> 监视器 
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> geometry 
+								</td>
+								<td align="center"> 几何结构 
+								</td>
+								<td align="center">  
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> gui<br />
+
+								</td>
+								<td align="center"> 图形界面 
+								</td>
+								<td align="center">  
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> port<br />
+
+								</td>
+								<td align="center"> 端口<br />
+
+								</td>
+								<td align="center">  
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> wire<br />
+
+								</td>
+								<td align="center"> 导线<br />
+
+								</td>
+								<td align="center">  
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div><strong>注意：</strong><ul>
+	<li>大部分单元测试放在代码其他地方，但是要求运行整体工程文件的单元测试项目参考案例也放在这里方便管理
+	</li>
+	<li>结果文件原则上不上传，但是非常重要的参考数据在剪裁不必要的信息后可以以<code>.ewd</code>文件形式保存上传，一般是经过严格确认后的充分精确的结果，用于对比
+	</li>
+	<li><code>internal_files/model</code>文件夹保存的是公共模型，局部的模型放在子项目文件夹下的<code>model</code>文件下，<code>data</code>文件夹同理
+	</li></ul></div>

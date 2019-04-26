@@ -1,0 +1,243 @@
+<div class="markdown-body"><h1>场点监视器</h1><p>场点监视器(Probe)，内部名称<code>DMonitorTPoint</code>，是用来监视计算区域中某个位置的实时场数据的一种基本监视器。</p><h2>基本参数设置如下：</h2><div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td align="center" style="border:0px">
+				<a name="">场点监视器基本设置
+				</a>
+			</td>
+		</tr>
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center"> 参数<br />
+
+								</td>
+								<td align="center"> 英文<br />
+
+								</td>
+								<td align="center"> 参数类型<br />
+
+								</td>
+								<td align="center"> 参数分类<br />
+
+								</td>
+								<td align="center"> 说明<br />
+
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="center"> 场量<br />
+
+								</td>
+								<td align="center"> Field<br />
+
+								</td>
+								<td align="center"> 选项<br />
+
+								</td>
+								<td align="center"> 基本设置<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 按局部坐标系定义<br />
+
+								</td>
+								<td align="center"> field_local<br />
+
+								</td>
+								<td align="center"> 开关<br />
+
+								</td>
+								<td align="center"> 基本设置<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 坐标<br />
+
+								</td>
+								<td align="center"> pos<br />
+
+								</td>
+								<td align="center"> 三元表达式<br />
+
+								</td>
+								<td align="center"> 基本设置<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div><div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center"> 
+									<div class="markdown-block">
+										<table width="100%" style="border:0px">
+											<tr style="border:0px">
+												<td style="border:0px">
+													<a name="基本参数设置"><img src="image/settings/probe/probe-settings.png" alt="image 1: 基本参数设置" />
+													</a>
+												</td>
+											</tr>
+											<tr style="border:0px">
+												<td style="border:0px" align="center">image 1: 基本参数设置
+												</td>
+											</tr>
+										</table>
+									</div> 
+								</td>
+								<td align="center"> 
+									<div class="markdown-block">
+										<table width="100%" style="border:0px">
+											<tr style="border:0px">
+												<td style="border:0px">
+													<a name="时间参数设置"><img src="image/settings/probe/probe-time-settings.png" alt="image 2: 时间参数设置" />
+													</a>
+												</td>
+											</tr>
+											<tr style="border:0px">
+												<td style="border:0px" align="center">image 2: 时间参数设置
+												</td>
+											</tr>
+										</table>
+									</div> 
+								</td>
+							</tr>
+						</thead>
+						<tbody />
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div><strong>说明：</strong><ul>
+	<li>启用“按局部坐标系定义”功能后，如果旋转监视器，其记录的场分量按照旋转后局部坐标系的计算。
+	</li></ul><p>
+	<h2>时间参数设置
+	</h2>时域记录器的时间设置基本是相同的。分为几种情况：</p><p>
+	<h3>自动设置时间步
+	</h3>自动设定。由监视器自身默认设置方式来设定，场点监视器的默认设置策略是记录计算周期的所有时间步上的数据。</p><p>
+	<h3>按整数步设置
+	</h3>按整数步设定。用户需要设定起始<code>s1</code>、结束<code>s2</code>和步长<code>ds</code>三个参数，记录的时间步按照<code>s1:ds:s2</code>的方式确定真正记录的时间步。</p><h2>结果说明</h2><p>
+	<div class="markdown-block">
+		<table width="100%">
+			<tr style="border:0px">
+				<td align="center" style="border:0px">
+					<a name="">场点监视器结果
+					</a>
+				</td>
+			</tr>
+			<tr style="border:0px">
+				<td style="border:0px">
+					<div class="markdown-table">
+						<table width="100%" class="markdown-table" style="border:1px">
+							<thead>
+								<tr>
+									<td align="center"> 节点<br />
+
+									</td>
+									<td align="center"> 类型<br />
+
+									</td>
+									<td align="center"> 说明<br />
+
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td align="center"> <code>data</code><br />
+
+									</td>
+									<td align="center"> 数组<br />
+
+									</td>
+									<td align="center"> 原始数据<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> <code>field</code><br />
+
+									</td>
+									<td align="center"> 字符串<br />
+
+									</td>
+									<td align="center"> 场量名称<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> <code>time_record</code><br />
+
+									</td>
+									<td align="center"> 数组<br />
+
+									</td>
+									<td align="center"> 记录时间<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> <code>pos</code><br />
+
+									</td>
+									<td align="center"> 数组<br />
+
+									</td>
+									<td align="center"> 记录器位置<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> <code>when</code><br />
+
+									</td>
+									<td align="center"> 变量表<br />
+
+									</td>
+									<td align="center"> 记录时间设置<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> <code>figure</code><br />
+
+									</td>
+									<td align="center"> 图<br />
+
+									</td>
+									<td align="center"> 记录的时间图<br />
+
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div></p></div>

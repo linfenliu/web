@@ -1,0 +1,191 @@
+<div class="markdown-body"><p>
+	<h1>几何元件
+	</h1>几何元件是 EastWave 7 提供的作为参数化对象的结构信息元件。<br />
+<br /><blockquote>使用 EastWave 几何元件功能可快速生成适合特定工程问题的物体模型，大大减小建模的复杂度。</blockquote></p><h2>如何创建几何元件</h2><ul>
+	<li>
+		<a target="_top" href="#help_model_shape_symbol_DShapeCreate.create-by-GUI">界面创建几何元件（推荐）
+		</a><br />
+
+	</li>
+	<li>
+		<a target="_top" href="#help_model_shape_symbol_DShapeCreate.create-by-EWSL">脚本创建几何元件（高级建模）
+		</a><br />
+	</li></ul><a name="help_model_shape_symbol.kind-of-geometry"> </a><h2>所有几何元件</h2>除了<a target="_top" href="#help_model_shape_symbol.base">基础几何元件</a>外，EastWave 从工程应用角度出发，还开发了<a target="_top" href="#help_model_shape_symbol.ext">扩展几何元件</a>。<a name="help_model_shape_symbol.base"> </a><h3>基础几何元件</h3><div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center"> 元件分类 
+								</td>
+								<td align="center"> 元件名称 
+								</td>
+								<td align="left"> 元件说明 
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td rowspan="6" align="center"> 
+									<a target="_top" href="#help_model_shape_symbol_DShapeAll_DShapeBase">基础几何元件
+									</a>
+								</td>
+								<td align="center"> 
+									<a target="_top" href="#help_model_shape_symbol_DShapeAll_DShapeBase_DShapeCube"> 长方体
+									</a> 
+								</td>
+								<td align="left"> 长方体可用于生成最简单的基本几何体。包括长方体面板、立方体小块等。 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 
+									<a target="_top" href="#help_model_shape_symbol_DShapeAll_DShapeBase_DShapeCylinder"> 圆柱体
+									</a> 
+								</td>
+								<td align="left"> 圆柱体可用于生成截面为正圆或椭圆的实心或空心的柱形几何体。 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 
+									<a target="_top" href="#help_model_shape_symbol_DShapeAll_DShapeBase_DShapeSphere"> 球体
+									</a> 
+								</td>
+								<td align="left"> 球体可用于生成具有厚度的完整球体或椭圆体。 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 
+									<a target="_top" href="#help_model_shape_symbol_DShapeAll_DShapeBase_DShapeGeoSphere"> 几何球体
+									</a> 
+								</td>
+								<td align="left"> 几何球体可用于生成基于正二十多面体制作的球体。 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 
+									<a target="_top" href="#help_model_shape_symbol_DShapeAll_DShapeBase_DShapeCone"> 圆锥体
+									</a> 
+								</td>
+								<td align="left"> 圆锥体可用于生成圆形圆锥体。 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 
+									<a target="_top" href="#help_model_shape_symbol_DShapeAll_DShapeBase_DShapeTorus"> 环体
+									</a> 
+								</td>
+								<td align="left"> 圆环体可用于生成一个具有圆形截面的环。 
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div><p>
+	<a name="help_model_shape_symbol.ext"> 
+	</a>
+	<h3>扩展几何元件
+	</h3>
+	<div class="markdown-block">
+		<table width="100%">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<div class="markdown-table">
+						<table width="100%" class="markdown-table" style="border:1px">
+							<thead>
+								<tr>
+									<td align="center"> 元件分类 
+									</td>
+									<td align="center"> 元件名称 
+									</td>
+									<td align="left"> 元件说明 
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td rowspan="9" align="center"> 
+										<a target="_top" href="#help_model_shape_symbol_DShapeAll_DShapeExt">扩展几何元件
+										</a>
+									</td>
+									<td align="center"> 
+										<a target="_top" href="#help_model_shape_symbol_DShapeAll_DShapeExt_DShapeSpin"> 实心旋转体
+										</a> 
+									</td>
+									<td align="left"> 实心旋转体可用于生成基于外形线旋转一周形成的对称几何体。 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 
+										<a target="_top" href="#help_model_shape_symbol_DShapeAll_DShapeExt_DShapeSpin2"> 空心旋转体
+										</a> 
+									</td>
+									<td align="left"> 空心旋转体可用于生成基于给定表面旋转一定角度形成的几何体。 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 
+										<a target="_top" href="#help_model_shape_symbol_DShapeAll_DShapeExt_DShapeSweeped"> 参数扫描体
+										</a> 
+									</td>
+									<td align="left"> 参数扫描体可用于生成基于给定平面和变换矩阵参数构造的几何体。 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 
+										<a target="_top" href="#help_model_shape_symbol_DShapeAll_DShapeExt_DShapeColumn"> 垂直拉伸体
+										</a> 
+									</td>
+									<td align="left"> 垂直拉伸体支持对给定的平面进行垂直拉伸建模。可用于构造棱柱等几何体。 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 
+										<a target="_top" href="#help_model_shape_symbol_DShapeAll_DShapeExt_DShapeStl"> 导入CAD模型
+										</a> 
+									</td>
+									<td align="left"> 导入CAD模型支持从外部导入常见CAD格式模型。 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 
+										<a target="_top" href="#help_model_shape_symbol_DShapeAll_DShapeExt_DShapeForcedMesh"> 强制网格面
+										</a> 
+									</td>
+									<td align="left"> 强制网格可在所指定的关键网格位置强制生成网格体或网格面或网格线，并加密周围网格。 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 
+										<a target="_top" href="#help_model_shape_symbol_DShapeAll_DShapeExt_DShapeSurfaceStretch"> 多层物体
+										</a> 
+									</td>
+									<td align="left"> 多层物体支持对给定的表面按照特定方向生长多层材料的建模。 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 
+										<a target="_top" href="#help_model_shape_symbol_DShapeAll_DShapeExt_DShapeRadome"> 天线罩
+										</a> 
+									</td>
+									<td align="left"> EastWave V7 根据常用天线罩形线预定义了内置天线罩模型，用户使用时只需输入模型所对应的外形线参数。 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 
+										<a target="_top" href="#help_model_shape_symbol_DShapeAll_DShapeExt_DArray"> 阵列
+										</a> 
+									</td>
+									<td align="left"> 阵列用于设计基于某种元件，按照指定的空间排布生成的阵列结构或阵列激励源。 
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div></p><br /><br /></div>

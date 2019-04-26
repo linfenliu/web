@@ -1,0 +1,165 @@
+<div class="markdown-body"><h1>FDTD 原理</h1><p>
+	<h2>基本原理
+	</h2><code>EastWave</code> 软件采用时域有限差分法（
+	<strong>FDTD
+	</strong>）对电磁波进行仿真和模拟，
+	<strong>FDTD
+	</strong> 方法自 <code>1966</code> 年首次提出后，得到迅速发展和广泛应用，当前已经在许多领域取得诸多研究成果和应用价值。该方法是直接由时域麦克斯韦方程组对电磁场进行计算模拟的数值分析方法，由麦克斯韦方程组可推导出
+	<a target="_top" href="#help_Appendix_FDTD_method.cite1">[1]
+	</a>：</p>$$\frac{\partial{\vec{E}}}{\partial{t}}=\frac{1}{\varepsilon}\vec{\nabla} \times \vec{H}-\frac{\sigma_e}{\varepsilon}\vec{E}  \tag{1-1a}$$$$ \frac{\partial{\vec{B}}}{\partial{t}}=-\vec{\nabla} \times \vec{E}- \vec{J_m} \tag{1-1b}$$上式中 $\varepsilon$, $\sigma_e$ 分别是介质的介电系数，电导率（这里都是绝对系数而非相对系数），$\varepsilon$, $\sigma_e$ 的值与空间位置有关。<p>将上面两个式子在直角坐标系下展开得到：</p>$$ \frac{\partial{E_z}}{\partial{y}}-\frac{\partial{E_y}}{\partial{z}}=-\mu \frac{\partial{H_x}}{\partial{t}}-\sigma_m H_x  \tag{1-2a} $$$$ \frac{\partial{E_x}}{\partial{z}}-\frac{\partial{E_z}}{\partial{x}}=-\mu \frac{\partial{H_y}}{\partial{t}}-\sigma_m H_y  \tag{1-2b} $$<p>$$ \frac{\partial{E_y}}{\partial{x}}-\frac{\partial{E_x}}{\partial{y}}=-\mu \frac{\partial{H_z}}{\partial{t}}-\sigma_m H_z  \tag{1-2c} $$</p><p>
+	<strong>FDTD
+	</strong> 离散化采用正交网格的 
+	<strong>Yee
+	</strong> 元胞，其空间排布如下所示：</p><div align="center">
+	<p>
+		<div class="markdown-block">
+			<table width="100%" style="border:0px">
+				<tr style="border:0px">
+					<td style="border:0px">
+						<a name=" "><img src="image/DShape/cell.png" alt="image 1:  Yee 元胞场量分布" />
+						</a>
+					</td>
+				</tr>
+				<tr style="border:0px">
+					<td style="border:0px" align="center">image 1:  Yee 元胞场量分布
+					</td>
+				</tr>
+			</table>
+		</div>
+	</p>
+	<div align="left">
+		<p>由图可见每一个磁场分量由四个电场分量环绕；同样，每一个电场分量由四个磁场分量环绕。此外，电场和磁场在时间顺序上交替抽样，抽样时间间隔彼此相差半个时间步，使麦克斯韦旋度方程离散以后构成显式差分方程，从而可以在时间上迭代求解。因此，由给定相应的电磁场问题的初始值和边界条件，
+			<strong>FDTD
+			</strong> 方法就可以逐步推进的求解空间电磁场。
+		</p>
+		<h2>差分形式
+		</h2>
+		<p>若设观察点 $(x, y, z)$ 为 $Ex$ 的节点$(i+1/2, j, k)$，以及时刻 $t=(n+1/2)Δt$，于是，公式 $1-2$ 可以离散化为如下形式：
+		</p>
+		<p>$$
+\begin{equation}
+\begin{split}
+E_x^{n+1}(m)&= C_A(m) \cdot E_x^n(m) \\
+            &+ C_B(m) \cdot [\frac{H_z^{n+\frac{1}{2}}(i+\frac{1}{2},j+\frac{1}{2},k)-H_z^{n+\frac{1}{2}}(i+\frac{1}{2},j-\frac{1}{2},k)}{\Delta y}\\
+			&- \frac{H_y^{n+\frac{1}{2}}(i+\frac{1}{2},j,k+\frac{1}{2})-H_y^{n+\frac{1}{2}}(i+\frac{1}{2},j,k-\frac{1}{2})}{\Delta z}]
+\end{split}
+\end{equation}
+\tag{1-3}
+$$
+		</p>
+		<p>式中两个系数 $C_A(m)$ 和 $C_B(m)$ 分别为：
+		</p>$$ C_A(m)=\frac{1-\frac{\sigma_e(m)\Delta t}{2\varepsilon(m)}}{1+\frac{\sigma_e(m)\Delta t}{2\varepsilon(m)}} \tag{1-4a}$$
+		<p>$$ C_B(m)=\frac{\frac{\Delta t}{\varepsilon(m)}}{1+\frac{\sigma_e(m)\Delta t}{2\varepsilon(m)}} \tag{1-4b}$$
+		</p>
+		<p>上式中标号 $ m = (i+1/2, j, k)$ 。另外两个电场分量离散形式如下：
+		</p>
+		<p>$$
+\begin{split}
+E_y^{n+1}(m)&= C_A(m) \cdot E_y^n(m) \\
+            &+ C_B(m) \cdot [\frac{H_x^{n+\frac{1}{2}}(i,j+\frac{1}{2},k+\frac{1}{2})-H_x^{n+\frac{1}{2}}(i,j+\frac{1}{2},k-\frac{1}{2})}{\Delta y}\\
+			&- \frac{H_z^{n+\frac{1}{2}}(i+\frac{1}{2},j+frac{1}{2},k)-H_z^{n+\frac{1}{2}}(i-\frac{1}{2},j+\frac{1}{2},k)}{\Delta z}]
+\end{split}
+\tag{1-5a}
+$$
+		</p>
+		<p>其中: $ m=(i,j+1/2,k) $
+		</p>
+		<p>$$
+\begin{split}
+E_z^{n+1}(m)&= C_A(m) \cdot E_z^n(m) \\
+            &+ C_B(m) \cdot [\frac{H_y^{n+\frac{1}{2}}(i+\frac{1}{2},j+\frac{1}{2},k)-H_y^{n+\frac{1}{2}}(i-\frac{1}{2},j,k+\frac{1}{2})}{\Delta y}\\
+			&- \frac{H_x^{n+\frac{1}{2}}(i,j+\frac{1}{2},k+frac{1}{2})-H_x^{n+\frac{1}{2}}(i,j-\frac{1}{2},k+\frac{1}{2})}{\Delta z}]
+\end{split}
+\tag{1-5b}
+$$
+		</p>
+		<p>其中： $ m=(i,j,k+1/2) $
+		</p>
+		<p>离散磁场时，设观察点 $ (x, y, z)$ 为Hx的节点，即 $(i, j+1/2, k+1/2)$ 和时刻 $t=nΔt$，于是可以得到：
+		</p>
+		<p>$$
+\begin{split}
+H_x^{n+\frac{1}{2}}(m)&= C_P(m) \cdot H_x^{N-\frac{1}{2}}(m) \\
+            &- C_Q(m) \cdot [\frac{E_z^{n+\frac{1}{2}}(i,j+1,k+\frac{1}{2})-E_z^{n+\frac{1}{2}}(i,j,k+\frac{1}{2})}{\Delta y}\\
+			&- \frac{E_y^{n+\frac{1}{2}}(i,j+\frac{1}{2},k+1)-E_y^{n+\frac{1}{2}}(i,j+\frac{1}{2},k)}{\Delta z}]
+\end{split}
+\tag{1-6a}
+$$
+		</p>
+		<p>其中：$ m=(i,j+1/2,k+1/2)$
+		</p>
+		<p>$$
+\begin{split}
+H_y^{n+\frac{1}{2}}(m)&= C_P(m) \cdot H_y^{N-\frac{1}{2}}(m) \\
+            &- C_Q(m) \cdot [\frac{E_x^{n+\frac{1}{2}}(i+\frac{1}{2},j,k+1)-E_x^{n+\frac{1}{2}}(i+\frac{1}{2},j,k)}{\Delta z}\\
+			&- \frac{E_z^{n+\frac{1}{2}}(i+1,j,k+\frac{1}{2})-E_z^{n+\frac{1}{2}}(i,j,k+\frac{1}{2})}{\Delta x}]
+\end{split}
+\tag{1-6b}
+$$
+		</p>
+		<p>其中：$ m=(i+1/2,j,k+1/2)$
+		</p>
+		<p>$$
+\begin{split}
+H_z^{n+\frac{1}{2}}(m)&= C_P(m) \cdot H_z^{N-\frac{1}{2}}(m) \\
+            &- C_Q(m) \cdot [\frac{E_y^{n+\frac{1}{2}}(i+1,j+\frac{1}{2},k)-E_y^{n+\frac{1}{2}}(i,j+\frac{1}{2},k)}{\Delta x}\\
+			&- \frac{E_x^{n+\frac{1}{2}}(i+\frac{1}{2},j+1,k)-E_x^{n+\frac{1}{2}}(i+\frac{1}{2},j,k)}{\Delta y}]
+\end{split}
+\tag{1-6c}
+$$
+		</p>
+		<p>其中：$ m=(i+1/2,j+1/2,k)$
+		</p>
+		<p>式中系数$C_P(m)$ 和 $C_Q(m) $ 分别为：
+		</p>$$ C_P(m)=\frac{1-\frac{\sigma_m(m)\Delta t}{2\mu(m)}}{1+\frac{\sigma_m(m)\Delta t}{2\mu(m)}} \tag{1-7a}$$
+		<p>$$ C_Q(m)=\frac{\frac{\Delta t}{\mu(m)}}{1+\frac{\sigma_m(m)\Delta t}{2\mu(m)}} \tag{1-7b}$$
+		</p>
+		<p>其中上角标 $ n-1/2 $ , $ n$ , $ n+1/2 $ , $ n+1 $ 表示时间步数，系数中的标号 $ m $ 代表一组整数或者半整数， $\Delta t$ 是时间步长，$\Delta x$, $\Delta y$, $\Delta z$ 表示相邻网格点分别在 $x$, $y$, $z$ 方向的间距。根据上述 FDTD 差分方程组即可得出计算电磁场的时域推进计算方法。
+		</p>
+		<h2>迭代稳定性要求和边界条件
+		</h2>
+		<p>
+			<strong>FDTD
+			</strong> 是一种显式格式差分算法，所以时间和空间步长应该遵守一定的规则，否则会发生稳定性问题
+			<a target="_top" href="#help_Appendix_FDTD_method.cite1">[2]
+			</a>。在 
+			<strong>FDTD
+			</strong> 计算中，空间步长通常不应小于参考波长的 <code>1/12</code>，在三维情况下时间步长和空间步长需要满足如下方程：
+		</p>
+		<p>$$ c\Delta t \leq  \frac{1}{\sqrt{\frac{1}{\Delta x^2}+\frac{1}{\Delta y^2}+\frac{1}{\Delta z^2}}}  \tag{1-8}  $$
+		</p>上述条件称为 
+		<strong>Courant
+		</strong> 稳定条件，为了能模拟开域的电磁散射过程，在计算区域的截断边界处必须给出适当的边界条件。<code>EastWave</code> 内置了开放边界（包含 
+		<strong>PML
+		</strong>（完全匹配吸收层）、
+		<strong>UPML
+		</strong>（单轴完全匹配吸收层）和 
+		<strong>CPML
+		</strong>（卷积式完美吸收边界）、周期边界、布洛赫边界、
+		<strong>PEC
+		</strong> 边界和 
+		<strong>PMC
+		</strong> 边界。常用的开放边界条件使用 
+		<strong>PML
+		</strong> 技术吸收边界电磁场，这是一种基于吸收层的技术，该技术可以使以任意入射角和任意频率入射的平面波，投射到边界表面的反射系数的理论值都是零
+		<a target="_top" href="#help_Appendix_FDTD_method.cite1">[2]
+		</a>。
+		<strong>UPML
+		</strong> 适用于色散介质以及边界处介质不连续的情况，周期边界常用于周期性结构情况。
+		<strong>PEC
+		</strong> 边界和 
+		<strong>PMC
+		</strong> 边界适用于某些特定情况，如 
+		<strong>PEC
+		</strong> 边界可以用于模拟微波暗室中被吸波材料覆盖的边墙。
+		<p>
+			<a name="help_common_ref_fdtd_FDTD_method.cite1"> 
+			</a>
+			<h4>参考文献
+			</h4>
+		</p>
+		<p>[1] 葛德彪，闫玉波. 电磁波时域限差分方法. 西安：西安电子科技大学出版社.
+		</p>
+		<p>[2] Allen Taflove.et.al, Computational Electrodynamics: The Finite-Difference Time-Domain Method. Artech House.
+		</p>
+	</div></div></div>

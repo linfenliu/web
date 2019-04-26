@@ -1,0 +1,341 @@
+<div class="markdown-body"><p>
+	<h1>IO函数
+	</h1></p><p>IO函数为用户提供了操作控制台输入输出、文件读写和数据文件的读写等接口。<br />
+</p><h2>标准输入与输出</h2><code>io.stdin</code>  标准输入流<code>io.stdout</code>  标准输出流<code>io.stderr</code>  标准错误流<h2>文件的读写</h2><code>io.open</code>  打开一个文件或支持流的设备，返回一个IO流<br />
+<br /><strong>语法：</strong>  <pre><code code-language="ewsl">stream = io.open(filename, MODE)   // MODE = io.ReadMode | io.WriteMode | io.ReadWriteMode | io.AppendMode</code></pre><p>
+	<a name="help_script_Specifications_IO.IOMode"> 
+	</a>
+	<ul>
+		<li>IO模式
+		</li>
+	</ul>
+	<div class="markdown-block">
+		<table width="100%">
+			<tr style="border:0px">
+				<td align="center" style="border:0px">
+					<a name="table_IOMode">table 1: IO模式
+					</a>
+				</td>
+			</tr>
+			<tr style="border:0px">
+				<td style="border:0px">
+					<div class="markdown-table">
+						<table width="100%" class="markdown-table" style="border:1px">
+							<thead>
+								<tr>
+									<td align="center"> 模式符号<br />
+
+									</td>
+									<td align="center"> 说明<br />
+
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td align="center"> <code>io.ReadMode</code><br />
+
+									</td>
+									<td align="left"> 只读模式<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> <code>io.WriteMode</code><br />
+
+									</td>
+									<td align="left"> 只写模式<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> <code>io.ReadWriteMode</code><br />
+
+									</td>
+									<td align="left"> 读写模式<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> <code>io.AppendMode</code><br />
+
+									</td>
+									<td align="left"> 追加模式<br />
+
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div></p><code>io.close</code>  关闭一个流<br />
+<code>io.read</code>  从一个流中读取数据，具体参数决定返回值的类型<p><code>io.readln</code>从一个流中读取一行或多行，返回这一行的字符串，如果是多行，返回由每一行字符串组成的数组（可以选择去掉或保留换行符）</p><p><code>io.write</code>向一个流中写入数据，参数决定写入的方式</p><p><code>io.writeln</code>向一个流中写入一行或者多行的内容，自动在每一行内容结束后加入一个换行符</p><p><code>io.is_eof</code>判断一个流是否处于结束位置<br />
+</p><code>io.seek</code>设定流的位置<a name="help_script_Specifications_IO.SeekMode"> </a><ul>
+	<li>定位方式
+	</li></ul><div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td align="center" style="border:0px">
+				<a name="table_SeekMode">table 2: 定位模式
+				</a>
+			</td>
+		</tr>
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center"> 模式符号<br />
+
+								</td>
+								<td align="center"> 说明<br />
+
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="center"> <code>io.AbsoluteSeek</code><br />
+
+								</td>
+								<td align="left"> 绝对定位（从开头计算）<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> <code>io.RelativeSeek</code><br />
+
+								</td>
+								<td align="left"> 相对定位（从当前位置计算）<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> <code>io.SeekFromEnd</code><br />
+
+								</td>
+								<td align="left"> 从流的尾部定位<br />
+
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div><p>
+	<h2>数据文件的读写
+	</h2></p><code>io.load</code>  载入数据文件<br /><strong>语法：</strong>  <pre><code code-language="ewsl">data = io.load(filename, OPTIONS, arg1, ... )<br />var  = io.load(filename, PARSER, arg1, ... )</code></pre><strong>说明：</strong><ul>
+	<li>第一个参数是文件名
+	</li>
+	<li>第二个参数是选项或者内容解析器，该参数可以是用户定义的一个解析器函数
+		<ul>
+			<li>解析器函数将一个文件流或者字符串转换为一个数据变量，即可以<code>my_parser(stream, arg1, ...)</code>，也可以<code>my_parser(string_content, arg1, ...)</code>
+			</li>
+			<li>可以利用
+				<a target="_top" href="#help_script_Programming_I.regex">正则表达式
+				</a>匹配方式来获得一个数据结构
+			</li>
+		</ul>
+	</li>
+	<li>第三个参数为附加参数
+		<ul>
+			<li>当第二个参数是选项时，附加参数有不同的含义
+			</li>
+			<li>当第二个参数是解析器时，这些附加参数作为解析器的传入参数
+			</li>
+		</ul>
+	</li>
+	<li>参看
+		<a target="_top" href="#help_script_Specifications_IO.table_Mode_and_Parser">读写模式选项和解析器
+		</a>
+	</li></ul><p><code>io.save</code>  写入数据文件<br />
+</p><p>
+	<ul>
+		<li>数据读写模式常量和解析器
+		</li>
+	</ul>
+	<div class="markdown-block">
+		<table width="100%">
+			<tr style="border:0px">
+				<td align="center" style="border:0px">
+					<a name="table_Mode_and_Parser">table 3: 读写模式选项和解析器
+					</a>
+				</td>
+			</tr>
+			<tr style="border:0px">
+				<td style="border:0px">
+					<div class="markdown-table">
+						<table width="100%" class="markdown-table" style="border:1px">
+							<thead>
+								<tr>
+									<td align="center"> 模式符号<br />
+
+									</td>
+									<td align="center"> 说明<br />
+
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td align="center"> "-auto"<br />
+
+									</td>
+									<td align="left"> 自动判断，默认值<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> "-mat"<br />
+
+									</td>
+									<td align="left"> 载入一个数组，自动识别是文本或二进制<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> "-text"<br />
+
+									</td>
+									<td align="left"> 载入的数据作为一个字符串，自动判断编码格式，建议UTF8或本地编码格式<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> "-text:codepage"<br />
+
+									</td>
+									<td align="left"> 载入的数据作为一个字符串，根据用户选择<code>codepage</code>确定编码格式<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> "-var"<br />
+
+									</td>
+									<td align="left"> 载入一个EWSL的变量数据，二进制格式<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> "-fig", "-figure" 
+									</td>
+									<td align="left"> 载入一个EWSL的数据图，二进制格式<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> "-json"<br />
+
+									</td>
+									<td align="left"> 载入一个JSON数据表，返回一个变量表<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> "-xml"<br />
+
+									</td>
+									<td align="left"> 载入一个XML数据表，返回一个变量表<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> "-csv"<br />
+
+									</td>
+									<td align="left"> 载入一个CSV数据表，返回一个二维数组<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> "-image"<br />
+
+									</td>
+									<td align="left"> 载入位图数据（png/bmp/jpg/gif等），返回一个整数二维数组<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> "-png"<br />
+
+									</td>
+									<td align="left"> 指定png格式数据，返回同上<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> "-bmp"<br />
+
+									</td>
+									<td align="left"> 指定bmp格式数据，返回同上<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> "-jpg", "-jpeg"<br />
+
+									</td>
+									<td align="left"> 指定jpeg格式数据，返回同上<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="1" colspan="2" align="center"> 解析器<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> <code>io.json_parser</code>  
+									</td>
+									<td align="left"> Json解析器<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> <code>io.xml_parser</code><br />
+
+									</td>
+									<td align="left"> XML解析器<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> <code>io.array_parser</code> 
+									</td>
+									<td align="left"> 文本数组解析器<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> <code>io.csv_parser</code><br />
+
+									</td>
+									<td align="left"> CSV数据解析器<br />
+
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div></p><h2>交互处理</h2><code>io.interact_line</code>输入一个行处理器（line_handler），产生一个和输入流的交互行为<br />
+<br /><strong>语法：</strong>  <pre><code code-language="ewsl">io.interactive_line(line_handler = print, stream = stdin, cr = "\r\n")</code></pre><p>
+	<strong>说明：
+	</strong>
+	<ul>
+		<li><code>line_handler</code>默认是打印函数，即输入一行后自动打印该行内容
+		</li>
+		<li>读入每一行时保留行末的换行符，交给<code>line_handler</code>，即允许在<code>line_handler</code>中分析具体的行末符
+		</li>
+		<li><code>stream</code>默认为标准输入流
+		</li>
+		<li><code>cr</code>为指定换行符，默认是<code>"\r\n"</code>
+		</li>
+	</ul></p></div>

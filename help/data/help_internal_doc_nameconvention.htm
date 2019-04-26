@@ -1,0 +1,3718 @@
+<div class="markdown-body"><p>
+	<ul>
+		<li>
+			<a href="#help_internal_doc_nameconvention.header_1">1. EastWave文档参数命名规范
+			</a>
+			<ul>
+				<li>
+					<a href="#help_internal_doc_nameconvention.header_1_1">1.1. 前缀命名规范
+					</a>
+				</li>
+				<li>
+					<a href="#help_internal_doc_nameconvention.header_1_2">1.2. 文档参数主体名称规范
+					</a>
+				</li>
+			</ul>
+		</li>
+	</ul></p><a name="help_internal_doc_nameconvention.header_1">
+	<h1>1. EastWave文档参数命名规范
+	</h1></a><p>EastWave工程文件中定义各种元件使用规范的名称体系。该体系考虑以下几个因素：
+	<ol>
+		<li>使用标准英文单词
+		</li>
+		<li>小写英文字母开头，其他合法字符为数字、下划线，此外，使用井号符号<code>#</code>限定名词的概念域
+		</li>
+		<li>前缀表明属性的数据类型（并且基本上指明了空间类型）
+		</li>
+		<li>前缀和主体名称之间用下划线区分
+		</li>
+	</ol></p><a name="help_internal_doc_nameconvention.header_1_1">
+	<h2>1.1. 前缀命名规范
+	</h2></a>简单参数的前缀规则如下：<blockquote>说明：简单参数指的是一个参数对应一个控件的情况。</blockquote><div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center">  前缀<br />
+
+								</td>
+								<td align="center">  参数类型<br />
+
+								</td>
+								<td align="center">  C++类型<br />
+
+								</td>
+								<td align="center">  控件类型<br />
+
+								</td>
+								<td align="center">  英文助记<br />
+
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="center">  int<br />
+
+								</td>
+								<td align="center">  整型<br />
+
+								</td>
+								<td align="center">  32bit有符号整数<br />
+
+								</td>
+								<td align="center">  单行文本框<br />
+
+								</td>
+								<td align="center">  integer<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  opt<br />
+
+								</td>
+								<td align="center">  选项型<br />
+
+								</td>
+								<td align="center">  32bit有符号整数<br />
+
+								</td>
+								<td align="center">  下拉列表（不可编辑）<br />
+
+								</td>
+								<td align="center">  option<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  flg<br />
+
+								</td>
+								<td align="center">  标志型<br />
+
+								</td>
+								<td align="center">  Bit标志(32bit)<br />
+
+								</td>
+								<td align="center">  钩选框<br />
+
+								</td>
+								<td align="center">  flags<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  dbl<br />
+
+								</td>
+								<td align="center">  浮点型<br />
+
+								</td>
+								<td align="center">  双精度浮点<br />
+
+								</td>
+								<td align="center">  单行文本框<br />
+
+								</td>
+								<td align="center">  double<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  sld<br />
+
+								</td>
+								<td align="center">  浮点型<br />
+
+								</td>
+								<td align="center">  双精度浮点<br />
+
+								</td>
+								<td align="center">  滑动条<br />
+
+								</td>
+								<td align="center">  slide<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  str<br />
+
+								</td>
+								<td align="center">  字符串<br />
+
+								</td>
+								<td align="center">  字符串<br />
+
+								</td>
+								<td align="center">  单行文本框<br />
+
+								</td>
+								<td align="center">  string<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  sym<br />
+
+								</td>
+								<td align="center">  引用符号/元件<br />
+
+								</td>
+								<td align="center">  符号引用<br />
+
+								</td>
+								<td align="center">  下拉列表（可编辑）<br />
+
+								</td>
+								<td align="center">  symbol<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  exp<br />
+
+								</td>
+								<td align="center">  表达式<br />
+
+								</td>
+								<td align="center">  字符串<br />
+
+								</td>
+								<td align="center">  单行表达式控件<br />
+
+								</td>
+								<td align="center">  expression<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  fln<br />
+
+								</td>
+								<td align="center">  文件名<br />
+
+								</td>
+								<td align="center">  字符串<br />
+
+								</td>
+								<td align="center">  文件控件<br />
+
+								</td>
+								<td align="center">  filename<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  clr<br />
+
+								</td>
+								<td align="center">  颜色<br />
+
+								</td>
+								<td align="center">  DColor<br />
+
+								</td>
+								<td align="center">  颜色按钮<br />
+
+								</td>
+								<td align="center">  color<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  txt<br />
+
+								</td>
+								<td align="center">  多行文本<br />
+
+								</td>
+								<td align="center">  字符串<br />
+
+								</td>
+								<td align="center">  多行文本框<br />
+
+								</td>
+								<td align="center">  text<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  nfo<br />
+
+								</td>
+								<td align="center">  多行文本<br />
+
+								</td>
+								<td align="center">  字符串<br />
+
+								</td>
+								<td align="center">  多行文本框（只读）<br />
+
+								</td>
+								<td align="center">  infomation<br />
+
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div>举例如下：<ul>
+	<li><code>int_number</code>表示叫做<code>number</code>的文档参数，其类型为整型，控件对应为一个普通的单行文本框。
+	</li>
+	<li><code>opt_type</code>表示叫做<code>type</code>的文档参数，类型为整型，并且作为选项（Option），因此控件为一个下拉框。 
+	</li>
+	<li><code>dbl_intensity</code>表示叫做<code>intensity</code>的文档参数，类型为浮点数（双精度），控件为一个下拉框。
+	</li>
+	<li><code>sld_precision</code>表示叫做<code>precision</code>的文档参数，类型为浮点数（双精度），控件为一个滑动条，其上下限需要额外参数来定义。 
+	</li></ul>复杂参数的前缀规则如下：<blockquote>说明：复杂参数指的是一个参数对应多于一个控件的情况（多个控件之间可能存在关联）</blockquote><div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center">  前缀<br />
+
+								</td>
+								<td align="center">  参数类型<br />
+
+								</td>
+								<td align="center">  C++类型<br />
+
+								</td>
+								<td align="center">  控件类型<br />
+
+								</td>
+								<td align="center">  备注<br />
+
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="center">  a{n}n<br />
+
+								</td>
+								<td align="center">  整数向量<br />
+
+								</td>
+								<td align="center">  整数向量<br />
+
+								</td>
+								<td align="center">  n个单行文本框<br />
+
+								</td>
+								<td rowspan="4" colspan=" 1" align="center"> 后缀编号序列为：{a,b,c,...}<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  a{n}d<br />
+
+								</td>
+								<td align="center">  浮点向量<br />
+
+								</td>
+								<td align="center">  浮点向量<br />
+
+								</td>
+								<td align="center">  n个单行文本框<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  a{n}s<br />
+
+								</td>
+								<td align="center">  字符串向量<br />
+
+								</td>
+								<td align="center">  字符串向量<br />
+
+								</td>
+								<td align="center">  n个单行文本框<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  a{n}e<br />
+
+								</td>
+								<td align="center">  字符串向量<br />
+
+								</td>
+								<td align="center">  字符串向量<br />
+
+								</td>
+								<td align="center">  n个表达式控件<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  x{n}n<br />
+
+								</td>
+								<td align="center">  整数向量<br />
+
+								</td>
+								<td align="center">  整数向量<br />
+
+								</td>
+								<td align="center">  n个单行文本框<br />
+
+								</td>
+								<td rowspan="4" colspan=" 1" align="center"> 后缀编号序列为：{x,y,z,w}<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  x{n}d<br />
+
+								</td>
+								<td align="center">  浮点向量<br />
+
+								</td>
+								<td align="center">  浮点向量<br />
+
+								</td>
+								<td align="center">  n个单行文本框<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  x{n}s<br />
+
+								</td>
+								<td align="center">  字符串向量<br />
+
+								</td>
+								<td align="center">  字符串向量<br />
+
+								</td>
+								<td align="center">  n个单行文本框<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  x{n}e<br />
+
+								</td>
+								<td align="center">  字符串向量<br />
+
+								</td>
+								<td align="center">  字符串向量<br />
+
+								</td>
+								<td align="center">  n个表达式控件<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  u{n}n<br />
+
+								</td>
+								<td align="center">  整数向量<br />
+
+								</td>
+								<td align="center">  整数向量<br />
+
+								</td>
+								<td align="center">  n个单行文本框<br />
+
+								</td>
+								<td rowspan="4" colspan=" 1" align="center"> 后缀编号序列为：{u,v,n}<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  u{n}d<br />
+
+								</td>
+								<td align="center">  浮点向量<br />
+
+								</td>
+								<td align="center">  浮点向量<br />
+
+								</td>
+								<td align="center">  n个单行文本框<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  u{n}s<br />
+
+								</td>
+								<td align="center">  字符串向量<br />
+
+								</td>
+								<td align="center">  字符串向量<br />
+
+								</td>
+								<td align="center">  n个单行文本框<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  u{n}e<br />
+
+								</td>
+								<td align="center">  字符串向量<br />
+
+								</td>
+								<td align="center">  字符串向量<br />
+
+								</td>
+								<td align="center">  n个表达式控件<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  mvm<br />
+
+								</td>
+								<td align="center">  多变量矩阵<br />
+
+								</td>
+								<td align="center">  Variable的数组<br />
+
+								</td>
+								<td align="center">  $m\times n$的矩阵形式<br />
+
+								</td>
+								<td align="center">  用户定义子项名称与类型<br />
+
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div>举例如下：<ul>
+	<li><code>x3e_position</code>表示叫做<code>position</code>的文档参数，其控件为三个表达式控件，标签（Label）名分别为：<code>position.x</code>、<code>position.y</code>和<code>position.z</code>。
+	</li>
+	<li><code>u3e_direction</code>表示叫做<code>direction</code>的文档参数，其控件为三个表达式控件，标签名分别为：<code>direction.u</code>、<code>direction.v</code>和<code>direction.n</code>。
+	</li>
+	<li><code>mvm_transform_list</code>表示叫做<code>transform_list</code>的文档参数，其控件为一个表格控件，标签由构造控件的其他参数控制。
+	</li>
+	<li><code>mvm_children</code>表示叫做<code>children</code>的文档参数（子节点），其控件是个表格控件。
+	</li></ul><a name="help_internal_doc_nameconvention.header_1_2">
+	<h2>1.2. 文档参数主体名称规范
+	</h2></a>普通文档参数的主体名称（不考虑<code>#</code>扩充的引导翻译的部分），去掉前缀标识后一般按下列规则命名：<ol>
+	<li>一般由小写字母和数字、下划线组成；除特殊缩写外均尽量使用小写字母；
+	</li>
+	<li>字母开头；
+	</li>
+	<li>数字表示编号时，用下划线和中心词分开；
+	</li>
+	<li>过长的词语一般写成缩写（专业术语使用大写字母）；
+	</li>
+	<li>一般使用名词中心语，而不要使用形容词作中心语（尽管英文是允许的，此时应指明对象集合）；
+	</li>
+	<li>一般采用定语+中心词结构，下划线最后一个是中心词，不要使用of来倒装；
+	</li>
+	<li>一般文档参数不推荐采用谓语+宾语结构，可以采用名词化形式的方式或者将动作谓语修改为形容词定义，而宾语改为中心语来命名；
+	</li>
+	<li>允许动词谓语+状语结构，此时动词是中心词，如果参数的中心词动词相同，建议提升为一个控件组，将状语作为独立的参数命名，此时控件组的名称则为中心词（名词化或者显示表述为状态、策略等名词概念）；
+	</li></ol><p>例子：<blockquote>一个物体长方体（Cuboid）的长宽高，一般可以命名为：<code>exp_length#Cuboid#Shape</code>、<code>exp_width#Cuboid#Shape</code>、<code>exp_heigth#Cuboid#Shape</code>一个物体长方体（Cuboid）用对角线上的两个顶点坐标定义，可以命名为：<code>u3e_corner_1#Cuboid#Shape</code>、<code>u3e_corner_2#Cuboid#Shape</code>一个记录器盒子，用长宽高定义，一般可以命名为：<code>exp_length#Box#Monitor</code>、<code>exp_width#Box#Monitor</code>、<code>exp_height#Box#Monitor</code></blockquote></p>文档参数常见英文名词和中文翻译对照<p>
+	<div class="markdown-block">
+		<table width="100%">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<div class="markdown-table">
+						<table width="100%" class="markdown-table" style="border:1px">
+							<thead>
+								<tr>
+									<td align="center">  
+										<strong>英文
+										</strong><br />
+
+									</td>
+									<td align="center">  
+										<strong>中文
+										</strong><br />
+
+									</td>
+									<td align="center">  
+										<strong>备注
+										</strong><br />
+
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td rowspan="1" colspan="3" align="center"> 
+										<strong>几何建模
+										</strong><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  length<br />
+
+									</td>
+									<td align="center">  长度<br />
+
+									</td>
+									<td align="center">  一般为x/u方向<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  width<br />
+
+									</td>
+									<td align="center">  宽度<br />
+
+									</td>
+									<td align="center">  一般为y/v方向<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  height<br />
+
+									</td>
+									<td align="center">  高度<br />
+
+									</td>
+									<td align="center">  一般为z/n方向<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  depth<br />
+
+									</td>
+									<td align="center">  深度<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  radius<br />
+
+									</td>
+									<td align="center">  半径<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  diameter<br />
+
+									</td>
+									<td align="center">  直径<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  generatrix<br />
+
+									</td>
+									<td align="center">  母线<br />
+
+									</td>
+									<td align="center">  生成线的意思，也扩展到母点、母面<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  directrix<br />
+
+									</td>
+									<td align="center">  准线<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  focus<br />
+
+									</td>
+									<td align="center">  焦点<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  focal_length<br />
+
+									</td>
+									<td align="center">  焦距<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  eccentricity<br />
+
+									</td>
+									<td align="center">  偏心率<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  void_ratio<br />
+
+									</td>
+									<td align="center">  体空心比<br />
+
+									</td>
+									<td align="center">  适合于能将体空心率换算为建模参数的模型<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  hollow_rate<br />
+
+									</td>
+									<td align="center">  体空心率<br />
+
+									</td>
+									<td align="center">  仅适合于大量空隙存在时的空隙体积和总体积之比 
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  length_ratio<br />
+
+									</td>
+									<td align="center">  线度比<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  convexity<br />
+
+									</td>
+									<td align="center">  凸起点<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  concavity<br />
+
+									</td>
+									<td align="center">  凹下点<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  arc<br />
+
+									</td>
+									<td align="center">  弧线<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  arc_length<br />
+
+									</td>
+									<td align="center">  弧长<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  control_point<br />
+
+									</td>
+									<td align="center">  控制点<br />
+
+									</td>
+									<td align="center">  用于样条参数方程中的参考点<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  key_point<br />
+
+									</td>
+									<td align="center">  关键点<br />
+
+									</td>
+									<td align="center">  用于定义物体时的参考点<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  area<br />
+
+									</td>
+									<td align="center">  面积<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  area_ratio<br />
+
+									</td>
+									<td align="center">  面积比<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  volume<br />
+
+									</td>
+									<td align="center">  体积<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  volume_ratio<br />
+
+									</td>
+									<td align="center">  体积比<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  start_point<br />
+
+									</td>
+									<td align="center">  起点<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  end_point<br />
+
+									</td>
+									<td align="center">  终点<br />
+
+									</td>
+									<td align="center">  注意区别于端点endpoint<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  tangent_line<br />
+
+									</td>
+									<td align="center">  切线<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  tangent_plane<br />
+
+									</td>
+									<td align="center">  切平面<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  slope<br />
+
+									</td>
+									<td align="center">  斜率<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  major_axis<br />
+
+									</td>
+									<td align="center">  主轴/长轴<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  minor_axis<br />
+
+									</td>
+									<td align="center">  短轴<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  asymptote<br />
+
+									</td>
+									<td align="center">  渐近线<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  thickness<br />
+
+									</td>
+									<td align="center">  厚度<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  curvature<br />
+
+									</td>
+									<td align="center">  曲率<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  curvature_radius 
+									</td>
+									<td align="center">  曲率半径<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  CL<br />
+
+									</td>
+									<td align="center">  特征长度<br />
+
+									</td>
+									<td align="center">  Character Length的简称<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  angle<br />
+
+									</td>
+									<td align="center">  角度<br />
+
+									</td>
+									<td align="center">  一般为角度制<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  center<br />
+
+									</td>
+									<td align="center">  中心<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  corner<br />
+
+									</td>
+									<td align="center">  角点<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  entity<br />
+
+									</td>
+									<td align="center">  实体<br />
+
+									</td>
+									<td align="center">  广义实体概念<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  solid<br />
+
+									</td>
+									<td align="center">  几何实体<br />
+
+									</td>
+									<td align="center">  等价于geometric entity<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  position<br />
+
+									</td>
+									<td align="center">  位置<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  point<br />
+
+									</td>
+									<td align="center">  点<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  triangle<br />
+
+									</td>
+									<td align="center">  三角形<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  quadrangle<br />
+
+									</td>
+									<td align="center">  四边形<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  rectangle<br />
+
+									</td>
+									<td align="center">  长方形<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  polygon<br />
+
+									</td>
+									<td align="center">  多边形<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  vertex<br />
+
+									</td>
+									<td align="center">  顶点<br />
+
+									</td>
+									<td align="center">  线段、多边形或者多面体的顶点<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  refpoint<br />
+
+									</td>
+									<td align="center">  参考点<br />
+
+									</td>
+									<td align="center">  reference point的简称<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  refvertex<br />
+
+									</td>
+									<td align="center">  参考顶点<br />
+
+									</td>
+									<td align="center">  reference vertex的简称<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  refcenter<br />
+
+									</td>
+									<td align="center">  参考中心<br />
+
+									</td>
+									<td align="center">  reference center的简称<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  line<br />
+
+									</td>
+									<td align="center">  线<br />
+
+									</td>
+									<td align="center">  可以理解为straight line的简称<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  segment<br />
+
+									</td>
+									<td align="center">  段（分段）<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  combined_line<br />
+
+									</td>
+									<td align="center">  组合线<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  edge<br />
+
+									</td>
+									<td align="center">  边缘/边线<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  boundary<br />
+
+									</td>
+									<td align="center">  边界<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  boundary_line<br />
+
+									</td>
+									<td align="center">  边界线<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  boundary_surface 
+									</td>
+									<td align="center">  边界面<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  endpoint<br />
+
+									</td>
+									<td align="center">  端点<br />
+
+									</td>
+									<td align="center">  注意区别于end_point<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  sweeping_line<br />
+
+									</td>
+									<td align="center">  扫描线<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  sweeping_surface 
+									</td>
+									<td align="center">  扫描面<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  sweeping_angle<br />
+
+									</td>
+									<td align="center">  扫描角<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  loop<br />
+
+									</td>
+									<td align="center">  回路<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  line_loop<br />
+
+									</td>
+									<td align="center">  线回路<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  surface_loop<br />
+
+									</td>
+									<td align="center">  面回路<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  extrusion<br />
+
+									</td>
+									<td align="center">  拉伸<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  lofting<br />
+
+									</td>
+									<td align="center">  放样<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  path<br />
+
+									</td>
+									<td align="center">  路径<br />
+
+									</td>
+									<td align="center">  特指构建折线段的多点路径<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  guide<br />
+
+									</td>
+									<td align="center">  导引<br />
+
+									</td>
+									<td align="center">  类似路径，但顶点处可以定义复杂行为<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  chamfer<br />
+
+									</td>
+									<td align="center">  倒角<br />
+
+									</td>
+									<td rowspan="2" colspan="1" align="center">  AutoCAD习惯<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  fillet<br />
+
+									</td>
+									<td align="center">  圆角<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  shell<br />
+
+									</td>
+									<td align="center">  壳<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  scale<br />
+
+									</td>
+									<td align="center">  缩放<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  mirror<br />
+
+									</td>
+									<td align="center">  镜像<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  reflection<br />
+
+									</td>
+									<td align="center">  中心反射<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  translation<br />
+
+									</td>
+									<td align="center">  平移<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  rotation<br />
+
+									</td>
+									<td align="center">  旋转<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  deformation<br />
+
+									</td>
+									<td align="center">  形变<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  torsion<br />
+
+									</td>
+									<td align="center">  扭曲（扭转） 
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  curve<br />
+
+									</td>
+									<td align="center">  曲线<br />
+
+									</td>
+									<td align="center">  可以理解为curved line的简称<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  spline<br />
+
+									</td>
+									<td align="center">  样条曲线<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  bspline<br />
+
+									</td>
+									<td align="center">  B样条<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  cubic_spline<br />
+
+									</td>
+									<td align="center">  三次样条<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  NURBS<br />
+
+									</td>
+									<td align="center">  NURBS<br />
+
+									</td>
+									<td align="center">  非均匀有理B样条曲面<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  interpolation<br />
+
+									</td>
+									<td align="center">  插值<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  plane<br />
+
+									</td>
+									<td align="center">  平面<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  surface<br />
+
+									</td>
+									<td align="center">  表面<br />
+
+									</td>
+									<td align="center">  可以作为curved surface的简称<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  combined_surface 
+									</td>
+									<td align="center">  组合面<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  regular_surface<br />
+
+									</td>
+									<td align="center">  正规曲面<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  cuboid<br />
+
+									</td>
+									<td align="center">  长方体<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  sphere<br />
+
+									</td>
+									<td align="center">  球体<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  spheroid<br />
+
+									</td>
+									<td align="center">  旋转椭球<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  paraboloid<br />
+
+									</td>
+									<td align="center">  抛物面<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  hyperboloid<br />
+
+									</td>
+									<td align="center">  双曲面<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  ellipsoid<br />
+
+									</td>
+									<td align="center">  椭球面<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  array<br />
+
+									</td>
+									<td align="center">  阵列<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  wcs<br />
+
+									</td>
+									<td align="center">  工作坐标系<br />
+
+									</td>
+									<td align="center">  Working Coordinate System的简称<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  lcs<br />
+
+									</td>
+									<td align="center">  局部坐标系<br />
+
+									</td>
+									<td align="center">  Local Coordinate System的简称<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="1" colspan="3" align="center"> 
+										<strong>激励源、记录器等
+										</strong><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  farfield<br />
+
+									</td>
+									<td align="center">  远场<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  nearfield<br />
+
+									</td>
+									<td align="center">  近场<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  kdir<br />
+
+									</td>
+									<td align="center">  波矢方向<br />
+
+									</td>
+									<td align="center">  一般约定为方向单位向量<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  orientation<br />
+
+									</td>
+									<td align="center">  朝向<br />
+
+									</td>
+									<td align="center">  一般用于定义特征面法向<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  cartesian_cs<br />
+
+									</td>
+									<td align="center">  笛卡尔坐标系 
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  cylindrical_cs<br />
+
+									</td>
+									<td align="center">  柱坐标<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  spherical_cs<br />
+
+									</td>
+									<td align="center">  球坐标<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  distance<br />
+
+									</td>
+									<td align="center">  距离<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  radial_dist<br />
+
+									</td>
+									<td align="center">  径向距离<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  azimuth<br />
+
+									</td>
+									<td align="center">  方位角<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  altitude<br />
+
+									</td>
+									<td align="center">  俯仰角<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  elevation<br />
+
+									</td>
+									<td align="center">  高度角<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  longitude<br />
+
+									</td>
+									<td align="center">  经度<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  latitude<br />
+
+									</td>
+									<td align="center">  纬度<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  zenith<br />
+
+									</td>
+									<td align="center">  天顶<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  zenith_point<br />
+
+									</td>
+									<td align="center">  天顶点<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  zenith_angle<br />
+
+									</td>
+									<td align="center">  天顶角<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  ISO_z<br />
+
+									</td>
+									<td align="center">  ISO柱坐标$z$ 
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  ISO_rho<br />
+
+									</td>
+									<td align="center">  ISO柱坐标$\rho$<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  ISO_radial<br />
+
+									</td>
+									<td align="center">  ISO球坐标$r$<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  ISO_theta<br />
+
+									</td>
+									<td align="center">  ISO球坐标$\theta$<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  ISO_phi<br />
+
+									</td>
+									<td align="center">  ISO球坐标、柱坐标$\phi$<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  MATH_rho<br />
+
+									</td>
+									<td align="center">  Math球坐标$\rho$<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  MATH_theta<br />
+
+									</td>
+									<td align="center">  Math球坐标$\theta$<br />
+
+									</td>
+									<td rowspan="2" colspan="1" align="center"> Math的角度规则与ISO相反，Matlab采用此规则<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  MATH_phi<br />
+
+									</td>
+									<td align="center">  Math球坐标$\phi$<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  GCS_radial<br />
+
+									</td>
+									<td align="center">  GCS球坐标$r$<br />
+
+									</td>
+									<td align="center">  地理坐标系的径向距离<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  GCS_theta<br />
+
+									</td>
+									<td align="center">  GCS球坐标$\theta$<br />
+
+									</td>
+									<td align="center">  即高度角/纬度，[-90, +90]<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  GCS_phi<br />
+
+									</td>
+									<td align="center">  GCS球坐标$\phi$<br />
+
+									</td>
+									<td align="center">  即精度（方位角），[-180, +180] 
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  HCS_radial<br />
+
+									</td>
+									<td align="center">  同GCS_radial<br />
+
+									</td>
+									<td align="center">  地平坐标系，相对于观测者<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  HCS_theta<br />
+
+									</td>
+									<td align="center">  同GCS_theta<br />
+
+									</td>
+									<td align="center">  俯仰角<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  HCS_phi<br />
+
+									</td>
+									<td align="center">  同GCS_phi<br />
+
+									</td>
+									<td align="center">  方位角<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  signal<br />
+
+									</td>
+									<td align="center">  信号<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  intensity<br />
+
+									</td>
+									<td align="center">  强度<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  power<br />
+
+									</td>
+									<td align="center">  功率<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  energy<br />
+
+									</td>
+									<td align="center">  能量<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  energy_density<br />
+
+									</td>
+									<td align="center">  能量密度<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  magnitude<br />
+
+									</td>
+									<td align="center">  幅度<br />
+
+									</td>
+									<td align="center">  幅度、强度、量<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  amplitude<br />
+
+									</td>
+									<td align="center">  振动幅度<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  phase<br />
+
+									</td>
+									<td align="center">  相位<br />
+
+									</td>
+									<td align="center">  文档相位一般用角度制<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  phase_rad<br />
+
+									</td>
+									<td align="center">  弧度相位<br />
+
+									</td>
+									<td align="center">  弧度制的相位<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  region<br />
+
+									</td>
+									<td align="center">  区域<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  active_region<br />
+
+									</td>
+									<td align="center">  有源区<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  passive_region<br />
+
+									</td>
+									<td align="center">  无源区<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  wire<br />
+
+									</td>
+									<td align="center">  连接线<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  displacement<br />
+
+									</td>
+									<td align="center">  位移<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  current<br />
+
+									</td>
+									<td align="center">  电流<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  mag_current<br />
+
+									</td>
+									<td align="center">  磁流<br />
+
+									</td>
+									<td align="center">  magnetic current的简写<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  e_field<br />
+
+									</td>
+									<td align="center">  电场<br />
+
+									</td>
+									<td align="center">  $E$<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  h_field<br />
+
+									</td>
+									<td align="center">  磁场<br />
+
+									</td>
+									<td align="center">  $H$<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  d_field<br />
+
+									</td>
+									<td align="center">  电位移<br />
+
+									</td>
+									<td align="center">  $D$<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  b_field<br />
+
+									</td>
+									<td align="center">  磁感应强度<br />
+
+									</td>
+									<td align="center">  $B$<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  je_field<br />
+
+									</td>
+									<td align="center">  电流密度<br />
+
+									</td>
+									<td align="center">  $j_e$<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  jm_field<br />
+
+									</td>
+									<td align="center">  磁流密度<br />
+
+									</td>
+									<td align="center">  $j_m$<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  excitation<br />
+
+									</td>
+									<td align="center">  激励<br />
+
+									</td>
+									<td align="center">  建议用于analyzer定义<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  source<br />
+
+									</td>
+									<td align="center">  激励源/馈源<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  monitor<br />
+
+									</td>
+									<td align="center">  监视器<br />
+
+									</td>
+									<td align="center">  旧称记录器<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  probe<br />
+
+									</td>
+									<td align="center">  探针<br />
+
+									</td>
+									<td align="center">  即点监视器<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  source_array<br />
+
+									</td>
+									<td align="center">  馈源阵列<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  analyzer<br />
+
+									</td>
+									<td align="center">  分析器<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  transient<br />
+
+									</td>
+									<td align="center">  瞬态<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  modal<br />
+
+									</td>
+									<td align="center">  模态<br />
+
+									</td>
+									<td align="center">  modal analysis 即单频激励分析<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  driven<br />
+
+									</td>
+									<td align="center">  驱动<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  eigenmode<br />
+
+									</td>
+									<td align="center">  本征模式<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  cycle<br />
+
+									</td>
+									<td align="center">  循环<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  reference<br />
+
+									</td>
+									<td align="center">  引用<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  symbol<br />
+
+									</td>
+									<td align="center">  符号/元件<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  background<br />
+
+									</td>
+									<td align="center">  背景<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  setup<br />
+
+									</td>
+									<td align="center">  设置<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  policy<br />
+
+									</td>
+									<td align="center">  策略<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  spread<br />
+
+									</td>
+									<td align="center">  展宽<br />
+
+									</td>
+									<td align="center">  用于定义频谱、参数分布宽度<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  timespan<br />
+
+									</td>
+									<td align="center">  时间宽度<br />
+
+									</td>
+									<td align="center">  用于定义时域信号宽度<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  rising_edge<br />
+
+									</td>
+									<td align="center">  上升沿<br />
+
+									</td>
+									<td align="center">  t_rising  上升沿时间<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  falling_edge<br />
+
+									</td>
+									<td align="center">  下降沿<br />
+
+									</td>
+									<td align="center">  t_falling 下降沿时间<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  holding<br />
+
+									</td>
+									<td align="center">  持续<br />
+
+									</td>
+									<td align="center">  t_holding 持续时间<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  distribute_width 
+									</td>
+									<td align="center">  分布宽度<br />
+
+									</td>
+									<td align="center">  用于定义空间分布的宽度<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  aperture_width<br />
+
+									</td>
+									<td align="center">  口径宽度<br />
+
+									</td>
+									<td align="center">  用于定义口径形状，一般对应x/u<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  aperture_length<br />
+
+									</td>
+									<td align="center">  口径长度<br />
+
+									</td>
+									<td align="center">  用于定义口径形状，一般对应y/v<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  aperture_depth<br />
+
+									</td>
+									<td align="center">  口径深度<br />
+
+									</td>
+									<td align="center">  用于定义口径形状，一般对应z/n<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  line_width<br />
+
+									</td>
+									<td align="center">  线宽<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  aperture_field<br />
+
+									</td>
+									<td align="center">  口径场<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  field_source<br />
+
+									</td>
+									<td align="center">  场源<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  spacial_function 
+									</td>
+									<td align="center">  空间函数<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  time_function<br />
+
+									</td>
+									<td align="center">  时间函数<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  terminal<br />
+
+									</td>
+									<td align="center">  终端<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  port<br />
+
+									</td>
+									<td align="center">  端口<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  mode<br />
+
+									</td>
+									<td align="center">  模式<br />
+
+									</td>
+									<td align="center">  注意和modal区分<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  network<br />
+
+									</td>
+									<td align="center">  网络<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="1" colspan="3" align="center"> 
+										<strong>程序功能
+										</strong><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  template<br />
+
+									</td>
+									<td align="center">  模板<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  workmode<br />
+
+									</td>
+									<td align="center">  计算模式<br />
+
+									</td>
+									<td align="center">  一般称计算模式，有时可称工作模式<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  script<br />
+
+									</td>
+									<td align="center">  脚本<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  program<br />
+
+									</td>
+									<td align="center">  程序<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  code<br />
+
+									</td>
+									<td align="center">  代码<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  compiler<br />
+
+									</td>
+									<td align="center">  编译器<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  solver<br />
+
+									</td>
+									<td align="center">  求解器<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  engine<br />
+
+									</td>
+									<td align="center">  引擎<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  block<br />
+
+									</td>
+									<td align="center">  分块<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  thread<br />
+
+									</td>
+									<td align="center">  线程<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  thread_num<br />
+
+									</td>
+									<td align="center">  线程数<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  param<br />
+
+									</td>
+									<td align="center">  参数<br />
+
+									</td>
+									<td align="center">  parameter的简写<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  config<br />
+
+									</td>
+									<td align="center">  配置<br />
+
+									</td>
+									<td align="center">  configuration的简写<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  hacc<br />
+
+									</td>
+									<td align="center">  硬件加速<br />
+
+									</td>
+									<td align="center">  hardware acceleration的简写<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  denorm<br />
+
+									</td>
+									<td align="center">  denormal<br />
+
+									</td>
+									<td align="center">  denormal功能<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  dt<br />
+
+									</td>
+									<td align="center">  $\delta t$<br />
+
+									</td>
+									<td align="center">  时间步<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  dt_ratio<br />
+
+									</td>
+									<td align="center">  $\delta t/\delta t_\text{ref}$  实际时间步/参考时间步<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  dt_ref<br />
+
+									</td>
+									<td align="center">  $\delta t_\text{ref}$<br />
+
+									</td>
+									<td align="center">  参考时间步<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  dx<br />
+
+									</td>
+									<td align="center">  $\delta x$<br />
+
+									</td>
+									<td align="center">  空间网格大小<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  start<br />
+
+									</td>
+									<td align="center">  启动<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  remote_start<br />
+
+									</td>
+									<td align="center">  远程启动<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  local_start<br />
+
+									</td>
+									<td align="center">  本地启动<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  run_solver<br />
+
+									</td>
+									<td align="center">  运行求解器<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  settings<br />
+
+									</td>
+									<td align="center">  设置<br />
+
+									</td>
+									<td align="center">  区别于setup设置，一般settings针对求解器/界面 
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  solver_settings<br />
+
+									</td>
+									<td align="center">  求解器设置<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  gui_settings<br />
+
+									</td>
+									<td align="center">  界面设置<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  web_server<br />
+
+									</td>
+									<td align="center">  WEB服务器<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  web_client<br />
+
+									</td>
+									<td align="center">  WEB客户端<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  help<br />
+
+									</td>
+									<td align="center">  帮助<br />
+
+									</td>
+									<td align="center">  广义的帮助，可用于针对功能的帮助信息<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  document<br />
+
+									</td>
+									<td align="center">  文档<br />
+
+									</td>
+									<td align="center">  特指工程文档文件<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  documentation<br />
+
+									</td>
+									<td align="center">  文档<br />
+
+									</td>
+									<td align="center">  区别于工程文档document<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  manual<br />
+
+									</td>
+									<td align="center">  手册<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  tutorial<br />
+
+									</td>
+									<td align="center">  入门<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  sample<br />
+
+									</td>
+									<td align="center">  案例<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  library<br />
+
+									</td>
+									<td align="center">  库<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  module<br />
+
+									</td>
+									<td align="center">  模块<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  address<br />
+
+									</td>
+									<td align="center">  地址<br />
+
+									</td>
+									<td align="center">  一般指网络地址<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  path<br />
+
+									</td>
+									<td align="center">  路径<br />
+
+									</td>
+									<td align="center">  包括相对路径和绝对路径、网络路径、虚拟路径<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  directory<br />
+
+									</td>
+									<td align="center">  文件夹<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  link<br />
+
+									</td>
+									<td align="center">  链接<br />
+
+									</td>
+									<td align="center">  指向文件或者文件夹的链接，默认符号链接<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  alias<br />
+
+									</td>
+									<td align="center">  别名<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  filter<br />
+
+									</td>
+									<td align="center">  过滤器<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  workspace<br />
+
+									</td>
+									<td align="center">  工作空间<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  folder<br />
+
+									</td>
+									<td align="center">  文件夹<br />
+
+									</td>
+									<td align="center">  特指workspace里的虚拟folder<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  project<br />
+
+									</td>
+									<td align="center">  工程<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  solution<br />
+
+									</td>
+									<td align="center">  解决方案<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  shell<br />
+
+									</td>
+									<td align="center">  系统命令行<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  processor<br />
+
+									</td>
+									<td align="center">  处理器<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  core<br />
+
+									</td>
+									<td align="center">  核心<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="1" colspan="3" align="center"> 
+										<strong>后处理
+										</strong><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  result<br />
+
+									</td>
+									<td align="center">  计算结果<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  report<br />
+
+									</td>
+									<td align="center">  报告<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  log<br />
+
+									</td>
+									<td align="center">  日志<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  external_file<br />
+
+									</td>
+									<td align="center">  外部文件<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  internal_file<br />
+
+									</td>
+									<td align="center">  内部文件<br />
+
+									</td>
+									<td align="center">  将文件嵌入工程后形成内部文件<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  table<br />
+
+									</td>
+									<td align="center">  数据表<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  figure<br />
+
+									</td>
+									<td align="center">  绘图<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  atlas<br />
+
+									</td>
+									<td align="center">  图册<br />
+
+									</td>
+									<td align="center">  figure构成的集合<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  image<br />
+
+									</td>
+									<td align="center">  图像<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  curve<br />
+
+									</td>
+									<td align="center">  曲线<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  spline<br />
+
+									</td>
+									<td align="center">  样条<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  bspline<br />
+
+									</td>
+									<td align="center">  B样条<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  stepline<br />
+
+									</td>
+									<td align="center">  阶梯线<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  dataview<br />
+
+									</td>
+									<td align="center">  数据视图<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  datamgr<br />
+
+									</td>
+									<td align="center">  数据管理器<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  datasheet<br />
+
+									</td>
+									<td align="center">  数据表<br />
+
+									</td>
+									<td align="center">  参照Excel的sheet概念<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  legend<br />
+
+									</td>
+									<td align="center">  图例<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  axis<br />
+
+									</td>
+									<td align="center">  坐标轴<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  margin<br />
+
+									</td>
+									<td align="center">  画布边缘<br />
+
+									</td>
+									<td align="center">  很多时候指边距<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  title<br />
+
+									</td>
+									<td align="center">  标题<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  xlabel<br />
+
+									</td>
+									<td align="center">  X标签<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  ylabel<br />
+
+									</td>
+									<td align="center">  Y标签<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  zlabel<br />
+
+									</td>
+									<td align="center">  Z标签<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  colormap<br />
+
+									</td>
+									<td align="center">  颜色映射图<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  colorbar<br />
+
+									</td>
+									<td align="center">  颜色柱<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  contour<br />
+
+									</td>
+									<td align="center">  等值（线）<br />
+
+									</td>
+									<td align="center">  也可以是等值面<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  contour_line<br />
+
+									</td>
+									<td align="center">  等值线<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  contour_surface<br />
+
+									</td>
+									<td align="center">  等值面<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  column<br />
+
+									</td>
+									<td align="center">  列<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  row<br />
+
+									</td>
+									<td align="center">  行<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  location<br />
+
+									</td>
+									<td align="center">  定位位置<br />
+
+									</td>
+									<td align="center">  (x,y)或者(x,y,z)<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  datatip<br />
+
+									</td>
+									<td align="center">  数据提示<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  dataitem<br />
+
+									</td>
+									<td align="center">  数据项<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  plot<br />
+
+									</td>
+									<td align="center">  曲线图<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  plot3d<br />
+
+									</td>
+									<td align="center">  3D曲线图<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  surf<br />
+
+									</td>
+									<td align="center">  曲面图<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  polar<br />
+
+									</td>
+									<td align="center">  极坐标图<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  polar3d<br />
+
+									</td>
+									<td align="center">  球坐标图<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  subplot<br />
+
+									</td>
+									<td align="center">  子图<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  canvas<br />
+
+									</td>
+									<td align="center">  画布<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  series<br />
+
+									</td>
+									<td align="center">  序列<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  scatter_plot<br />
+
+									</td>
+									<td align="center">  散点图<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  scatter3d_plot<br />
+
+									</td>
+									<td align="center">  3D散点图<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  ARE<br />
+
+									</td>
+									<td align="center">  自回归外推<br />
+
+									</td>
+									<td align="center">  Auto-Regression extrapolation的简写<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  DFT<br />
+
+									</td>
+									<td align="center">  离散傅立叶变换<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  DCT<br />
+
+									</td>
+									<td align="center">  离散余弦变换<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  FFT<br />
+
+									</td>
+									<td align="center">  快速傅里叶变换<br />
+
+									</td>
+									<td align="center">  Fast-Fourier Transform的简写<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  FFT2D<br />
+
+									</td>
+									<td align="center">  2D快速傅里叶变换<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  FFT3D<br />
+
+									</td>
+									<td align="center">  3D快速傅里叶变换<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  IFFT<br />
+
+									</td>
+									<td align="center">  快速逆傅里叶变换<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  IFFT2D<br />
+
+									</td>
+									<td align="center">  2D快速逆傅里叶变换 
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  TD_signal<br />
+
+									</td>
+									<td align="center">  时域信号<br />
+
+									</td>
+									<td align="center">  time-domain signal的简写<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  FD_signal<br />
+
+									</td>
+									<td align="center">  频域信号<br />
+
+									</td>
+									<td align="center">  frequency-domain signal的简写<br />
+
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div></p></div>

@@ -1,0 +1,497 @@
+<div class="markdown-body">
+	<p>
+		<h1>天线罩
+		</h1>EastWave V7 根据常用天线罩形线预定义了内置天线罩模型，用户使用时只需输入模型所对应的外形线参数。<br />
+<br /><blockquote>为避免参数定义混乱，内置天线罩模型作如下约定：<br />
+<ol><li>天线罩厚度为表面切线的法向厚度，法向厚度等厚；<br />
+</li><li>天线罩“头部朝向”默认朝向Z轴正方向（注意：天线罩相关计算模式约定将天线罩头部朝向Z轴正方向）；<br />
+</li></ol></blockquote>
+	</p>
+	<h2>天线罩分类 
+	</h2>
+	<ul>
+		<li>
+			<a href="#help_model_shape_symbol_DShapeAll_DShapeExt_DShapeRadome.header_1">1. 尖锥（Conical）天线罩
+			</a>
+		</li>
+		<li>
+			<a href="#help_model_shape_symbol_DShapeAll_DShapeExt_DShapeRadome.header_2">2. 正切卵形（Tangent Ogive）天线罩
+			</a>
+		</li>
+		<li>
+			<a href="#help_model_shape_symbol_DShapeAll_DShapeExt_DShapeRadome.header_3">3. 球形鼻锥（Spherrically-blunted Cone）天线罩
+			</a>
+		</li>
+		<li>
+			<a href="#help_model_shape_symbol_DShapeAll_DShapeExt_DShapeRadome.header_4">4. 幂次形旋转体（Power Series）天线罩
+			</a>
+		</li>
+	</ul>
+	<a name="help_model_shape_symbol_DShapeAll_DShapeExt_DShapeRadome.header_1">
+		<h1>1. 尖锥（Conical）天线罩
+		</h1>
+	</a>
+	<h3>尖锥天线罩横截面示意图
+	</h3>
+	<div class="markdown-block">
+		<table width="100%" style="border:0px">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<a name="help_model_shape_symbol_DShapeAll_DShapeExt_DShapeRadome.c_exampic"><img src="image/DShape/DRadomeCone_sample.png" />
+					</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<h3>尖锥天线罩参数设置对话框
+	</h3>
+	<div class="markdown-block">
+		<table width="100%" style="border:0px">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<a name="help_model_shape_symbol_DShapeAll_DShapeExt_DShapeRadome.c_parawindow"><img src="image/DShape/DRadomeCone.png" />
+					</a>
+				</td>
+			</tr>
+		</table>
+	</div><br />
+	<h3>尖锥天线罩参数含义
+	</h3>
+	<div class="markdown-block">
+		<table width="100%">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<div class="markdown-table">
+						<table width="100%" class="markdown-table" style="border:1px">
+							<thead>
+								<tr>
+									<td align="center"> 参数名称 
+									</td>
+									<td align="center"> 说明 
+									</td>
+									<td align="center"> 备注 
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td align="center"> 厚度（T） 
+									</td>
+									<td align="center"> 指定尖锥天线罩的厚度 
+									</td>
+									<td align="center"> -<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 半锥角（θ） 
+									</td>
+									<td align="center"> 指定尖锥的半锥角 
+									</td>
+									<td align="center"> 单位为角度 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 高度（H） 
+									</td>
+									<td align="center"> 指定尖锥天线罩顶点到底面的高度 
+									</td>
+									<td align="center"> - 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 平移距离（D） 
+									</td>
+									<td align="center"> 指定尖锥天线罩沿轴向平移的距离 
+									</td>
+									<td align="center"> 轴向即天线罩头部的朝向 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 边数 
+									</td>
+									<td align="center"> 指定尖锥天线罩的底面切割份数 
+									</td>
+									<td align="center"> - 
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<p>
+		<h3>如何创建尖锥天线罩
+		</h3>
+		<ul>
+			<li>
+				<a target="_top" href="#help_model_shape_symbol_DShapeCreate.create-by-GUI">界面创建尖锥天线罩
+				</a>
+			</li>
+			<li>
+				<a target="_top" href="#help_model_Advanced_ewsl_model">脚本创建尖锥天线罩
+				</a>
+			</li>
+		</ul>
+	</p>
+	<a name="help_model_shape_symbol_DShapeAll_DShapeExt_DShapeRadome.header_2">
+		<h1>2. 正切卵形（Tangent Ogive）天线罩
+		</h1>
+	</a>
+	<h3>正切卵形天线罩横截面示意图
+	</h3>
+	<div class="markdown-block">
+		<table width="100%" style="border:0px">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<a name="help_model_shape_symbol_DShapeAll_DShapeExt_DShapeRadome.o_exampic"><img src="image/DShape/DRadomeOgive_sample.png" />
+					</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<h3>正切卵形天线罩参数设置对话框
+	</h3>
+	<div class="markdown-block">
+		<table width="100%" style="border:0px">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<a name="help_model_shape_symbol_DShapeAll_DShapeExt_DShapeRadome.o_parawindow"><img src="image/DShape/DRadomeOgive.png" />
+					</a>
+				</td>
+			</tr>
+		</table>
+	</div><br />
+	<h3>正切卵形天线罩参数含义
+	</h3>
+	<div class="markdown-block">
+		<table width="100%">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<div class="markdown-table">
+						<table width="100%" class="markdown-table" style="border:1px">
+							<thead>
+								<tr>
+									<td align="center"> 参数名称 
+									</td>
+									<td align="center"> 说明 
+									</td>
+									<td align="center"> 备注 
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td align="center"> 厚度（T） 
+									</td>
+									<td align="center"> 指定正切卵形天线罩的厚度 
+									</td>
+									<td align="center"> -<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 半径（R） 
+									</td>
+									<td align="center"> 指定正切卵形天线罩外形线（圆弧）的半径 
+									</td>
+									<td align="center"> 外（内）形线即正切卵形天线罩的外（内）母线 它是一段圆弧，其圆心落在图中的横轴（灰色）上 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 宽度（W） 
+									</td>
+									<td align="center"> 指定正切卵形天线罩外形线距离中轴线最远处的距离 
+									</td>
+									<td align="center"> - 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 高度（H） 
+									</td>
+									<td align="center"> 指定正切卵形天线罩顶点到底面的高度 
+									</td>
+									<td align="center"> - 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 平移距离（D） 
+									</td>
+									<td align="center"> 指定正切卵形天线罩沿轴向平移的距离 
+									</td>
+									<td align="center"> 轴向即天线罩头部的朝向 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 边数 
+									</td>
+									<td align="center"> 指定正切卵形天线罩的底面切割份数 
+									</td>
+									<td align="center"> - 
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<p>
+		<h3>如何创建正切卵形天线罩
+		</h3>
+		<ul>
+			<li>
+				<a target="_top" href="#help_model_shape_symbol_DShapeCreate.create-by-GUI">界面创建正切卵形天线罩
+				</a>
+			</li>
+			<li>
+				<a target="_top" href="#help_model_Advanced_ewsl_model">脚本创建正切卵形天线罩
+				</a>
+			</li>
+		</ul>
+	</p>
+	<a name="help_model_shape_symbol_DShapeAll_DShapeExt_DShapeRadome.header_3">
+		<h1>3. 球形鼻锥（Spherrically-blunted Cone）天线罩
+		</h1>
+	</a>
+	<h3>球形鼻锥天线罩横截面示意图
+	</h3>
+	<div class="markdown-block">
+		<table width="100%" style="border:0px">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<a name="help_model_shape_symbol_DShapeAll_DShapeExt_DShapeRadome.s_exampic"><img src="image/DShape/DRadomeSphCone_sample.png" />
+					</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<h3>球形鼻锥天线罩参数设置对话框
+	</h3>
+	<div class="markdown-block">
+		<table width="100%" style="border:0px">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<a name="help_model_shape_symbol_DShapeAll_DShapeExt_DShapeRadome.s_parawindow"><img src="image/DShape/DRadomeSphCone.png" />
+					</a>
+				</td>
+			</tr>
+		</table>
+	</div><br />
+	<h3>球形鼻锥天线罩参数含义
+	</h3>
+	<div class="markdown-block">
+		<table width="100%">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<div class="markdown-table">
+						<table width="100%" class="markdown-table" style="border:1px">
+							<thead>
+								<tr>
+									<td align="center"> 参数名称 
+									</td>
+									<td align="center"> 说明 
+									</td>
+									<td align="center"> 备注 
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td align="center"> 厚度（T） 
+									</td>
+									<td align="center"> 指定球形鼻锥天线罩的厚度 
+									</td>
+									<td align="center"> -<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 半径（R） 
+									</td>
+									<td align="center"> 指定球形鼻锥天线罩头部球体的半径 
+									</td>
+									<td align="center"> - 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 半锥角（θ） 
+									</td>
+									<td align="center"> 指定球形鼻锥天线罩的半锥角 
+									</td>
+									<td align="center"> 单位为角度 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 高度（H） 
+									</td>
+									<td align="center"> 指定球形鼻锥天线罩顶点到底面的高度 
+									</td>
+									<td align="center"> - 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 平移距离（D） 
+									</td>
+									<td align="center"> 指定球形鼻锥天线罩沿轴向平移的距离 
+									</td>
+									<td align="center"> 轴向即天线罩头部的朝向 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 边数 
+									</td>
+									<td align="center"> 指定球形鼻锥天线罩的底面切割份数 
+									</td>
+									<td align="center"> - 
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<p>
+		<h3>如何创建球形鼻锥天线罩
+		</h3>
+		<ul>
+			<li>
+				<a target="_top" href="#help_model_shape_symbol_DShapeCreate.create-by-GUI">界面创建球形鼻锥天线罩
+				</a>
+			</li>
+			<li>
+				<a target="_top" href="#help_model_Advanced_ewsl_model">脚本创建球形鼻锥天线罩
+				</a>
+			</li>
+		</ul>
+	</p>
+	<a name="help_model_shape_symbol_DShapeAll_DShapeExt_DShapeRadome.header_4">
+		<h1>4. 幂次形旋转体（Power Series）天线罩
+		</h1>
+	</a>
+	<h3>幂次形旋转体天线罩横截面示意图
+	</h3>
+	<div class="markdown-block">
+		<table width="100%" style="border:0px">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<a name="help_model_shape_symbol_DShapeAll_DShapeExt_DShapeRadome.p_exampic"><img src="image/DShape/DRadomePowerSeries_sample.png" />
+					</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<h3>幂次形旋转体天线罩参数设置对话框
+	</h3>
+	<div class="markdown-block">
+		<table width="100%" style="border:0px">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<a name="help_model_shape_symbol_DShapeAll_DShapeExt_DShapeRadome.p_parawindow"><img src="image/DShape/DRadomePowerSeries.png" />
+					</a>
+				</td>
+			</tr>
+		</table>
+	</div><br />
+	<h3>幂次形旋转体天线罩参数含义
+	</h3>
+	<div class="markdown-block">
+		<table width="100%">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<div class="markdown-table">
+						<table width="100%" class="markdown-table" style="border:1px">
+							<thead>
+								<tr>
+									<td align="center"> 参数名称 
+									</td>
+									<td align="center"> 说明 
+									</td>
+									<td align="center"> 备注 
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td align="center"> 厚度（T） 
+									</td>
+									<td align="center"> 指定幂次形旋转体天线罩的厚度 
+									</td>
+									<td align="center"> -<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 半径（R） 
+									</td>
+									<td align="center"> 指定幂次形旋转体天线罩底部的半径 
+									</td>
+									<td align="center"> - 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 系数（A） 
+									</td>
+									<td align="center"> 指定幂函数 $y = A(\frac{x}{B})^N $的系数A 
+									</td>
+									<td align="center"> - 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 系数（B） 
+									</td>
+									<td align="center"> 指定幂函数 $y = A(\frac{x}{B})^N $的系数B 
+									</td>
+									<td align="center"> - 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 指数（N） 
+									</td>
+									<td align="center"> 指定幂函数 $y = A(\frac{x}{B})^N $的指数N 
+									</td>
+									<td align="center"> - 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 平移距离（D） 
+									</td>
+									<td align="center"> 指定幂次形旋转体天线罩沿轴向平移的距离 
+									</td>
+									<td align="center"> 轴向即天线罩头部的朝向 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 边数 
+									</td>
+									<td align="center"> 指定幂次形旋转体天线罩的底面切割份数 
+									</td>
+									<td align="center"> - 
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<p>
+		<h3>如何创建幂次形旋转体天线罩
+		</h3>
+		<ul>
+			<li>
+				<a target="_top" href="#help_model_shape_symbol_DShapeCreate.create-by-GUI">界面创建幂次形旋转体天线罩
+				</a>
+			</li>
+			<li>
+				<a target="_top" href="#help_model_Advanced_ewsl_model">脚本创建幂次形旋转体天线罩
+				</a>
+			</li>
+		</ul>
+	</p></div>

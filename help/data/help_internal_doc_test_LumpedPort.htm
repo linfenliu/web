@@ -1,0 +1,46 @@
+<div class="markdown-body"><h1>集总端口（测试说明）</h1>集总端口介绍参考此<a target="_top" href="#help_model_LumpedPort">链接</a>。<h2>条件控制</h2><ol>
+	<li>测试案例必须保证集总端口方向为xyz之一，即使模型经历了复杂旋转操作；
+	</li>
+	<li>
+		<strong>集总端口（偶极子天线）测试案例中必须保持偶极子天线的半径不大于1个网格
+		</strong>；
+	</li></ol><h2>测试目标</h2><ol>
+	<li>定性测试集总端口在方向被旋转到非坐标轴方向时的基本逻辑是否正确；
+	</li>
+	<li>定量测试集总端口方向为坐标轴方向时的输出精度； 
+	</li></ol><h2>测试方法</h2><ol>
+	<li>基本测试
+		<ol>
+			<li>分别运行标准案例，改变标准案例参数中平移长度
+				<strong>len
+				</strong>变量，测试在各种情况下<br />
+
+			</li>
+		</ol>集总端口是否能正常馈出；
+		<ol>
+			<li>改变标准案例中的网格设置（如设置为非均匀网格）进行测试
+			</li>
+		</ol>
+	</li>
+	<li>高精度测试
+		<ol>
+			<li>保证各种坐标变换后，集总端口方向为xyz方向之一，结果需要与其它软件进行对比；
+			</li>
+			<li>用集总端口（偶极子天线）案例测试集总端口的输出精度；
+			</li>
+			<li>利用集总端口RCL测试案例测试RCL电路在CL非零情况时各种馈电方式下的输出结果精度；
+			</li>
+		</ol>
+	</li></ol><h2>标准案例</h2><ol>
+	<li>集总端口元件测试案例
+		<a target="_top" href="javascript:ewdoc.open_editor('internal_files/test/systest/port/lumpedport/ew-v7_0_0-lumpedport_pure-0001.ewp2')">测试文档
+		</a>
+	</li>
+	<li>集总端口（偶极子天线）测试案例
+		<a target="_top" href="javascript:ewdoc.open_editor('internal_files/test/systest/port/lumpedport/ew-v7_0_0-lumpedport_antenna-0001.ewp2')">测试文档
+		</a>
+	</li>
+	<li>集总端口RCL测试案例
+		<a target="_top" href="javascript:ewdoc.open_editor('internal_files/test/systest/port/lumpedport/ew-v7_0_0-lumpedport_RCL-0001.ewp2')">测试文档
+		</a>
+	</li></ol><br /></div>

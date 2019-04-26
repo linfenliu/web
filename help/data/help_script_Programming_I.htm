@@ -1,0 +1,1100 @@
+<div class="markdown-body"><h1>EWSL程序设计阶段 I</h1><a name="help_script_Programming_I.expression"> </a><h2>表达式</h2>表达式是构建EWSL语句的基本单位。我们将一个表达式赋值给一个变量，或者打印这个表达式的值，或者将表达式作为参数传递给某个函数时，也就对这个表达式进行了<a target="_top" href="#help_script_Variables.evaluation">求值</a>的动作。下面是几个表达式的例子：<ol>
+	<li>算术表达式<code>x1*y1+x2*y2</code>
+	</li>
+	<li>逻辑表达式<code>()</code>
+	</li>
+	<li>数组引用表达式<code>a[1:100] .* b[2:101]</code>
+	</li>
+	<li>字符串构造表达式<code>"abc".."def"</code>
+	</li></ol><p>表达式中引用到一些运算符，分为下列几类：</p><a name="help_script_Programming_I.operator-arithmetics"> </a><div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td align="center" style="border:0px">
+				<a name="">算术运算符
+				</a>
+			</td>
+		</tr>
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center"> 算符<br />
+
+								</td>
+								<td align="center"> 意义<br />
+
+								</td>
+								<td align="center"> 备注<br />
+
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="center"> +<br />
+
+								</td>
+								<td align="center"> 加法<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> -<br />
+
+								</td>
+								<td align="center"> 减法<br />
+
+								</td>
+								<td align="center"> 二元运算符<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> -<br />
+
+								</td>
+								<td align="center"> 取负<br />
+
+								</td>
+								<td align="center"> 一元运算符<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> *<br />
+
+								</td>
+								<td align="center"> 乘法<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> /<br />
+
+								</td>
+								<td align="center"> 右除<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> ^<br />
+
+								</td>
+								<td align="center"> 指数<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> \<br />
+
+								</td>
+								<td align="center"> 左除<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> %<br />
+
+								</td>
+								<td align="center"> 取模<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> ++<br />
+
+								</td>
+								<td align="center"> 自加1<br />
+
+								</td>
+								<td rowspan="2" colspan="1" align="center"> 两侧均可放置<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> --<br />
+
+								</td>
+								<td align="center"> 自减1<br />
+
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div>  <a name="help_script_Programming_I.operator-relations"> </a><div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td align="center" style="border:0px">
+				<a name="">关系运算符
+				</a>
+			</td>
+		</tr>
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center"> 算符<br />
+
+								</td>
+								<td align="center"> 意义<br />
+
+								</td>
+								<td align="center"> 备注<br />
+
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="center"> &gt;<br />
+
+								</td>
+								<td align="center"> 大于<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> &lt;<br />
+
+								</td>
+								<td align="center"> 小于<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> &gt;=<br />
+
+								</td>
+								<td align="center"> 大于等于<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> &lt;=<br />
+
+								</td>
+								<td align="center"> 小于等于<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> ==<br />
+
+								</td>
+								<td align="center"> 等于<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> !=<br />
+
+								</td>
+								<td align="center"> 不等<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> ===<br />
+
+								</td>
+								<td align="center"> 对象等于<br />
+
+								</td>
+								<td align="center"> 两个变量引用的内存对象是否一致<br />
+
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div><strong>补充说明：</strong>关系运算不支持复数类型。  <a name="help_script_Programming_I.operator-logicals"> </a><div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td align="center" style="border:0px">
+				<a name="">逻辑运算符
+				</a>
+			</td>
+		</tr>
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center"> 算符<br />
+
+								</td>
+								<td align="center"> 意义<br />
+
+								</td>
+								<td align="center"> 备注<br />
+
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="center"> &&<br />
+
+								</td>
+								<td align="center"> 逻辑与<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  ||<br />
+
+								</td>
+								<td align="center"> 逻辑或<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> ^^<br />
+
+								</td>
+								<td align="center"> 逻辑异或<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> !<br />
+
+								</td>
+								<td align="center"> 逻辑非<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div>  <a name="help_script_Programming_I.operator-bitwises"> </a><div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td align="center" style="border:0px">
+				<a name="">位运算符
+				</a>
+			</td>
+		</tr>
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center"> 算符<br />
+
+								</td>
+								<td align="center"> 意义<br />
+
+								</td>
+								<td align="center"> 备注<br />
+
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="center"> &<br />
+
+								</td>
+								<td align="center"> 位与<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  |<br />
+
+								</td>
+								<td align="center"> 位或<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> ^<br />
+
+								</td>
+								<td align="center"> 位异或<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> ~<br />
+
+								</td>
+								<td align="center"> 反码<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> &lt;&lt;<br />
+
+								</td>
+								<td align="center"> 左移位<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> &gt;&gt;<br />
+
+								</td>
+								<td align="center"> 右移位<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div>  <p>
+	<a name="help_script_Programming_I.operator-arrays"> 
+	</a>
+	<div class="markdown-block">
+		<table width="100%">
+			<tr style="border:0px">
+				<td align="center" style="border:0px">
+					<a name="">数组运算符
+					</a>
+				</td>
+			</tr>
+			<tr style="border:0px">
+				<td style="border:0px">
+					<div class="markdown-table">
+						<table width="100%" class="markdown-table" style="border:1px">
+							<thead>
+								<tr>
+									<td align="center"> 算符<br />
+
+									</td>
+									<td align="center"> 意义<br />
+
+									</td>
+									<td align="center"> 备注<br />
+
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td align="center"> .+<br />
+
+									</td>
+									<td align="center"> 加法<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> .-<br />
+
+									</td>
+									<td align="center"> 减法<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> .*<br />
+
+									</td>
+									<td align="center"> 乘法<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> ./<br />
+
+									</td>
+									<td align="center"> 右除<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> .\<br />
+
+									</td>
+									<td align="center"> 左除<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> .^<br />
+
+									</td>
+									<td align="center"> 指数<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> []<br />
+
+									</td>
+									<td align="center"> 索引<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div></p>其他运算符还包括：<div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td align="center" style="border:0px">
+				<a name="">其他运算符
+				</a>
+			</td>
+		</tr>
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center"> 算符<br />
+
+								</td>
+								<td align="center"> 意义<br />
+
+								</td>
+								<td align="center"> 备注<br />
+
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="center"> =<br />
+
+								</td>
+								<td align="center"> 赋值<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> +=<br />
+
+								</td>
+								<td align="center"> 自增<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> -=<br />
+
+								</td>
+								<td align="center"> 自减<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> *=<br />
+
+								</td>
+								<td align="center"> 自乘<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> /=<br />
+
+								</td>
+								<td align="center"> 自右除<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> \=<br />
+
+								</td>
+								<td align="center"> 自左除<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> ^=<br />
+
+								</td>
+								<td align="center"> 自乘方<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> &=<br />
+
+								</td>
+								<td align="center"> 自位与<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  |= 
+								</td>
+								<td align="center"> 自位或<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> &lt;&lt;=<br />
+
+								</td>
+								<td align="center"> 自左移<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> &gt;&gt;=<br />
+
+								</td>
+								<td align="center"> 自右移<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> **<br />
+
+								</td>
+								<td align="center"> 函数复合<br />
+
+								</td>
+								<td align="center"> 注意不要和(^)混淆<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> ,<br />
+
+								</td>
+								<td align="center"> 逗号<br />
+
+								</td>
+								<td align="center"> 函数传参等<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> ()<br />
+
+								</td>
+								<td align="center"> 优先求值<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div>其他特殊运算符<ul>
+	<li>
+		<a target="_top" href="#help_script_Programming_I.qmark_operator">问号运算符
+		</a>，用于条件表达式，如下所示：
+	</li></ul><pre><code code-language="ewsl">?(cond,expr1,expr2)</code></pre><strong>说明：</strong>当<code>cond</code>为<code>true</code>时返回<code>expr1</code>，否则返回<code>expr2</code>。<ul>
+	<li>
+		<a target="_top" href="#help_script_Programming_I.branch">逻辑条件分支运算符
+		</a>
+	</li></ul><pre><code code-language="ewsl">judge(x,y)<br />{<br />    cond(x&lt;y)  =&gt; print("x&lt;y");<br />    cond(x==y) =&gt; print("x==y");<br />    cond(x&gt;y)  =&gt; print("x&gt;y");<br />    default    =&gt; print("impossible");<br />}</code></pre>算符遵循优先级规则：<div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td align="center" style="border:0px">
+				<a name="">对象优先级列表
+				</a>
+			</td>
+		</tr>
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center"> 优先级<br />
+
+								</td>
+								<td align="center"> 算符<br />
+
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="center"> 16<br />
+
+								</td>
+								<td align="center"> ++ -- ~ !<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 14<br />
+
+								</td>
+								<td align="center"> ^ .^<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 13<br />
+
+								</td>
+								<td align="center"> .* ./ .\ * / \<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 12<br />
+
+								</td>
+								<td align="center"> %<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 10<br />
+
+								</td>
+								<td align="center"> + -<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  9<br />
+
+								</td>
+								<td align="center"> &<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  7<br />
+
+								</td>
+								<td align="center">  | &lt;&lt; &gt;&gt; 
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  6<br />
+
+								</td>
+								<td align="center"> :<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  5<br />
+
+								</td>
+								<td align="center"> &gt; &lt; &gt;= &lt;= == != ===<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  4<br />
+
+								</td>
+								<td align="center"> &&<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  3<br />
+
+								</td>
+								<td align="center"> ^^<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  2<br />
+
+								</td>
+								<td align="center">  || **  
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  1<br />
+
+								</td>
+								<td align="center"> ,<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  0<br />
+
+								</td>
+								<td align="center"> = += -= *= /= \=  |= ^=<br />
+
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div><strong>注意：</strong>其中括号算符作为优先求值的用途，其优先级实际上比上述列表中的所有算符都高，可以用来调整表达式的解析次序。<p>
+	<a name="help_script_Programming_I.statement"> 
+	</a>
+	<h2>语句
+	</h2></p><a name="help_script_Programming_I.control_structure"> </a><h2>控制结构</h2>过程式编程的基本程序结构是三类控制结构：顺序结构、分支结构和循环结构。使用控制结构来实现对过程内变量和全局变量或者系统行为的操作。<p>
+	<a name="help_script_Programming_I.sequence"> 
+	</a>
+	<h3>顺序结构
+	</h3>所谓顺序结构就是一系列普通语句构成的语句序列，依照语句出现的先后顺序运行。下面是一个顺序式结构的例子：</p><pre><code code-language="ewsl">a = 10;<br />b = 20;<br />println("a+b=",a+b);</code></pre>有些语句的顺序可以改变而不影响程序运行的效果，但是更多的时候改变语句顺序会导致程序运行结果变化，更加严重的是出现程序运行错误（如变量没有赋值之类的情况）。<br />
+<strong>建议：</strong><ul>
+	<li>避免书写过长的程序，一段子程序（或者函数、语句块）如果显著超过一个屏幕能一次容纳的行数（大约40行-60行），会使得理解程序的效率大幅度降低。
+	</li>
+	<li>子程序内容过长时，可以使用语句块将顺序结构中的部分内容提炼出来，并且通过定义语句块内的局部变量尽量减少整个子程序上下文共享的变量。
+	</li>
+	<li>谨慎使用全局变量。
+	</li>
+	<li>谨慎调用系统资源（比如调用一些具有复杂行为的系统API），如果调用它，尽量将其控制在一个较小的局部过程环境中。
+	</li>
+	<li>输入输出行为（IO）的次序不能随意打乱。
+	</li>
+	<li>在顺序结构中涉及到的条件分支的情况下，修改程序的顺序结构时要注意判断的结果是否会影响条件。
+	</li></ul><p>
+	<a name="help_script_Programming_I.branch"> 
+	</a>
+	<h3>分支结构
+	</h3>分支结构是实现子程序功能局部跳转的重要方法。</p><a name="help_script_Programming_I.if_else"> </a><ul>
+	<li>if-else分支
+	</li></ul><code>if(...){...}else{...}</code>语法规则如下：<pre><code code-language="ewsl">if(condition)<br />{<br />    &lt;then-block&gt;<br />}else<br />{<br />    &lt;else-block&gt;<br />}</code></pre>其中<code>condition</code>是布尔值，如果为真（<code>true</code>）则跳转到<code>&lt;then-block&gt;</code>执行内部的语句块，否则跳转到<code>&lt;else-block&gt;</code>区块执行。<br />
+使用多层<code>if-else</code>嵌套时：<pre><code code-language="ewsl">if(cond1)<br />{<br />    &lt;branch-1&gt;<br />}else if(cond2)<br />{<br />    &lt;branch-2&gt;<br />}else if(cond3)<br />{<br />    &lt;branch-3&gt;<br />}else<br />{<br />    &lt;branch-others&gt;<br />}</code></pre><strong>建议：</strong><ul>
+	<li>建议不要使用复杂嵌套的<code>if-else</code>结构，可能使程序员难以理解。
+	</li>
+	<li>平行分支判断的时候，如果选择分支超过4条建议使用<code>switch-case</code>或者<code>judge-cond</code>分支。
+	</li>
+	<li>条件语句（<code>condition</code>）引入具有复杂外部行为（如赋值、调用外部过程）时必须非常谨慎小心，特别是使用<code>&amp;&amp;</code>和<code>||</code>运算符的时候要注意可能的短路逻辑问题。
+	</li></ul><p>
+	<a name="help_script_Programming_I.short_circuit_logic"> 
+	</a><blockquote><strong>短路逻辑</strong><br />
+使用逻辑运算符的时候，为了提高计算效率，当第一个项被求值并且已经决定该逻辑运算符计算结果的时候，另一个项的求值过程会被忽略的情况。例如：<code>x = 0; y==1; (x &gt;= 0 || (++y)==1</code>中的<code>y</code>的自加过程将被忽略掉。</blockquote></p><a name="help_script_Programming_I.qmark_operator"> </a><ul>
+	<li>问号表达式（三目运算符）
+	</li></ul>问号表达式是一个类似函数形式的表达式，用法如下：<pre><code code-language="ewsl">x = ?(x%2==0, x/2, x*3+1)</code></pre>例子表达的意思是：“如果<code>x</code>是偶数则将自己减半，如果是奇数则将自己乘以3再加上1”（有一个数学猜想是关于这个表达式，是否对于任何自然数都能陷入到<code>...,4,2,1,4,2,1,...</code>的循环）。<br />
+<strong>建议</strong>：<ul>
+	<li>不要在三目表达式中引入过于复杂的计算过程。
+	</li></ul><a name="help_script_Programming_I.switch_case"> </a><ul>
+	<li><code>switch-case</code>分支
+	</li></ul><code>switch-case</code>分支用于平行条件分支选择：<pre><code code-language="ewsl">switch(var)<br />{<br />    case(const-val1): &lt;stmt1&gt;<br />    case(const-val2): &lt;stmt2&gt;<br />    ...<br />    default:&lt;stmt_default&gt;<br />}</code></pre>当变量<code>var</code>的取值等于<code>const-val1</code>时，运行语句<code>&lt;stmt1&gt;</code>；当<code>var</code>取值等于<code>const-val2</code>的时候，运行语句<code>&lt;stmt2&gt;</code>，否则调用默认行为<code>&lt;stmt_default&gt;</code>。<br />
+<code>switch-case</code>分支语句要求<code>case</code>关键词后的表达式必须是普通常量，所谓普通常量是指直接的布尔值（<code>true</code>和<code>false</code>两个关键词）、整数、浮点数和字符串常量三种情况。复数、数组类型、变量是不可以作为<code>case</code>关键词后的表达式的。通常情况下我们建议仅仅使用整数和字符串两种条件下使用switch-case语句。<br />
+<strong>注意</strong>：<code>switch-case</code>分支语句的分支之间完全隔离，不需要使用<code>break</code>关键词跳出，这一点与C语言是完全不同的。<a name="help_script_Programming_I.judge_cond"> </a><ul>
+	<li><code>judge-cond</code>分支
+	</li></ul><code>judge-cond</code>分支用于解决那些需要复杂条件判断，但是不适合使用多层<code>if-else</code>也无法使用<code>switch-case</code>分支的情况。其语法规定如下：<pre><code code-language="ewsl">judge(var1,var2,...) // var1, var2, ...可以省略<br />{<br />    cond(pred1) =&gt; &lt;stmt1&gt;<br />    cond(pred2) =&gt; &lt;stmt2&gt;<br />    default     =&gt; &lt;stmt_default&gt;<br />}</code></pre>当条件<code>pred1</code>为真的时候，调用<code>&lt;stmt1&gt;</code>语句；当条件<code>pred2</code>为真的时候，调用<code>&lt;stmt2&gt;</code>语句；如果都不匹配，则调用默认的<code>&lt;stmt_default&gt;</code>。<br />
+<p>
+	<strong>注意
+	</strong>：<code>judge-cond</code>分支语句和<code>switch-case</code>类似，也不需要使用<code>break</code>关键词跳出，这一点与C语言不通。</p><p>
+	<a name="help_script_Programming_I.loop"> 
+	</a>
+	<h3>循环结构
+	</h3>循环结构是一种重复运行一段语句块的程序控制方式。EWSL支持for循环、条件循环方式定义循环结构程序。</p><a name="help_script_Programming_I.for_loop"> </a><h4><code>for</code>循环</h4>for循环对指定语句块进行循环执行，条件不满足时退出循环。计数器式的for循环最为经典：<pre><code code-language="ewsl">for(local i=0; i&lt;10; ++i)<br />{<br />    for(local j=0;j&lt;i+1;++j)<br />    {<br />        print("*");<br />    }<br />    print("\n");<br />}</code></pre>打印的效果如下：<pre><code>*<br />**<br />***<br />****<br />*****<br />******<br />*******<br />********<br />*********<br />**********</code></pre><p><blockquote><code>for</code>循环常用语数组、变量表的处理。</blockquote></p><h4><code>for_each</code>基于键值对的循环</h4>遍历变量表时，使用<code>for_each</code>会比普通的<code>for</code>循环更加方便：<pre><code code-language="ewsl">t = table{<br />    x:1;<br />    y:2;<br />    z:3;<br />    u:4;<br />    v:5;<br />    w:6;<br />};<br /><br />for_each(k,v in t)<br />{<br />    print(k,":",v,"\n");<br />}</code></pre><code>for_each</code>后的括号中，<code>k</code>（可以是任何有效符号名）表示键（key），而<code>v</code>表示该变量表中与键值相对应的项目值，即形成了打印的效果如下：<pre><code>x:1<br />y:2<br />z:3<br />u:4<br />v:5<br />w:6</code></pre><p>
+	<strong>说明：
+	</strong><code>for_each</code>中<code>k,</code>可以省略，遍历时只抓取元素的数值<code>v</code>。</p><a name="help_script_Programming_I.conditional_loop"> </a><h4>while条件循环</h4>使用while条件循环有两种方式，一种是前置条件模式，一种是后置条件模式<code>do-while</code>：<ul>
+	<li>前置条件：当<code>cond</code>条件满足时循环，否则退出，且进入循环前判断一次。
+	</li></ul><pre><code code-language="ewsl">while(cond)<br />{<br />    &lt;loop-stmt&gt;<br />}</code></pre><ul>
+	<li>后置条件：当<code>cond</code>条件满足时继续下一次循环，否则退出，无论是否满足条件都至少运行循环体一次。
+	</li></ul><pre><code code-language="ewsl">do<br />{<br />    &lt;loop-stmt&gt;<br />}while(cond)</code></pre><p><blockquote>while循环体中用<code>break</code>语句可以跳出循环。</blockquote></p><a name="help_script_Programming_I.function"> </a><h2>函数</h2>EWSL允许用户使用和定义函数。<h3>函数调用</h3>函数调用使用小括号<code>()</code>，括号中的是函数的传入参数。例如，我们可以调用数学库中的<code>linspace</code>函数和三角函数<code>math.cosd</code>、<code>math.sind</code>，这三个函数可以在全局名字空间直接使用，而不需要带上库名<code>math</code>作为前缀：<pre><code code-language="ewsl">ang = linspace(0,360,37); // 创建角度列表[0,10,20,...360]一共37个角度，均匀分布<br />pos = [];<br />for(i=0; i&lt;37; ++i)<br />{<br />    pos[i] = table{x:cosd(ang[i]);y:sind(ang[i])};<br />	print("pos[", i, "]: ", pos[i].x, ", ", pos[i].y, "\n"); // 打印二维坐标点<br />}</code></pre>上面一段程序生成了单位圆上37个等角度均分点（其中0度和360重合）的二维坐标。打印结果如下：<pre><code>pos[0]: 1, 0<br />pos[1]: 0.984808, 0.173648<br />pos[2]: 0.939693, 0.34202<br />pos[3]: 0.866025, 0.5<br />pos[4]: 0.766044, 0.642788<br />pos[5]: 0.642788, 0.766044<br />pos[6]: 0.5, 0.866025<br />pos[7]: 0.34202, 0.939693<br />pos[8]: 0.173648, 0.984808<br />pos[9]: 0, 1<br />pos[10]: -0.173648, 0.984808<br />pos[11]: -0.34202, 0.939693<br />pos[12]: -0.5, 0.866025<br />pos[13]: -0.642788, 0.766044<br />pos[14]: -0.766044, 0.642788<br />pos[15]: -0.866025, 0.5<br />pos[16]: -0.939693, 0.34202<br />pos[17]: -0.984808, 0.173648<br />pos[18]: -1, 0<br />pos[19]: -0.984808, -0.173648<br />pos[20]: -0.939693, -0.34202<br />pos[21]: -0.866025, -0.5<br />pos[22]: -0.766044, -0.642788<br />pos[23]: -0.642788, -0.766044<br />pos[24]: -0.5, -0.866025<br />pos[25]: -0.34202, -0.939693<br />pos[26]: -0.173648, -0.984808<br />pos[27]: 0, -1<br />pos[28]: 0.173648, -0.984808<br />pos[29]: 0.34202, -0.939693<br />pos[30]: 0.5, -0.866025<br />pos[31]: 0.642788, -0.766044<br />pos[32]: 0.766044, -0.642788<br />pos[33]: 0.866025, -0.5<br />pos[34]: 0.939693, -0.34202<br />pos[35]: 0.984808, -0.173648<br />pos[36]: 1, 0</code></pre><blockquote>提示：可以尝试使用弧度制和弧度三角函数<code>sin</code>、<code>cos</code>编写一个类似的程序，看看结果有什么差别。</blockquote><p>
+	<h3>函数的定义
+	</h3>EWSL允许程序员在代码中直接定义函数。<br />
+
+	<ul>
+		<li>直接定义函数，使用<code>def</code>或者<code>function</code>关键词
+		</li>
+	</ul><blockquote><code>def</code>关键词和<code>function</code>关键词是等价互换的</blockquote>
+	<ul>
+		<li>使用<code>@</code>替换<code>function</code>或者<code>def</code>关键词产生相同的效果，更加适合简短的匿名函数定义。
+		</li>
+	</ul><blockquote><code>@(x){return x+1;}</code>与<code>function(x){return x+1;}</code>是等价的。</blockquote></p><pre><code code-language="ewsl">function f(x,y)<br />{<br />    return sqrt(x^2+y^2);<br />}</code></pre><p>上述代码定义了一个计算二维坐标<code>(x,y)</code>距离原点<code>(0,0)</code>的欧式距离$r=\sqrt{x^2+y^2}$的函数。<br />
+</p><ul>
+	<li>函数像值一样可以被复制给一个变量，也可以在变量直接“复制”
+	</li></ul><pre><code code-language="ewsl">local myfunc = function(x,sigma)<br />{<br />    return exp(-(x/sigma)^2);<br />}<br />local myfunc1 = myfunc;</code></pre>上述代码定义了一个计算标准高斯分布$f(x,\sigma)=\exp(-(\frac{x}{\sigma})^2)$的函数，并且将其当作值赋值给了变量<code>myfunc</code>；然后这个函数作为值又拷贝给了<code>myfunc1</code>。<p><blockquote>函数的拷贝并没有制作一份内存上的副本，而仅仅是通过一个引用关系共享一个函数实体。在例子中<code>myfunc</code>和<code>myfunc1</code>所指的函数实际上在内存里是同一份。</blockquote></p><strong>扩展阅读：</strong><ul>
+	<li>关于函数式编程，请阅读
+		<a target="_top" href="#help_script_Programming_II.functional_programming">函数式编程
+		</a>相关内容。
+	</li>
+	<li>内置函数清阅读
+		<a target="_top" href="#help_script_Specifications">函数说明
+		</a>相关内容。
+	</li></ul><a name="help_script_Programming_I.string"> </a><h2>字符串处理</h2>查看关于<a target="_top" href="#help_script_Types.string">字符串类型</a>的帮助信息。<p>
+	<ul>
+		<li>字符串的基本定义方法
+		</li>
+	</ul>在EWSL中直接定义字符串的方法是使用双引号<code>"..."</code>或者单引号<code>'...'</code>将字符串的内容包含起来进行表示。在这种经典定义中，需要使用一些转义字符串来定义那些特殊的符号，例如用<code>\t</code>表示制表位等，具体的包括了：</p><div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td align="center" style="border:0px">
+				<a name="cll">table 1: 转义字符
+				</a>
+			</td>
+		</tr>
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center"> 转义字符<br />
+
+								</td>
+								<td align="center"> 意义<br />
+
+								</td>
+								<td align="center"> 备注<br />
+
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="center"> \r<br />
+
+								</td>
+								<td align="center"> 回车<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> \n<br />
+
+								</td>
+								<td align="center"> 换行<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> \t<br />
+
+								</td>
+								<td align="center"> 制表位<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> \f<br />
+
+								</td>
+								<td align="center"> 换页符号<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> \b<br />
+
+								</td>
+								<td align="center"> 退格<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> \s<br />
+
+								</td>
+								<td align="center"> 不可见空白<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> \\<br />
+
+								</td>
+								<td align="center"> 反斜杠(\)<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> \'<br />
+
+								</td>
+								<td align="center"> 单引号<br />
+
+								</td>
+								<td align="center"> 双引号字符串中可以不转义<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> \"<br />
+
+								</td>
+								<td align="center"> 双引号<br />
+
+								</td>
+								<td align="center"> 单引号字符串中可以不转义<br />
+
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div><ul>
+	<li>多行字符串和免转义特性
+	</li></ul><blockquote>使用经典方式定义字符串不适合书写源代码的附加文档、内嵌程序字符串，因为这些内容里包含需要过多的转义字符，并且往往需要多行才能够把内容表达完整。</blockquote>使用连续三个单引号(```)或者连续三个双引号(""")作为多行字符串的开头，同样的连续字符作为配对的结束即可表达多行免转义字符穿。免转义是绝对的，因此如果在这种多行字符串块中要使用连续单引号或者连续双引号时是不行的，如果需要在内容中书写连续单引好，则使用连续双引号作为字符串标识符（定界符）；反之，则使用连续单引号作为字符串标识符。<ul>
+	<li>字符和子串的索引
+	</li></ul>使用<code>[]</code>算符可以获取字符串的指定位置的字符或者子串，例如：<pre><code code-language="ewsl">a = "abcdefgh";<br />b = a[2:4];     // b == "cde"<br />c = a[end];     // c == "h"</code></pre>字符串可以像数组一样使用子串的左值引用，即子串赋值，例如：<pre><code code-language="ewsl">a = "abcdefgh";<br />a[[1,3,5]] = "123"; // change a to "a1c2e3gh"</code></pre><ul>
+	<li>字符串的连接
+	</li></ul>使用<code>..</code>运算符作为字符串的连接，该算符将字符串按照从左到右的次序连接起来，对于其他非字符串类型则先尝试转换为字符串后再连接起来。例如：<pre><code code-language="ewsl">a = [];<br />for(local i=0; i&lt;10; ++i)<br />{<br />    a.push("x_"..i.." = "..(i^2)..";");<br />}</code></pre><p>上面的程序构造了10个赋值语句的字面字符串（诸如<code>"x_0 = 0;"</code>或者<code>x_5 = 25;</code>）。</p><p>
+	<a name="help_script_Programming_I.compilation_and_interpretation"> 
+	</a>
+	<h2>程序的编译和解释
+	</h2></p><p>
+	<a name="help_script_Programming_I.module"> 
+	</a>
+	<h2>模块的定义和使用
+	</h2></p></div>

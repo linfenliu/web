@@ -1,0 +1,538 @@
+<div class="markdown-body"><h1>天线阵模式（偶极子天线阵）教学案例</h1><blockquote><ul><li><a href="#help_case_teach_AntennaArray_DipoleArray.header_1">1. 概述</a></li><li><a href="#help_case_teach_AntennaArray_DipoleArray.header_2">2. 设置计算模式及参数</a></li><li><a href="#help_case_teach_AntennaArray_DipoleArray.header_3">3. 建立模型</a></li><li><a href="#help_case_teach_AntennaArray_DipoleArray.header_4">4. 修改计算模式参数设置</a></li><li><a href="#help_case_teach_AntennaArray_DipoleArray.header_5">5. 设置网格</a></li><li><a href="#help_case_teach_AntennaArray_DipoleArray.header_6">6. 启动计算</a></li><li><a href="#help_case_teach_AntennaArray_DipoleArray.header_7">7. 查看计算结果</a></li></ul></blockquote><br /><a name="help_case_teach_AntennaArray_DipoleArray.header_1">
+	<h1>1. 概述
+	</h1></a><p>本案例使用了 “ 天线阵（快速扫角）” 计算模式计算偶极子天线阵的辐射特性，该计算模式计算相控阵天线阵列在指定频率下，不同发射角的方向图及相关结果，可一次计算完成多个角度扫描。目前，电大精细结构以及相控阵多角度扫描是制约天线阵仿真设计的核心难点。
+	<strong>EastWave
+	</strong> 针对国内外客户的特殊需求，独创了 “ 天线阵（快速扫角）” 计算模式，在保证精度的情况下 “ 快速地 ” 计算大中型天线阵体系的不同扫描角度的方向图，速度可比传统算法快 $10$ 倍以上，在大型和超大型（几百倍波长）天线阵上独具优势。</p><p>
+	<strong>EastWave
+	</strong> 软件天线阵具有：</p><ul>
+	<li>独特的天线阵计算模式
+	</li></ul><ul>
+	<li>具有快速 “ 创建阵列模型 ” 功能，尤其对上千天线阵，一分钟建模，操作快速简单
+	</li></ul><ul>
+	<li>具有独特的 “ 阵列馈源 ” 设置功能，能够根据阵列周期自动将 “ 基源 ” 扩展成 “ 阵列馈源 ”
+	</li></ul><p>
+	<ul>
+		<li>分局相控阵发射角快速自动设置 “ 阵列馈源 ” 上的相位分布，不用重复添加可一次计算多角度的方向图
+		</li>
+	</ul></p><p>本案例使用“ 天线阵（快速扫角）” 计算模式计算偶极子天线阵的辐射特性，本案例计算频率 $10$ 
+	<strong>GHz
+	</strong> 下，$\phi$ 为 $ 0^\circ $ ，$\theta$ 为 $ 0^\circ $~$ 30^\circ $ ，间隔 $ 5^\circ $ 的天线阵的方向图。</p><div align="center">
+	<div class="markdown-block">
+		<table width="100%" style="border:0px">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<a name=" "><img src="image/sample/array/dipole_array/whole.png" />
+					</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div align="left">
+		<p>$21$ $\times$ $3$ 偶极子天线阵由 $63$ 个偶极子天线单元组成，单个偶极子天线的工作频率为 $10$ 
+			<strong>GHz
+			</strong> ，偶极子天线阵元长度约等于半个波长，宽度等于 $0.5$ 
+			<strong>mm
+			</strong>，材料为 
+			<strong>pec
+			</strong> ，阵子沿Y轴方向，偶极子下面方块是金属底板，材料为
+			<strong>pec
+			</strong>。在 
+			<strong>FDTD
+			</strong> 仿真中，用细金属棒连通偶极子天线两金属臂，使用集总端口馈电。
+		</p>案例仿真流程如下：
+		<p>
+			<ul>
+				<li>设置计算模式及参数
+				</li>
+				<li>建立模型
+				</li>
+				<li>修改计算模式参数设置
+				</li>
+				<li>设置网格
+				</li>
+				<li>启动计算
+				</li>
+				<li>查看计算结果
+				</li>
+			</ul>
+		</p>
+		<a name="help_case_teach_AntennaArray_DipoleArray.header_2">
+			<h1>2. 设置计算模式及参数
+			</h1>
+		</a>
+		<h2>选择计算模式
+		</h2>
+		<p>由菜单选文件进入 “ 向导 ” 界面，选择 “ 天线阵（快速扫角）模式 ”。
+		</p>
+		<div align="center">
+			<div class="markdown-block">
+				<table width="100%" style="border:0px">
+					<tr style="border:0px">
+						<td style="border:0px">
+							<a name=" "><img src="image/sample/temp.png" />
+							</a>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div align="left">
+				<h2>设置模式参数
+				</h2>
+				<p>进入向导之后，频率为 $10$ 
+					<strong>GHz
+					</strong>，其他一些参数不确定，先不修改整个模式参数，以默认值为主，等整个阵列建立完成之后再修改各个参数。
+				</p>
+				<div align="center">
+					<div class="markdown-block">
+						<table width="100%" style="border:0px">
+							<tr style="border:0px">
+								<td style="border:0px">
+									<a name=" "><img src="image/sample/rcs/patch/workmode_setup.png" />
+									</a>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div align="left">
+						<h2>查看向导报告
+						</h2>
+						<p>“ 天线阵（快速扫角）” 模式里，默认长度单位设置为 
+							<strong>mm
+							</strong>，时间单位设置为自动关联，频率单位设置为 
+							<strong>GHz
+							</strong> 。背景材料为空气，其他参数是默认值，点击“完成”即可开始建模。
+						</p>
+						<p>
+							<strong>注意
+							</strong>：“ 时间单位 ” 默认和长度单位自动关联，高级用户可自己设置来控制 
+							<strong>FDTD
+							</strong> 仿真对应的真实时间尺度。
+						</p>
+						<div align="center">
+							<div class="markdown-block">
+								<table width="100%" style="border:0px">
+									<tr style="border:0px">
+										<td style="border:0px">
+											<a name=" "><img src="image/sample/temp.png" />
+											</a>
+										</td>
+									</tr>
+								</table>
+							</div>
+							<div align="left">
+								<h2>设置文件名和存储路径
+								</h2>
+								<p>进入 “设置文件名和存储路径” 对话框，选择存储路径，输入文件名。
+								</p>
+								<div align="center">
+									<div class="markdown-block">
+										<table width="100%" style="border:0px">
+											<tr style="border:0px">
+												<td style="border:0px">
+													<a name=" "><img src="image/sample/array/dipole_array/save.png" />
+													</a>
+												</td>
+											</tr>
+										</table>
+									</div>
+									<div align="left">
+										<a name="help_case_teach_AntennaArray_DipoleArray.header_3">
+											<h1>3. 建立模型
+											</h1>
+										</a>
+										<h2>定义常用变量
+										</h2>
+										<p>为了方便参数调节和优化，建议将建模中用到的参数尽量在变量表中定义：
+										</p>
+										<div align="center">
+											<div class="markdown-block">
+												<table width="100%" style="border:0px">
+													<tr style="border:0px">
+														<td style="border:0px">
+															<a name=" "><img src="image/sample/array/dipole_array/var.png" />
+															</a>
+														</td>
+													</tr>
+												</table>
+											</div>
+											<div align="left">
+												<h2>建立偶极子天线单元
+												</h2>
+												<p>本案例通过“圆柱体”来演示如何建立模型，可以采用如下几种操作方式：
+												</p>
+												<ul>
+													<li>直接点击次模型工具条 “圆柱体” 图标
+													</li>
+												</ul>
+												<ul>
+													<li>点击 “新建物体” 菜单，选择 “创建柱体”
+													</li>
+												</ul>
+												<p>
+													<ul>
+														<li>点击 “工程管理窗口” 下的 “模型” ，选择类型 “添加”，选择“添加元件”
+														</li>
+													</ul>
+												</p>
+												<p>一根直导线命名为 
+													<strong>Ligh
+													</strong>，材料选择为 
+													<strong>pec
+													</strong> ，如下图:
+												</p>
+												<div align="center">
+													<div class="markdown-block">
+														<table width="100%" style="border:0px">
+															<tr style="border:0px">
+																<td style="border:0px">
+																	<a name=" "><img src="image/sample/array/dipole_array/light_s.png" />
+																	</a>
+																</td>
+															</tr>
+														</table>
+													</div>
+													<div align="left">
+														<div align="center">
+															<div class="markdown-block">
+																<table width="100%" style="border:0px">
+																	<tr style="border:0px">
+																		<td style="border:0px">
+																			<a name=" "><img src="image/sample/array/dipole_array/light_c.png" />
+																			</a>
+																		</td>
+																	</tr>
+																</table>
+															</div>
+															<div align="left">
+																<p>按同样的方式，建模另外一根直导线，命名为 
+																	<strong>Right
+																	</strong>，材料选择为
+																	<strong>pec
+																	</strong>，如下图：
+																</p>
+																<div align="center">
+																	<div class="markdown-block">
+																		<table width="100%" style="border:0px">
+																			<tr style="border:0px">
+																				<td style="border:0px">
+																					<a name=" "><img src="image/sample/array/dipole_array/right_s.png" />
+																					</a>
+																				</td>
+																			</tr>
+																		</table>
+																	</div>
+																	<div align="left">
+																		<div align="center">
+																			<div class="markdown-block">
+																				<table width="100%" style="border:0px">
+																					<tr style="border:0px">
+																						<td style="border:0px">
+																							<a name=" "><img src="image/sample/array/dipole_array/right_c.png" />
+																							</a>
+																						</td>
+																					</tr>
+																				</table>
+																			</div>
+																			<div align="left">
+																				<p>通过 “ 创建圆柱体 ” 建立偶极子天线两个直导线中间两端点之间的馈线，命名 
+																					<strong>Kuixian
+																					</strong>，材料选择为 
+																					<strong>pec
+																					</strong> 如下图：
+																				</p>
+																				<div align="center">
+																					<div class="markdown-block">
+																						<table width="100%" style="border:0px">
+																							<tr style="border:0px">
+																								<td style="border:0px">
+																									<a name=" "><img src="image/sample/array/dipole_array/kuixian_s.png" />
+																									</a>
+																								</td>
+																							</tr>
+																						</table>
+																					</div>
+																					<div align="left">
+																						<div align="center">
+																							<div class="markdown-block">
+																								<table width="100%" style="border:0px">
+																									<tr style="border:0px">
+																										<td style="border:0px">
+																											<a name=" "><img src="image/sample/array/dipole_array/kuixian_c.png" />
+																											</a>
+																										</td>
+																									</tr>
+																								</table>
+																							</div>
+																							<div align="left">
+																								<h2>打包天线阵列
+																								</h2>
+																								<p>完成单个天线建模后，建议将组成天线的所有物体打包成组。按住键盘 “ Ctrl ” 键，鼠标单击选中 
+																									<strong>Light
+																									</strong>，
+																									<strong>Right
+																									</strong>，
+																									<strong>Kuixian
+																									</strong> 三个物体，右键选 “ 组合 ”，设置完成结果如图：
+																								</p>
+																								<div align="center">
+																									<div class="markdown-block">
+																										<table width="100%" style="border:0px">
+																											<tr style="border:0px">
+																												<td style="border:0px">
+																													<a name=" "><img src="image/sample/array/dipole_array/zuhe.png" />
+																													</a>
+																												</td>
+																											</tr>
+																										</table>
+																									</div>
+																									<div align="left">
+																										<div align="center">
+																											<div class="markdown-block">
+																												<table width="100%" style="border:0px">
+																													<tr style="border:0px">
+																														<td style="border:0px">
+																															<a name=" "><img src="image/sample/array/dipole_array/single_s.png" />
+																															</a>
+																														</td>
+																													</tr>
+																												</table>
+																											</div>
+																											<div align="left">
+																												<h2>创建阵列模型
+																												</h2>
+																												<p>右击 “模型” 菜单，选择 “添加” 而后选择 “添加阵列” 弹出对话框，并进行如下设置：
+																												</p>
+																												<div align="center">
+																													<div class="markdown-block">
+																														<table width="100%" style="border:0px">
+																															<tr style="border:0px">
+																																<td style="border:0px">
+																																	<a name=" "><img src="image/sample/array/dipole_array/expr.png" />
+																																	</a>
+																																</td>
+																															</tr>
+																														</table>
+																													</div>
+																													<div align="left">
+																														<p>创建完成的阵列模型如下：
+																														</p>
+																														<div align="center">
+																															<div class="markdown-block">
+																																<table width="100%" style="border:0px">
+																																	<tr style="border:0px">
+																																		<td style="border:0px">
+																																			<a name=" "><img src="image/sample/array/dipole_array/array.png" />
+																																			</a>
+																																		</td>
+																																	</tr>
+																																</table>
+																															</div>
+																															<div align="left">
+																																<h2>创建金属底板
+																																</h2>
+																																<p>在 “模型” 窗口， 选择 “模型”，右击“添加”，选择 “添加元件” 建立偶极子天线阵列下面的金属底板，命名为 
+																																	<strong>Bd
+																																	</strong>，材料选择为 
+																																	<strong>pec
+																																	</strong> ，如下图:
+																																</p>
+																																<div align="center">
+																																	<div class="markdown-block">
+																																		<table width="100%" style="border:0px">
+																																			<tr style="border:0px">
+																																				<td style="border:0px">
+																																					<a name=" "><img src="image/sample/array/dipole_array/bd_s.png" />
+																																					</a>
+																																				</td>
+																																			</tr>
+																																		</table>
+																																	</div>
+																																	<div align="left">
+																																		<div align="center">
+																																			<div class="markdown-block">
+																																				<table width="100%" style="border:0px">
+																																					<tr style="border:0px">
+																																						<td style="border:0px">
+																																							<a name=" "><img src="image/sample/array/dipole_array/bd_c.png" />
+																																							</a>
+																																						</td>
+																																					</tr>
+																																				</table>
+																																			</div>
+																																			<div align="left">
+																																				<p>模型完成后，如下图所示：
+																																				</p>
+																																				<div align="center">
+																																					<div class="markdown-block">
+																																						<table width="100%" style="border:0px">
+																																							<tr style="border:0px">
+																																								<td style="border:0px">
+																																									<a name=" "><img src="image/sample/array/dipole_array/whole.png" />
+																																									</a>
+																																								</td>
+																																							</tr>
+																																						</table>
+																																					</div>
+																																					<div align="left">
+																																						<a name="help_case_teach_AntennaArray_DipoleArray.header_4">
+																																							<h1>4. 修改计算模式参数设置
+																																							</h1>
+																																						</a>
+																																						<p>
+																																							<h2>修改模式参数
+																																							</h2>
+																																						</p>
+																																						<p>
+																																							<h2>模型切面查看
+																																							</h2>
+																																						</p>
+																																						<a name="help_case_teach_AntennaArray_DipoleArray.header_5">
+																																							<h1>5. 设置网格
+																																							</h1>
+																																						</a>
+																																						<p>使用 
+																																							<strong>FDTD
+																																							</strong> 方法仿真，一般要求网格的精度至少为关心频率对应波长的 
+																																							<strong>1/15
+																																							</strong> 以上，同时还要求网格能尽量识别模型的几何细节。一般情况下，默认选择“智能网格”，
+																																							<strong>EastWave
+																																							</strong> 会自动根据用户设置的工程频率范围划分网格，用户可以简单选择不同的网格精度即可完成划分。
+																																						</p>用户也可以自定义网格，可以控制每个维度的计算范围和网格数，并可以修改仿真时间步长和总时间步长。对于有特别精细结构（比如 
+																																						<strong>1/100
+																																						</strong> 波长以下）的模型，网格往往需要特别处理，
+																																						<strong>EastWave
+																																						</strong> 提供共形网格、非均匀网格、指定网格面、指定网格区域等高级控制手段，详细请参看 
+																																						<strong>EastWave
+																																						</strong> 帮助手册网格设置部分，或咨询 
+																																						<strong>EastWave
+																																						</strong> 工程师。
+																																						<h2>设置非均匀网格策略
+																																						</h2>
+																																						<p>网格精度可以通过如下两种方式设置修改：
+																																						</p>
+																																						<ul>
+																																							<li>“求解器” 菜单下的 “设置网格”
+																																							</li>
+																																						</ul>
+																																						<p>
+																																							<ul>
+																																								<li>“模型”窗口下 “模板” 选项，双击 “网格” 选项即可设置网格
+																																								</li>
+																																							</ul>
+																																						</p>
+																																						<p>选择 “非均匀网格” 、开启“共形网格”进行计算设置的对话框如下：
+																																						</p>
+																																						<div align="center">
+																																							<div class="markdown-block">
+																																								<table width="100%" style="border:0px">
+																																									<tr style="border:0px">
+																																										<td style="border:0px">
+																																											<a name=" "><img src="image/sample/array/dipole_array/meshsetting1.png" />
+																																											</a>
+																																										</td>
+																																									</tr>
+																																								</table>
+																																							</div>
+																																							<div align="left">
+																																								<div align="center">
+																																									<div class="markdown-block">
+																																										<table width="100%" style="border:0px">
+																																											<tr style="border:0px">
+																																												<td style="border:0px">
+																																													<a name=" "><img src="image/sample/array/dipole_array/meshsetting2.png" />
+																																													</a>
+																																												</td>
+																																											</tr>
+																																										</table>
+																																									</div>
+																																									<div align="left">
+																																										<h2>网格剖分检查
+																																										</h2>
+																																										<p>网格精度设置完后，启动计算前可预览网格划分情况，点击图标可得：
+																																										</p>
+																																										<div align="center">
+																																											<div class="markdown-block">
+																																												<table width="100%" style="border:0px">
+																																													<tr style="border:0px">
+																																														<td style="border:0px">
+																																															<a name=" "><img src="image/sample/array/dipole_array/grid.png" />
+																																															</a>
+																																														</td>
+																																													</tr>
+																																												</table>
+																																											</div>
+																																											<div align="left">
+																																												<a name="help_case_teach_AntennaArray_DipoleArray.header_6">
+																																													<h1>6. 启动计算
+																																													</h1>
+																																												</a>点击工具条中的 “运行” 图标，开始计算。计算开始后，消息窗口给出提示/警告/报错信息，计算任务管理窗口给出计算进度并且可右键管理任务。双击指定的计算任务或右键打开观察器以观察电磁波入射到物体上的实时变化情况。
+																																												<h2>消息窗口
+																																												</h2>计算开始和进行过程中，右下角的消息窗口显示出计算初始化的状态。
+																																												<h2>计算进度
+																																												</h2>在界面下方消息窗口中可以观察计算任务的完成情况。
+																																												<h2>观察实时场
+																																												</h2>
+																																												<p>点击观察实时场图标，可以观察电磁波的散射过程。
+																																												</p>
+																																												<a name="help_case_teach_AntennaArray_DipoleArray.header_7">
+																																													<h1>7. 查看计算结果
+																																													</h1>
+																																												</a>计算完成后，在 “工作空间” 生成 “.ewd” 结果文件。
+																																												<p>透射/反射率结果图如下:
+																																												</p>
+																																												<div align="center">
+																																													<div class="markdown-block">
+																																														<table width="100%" style="border:0px">
+																																															<tr style="border:0px">
+																																																<td style="border:0px">
+																																																	<a name=" "><img src="image/sample/tr/result_tr.png" />
+																																																	</a>
+																																																</td>
+																																															</tr>
+																																														</table>
+																																													</div>
+																																													<div align="left" />
+																																												</div>
+																																											</div>
+																																										</div>
+																																									</div>
+																																								</div>
+																																							</div>
+																																						</div>
+																																					</div>
+																																				</div>
+																																			</div>
+																																		</div>
+																																	</div>
+																																</div>
+																															</div>
+																														</div>
+																													</div>
+																												</div>
+																											</div>
+																										</div>
+																									</div>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div></div></div>

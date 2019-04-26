@@ -1,0 +1,254 @@
+<div class="markdown-body"><h1>集总端口</h1>在天线和微波器件的仿真中时常会用到集总端口，在FDTD仿真中集总端口尺度假定为远小于波长，其和电磁场间的相互响应只考虑在集总所在位置的一个电网格上。EastWave中集总端口可以是有源的（以电流源或电压源给出）或无源的，集总端口的电路主要为串联或并联RCL电路，以并联RCL电路的电压源集总端口为例，其模型如下图：<div class="markdown-block">
+	<table width="100%" style="border:0px">
+		<tr style="border:0px">
+			<td style="border:0px">
+				<a name="help_model_LumpedPort.atf"><img src="image/lumpedport/model.png" />
+				</a>
+			</td>
+		</tr>
+	</table></div><div class="markdown-warning"><p>&nbsp;&nbsp;注意</p>集总端口朝向为全局坐标轴正方向（负指向正），例如一个朝向x轴正方向发射的正电压信号的时候，端口会在端口上馈出一个正的Ex值；反之，如果外场输入一个Ex为负值，则集总端口接收到的电压信号为负。</div>集总端口参数设置窗口如下图所示：<div class="markdown-block">
+	<table width="100%" style="border:0px">
+		<tr style="border:0px">
+			<td style="border:0px">
+				<a name="help_model_LumpedPort.atf"><img src="image/lumpedport/interface.png" />
+				</a>
+			</td>
+		</tr>
+	</table></div><br />具体参数含义如下：<div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td align="center" style="border:0px">
+				<a name="">集总端口参数
+				</a>
+			</td>
+		</tr>
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td rowspan="1" colspan="2" align="center"> 参数名称<br />
+
+								</td>
+								<td align="center"> 参数说明<br />
+
+								</td>
+								<td align="center"> 备注<br />
+
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td rowspan="1" colspan="2" align="center"> 位置<br />
+
+								</td>
+								<td align="center"> 指定集总端口的中心位置<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="2" align="center"> 方向<br />
+
+								</td>
+								<td align="center"> 指定集总端口的方向<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="2" align="center"> 反转<br />
+
+								</td>
+								<td align="center"> 反转向集总端口馈入电压或电流的方向<br />
+
+								</td>
+								<td align="center">   等价于直接在馈入信号幅度前乘以-1 
+								</td>
+							</tr>
+							<tr>
+								<td rowspan="6" colspan="1" align="center"> RCL参数 
+								</td>
+								<td align="center"> 电路连接 
+								</td>
+								<td align="center"> 集总端口内电路的类型 
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> R<br />
+
+								</td>
+								<td align="center">    集总端口电路内电阻值
+								</td>
+								<td align="center">  
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> C<br />
+
+								</td>
+								<td align="center">    集总端口电路内电容值
+								</td>
+								<td align="center">  
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> L<br />
+
+								</td>
+								<td align="center">    集总端口电路内电感值
+								</td>
+								<td align="center">  
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  馈电类型<br />
+
+								</td>
+								<td align="center">  有源集总端口的类型 
+								</td>
+								<td align="center"> 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 材料<br />
+
+								</td>
+								<td align="center">    集总端口所在位置的材料类型 
+								</td>
+								<td align="center"> 暂时不考虑材料除电导率以外的色散部分性质
+								</td>
+							</tr>
+							<tr>
+								<td rowspan="3" colspan="1" align="center"> 激励 
+								</td>
+								<td align="center"> 信号 
+								</td>
+								<td align="center"> 集总端口的馈入信号 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 强度<br />
+
+								</td>
+								<td align="center">馈入信号的强度 
+								</td>
+								<td align="center">  
+								</td>
+							</tr>
+							<tr>
+								<td align="center">延迟
+								</td>
+								<td align="center">   馈入信号的相位延迟
+								</td>
+								<td align="center"> 
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div><div class="markdown-warning"><p>&nbsp;&nbsp;注意</p>集总端口在进行旋转操作后，其方向会发生变化，
+	<strong>用户必须保证集总端口方向在经过旋转操作后仍然为xyz方向之一
+	</strong>。</div>集总端口的输出结果入下:<div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td align="center" style="border:0px">
+				<a name="">集总端口输出
+				</a>
+			</td>
+		</tr>
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td rowspan="1" colspan="2" align="center">结果名称
+								</td>
+								<td align="center"> 结果说明 
+								</td>
+								<td align="center"> 备注
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td rowspan="3" colspan="1" align="center">RCL参数 
+								</td>
+								<td align="center"> R<br />
+
+								</td>
+								<td align="center">    集总端口电路内电阻值
+								</td>
+								<td align="center">  
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> C<br />
+
+								</td>
+								<td align="center">    集总端口电路内电容值
+								</td>
+								<td align="center">  
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> L<br />
+
+								</td>
+								<td align="center">    集总端口电路内电感值
+								</td>
+								<td align="center">  
+								</td>
+							</tr>
+							<tr>
+								<td rowspan="2" colspan="1" align="center"> 馈入信号 
+								</td>
+								<td align="center">Vs_by_time
+								</td>
+								<td align="center"> 馈入端口的电压信号
+								</td>
+								<td align="center"> 馈电类型为电压源时有值
+								</td>
+							</tr>
+							<tr>
+								<td align="center">Is_by_time
+								</td>
+								<td align="center"> 馈入端口的电流信号
+								</td>
+								<td align="center"> 馈电类型为电流源时有值
+								</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="2" align="center"> V_by_time
+								</td>
+								<td align="center"> 输出电压信号 
+								</td>
+								<td align="center"> 
+								</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="2" align="center"> I_by_time
+								</td>
+								<td align="center"> 输出电流信号 
+								</td>
+								<td align="center"> 
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div></div>

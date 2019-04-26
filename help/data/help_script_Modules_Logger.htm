@@ -1,0 +1,24 @@
+<div class="markdown-body"><h1>日志库</h1><p>脚本语言对日志功能的支持。使用<code>logger</code>可以查询日志库的函数，可以阅读
+	<a target="_top" href="#help_script_Specification_Module_Logger">日志库函数表
+	</a>。<br />
+</p><h2>运行时环境中的日志</h2><p>在一个独立的脚本运行时环境中，都内置了一个小型日志系统。用户可以设定当前运行时环境的日志输出目标和设定输出信息级别标识。</p><h2>打印和输出日志</h2><ul>
+	<li>使用<code>logger.log_message</code>输出普通级别的日志消息
+	</li>
+	<li>使用<code>logger.log_warning</code>输出警告级别的日志消息
+	</li>
+	<li>使用<code>logger.log_error</code>输出错误级别的日志消息
+	</li>
+	<li>使用<code>logger.log_fatal</code>输出致命错误级别的日志消息
+	</li>
+	<li>使用<code>logger.print</code>和<code>logger.println</code>打印无标识的日志消息
+	</li></ul><h2>设定日志输出目标</h2><ul>
+	<li>使用<code>logger.target</code>函数设定输出目标
+	</li></ul><pre><code code-language="ewsl">logger.target()             // Just return the current target.<br />logger.target("null")       // Return the current target and set the logger target to a null object. (Just discard all messages.)<br />logger.target("console")    // Return the current target and set the logger target to the current console output. (io.stdout for common and warning messages and io.stderr for error message.)<br />logger.target("file", fn, AppendModeFlag = true)   // Return the current target and set the logger target to an user file named fn. If AppendModeFlag==true the file target will use AppendMode (default: true).</code></pre><p>
+	<h2>日志的缓存
+	</h2>脚本程序中输出的消息不一定是立即打印出来，有可能预先被缓存起来然后再输出。可以通过设置参数或者强制刷新来控制缓存行为。
+	<ul>
+		<li>使用<code>logger.cache</code>获取和设定缓存模式
+		</li>
+		<li>使用<code>logger.flush</code>将缓存的消息立即输出
+		</li>
+	</ul></p></div>

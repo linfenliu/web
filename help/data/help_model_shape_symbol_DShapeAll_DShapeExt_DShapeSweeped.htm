@@ -1,0 +1,153 @@
+<div class="markdown-body"><h1>参数扫描体</h1>参数扫描体可用于生成基于给定平面和变换矩阵参数构造的几何体。<br />
+<h2>定义方式</h2><h3>中心——坐标变换矩阵</h3><h4>属性对话框</h4><div class="markdown-block">
+	<table width="100%" style="border:0px">
+		<tr style="border:0px">
+			<td style="border:0px">
+				<a name="help_model_shape_symbol_DShapeAll_DShapeExt_DShapeSweeped.parawindow"><img src="image/DShape/DShapeSweeped.png" />
+				</a>
+			</td>
+		</tr>
+	</table></div><h4>参数含义</h4><div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center"> 参数名称 
+								</td>
+								<td align="center"> 说明 
+								</td>
+								<td align="center"> 备注 
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="center"> 待旋转表面 
+								</td>
+								<td align="center"> 指定参数扫描体的待旋转表面 
+								</td>
+								<td align="center"> 可引用内部二维平面或导入的STL平面<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 扫描表达式 
+								</td>
+								<td align="center"> 指定参数扫描体的扫描长度以及间隔 
+								</td>
+								<td align="center"> 例如：<code>0：1：30</code> 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 中心表达式 
+								</td>
+								<td align="center"> 指定参数扫描体的中心表达式 
+								</td>
+								<td align="center"> 中心有X、Y、Z三个维度 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 变换矩阵表达式 
+								</td>
+								<td align="center"> 指定参数扫描体的变换矩阵表达式 
+								</td>
+								<td align="center"> <code>T(transformation matrix)</code>
+									<div class="markdown-block">
+										<table width="100%">
+											<tr style="border:0px">
+												<td style="border:0px">
+													<div class="markdown-table">
+														<table width="100%" class="markdown-table" style="border:1px">
+															<thead>
+																<tr>
+																	<td align="center"> u2x 
+																	</td>
+																	<td align="center"> v2x 
+																	</td>
+																	<td align="center"> n2x 
+																	</td>
+																	<td align="center"> 0 
+																	</td>
+																</tr>
+															</thead>
+															<tbody>
+																<tr>
+																	<td align="center"> u2y 
+																	</td>
+																	<td align="center"> v2y 
+																	</td>
+																	<td align="center"> n2y 
+																	</td>
+																	<td align="center"> 0 
+																	</td>
+																</tr>
+																<tr>
+																	<td align="center"> u2z 
+																	</td>
+																	<td align="center"> v2z 
+																	</td>
+																	<td align="center"> n2z 
+																	</td>
+																	<td align="center"> 0 
+																	</td>
+																</tr>
+																<tr>
+																	<td align="center"> 0 
+																	</td>
+																	<td align="center"> 0 
+																	</td>
+																	<td align="center"> 0 
+																	</td>
+																	<td align="center"> 1 
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+													</div>
+												</td>
+											</tr>
+										</table>
+									</div> 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 反转 
+								</td>
+								<td align="center"> 是否反转表面 
+								</td>
+								<td align="center"> - 
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div><p>
+	<h4>示意图
+	</h4>
+	<div class="markdown-block">
+		<table width="100%" style="border:0px">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<a name="help_model_shape_symbol_DShapeAll_DShapeExt_DShapeSweeped.sample-cm"><img src="image/DShape/DShapeSweeped_sample.png" />
+					</a>
+				</td>
+			</tr>
+		</table>
+	</div></p><p>
+	<h2>如何创建参数扫描体
+	</h2>
+	<ul>
+		<li>
+			<a target="_top" href="#help_model_shape_symbol_DShapeCreate.create-by-GUI">界面创建参数扫描体
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_model_Advanced_ewsl_model">脚本创建参数扫描体
+			</a>
+		</li>
+	</ul></p></div>

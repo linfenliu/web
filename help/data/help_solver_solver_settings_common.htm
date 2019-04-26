@@ -1,0 +1,109 @@
+<div class="markdown-body"><h1>常规设置</h1><strong>单位</strong>、<strong>背景材料</strong>和<strong>频率</strong>是用户文档最基本的参数。用户可以在菜单栏中的“求解器”菜单中进行设置。<h2>单位</h2>在“求解器”菜单中点击“设置单位”，打开单位设置对话框如下图所示：<br />
+<img src="image/param/unit.png" alt="单位设置对话框" /><br />
+用户可以设定文档中使用的长度、时间和频率单位：<ul>
+	<li>电磁波工程类用户建议使用毫米和GHz为单位，时间单位建议选择自动相关。
+	</li>
+	<li>光电类用户，长度单位可取纳米、微米，频率单位可取Hz或THz，时间单位同样建议选择自动相关。
+	</li></ul><p>相应的文档全局变量分别为UL、UT和UF，在计算时如需消除单位差异而进行的运算中可引用这些全局变量（例如定义时域波形中的相位是无量纲的，需要用这几个参数）。</p><div class="markdown-warning"><p>&nbsp;&nbsp;注意</p>
+	<ul>
+		<li>网格尺度限制满足Courant稳定条件：
+		</li>
+	</ul>$$
+c\Delta t \le \dfrac{1}{\dfrac{1}{\Delta x^2} + \dfrac{1}{\Delta y^2} + \dfrac{1}{\Delta z^2} }
+$$
+	<ul>
+		<li>使用具有宽谱特性的信号时，信号中的高频成分计算结果将不会准确，并且高频成分在相对粗网格区域会产生严重色散现象。因此，使用高斯脉冲时，频率宽度不应设置得过宽（对应时间宽度不应过窄）。
+		</li>
+	</ul></div><p>
+	<h2>背景材料
+	</h2>在“求解器”菜单中点击“设置背景”，打开背景材料设置对话框如下图所示：<br />
+
+	<img src="image/123.png" alt="背景材料设置对话框" /><br />
+在模拟一些介质中电磁波的传播行为时有时需将背景材料修改为用户需要的某种材料。</p><div class="markdown-warning"><p>&nbsp;&nbsp;注意</p>
+	<ul>
+		<li>部分监视器、光源处于非空气介质中，需要设置背景材料的介电常数、波阻抗等参数。
+		</li>
+		<li>如果背景材料有较高的介电常数或其他复杂色散行为，需要考虑将网格参数调节得较为精细。
+		</li>
+	</ul></div><h2>频率</h2>在“求解器”菜单中点击“设置频率”，打开频率设置对话框如下图所示：<br />
+<img src="image/123.png" alt="频率设置对话框" /><br />
+<p>选择一个合适的频率范围对获得正确的FDTD仿真结果非常重要。用户在该对话框中设置了三参数：最小频率、最大频率和频率间隔，将会产生几个全局文档那个变量：
+	<div class="markdown-block">
+		<table width="100%">
+			<tr style="border:0px">
+				<td align="center" style="border:0px">
+					<a name="">频率有关参数
+					</a>
+				</td>
+			</tr>
+			<tr style="border:0px">
+				<td style="border:0px">
+					<div class="markdown-table">
+						<table width="100%" class="markdown-table" style="border:1px">
+							<thead>
+								<tr>
+									<td align="center"> 变量名<br />
+
+									</td>
+									<td align="center"> 说明<br />
+
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td align="center"> <code>freq.min</code><br />
+
+									</td>
+									<td align="center"> 最小频率<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> <code>freq.max</code><br />
+
+									</td>
+									<td align="center"> 最大频率<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> <code>freq.ref</code><br />
+
+									</td>
+									<td align="center"> 参考频率<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> <code>lambda.min</code>  
+									</td>
+									<td align="center"> 最小波长<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> <code>lambda.max</code>  
+									</td>
+									<td align="center"> 最大波长<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> <code>lambda.ref</code>  
+									</td>
+									<td align="center"> 参考波长<br />
+
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div></p><p>在设置网格、激励源和监视器时可以使用上述变量，可加强工程文档的可重用能力。</p><div class="markdown-warning"><p>&nbsp;&nbsp;注意</p>
+	<ul>
+		<li><code>freq.ref</code>、<code>lambda.ref</code>参数会影响网格的设置。
+		</li>
+	</ul></div></div>

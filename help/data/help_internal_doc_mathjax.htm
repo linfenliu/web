@@ -1,0 +1,1211 @@
+<div class="markdown-body"><p>
+	<ul>
+		<li>
+			<a href="#help_internal_doc_mathjax.header_1">1. 简介
+			</a>
+		</li>
+		<li>
+			<a href="#help_internal_doc_mathjax.header_2">2. 基本语法
+			</a>
+			<ul>
+				<li>
+					<a href="#help_internal_doc_mathjax.header_2_1">2.1. 公式编辑
+					</a>
+				</li>
+				<li>
+					<a href="#help_internal_doc_mathjax.header_2_2">2.2. 分组
+					</a>
+				</li>
+				<li>
+					<a href="#help_internal_doc_mathjax.header_2_3">2.3. 公式中插入文字
+					</a>
+				</li>
+				<li>
+					<a href="#help_internal_doc_mathjax.header_2_4">2.4. 空格
+					</a>
+				</li>
+				<li>
+					<a href="#help_internal_doc_mathjax.header_2_5">2.5. 分段和对齐
+					</a>
+				</li>
+				<li>
+					<a href="#help_internal_doc_mathjax.header_2_6">2.6. 注释
+					</a>
+				</li>
+				<li>
+					<a href="#help_internal_doc_mathjax.header_2_7">2.7. 转义字符
+					</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="#help_internal_doc_mathjax.header_3">3. 上下标
+			</a>
+		</li>
+		<li>
+			<a href="#help_internal_doc_mathjax.header_4">4. 括号
+			</a>
+			<ul>
+				<li>
+					<a href="#help_internal_doc_mathjax.header_4_1">4.1. 常用括号
+					</a>
+				</li>
+				<li>
+					<a href="#help_internal_doc_mathjax.header_4_2">4.2. 定界符
+					</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="#help_internal_doc_mathjax.header_5">5. 公式格式
+			</a>
+			<ul>
+				<li>
+					<a href="#help_internal_doc_mathjax.header_5_1">5.1. 字体
+					</a>
+				</li>
+				<li>
+					<a href="#help_internal_doc_mathjax.header_5_2">5.2. 尺寸
+					</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="#help_internal_doc_mathjax.header_6">6. 数学表达式
+			</a>
+			<ul>
+				<li>
+					<a href="#help_internal_doc_mathjax.header_6_1">6.1. 分式
+					</a>
+				</li>
+				<li>
+					<a href="#help_internal_doc_mathjax.header_6_2">6.2. 向量
+					</a>
+				</li>
+				<li>
+					<a href="#help_internal_doc_mathjax.header_6_3">6.3. 矩阵和行列式
+					</a>
+				</li>
+				<li>
+					<a href="#help_internal_doc_mathjax.header_6_4">6.4. 方程组
+					</a>
+				</li>
+				<li>
+					<a href="#help_internal_doc_mathjax.header_6_5">6.5. 分段函数
+					</a>
+				</li>
+				<li>
+					<a href="#help_internal_doc_mathjax.header_6_6">6.6. 排列组合式
+					</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="#help_internal_doc_mathjax.header_7">7. 数学运算
+			</a>
+			<ul>
+				<li>
+					<a href="#help_internal_doc_mathjax.header_7_1">7.1. 基本数学运算符
+					</a>
+				</li>
+				<li>
+					<a href="#help_internal_doc_mathjax.header_7_2">7.2. 常用数学运算符
+					</a>
+				</li>
+				<li>
+					<a href="#help_internal_doc_mathjax.header_7_3">7.3. 特殊数学运算符
+					</a>
+				</li>
+				<li>
+					<a href="#help_internal_doc_mathjax.header_7_4">7.4. 常用数学函数
+					</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="#help_internal_doc_mathjax.header_8">8. 希腊字母
+			</a>
+		</li>
+		<li>
+			<a href="#help_internal_doc_mathjax.header_9">9. 其它
+			</a>
+			<ul>
+				<li>
+					<a href="#help_internal_doc_mathjax.header_9_1">9.1. 省略号
+					</a>
+				</li>
+			</ul>
+		</li>
+	</ul><br />
+</p><center>
+	<h1>MathJax语法 
+	</h1></center><a name="help_internal_doc_mathjax.header_1">
+	<h1>1. 简介
+	</h1></a>　　MathJax是一个JavaScript引擎，用来显示网络上的数学公式。它支持大部分的主流的浏览器，使用MathJax显示数学公式是基于文本的，而非图片。这意味着公式和页面上的文字一样是可以被搜索的。 MathJax允许页面作者使用TeX、LaTeX符号和 MathML 或者 AsciiMath 去书写公式。 MathJax甚至可以将Tex格式转化为MathML格式，使其可以被原生支持MathML格式的浏览器更多的渲染。转化为MathML格式后你可以复制粘贴它们到其他程序中。<a name="help_internal_doc_mathjax.header_2">
+	<h1>2. 基本语法
+	</h1></a><a name="help_internal_doc_mathjax.header_2_1">
+	<h2>2.1. 公式编辑
+	</h2></a><ul>
+	<li>正文(inline)中的公式用<code>$...$</code>定义。 
+	</li></ul><blockquote> 例如：<code>$\sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t$</code></blockquote><blockquote> 显示为$\sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t$<ul><li>单独显示公式用 <code>$$...$$</code> 定义，此时公式居中并放大显示。</li></ul></blockquote><blockquote> <code>$$\sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t$$</code>显示为</blockquote>$$
+\sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t
+$$<a name="help_internal_doc_mathjax.header_2_2">
+	<h2>2.2. 分组
+	</h2></a><ul>
+	<li>使用<code>{}</code>将具有相同等级的内容扩入其中，成组处理
+	</li>
+	<li>例子：<code>10^{10}</code>呈现为：$10^{10}$，而<code>10^10</code>呈现为：$10^10$
+	</li></ul><a name="help_internal_doc_mathjax.header_2_3">
+	<h2>2.3. 公式中插入文字
+	</h2></a><ul>
+	<li>语法：<code>\text{}</code>
+	</li>
+	<li>例子：<code>\text{插入文字}</code>呈现为：$\text{插入文字}$
+	</li></ul><a name="help_internal_doc_mathjax.header_2_4">
+	<h2>2.4. 空格
+	</h2></a><ul>
+	<li>LaTeX语法本身会忽略空格的存在
+	</li>
+	<li>小空格 : <code>a\ b</code> 呈现为 $a\ b$
+	</li>
+	<li>4格空格 : <code>a\quad b</code> 呈现为$a\quad b$
+	</li>
+	<li>6格空格：<code>a\qquad b</code> 呈现为$a\qquad b$
+	</li></ul><a name="help_internal_doc_mathjax.header_2_5">
+	<h2>2.5. 分段和对齐
+	</h2></a><ul>
+	<li>分段符号<code>\\</code>
+	</li>
+	<li>对齐符号<code>&amp;</code>
+	</li></ul>例如：<pre><code>\begin{aligned}<br />  f(x) &amp;= (x+y)^2 \\<br />       &amp;= x^2+2xy + y^2 <br />\end{aligned}</code></pre>呈现为：$$
+\begin{aligned}
+  f(x) &= (x+y)^2 \\
+       &= x^2+2xy + y^2 
+\end{aligned}
+$$关于公式对齐的详细设置方法，请见后面的“方程组”这一节。<a name="help_internal_doc_mathjax.header_2_6">
+	<h2>2.6. 注释
+	</h2></a>　　百分号<code>%</code>后的内容为注释内容。<a name="help_internal_doc_mathjax.header_2_7">
+	<h2>2.7. 转义字符
+	</h2></a><p>　　这些字符是LATEX 的保留字符：<code># $ % ^ &amp; _ { } ~ \</code></p><p>前面加反斜线输出保留字符：<code>\#   \%   \_    \{    \}  \~   \&amp;      \$</code></p><p>反斜线 \ 比较特殊: <code>$\backslash$</code></p><a name="help_internal_doc_mathjax.header_3">
+	<h1>3. 上下标
+	</h1></a><div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center"> 符号 
+								</td>
+								<td align="center"> 命令 
+								</td>
+								<td align="center"> 符号 
+								</td>
+								<td align="center"> 命令 
+								</td>
+								<td align="center"> 符号 
+								</td>
+								<td align="center"> 命令 
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="center"> $x_i^2$ 
+								</td>
+								<td align="center"> x_i^2 
+								</td>
+								<td align="center"> $x^{y^z}$ 
+								</td>
+								<td align="center"> x^{y^z}<br />
+
+								</td>
+								<td align="center"> ${x^y}^z$ 
+								</td>
+								<td align="center"> {x^y}^z 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> $\bar{a}$ 
+								</td>
+								<td align="center"> \bar{a} 
+								</td>
+								<td align="center"> $\hat{a}$ 
+								</td>
+								<td align="center"> \hat{a}<br />
+
+								</td>
+								<td align="center"> $\tilde{a}$ 
+								</td>
+								<td align="center"> \tilde{a} 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> $\dot{a}$ 
+								</td>
+								<td align="center"> \dot{a} 
+								</td>
+								<td align="center"> $\grave{a}$ 
+								</td>
+								<td align="center"> \grave{a}<br />
+
+								</td>
+								<td align="center"> $\acute{a}$ 
+								</td>
+								<td align="center"> \acute{a} 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> $\overline{\overline{a}}$ 
+								</td>
+								<td align="center"> \overline{\overline{a}} 
+								</td>
+								<td align="center"> $\overrightarrow{xy}$ 
+								</td>
+								<td align="center"> \overrightarrow{xy}<br />
+
+								</td>
+								<td align="center"> $\overleftarrow{xy}$ 
+								</td>
+								<td align="center"> \overleftarrow{xy} 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> $\widehat{xy}$ 
+								</td>
+								<td align="center"> \widehat{xy} 
+								</td>
+								<td align="center"> $\overline{xy}$ 
+								</td>
+								<td align="center"> \overline{xy}<br />
+
+								</td>
+								<td align="center"> $\underline{xy}$ 
+								</td>
+								<td align="center"> \underline{xy} 
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div>补充：上括号：$\overbrace{1+2+\cdots+100}$，命令为<code>\overbrace{1+2+\cdots+100}</code>；$\begin{matrix} 5050 \\ \overbrace{ 1+2+\cdots+100 } \end{matrix}$，命令为<code>\begin{matrix} 5050 \\ \overbrace{ 1+2+\cdots+100 } \end{matrix}</code>。下括号：$\underbrace{a+b+\cdots+z}$，命令为<code>\underbrace{a+b+\cdots+z}</code>；<p>$\begin{matrix} \underbrace{ a+b+\cdots+z } \\ 26 \end{matrix}$，命令为<code>\begin{matrix} \underbrace{ a+b+\cdots+z } \\ 26 \end{matrix}</code>。</p><a name="help_internal_doc_mathjax.header_4">
+	<h1>4. 括号
+	</h1></a><a name="help_internal_doc_mathjax.header_4_1">
+	<h2>4.1. 常用括号
+	</h2></a>() 表示为：$()$<br />
+[] 表示为：$[]$<br />
+\{ \} 表示为：$\{  \}$<br />
+<div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center">
+								</td>
+							</tr>
+						</thead>
+						<tbody />
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div><p>\|\| 表示为：$\|\|$<br />
+\lceil  \rceil 表示为：$\lceil    \rceil$<br />
+\lfloor  \rfloor 表示为：$\lfloor  \rfloor$ </p><a name="help_internal_doc_mathjax.header_4_2">
+	<h2>4.2. 定界符
+	</h2></a>　　嵌套多个式子时，外层括号不会自动变大，公式整体显得很不协调，可通过在括号外加一个<code>\left...\right</code>进行大小的控制。<br />
+例如：<br />
+$\text{未加定界符：}(\frac{x}{y})\\  \text{加定界符:}\left( \frac{x}{y} \right)$<br />
+加定界符的命令：<code>\left(\frac{x}{y}\right)</code><a name="help_internal_doc_mathjax.header_5">
+	<h1>5. 公式格式
+	</h1></a><a name="help_internal_doc_mathjax.header_5_1">
+	<h2>5.1. 字体
+	</h2></a><ul>
+	<li>typewriter字体：<code> \mathtt{}</code>
+	</li>
+	<li>blackboard bold字体：<code>\mathtt{}</code>
+	</li>
+	<li>boldface字体：<code> \mathsf{}</code>
+	</li>
+	<li>Roman字体：<code>\mathrm{}</code>
+	</li>
+	<li>calligraphic字体：<code>\mathcal{}</code>
+	</li>
+	<li>script字体：<code>\mathscr{}</code>
+	</li>
+	<li>Fraktur字体：<code>\mathfrak{}</code>
+	</li></ul>例如：<pre><code>$$<br />\begin{array}{l}                        %左对齐设置<br />  "typewriter" font:: \mathtt{ABCDEF}  \\<br /><br />  "blackboard bold":: \mathbb{ABCDEF}  \\<br /><br />  boldface: \mathsf{ABCDEF}  \\<br /><br />  Roman font:\mathrm{ABCDEF} \\<br /><br />  "calligraphic" letters: \mathcal{ABCDEFGH}  \\<br /><br />  script letters:  \mathscr{ABCDEFGH}  \\<br /><br />  "Fraktur" (old German style) letters: \mathfrak{ABCDEFGH}  \\<br />\end{array}<br />$$</code></pre>呈现为：$$
+\begin{array}{l}                        %左对齐设置
+"typewriter" font:: \mathtt{ABCDEF}  \\
+
+"blackboard bold":: \mathbb{ABCDEF}  \\
+
+boldface: \mathsf{ABCDEF}  \\
+
+Roman font:\mathrm{ABCDEF} \\
+
+"calligraphic" letters: \mathcal{ABCDEFGH}  \\
+
+script letters:  \mathscr{ABCDEFGH}  \\
+
+"Fraktur" (old German style) letters: \mathfrak{ABCDEFGH}  \\
+\end{array}
+$$<a name="help_internal_doc_mathjax.header_5_2">
+	<h2>5.2. 尺寸
+	</h2></a><p><code>\tiny{smallest}</code> ： $\tiny{smallest}$<br />
+<code>\scriptsize{very small}</code> ：$\scriptsize{very small}$<br />
+<code>\small{small}</code> ：   $\small{small}$<br />
+<code>\normalsize{normal}</code> ：  $\normalsize{normal}$<br />
+<code>\large{large}</code> ：   $\large{large}$<br />
+<code>\Large{Large}</code> ：   $\Large{Large}$<br />
+<code>\LARGE{LARGE}</code> ：  $\LARGE{LARGE}$<br />
+<code>\huge{huge}</code> ：  $\huge{huge}$<br />
+<code>\Huge{Huge}</code> ：    $\Huge{Huge}$<br />
+</p><a name="help_internal_doc_mathjax.header_6">
+	<h1>6. 数学表达式
+	</h1></a><a name="help_internal_doc_mathjax.header_6_1">
+	<h2>6.1. 分式
+	</h2></a><ul>
+	<li>基本语法：
+		<ul>
+			<li>方法1：<code>\frac ab</code>或<code>\frac{a}{b}</code>表示$\frac ab$ 
+			</li>
+			<li>方法2： <code>{a+1\over b+1 }</code>表示${a+1\over b+1 }$
+			</li>
+		</ul>
+	</li></ul><a name="help_internal_doc_mathjax.header_6_2">
+	<h2>6.2. 向量
+	</h2></a><p><code>\vec{A}</code>表示向量$\vec{A}$</p><a name="help_internal_doc_mathjax.header_6_3">
+	<h2>6.3. 矩阵和行列式
+	</h2></a><ul>
+	<li>基本语法：起始标记<code>\begin{matrix} ... \end{matrix}</code>。
+	</li></ul>例如：<pre><code>$$<br />\begin{matrix}<br />  1&amp;0&amp;0\\<br />  0&amp;1&amp;0\\<br />  &amp;0&amp;1\\<br />\end{matrix}<br />$$</code></pre>呈现为：$$
+\begin{matrix}
+1&0&0\\
+0&1&0\\
+0&0&1\\
+\end{matrix}
+$$<ul>
+	<li>矩阵边框：
+		<ul>
+			<li><code>pmatrix</code> : 小括号边框
+			</li>
+			<li><code>bmatrix</code> : 中括号边框
+			</li>
+			<li><code>Bmatrix</code> : 大括号边框
+			</li>
+			<li><code>vmatrix</code> : 单竖线边框
+			</li>
+			<li><code>Vmatrix</code> : 多竖线边框
+			</li>
+		</ul>
+	</li></ul>    在起始、结束标记处用上面的词替换<code>matrix</code>。例子：<pre><code>$$<br />\begin{bmatrix}<br />  {a_{11}}&amp;{a_{12}}&amp;{\cdots}&amp;{a_{1n}}\\<br />  {a_{21}}&amp;{a_{22}}&amp;{\cdots}&amp;{a_{2n}}\\<br />  {\vdots}&amp;{\vdots}&amp;{\ddots}&amp;{\vdots}\\<br />  {a_{m1}}&amp;{a_{m2}}&amp;{\cdots}&amp;{a_{mn}}\\<br />\end{bmatrix} \\<br />$$</code></pre>呈现为：$$
+\begin{bmatrix}
+{a_{11}}&{a_{12}}&{\cdots}&{a_{1n}}\\
+{a_{21}}&{a_{22}}&{\cdots}&{a_{2n}}\\
+{\vdots}&{\vdots}&{\ddots}&{\vdots}\\
+{a_{m1}}&{a_{m2}}&{\cdots}&{a_{mn}}\\
+\end{bmatrix} \\
+$$矩阵嵌套的例子：<pre><code>$$<br />A=\begin{pmatrix}<br />    \begin{matrix}<br />      1 &amp; 0 \\<br />      0 &amp; 1<br />    \end{matrix} &amp; \text{\Large{0}} \\<br />    \Large{0} &amp; \begin{matrix}<br />      1 &amp; 0 \\<br />      0 &amp; 1<br />    \end{matrix}<br />  \end{pmatrix}<br />$$</code></pre>呈现为：$$
+A=\begin{pmatrix}
+\begin{matrix}
+1 & 0 \\
+0 & 1
+\end{matrix} & \Large{0} \\
+\Large{0} & \begin{matrix}
+1 & 0 \\
+0 & 1
+\end{matrix}
+\end{pmatrix}
+$$<ul>
+	<li>阵列
+		<ul>
+			<li>需要array环境：起始、结束处以<code>array</code>声明
+			</li>
+			<li>对齐方式：在<code>array</code>后以<code>{}</code>逐行统一声明 
+			</li>
+			<li>左对齐：<code>l</code>；居中：<code>c</code>；右对齐：<code>r</code>
+			</li>
+			<li>竖直线：在声明对齐方式时，插入|建立竖直线
+			</li>
+			<li>插入水平线：<code>\hline</code>
+			</li>
+		</ul>
+	</li></ul>例如：<pre><code>$$<br />\left(\begin{array}{ccc|c}<br />  1 &amp; 1 &amp; 1 &amp; 1 \\<br />  \hline<br />  1 &amp; 1 &amp; 1 &amp; 1 \\<br />  1 &amp; 1 &amp; 1 &amp; 1  <br />\end{array}\right)<br />\\<br />$$</code></pre>呈现为：$$
+\left(\begin{array}{ccc|c}
+1 & 1 & 1 & 1 \\
+\hline
+1 & 1 & 1 & 1 \\
+1 & 1 & 1 & 1  
+\end{array}\right)
+\\
+$$<a name="help_internal_doc_mathjax.header_6_4">
+	<h2>6.4. 方程组
+	</h2></a><ul>
+	<li>基本语法：
+		<ul>
+			<li>方法1：采用 <code>\begin{cases}…\end{cases}</code>
+			</li>
+			<li>方法2：采用 <code>\begin{array}…\end{array}</code> 和 <code>\left\{…\right.</code>
+			</li>
+			<li>如果想把等号对齐，采用 <code>\begin{aligned}...\end{aligned}</code> 和 <code>\left\{…\right.</code>
+			</li>
+			<li>公式编号：采用<code>\tag</code>。仅适用于方法1
+			</li>
+		</ul>
+	</li></ul>例1（方法1）：<pre><code>$$<br />\begin{cases}<br />  a_1x+b_1y+c_1z=d_1\\<br />  a_2x+b_2y+c_2z=d_2\\<br />  a_3x+b_3y+c_3z=d_3\\<br />\tag{1.1}\end{cases} <br />$$</code></pre>呈现为：$$
+\begin{cases}
+a_1x+b_1y+c_1z=d_1\\
+a_2x+b_2y+c_2z=d_2\\
+a_3x+b_3y+c_3z=d_3\\
+\tag{1.1}\end{cases} 
+$$<p>例2（方法2）：</p><pre><code>\left\{<br />\begin{array}{l}<br />  a_1x+b_1y+c_1z=d_1 \\<br />  a_2x+b_2y+c_2z=d_2 \\<br />  a_3x+b_3y+c_3z=d_3<br />\end{array}<br />\right.</code></pre>$$
+\left\{
+\begin{array}{l}
+  a_1x+b_1y+c_1z=d_1 \\
+  a_2x+b_2y+c_2z=d_2 \\
+  a_3x+b_3y+c_3z=d_3
+\end{array}
+\right.
+$$例3（等号自动对齐）：<pre><code>$$<br />\left\{<br />\begin{aligned} <br />  a_1x+b_1y+c_1z &amp;= d_1+e_1 \\ <br />  a_2x+b_2y &amp;= d_2          \\ <br />  a_3x+b_3y+c_3z &amp;= d_3 <br />\end{aligned} <br />\right. <br />$$</code></pre>呈现为：$$
+\left\{
+\begin{aligned} 
+  a_1x+b_1y+c_1z &= d_1+e_1 \\ 
+  a_2x+b_2y &= d_2          \\ 
+  a_3x+b_3y+c_3z &= d_3 
+\end{aligned} 
+\right. 
+$$例4（等号对齐，且等号两边式子左对齐）：<pre><code>$$<br />\left\{<br />\begin{array}{ll}<br />  a_1x+b_1y+c_1z &amp;=d_1+e_1 \\ <br />  a_2x+b_2y &amp;=d_2          \\ <br />  a_3x+b_3y+c_3z &amp;=d_3 <br />\end{array} <br />\right.<br />$$</code></pre>呈现为：$$
+\left\{
+\begin{array}{ll}
+a_1x+b_1y+c_1z &=d_1+e_1 \\ 
+a_2x+b_2y &=d_2 \\ 
+a_3x+b_3y+c_3z &=d_3 
+\end{array} 
+\right.
+$$<a name="help_internal_doc_mathjax.header_6_5">
+	<h2>6.5. 分段函数
+	</h2></a><ul>
+	<li>基本语法：
+		<ul>
+			<li>方法1：采用<code>\begin{cases}…\end{cases}</code>，用<code>\\</code>来换行，用<code>&amp;</code>来对齐。
+			</li>
+			<li>方法2：采用采用 <code>\begin{array}…\end{array}</code> ，<code>\right.</code>表示省略右括号，<code>\left.</code>表示省略左括号
+			</li>
+			<li>扩大行间距：可以用 <code>\\ [2ex]</code> 代替 <code>\\</code>。注：<code>ex</code>是指字母<code>x</code>的高度，<code>\\[2ex]</code>就表示两倍的字母<code>x</code>的高度。
+			</li>
+		</ul>
+	</li></ul>例1：<pre><code>$$f(n) =<br />\begin{cases}<br />  n/2,  &amp; \text{if $n$ is even} \\<br />  3n+1, &amp; \text{if $n$ is odd}<br />\end{cases}$$</code></pre>呈现为：$$f(n) =
+\begin{cases}
+n/2,  & \text{if $n$ is even} \\
+3n+1, & \text{if $n$ is odd}
+\end{cases}$$例2：<pre><code>$$<br />\left.<br />\begin{array}{l}<br />  \text{if $n$ is even:}&amp;n/2\\<br />  \text{if $n$ is odd:}&amp;3n+1<br />\end{array}<br />\right\}<br />=f(n)<br />$$</code></pre>呈现为：$$
+\left.
+\begin{array}{l}
+\text{if $n$ is even:}&n/2\\
+\text{if $n$ is odd:}&3n+1
+\end{array}
+\right\}
+=f(n)
+$$例3（扩大行间距）：<pre><code>$$<br />f(n) =<br />\begin{cases}<br />  \frac{n}{2},  &amp; \text{if $n$ is even} \\[2ex]<br />  3n+1, &amp; \text{if $n$ is odd}<br />\end{cases}<br />$$</code></pre><p>呈现为：$$
+f(n) =
+\begin{cases}
+\frac{n}{2},  & \text{if $n$ is even} \\[2ex]
+3n+1, & \text{if $n$ is odd}
+\end{cases}
+$$</p><a name="help_internal_doc_mathjax.header_6_6">
+	<h2>6.6. 排列组合式
+	</h2></a><p>　　组合数：$n\choose m$或者$\binom{n}{m}$或者$C_n^m$</p><a name="help_internal_doc_mathjax.header_7">
+	<h1>7. 数学运算
+	</h1></a><a name="help_internal_doc_mathjax.header_7_1">
+	<h2>7.1. 基本数学运算符
+	</h2></a><p>
+	<div class="markdown-block">
+		<table width="100%">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<div class="markdown-table">
+						<table width="100%" class="markdown-table" style="border:1px">
+							<thead>
+								<tr>
+									<td align="center"> 符号 
+									</td>
+									<td align="center"> 命令 
+									</td>
+									<td align="center"> 符号 
+									</td>
+									<td align="center"> 命令 
+									</td>
+									<td align="center"> 符号 
+									</td>
+									<td align="center"> 命令 
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td align="center"> $+$ 
+									</td>
+									<td align="center"> + 
+									</td>
+									<td align="center"> $-$ 
+									</td>
+									<td align="center"> - 
+									</td>
+									<td align="center"> $/$ 
+									</td>
+									<td align="center"> / 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> $\div$ 
+									</td>
+									<td align="center"> \div 
+									</td>
+									<td align="center"> $\cdot$ 
+									</td>
+									<td align="center"> \cdot 
+									</td>
+									<td align="center"> $\times$ 
+									</td>
+									<td align="center"> \time 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> $\ast$ 
+									</td>
+									<td align="center"> <code>*</code>或\ast 
+									</td>
+									<td align="center"> $\pm$ 
+									</td>
+									<td align="center"> \pm 
+									</td>
+									<td align="center"> $\mp$ 
+									</td>
+									<td align="center"> \mp 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> $=$ 
+									</td>
+									<td align="center"> = 
+									</td>
+									<td align="center"> $\neq$ 
+									</td>
+									<td align="center"> \neq 
+									</td>
+									<td align="center"> $\approx$ 
+									</td>
+									<td align="center"> \approx 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> $\leq$ 
+									</td>
+									<td align="center"> \leq 
+									</td>
+									<td align="center"> $\geq$ 
+									</td>
+									<td align="center"> \geq 
+									</td>
+									<td align="center"> $\cong$ 
+									</td>
+									<td align="center"> \cong 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> $\sim$ 
+									</td>
+									<td align="center"> \sim 
+									</td>
+									<td align="center"> $\ll$ 
+									</td>
+									<td align="center"> \ll 
+									</td>
+									<td align="center"> $\gg$ 
+									</td>
+									<td align="center"> \gg 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> $\leftarrow$ 
+									</td>
+									<td align="center"> \leftarrow 
+									</td>
+									<td align="center"> $\Leftarrow$ 
+									</td>
+									<td align="center"> \Leftarrow 
+									</td>
+									<td align="center"> $\rightarrow$ 
+									</td>
+									<td align="center"> \rightarrow 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> $\Rightarrow$ 
+									</td>
+									<td align="center"> \Rightarrow 
+									</td>
+									<td align="center"> $\longleftarrow$ 
+									</td>
+									<td align="center"> \longleftarrow 
+									</td>
+									<td align="center"> $\Longleftarrow$ 
+									</td>
+									<td align="center"> \Longleftarrow 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> $\longrightarrow$ 
+									</td>
+									<td align="center"> \longrightarrow 
+									</td>
+									<td align="center"> $\Longrightarrow$ 
+									</td>
+									<td align="center"> \Longrightarrow 
+									</td>
+									<td align="center"> $\leftrightarrow$ 
+									</td>
+									<td align="center"> \leftrightarrow 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> $\longleftrightarrow$ 
+									</td>
+									<td align="center"> \longleftrightarrow 
+									</td>
+									<td align="center"> $\Leftrightarrow$ 
+									</td>
+									<td align="center"> \Leftrightarrow 
+									</td>
+									<td align="center"> $\Longleftrightarrow$ 
+									</td>
+									<td align="center"> \Longleftrightarrow 
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div></p><a name="help_internal_doc_mathjax.header_7_2">
+	<h2>7.2. 常用数学运算符
+	</h2></a><h4>求和</h4>　　符号：$\sum$，命令为：<code>\sum</code>；符号：$\sum_{i=1}^n$，命令为：<code>\sum_{i=1}^n</code><h4>求积</h4>　　符号：$\prod$，命令为：<code>\prod</code>；符号：$\prod_{i=1}^N$，命令为：<code>\prod_{i=1}^N</code><h4>求极限</h4>　　符号：$\lim_{x\to \infty}$ ，命令为：<code>\lim_{x\to \infty}</code><h4>导数和微分</h4>　　符号：$f'(x)$，命令为：<code>f'(x)</code>或<code>f^\prime (x)</code>；<br />
+　　符号：$f''(x)$，命令为：<code>f''(x)</code>；<br />
+　　符号：$\dot{f}(x)$，命令为：<code>\dot{f}(x)</code>；<br />
+　　符号：$\ddot{f}(x)$，命令为：<code>\ddot{f}(x)</code>；<br />
+　　符号：$\frac{\partial{y}}{\partial{x}}$，命令为：<code>\frac{\partial{y}}{\partial{x}}</code><h4>积分</h4>　　单积分符号：$\int_0^\infty{f(x)dx}$，命令为<code>\int_0^\infty{f(x)dx}</code>；<br />
+　　双重积分符号：$\iint_{a}^{b}{f(x)} \, dx\,dy$，命令为<code>\iint_{a}^{b}{f(x)} \, dx\,dy</code>；<br />
+　　三重积分符号：$\iiint_{a}^{b} {f(x)}\, dx\,dy\,dz$，命令为<code>\iiint_{a}^{b} {f(x)}\, dx\,dy\,dz</code>；<br />
+<p>　　闭合曲线、曲面积分符号：$\oint_{C} x^3\, dx + 4y^2\, dy$，命令为<code>\oint_{C} x^3\, dx + 4y^2\, dy</code></p><a name="help_internal_doc_mathjax.header_7_3">
+	<h2>7.3. 特殊数学运算符
+	</h2></a><div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center">符号 
+								</td>
+								<td align="center">命令 
+								</td>
+								<td align="center">符号 
+								</td>
+								<td align="center">命令 
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="center">$\infty$
+								</td>
+								<td align="center">\infty 
+								</td>
+								<td align="center">$\partial$ 
+								</td>
+								<td align="center">\partial
+								</td>
+							</tr>
+							<tr>
+								<td align="center">$\cup$
+								</td>
+								<td align="center">\cup 
+								</td>
+								<td align="center">$\cap$ 
+								</td>
+								<td align="center">\cap
+								</td>
+							</tr>
+							<tr>
+								<td align="center">$\subset$
+								</td>
+								<td align="center">\subset 
+								</td>
+								<td align="center">$\supset$ 
+								</td>
+								<td align="center">\subset
+								</td>
+							</tr>
+							<tr>
+								<td align="center">$\subseteq$
+								</td>
+								<td align="center">\subseteq 
+								</td>
+								<td align="center">$\supseteq$ 
+								</td>
+								<td align="center">\subseteq
+								</td>
+							</tr>
+							<tr>
+								<td align="center">$\in$
+								</td>
+								<td align="center">\in 
+								</td>
+								<td align="center">$\notin$ 
+								</td>
+								<td align="center">\notin
+								</td>
+							</tr>
+							<tr>
+								<td align="center">$\varnothing$
+								</td>
+								<td align="center">\varnothing 
+								</td>
+								<td align="center">$\forall$ 
+								</td>
+								<td align="center">\forall
+								</td>
+							</tr>
+							<tr>
+								<td align="center">$\exists$
+								</td>
+								<td align="center">\exists 
+								</td>
+								<td align="center">$\supset$ 
+								</td>
+								<td align="center">\subset
+								</td>
+							</tr>
+							<tr>
+								<td align="center">$\Delta$
+								</td>
+								<td align="center">\Delta 
+								</td>
+								<td align="center">$\nabla$ 
+								</td>
+								<td align="center">\nabla
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div><a name="help_internal_doc_mathjax.header_7_4">
+	<h2>7.4. 常用数学函数
+	</h2></a><div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center">函数
+								</td>
+								<td align="center">符号 
+								</td>
+								<td align="center">命令 
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="center">根号
+								</td>
+								<td align="center">$\sqrt{x},\sqrt[a]{x}$
+								</td>
+								<td align="center">\sqrt{x}，\sqrt[a]{x}
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 对数 
+								</td>
+								<td align="center"> $\log_ax,\ln x,\lg x$ 
+								</td>
+								<td align="center"> \log_ax，\ln x ，\lg x
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> e指数函数 
+								</td>
+								<td align="center"> $\exp(x)$ 
+								</td>
+								<td align="center"> \exp(x) 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 正弦函数 
+								</td>
+								<td align="center"> $\sin x$ 
+								</td>
+								<td align="center"> \sin x 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 余弦函数 
+								</td>
+								<td align="center"> $\cos 30^\circ$ 
+								</td>
+								<td align="center"> \cos 30^\circ 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 正切函数 
+								</td>
+								<td align="center">$\tan x$<br />
+
+								</td>
+								<td align="center"> \tan x 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 余切函数 
+								</td>
+								<td align="center">$\cot x$<br />
+
+								</td>
+								<td align="center"> \cot x 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 正割函数 
+								</td>
+								<td align="center">$\sec x$<br />
+
+								</td>
+								<td align="center"> \sec x 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 余割函数 
+								</td>
+								<td align="center">$\csc x$<br />
+
+								</td>
+								<td align="center"> \csc x 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 双曲正弦函数 
+								</td>
+								<td align="center">$\sinh x$<br />
+
+								</td>
+								<td align="center"> \sinh x 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 双曲余弦函数 
+								</td>
+								<td align="center">$\cosh x$<br />
+
+								</td>
+								<td align="center"> \cosh x 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 双曲正切函数 
+								</td>
+								<td align="center">$\tanh x$<br />
+
+								</td>
+								<td align="center"> \tanh x 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 双曲余切函数 
+								</td>
+								<td align="center">$\coth x$<br />
+
+								</td>
+								<td align="center"> \coth x 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 反正弦函数 
+								</td>
+								<td align="center">$\arcsin x$<br />
+
+								</td>
+								<td align="center"> \arcsin x 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 反余弦函数 
+								</td>
+								<td align="center">$\arccos x$<br />
+
+								</td>
+								<td align="center"> \arccos x 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 反正切函数 
+								</td>
+								<td align="center">$\arctan x$<br />
+
+								</td>
+								<td align="center"> \arctan x 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 取复数辐角 
+								</td>
+								<td align="center">$\arg x$<br />
+
+								</td>
+								<td align="center"> \arg x 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 求方阵的行列式 
+								</td>
+								<td align="center">$\det A$<br />
+
+								</td>
+								<td align="center"> \det A 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 求最小值 
+								</td>
+								<td align="center">$\min A$<br />
+
+								</td>
+								<td align="center"> \min A 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 求最大值 
+								</td>
+								<td align="center">$\max A$<br />
+
+								</td>
+								<td align="center"> \max A 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 弧度 
+								</td>
+								<td align="center">$\deg$<br />
+
+								</td>
+								<td align="center"> \deg 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 角度 
+								</td>
+								<td align="center">$\circ$<br />
+
+								</td>
+								<td align="center"> \circ 
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div><a name="help_internal_doc_mathjax.header_8">
+	<h1>8. 希腊字母
+	</h1></a><div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center">字母 
+								</td>
+								<td align="center">命令 
+								</td>
+								<td align="center">字母 
+								</td>
+								<td align="center">命令 
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="center">$\alpha$ 
+								</td>
+								<td align="center">\aplha 
+								</td>
+								<td align="center">$\beta$<br />
+
+								</td>
+								<td align="center">\beta 
+								</td>
+							</tr>
+							<tr>
+								<td align="center">$\gamma$<br />
+
+								</td>
+								<td align="center">\gamma<br />
+
+								</td>
+								<td align="center">$\delta$<br />
+
+								</td>
+								<td align="center">\delta<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">$\epsilon$
+								</td>
+								<td align="center">\epsilon 
+								</td>
+								<td align="center">$\zeta$
+								</td>
+								<td align="center">\zeta 
+								</td>
+							</tr>
+							<tr>
+								<td align="center">$\eta$
+								</td>
+								<td align="center">\eta 
+								</td>
+								<td align="center">$\theta$
+								</td>
+								<td align="center">\theta 
+								</td>
+							</tr>
+							<tr>
+								<td align="center">$\phi$
+								</td>
+								<td align="center">\phi 
+								</td>
+								<td align="center">$\psi$
+								</td>
+								<td align="center">\psi 
+								</td>
+							</tr>
+							<tr>
+								<td align="center">$\omega$
+								</td>
+								<td align="center">\omega 
+								</td>
+								<td align="center">$\lambda$
+								</td>
+								<td align="center">\lambda 
+								</td>
+							</tr>
+							<tr>
+								<td align="center">$\mu$
+								</td>
+								<td align="center">\mu 
+								</td>
+								<td align="center">$\nu$
+								</td>
+								<td align="center">\nu 
+								</td>
+							</tr>
+							<tr>
+								<td align="center">$\xi$
+								</td>
+								<td align="center">\xi 
+								</td>
+								<td align="center">$\omicron$
+								</td>
+								<td align="center">\omicron 
+								</td>
+							</tr>
+							<tr>
+								<td align="center">$\pi$
+								</td>
+								<td align="center">\pi 
+								</td>
+								<td align="center">$\rho$
+								</td>
+								<td align="center">\rho 
+								</td>
+							</tr>
+							<tr>
+								<td align="center">$\sigma$
+								</td>
+								<td align="center">\sigma 
+								</td>
+								<td align="center">$\tau$
+								</td>
+								<td align="center">\tau 
+								</td>
+							</tr>
+							<tr>
+								<td align="center">$\upsilon$
+								</td>
+								<td align="center">\upsilon 
+								</td>
+								<td align="center">$\iota$
+								</td>
+								<td align="center">\iota 
+								</td>
+							</tr>
+							<tr>
+								<td align="center">$\chi$
+								</td>
+								<td align="center">\chi 
+								</td>
+								<td align="center">$\kappa$
+								</td>
+								<td align="center">\kappa 
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div><p>
+	<ul>
+		<li>若需要大写希腊字母，将命令首字母大写即可；
+		</li>
+		<li>若需要斜体希腊字母，将命令前加上<code>var</code>前缀即可。
+		</li>
+	</ul></p><a name="help_internal_doc_mathjax.header_9">
+	<h1>9. 其它
+	</h1></a><a name="help_internal_doc_mathjax.header_9_1">
+	<h2>9.1. 省略号
+	</h2></a><ul>
+	<li>横省略号 : <code>\cdots</code>
+	</li>
+	<li>竖省略号 : <code>\vdots</code>
+	</li>
+	<li>斜省略号 : <code>\ddots</code>
+	</li>
+	<li>与文本底线对齐的省略号：<code>\ldots</code>
+	</li></ul>例如：<code>a\ldots b</code>:    $a\ldots b$<p>    <code>a\cdots b</code>:    $a\cdots b$</p><pre><code>\begin{pmatrix}<br />  a      \\<br />  \vdots \\<br />  b<br />\end{pmatrix}</code></pre>呈现为：$$
+\begin{pmatrix}
+a      \\
+\vdots \\
+b
+\end{pmatrix}
+$$<pre><code>\begin{pmatrix}<br />  a &amp;      &amp;      \\<br />    &amp;\ddots&amp; \\<br />    &amp;     &amp;b<br />\end{pmatrix}</code></pre><p>呈现为：$$
+\begin{pmatrix}
+  a &      &      \\
+    &\ddots& \\
+    &     &b
+\end{pmatrix}
+$$</p></div>

@@ -1,0 +1,314 @@
+<div class="markdown-body"><h1>RCS单站模式（X-47b）教学案例</h1><blockquote><ul><li><a href="#help_case_teach_RCS_MonostaticRCS_X47-b.header_1">1. 概述</a></li><li><a href="#help_case_teach_RCS_MonostaticRCS_X47-b.header_2">2. 设置计算模式及参数</a></li><li><a href="#help_case_teach_RCS_MonostaticRCS_X47-b.header_3">3. 建模</a></li><li><a href="#help_case_teach_RCS_MonostaticRCS_X47-b.header_4">4. 设置网格</a></li><li><a href="#help_case_teach_RCS_MonostaticRCS_X47-b.header_5">5. 启动计算</a></li><li><a href="#help_case_teach_RCS_MonostaticRCS_X47-b.header_6">6. 查看计算结果</a></li></ul></blockquote><br /><a name="help_case_teach_RCS_MonostaticRCS_X47-b.header_1">
+	<h1>1. 概述
+	</h1></a><p>本案例通过演示计算 
+	<strong>X47-b
+	</strong> 飞机的 
+	<strong>RCS
+	</strong> 来介绍如何使用 “ 
+	<strong>RCS
+	</strong>（单站）” 计算模式。模型示意图：</p><div align="center">
+	<div class="markdown-block">
+		<table width="100%" style="border:0px">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<a name=" "><img src="image/sample/rcs/x47-b/whole.png" />
+					</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div align="left">
+		<p>隐形无人轰炸机 
+			<strong>X47-b
+			</strong> 采用了无尾翼的翼型机结构，大大降低了方位面上的散射截面，本案例计算 
+			<strong>X47-b
+			</strong> 在方位面的单站 
+			<strong>RCS
+			</strong> 角度响应。使用 “ 
+			<strong>RCS
+			</strong>（单站）” 计算模式，模式根据扫描角度自动设置好激励源和记录器等必要设置，自动后处理直接给出 
+			<strong>RCS
+			</strong> 角度响应曲线。设置好扫描角等必要参数后，仅需导入 
+			<strong>CAD
+			</strong> 模型，简单划分网格即可开始计算。
+		</p>案例仿真流程如下：
+		<p>
+			<ul>
+				<li>设置计算模式及参数
+				</li>
+				<li>建模
+				</li>
+				<li>设置网格
+				</li>
+				<li>启动计算
+				</li>
+				<li>查看计算结果
+				</li>
+			</ul>
+		</p>
+		<a name="help_case_teach_RCS_MonostaticRCS_X47-b.header_2">
+			<h1>2. 设置计算模式及参数
+			</h1>
+		</a>
+		<h2>选择计算模式
+		</h2>
+		<p>由菜单选文件进入 “ 向导 ” 界面，选择 “ RCS（单站）模式 ”。
+		</p>
+		<div align="center">
+			<div class="markdown-block">
+				<table width="100%" style="border:0px">
+					<tr style="border:0px">
+						<td style="border:0px">
+							<a name=" "><img src="image/sample/temp.png" />
+							</a>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div align="left">
+				<h2>设置模式参数
+				</h2>
+				<p>频率设置为 
+					<strong>0.3 GHz
+					</strong> ，发射雷达 $\theta$ 角度设置为 $ 90^\circ $  ，$\phi$ 角度设置为$ 0^\circ $~$ 180^\circ $，极化角度设置为$ 0^\circ $。
+				</p>
+				<p>
+					<strong>注意
+					</strong> ：入射波的传播方向与雷达方向正好相反。
+				</p>
+				<div align="center">
+					<div class="markdown-block">
+						<table width="100%" style="border:0px">
+							<tr style="border:0px">
+								<td style="border:0px">
+									<a name=" "><img src="image/sample/rcs/patch/workmode_setup.png" />
+									</a>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div align="left">
+						<h2>查看向导报告
+						</h2>
+						<p>在 “ 
+							<strong>RCS
+							</strong>（单站，快速扫角，电大体系）” 模式中长度单位和频率单位默认为 
+							<strong>mm
+							</strong> 和 
+							<strong>GHz
+							</strong>，网格设置默认为均匀网格、共性网格，边界设置是开放边界。
+						</p>
+						<div align="center">
+							<div class="markdown-block">
+								<table width="100%" style="border:0px">
+									<tr style="border:0px">
+										<td style="border:0px">
+											<a name=" "><img src="image/sample/temp.png" />
+											</a>
+										</td>
+									</tr>
+								</table>
+							</div>
+							<div align="left">
+								<h2>设置文件名和存储路径
+								</h2>
+								<p>进入 “ 设置文件名和存储路径 ” 对话框，选择存储路径，输入文件名。
+								</p>
+								<div align="center">
+									<div class="markdown-block">
+										<table width="100%" style="border:0px">
+											<tr style="border:0px">
+												<td style="border:0px">
+													<a name=" "><img src="image/sample/rcs/x47-b/save.png" />
+													</a>
+												</td>
+											</tr>
+										</table>
+									</div>
+									<div align="left">
+										<a name="help_case_teach_RCS_MonostaticRCS_X47-b.header_3">
+											<h1>3. 建模
+											</h1>
+										</a>
+										<h2>新建模型
+										</h2>
+										<p>本案例通过 “ 文件 ” 菜单的 “ 导入 ” ，将 
+											<strong>x47-b
+											</strong> 的模型导入。如下图：
+										</p>
+										<div align="center">
+											<div class="markdown-block">
+												<table width="100%" style="border:0px">
+													<tr style="border:0px">
+														<td style="border:0px">
+															<a name=" "><img src="image/sample/rcs/x47-b/import.png" />
+															</a>
+														</td>
+													</tr>
+												</table>
+											</div>
+											<div align="left">
+												<p>在 “ 模型窗口 ” 下选择 “ 模板 ” 右击选择构建元件，结构选择 “ 
+													<strong>x47-b
+													</strong> ”，材料选择 
+													<strong>pec
+													</strong>，如下图：
+												</p>
+												<div align="center">
+													<div class="markdown-block">
+														<table width="100%" style="border:0px">
+															<tr style="border:0px">
+																<td style="border:0px">
+																	<a name=" "><img src="image/sample/rcs/x47-b/component.png" />
+																	</a>
+																</td>
+															</tr>
+														</table>
+													</div>
+													<div align="left">
+														<p>模型完成后，模型界面如下：
+														</p>
+														<div align="center">
+															<div class="markdown-block">
+																<table width="100%" style="border:0px">
+																	<tr style="border:0px">
+																		<td style="border:0px">
+																			<a name=" "><img src="image/sample/rcs/x47-b/structure.png" />
+																			</a>
+																		</td>
+																	</tr>
+																</table>
+															</div>
+															<div align="left">
+																<a name="help_case_teach_RCS_MonostaticRCS_X47-b.header_4">
+																	<h1>4. 设置网格
+																	</h1>
+																</a>
+																<p>使用 
+																	<strong>FDTD
+																	</strong> 方法仿真，一般要求网格的精度至少为关心频率对应波长的 
+																	<strong>1/15
+																	</strong> 以上，同时还要求网格能尽量识别模型的几何细节。一般情况下，默认选择 “ 智能网格 ” ，
+																	<strong>EastWave
+																	</strong> 会自动根据用户设置的工程频率范围划分网格，用户可以简单选择不同的网格精度即可完成划分。
+																</p>用户也可以自定义网格，可以控制每个维度的计算范围和网格数，并可以修改仿真时间步长和总时间步长。对于有特别精细结构（比如 
+																<strong>1/100
+																</strong> 波长以下）的模型，网格往往需要特别处理，
+																<strong>EastWave
+																</strong> 提供共形网格、非均匀网格、指定网格面、指定网格区域等高级控制手段，详细请参看 
+																<strong>EastWave
+																</strong> 帮助手册网格设置部分，或咨询 
+																<strong>EastWave
+																</strong> 工程师。
+																<h2>设置网格精度
+																</h2>
+																<p>网格精度可以通过如下两种方式设置修改：
+																</p>
+																<ul>
+																	<li>“ 求解器 ” 菜单下的 “ 设置网格 ”
+																	</li>
+																</ul>
+																<ul>
+																	<li>“ 模型 ” 窗口的 “ 模板 ” 选择 “网格” 选项
+																	</li>
+																</ul>
+																<p>设置的对话框如下：
+																</p>
+																<div align="center">
+																	<div class="markdown-block">
+																		<table width="100%" style="border:0px">
+																			<tr style="border:0px">
+																				<td style="border:0px">
+																					<a name=" "><img src="image/sample/rcs/x47-b/meshsetting1.png" />
+																					</a>
+																				</td>
+																			</tr>
+																		</table>
+																	</div>
+																	<div align="left">
+																		<div align="center">
+																			<div class="markdown-block">
+																				<table width="100%" style="border:0px">
+																					<tr style="border:0px">
+																						<td style="border:0px">
+																							<a name=" "><img src="image/sample/rcs/x47-b/meshsetting2.png" />
+																							</a>
+																						</td>
+																					</tr>
+																				</table>
+																			</div>
+																			<div align="left">
+																				<p>选择 “ 均匀网格 ” 、开启“ 共形网格 ”进行计算。
+																				</p>
+																				<p>网格划分要保证能识别模型的精细结构（比如一些影响物理性质的微结构），本案例模型较为简单，采用高级网格中的 “ 均匀网格 ”，对于金属结构，建议开启 “ 共形网格 ”，即可在同样网格精度下获得更准确的计算结果。其他更详细的网格设置说明请参阅 
+																					<strong>EastWave
+																					</strong> 帮助手册的 “ 网格剖分、查阅 ” 模块，或是参看其他相关案例。
+																				</p>
+																				<h2>网格剖分检查
+																				</h2>
+																				<p>网格精度设置完后，启动计算前可预览网格划分情况，点击图标可得：
+																				</p>
+																				<div align="center">
+																					<div class="markdown-block">
+																						<table width="100%" style="border:0px">
+																							<tr style="border:0px">
+																								<td style="border:0px">
+																									<a name=" "><img src="image/sample/rcs/x47-b/grid.png" />
+																									</a>
+																								</td>
+																							</tr>
+																						</table>
+																					</div>
+																					<div align="left">
+																						<a name="help_case_teach_RCS_MonostaticRCS_X47-b.header_5">
+																							<h1>5. 启动计算
+																							</h1>
+																						</a>点击工具条中的 “ 运行 ” 图标，开始计算。计算开始后，消息窗口给出提示/警告/报错信息，计算任务管理窗口给出计算进度并且可右键管理任务。双击指定的计算任务或右键打开观察器以观察电磁波入射到物体上的实时变化情况。
+																						<h2>消息窗口
+																						</h2>计算开始和进行过程中，右下角的消息窗口显示出计算初始化的状态。
+																						<h2>计算进度
+																						</h2>在界面下方消息窗口中可以观察计算任务的完成情况。
+																						<h2>观察实时场
+																						</h2>
+																						<p>点击观察实时场图标，可以观察电磁波的散射过程。
+																						</p>
+																						<a name="help_case_teach_RCS_MonostaticRCS_X47-b.header_6">
+																							<h1>6. 查看计算结果
+																							</h1>
+																						</a>计算完成后，在 “ 工作空间 ” 生成 “ .ewd ” 结果文件。
+																						<p>透射/反射率结果图如下:
+																						</p>
+																						<div align="center">
+																							<div class="markdown-block">
+																								<table width="100%" style="border:0px">
+																									<tr style="border:0px">
+																										<td style="border:0px">
+																											<a name=" "><img src="image/sample/tr/result_tr.png" />
+																											</a>
+																										</td>
+																									</tr>
+																								</table>
+																							</div>
+																							<div align="left" />
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div></div></div>

@@ -1,0 +1,16 @@
+#function(session, request, response);
+global server;
+local cfg  = table();
+cfg.version="1.0.0";
+
+if(request.query["q"] == "release")
+{
+    cfg.release = true;
+}
+
+if(!util.htmlgen("./web/html/source", "./web/help", cfg))
+{
+    throw "htmlgen error";
+}
+
+response.redirect("/help");

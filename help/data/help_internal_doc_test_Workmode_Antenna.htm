@@ -1,0 +1,199 @@
+<div class="markdown-body"><h1>天线计算模式（测试说明）</h1><strong>测试目标：</strong><ol>
+	<li>远场参数（方向性、增益、辐射强度）
+		<ol>
+			<li>用户参数相应的正确性
+			</li>
+			<li>计算逻辑正确性
+			</li>
+			<li>结果正确性
+			</li>
+		</ol>
+	</li>
+	<li>端口参数（S参数、端口阻抗）
+		<ol>
+			<li>用户参数相应的正确性
+			</li>
+			<li>计算逻辑正确性
+			</li>
+			<li>结果正确性
+			</li>
+		</ol>
+	</li></ol><strong>测试方法：</strong><ol>
+	<li>基本测试
+		<ol>
+			<li>运行标准案例
+			</li>
+			<li>修改标准案例中关键用户参数后另存为新的案例
+			</li>
+		</ol>
+	</li>
+	<li>功能点测试
+		<ol>
+			<li>用户界面相关
+				<ul>
+					<li>尝试输入各种合理与不合理数值
+					</li>
+					<li>页面切换测试
+					</li>
+					<li>文档修改后保存再载入的测试
+					</li>
+				</ul>
+			</li>
+			<li>运行测试（计算逻辑正确性）
+				<ul>
+					<li>计算结果的原则性分析
+					</li>
+					<li>计算结果与旧版本的对比（注意配置的一致性）
+					</li>
+				</ul>
+			</li>
+			<li>结果智能数据的测试
+				<ul>
+					<li>智能数据控件参数的输入方式是否合理
+					</li>
+					<li>绘图结果显示是否有问题
+					</li>
+				</ul>
+			</li>
+		</ol>
+	</li></ol><strong>测试注意：</strong><ol>
+	<li>界面方面
+		<ol>
+			<li>
+				<strong>设置
+				</strong>页面
+				<ul>
+					<li>
+						<strong>频率设置模式
+						</strong>：四种模式的输入参数不同，详细说明见天线计算模式详细说明。
+					</li>
+					<li>
+						<strong>天线端口
+						</strong>：
+						<strong>引用
+						</strong>设置用来添加用户已经创建的
+						<strong>馈源
+						</strong>元件。
+						<strong>功率
+						</strong>、
+						<strong>强度
+						</strong>、
+						<strong>相位
+						</strong>、
+						<strong>延迟
+						</strong> 这四个参数用于修改激励源的相对应参数，目前暂时无效，无需测试。
+					</li>
+					<li>
+						<strong>天线远场
+						</strong>：用于设置多项记录条目，内部创建的监视器为频域远场记录器。扫描模式中 $\theta$-$\phi$ 扫描暂时无效，仅支持 $\theta$ 扫描及 $\phi$ 扫描。
+					</li>
+					<li>
+						<strong>启用
+						</strong>：目前默认仅计算S11参数，
+						<strong>计算S11
+						</strong> 参数及 
+						<strong>计算S12
+						</strong> 参数暂时无效。
+					</li>
+				</ul>
+			</li>
+			<li>
+				<strong>杂项
+				</strong>页面
+				<ul>
+					<li>
+						<strong>信号设置
+						</strong>及
+						<strong>监视器区域
+						</strong>功能均可测试，
+						<strong>功率记录框模式
+						</strong>设置中，
+						<strong>自动
+						</strong>参数为默认Bbox大小；
+						<strong>用户自定义
+						</strong>用于自定义修改功率记录框区域，目前无效。
+					</li>
+					<li>
+						<strong>预计算3D方向图
+						</strong> ：勾选后内部创建三维$\theta$-$\phi$监视器条目，用于查看三维方向图。
+					</li>
+				</ul>
+			</li>
+		</ol>
+	</li>
+	<li>智能数据方面（分为两个智能数据结果（1、方向图及场图；2、端口特性（S参数、端口阻抗、端口信息）））
+		<ol>
+			<li>方向图智能数据：
+				<ul>
+					<li>
+						<strong>category
+						</strong> 选项为选择计算参数（方向性、增益、辐射强度、辐射功率）。
+					</li>
+					<li>
+						<strong>ffar
+						</strong> 选项为选择记录条目。
+					</li>
+					<li>
+						<strong>频率
+						</strong> 可以添加频率点（和之前设置的频率点必须一致）
+					</li>
+					<li>
+						<strong>距离
+						</strong> 可以修改远场的距离。
+					</li>
+					<li>
+						<strong>分量
+						</strong> 选项用于选择分量（etotal、etheta、ephi）
+					</li>
+					<li>
+						<strong>量化方式
+						</strong> 选项中
+						<strong>Linear
+						</strong>为原值，
+						<strong>dB
+						</strong> 为 10log10()。
+					</li>
+					<li>
+						<strong>绘图类型
+						</strong> 选项中
+						<strong>plot
+						</strong>为绘制直角坐标图，
+						<strong>polar
+						</strong>为绘制极坐标图，
+						<strong>3D
+						</strong>选项用与绘制三维方向图，目前仅能绘制计算模式内部创建的那个监视器的记录条目的3D方向图。
+					</li>
+					<li>
+						<strong>Theta
+						</strong> 及 
+						<strong>Phi
+						</strong> 起说明作用，不能修改，是跟随用于选择的
+						<strong>记录项
+						</strong>变化的。
+					</li>
+				</ul>
+			</li>
+			<li>端口智能数据
+				<ul>
+					<li>
+						<strong>power
+						</strong>: 频域远场记录下的不同定义方式下的频率参数。
+					</li>
+					<li>
+						<strong>Impendence
+						</strong>:端口阻抗。
+					</li>
+					<li>
+						<strong>S parameter
+						</strong>: S 参数
+					</li>
+					<li>
+						<strong>port signal
+						</strong>：馈源端口的原始信息（时域及频域）
+					</li>
+					<li>另外测试端口特性参数（S参数、端口阻抗）时，端口网格的剖分应该作为测试条件。
+					</li>
+				</ul>
+			</li>
+		</ol>
+	</li></ol><strong>案例：</strong><a target="_top" href="javascript:ewdoc.open_editor('internal_files/test/systest/workmode/antenna/ew-v7_0_0-workmode-antenna-0001.ewp2')">偶极子天线</a></div>

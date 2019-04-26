@@ -1,0 +1,586 @@
+<div class="markdown-body"><h1>刻蚀结构 Demo</h1>EastWave V7 帮助文档提供了刻蚀结构的完整 Demo 以帮助用户更好的学习如何利用建模系统建立特定刻蚀结构。<br />
+<br /><blockquote>该刻蚀结构的完整文档文件可以点击<a target="_top" href="javascript:ewdoc.open_editor('etching_example.ewp2')">刻蚀结构 Demo 文档</a>下载。</blockquote><h2>相关技术</h2><ul>
+	<li>
+		<a target="_top" href="#help_model_shape_symbol">创建
+		</a>基础几何元件
+	</li>
+	<li>
+		<a target="_top" href="#help_model_material_symbol_material_depot">导入
+		</a>材料库中所需材料到计算工程文档
+	</li>
+	<li>
+		<a target="_top" href="#help_model_shape_symbol_DShapeDemo_demo_etching.bind">绑定
+		</a>材料到几何元件
+	</li>
+	<li>应用
+		<a target="_top" href="#help_model_shape_symbol_DShapeDemo_demo_etching.transform">变换矩阵
+		</a>
+	</li></ul><p>
+	<h2>相关约定
+	</h2>
+	<ul>
+		<li>几何元件本身
+			<strong>不包含材料信息、单位信息、变换矩阵信息
+			</strong>，几何元件需要经过<code>DSymbolPtr</code>元件修饰后，才可以绑定上述各种信息。
+		</li>
+		<li>几何元件不设置单位信息时，单位追随文档单位。
+		</li>
+		<li>
+			<strong>后建
+			</strong>几何元件
+			<strong>覆盖已建
+			</strong>几何元件和背景的
+			<strong>重叠区域材料
+			</strong>属性。
+		</li>
+		<li>变换矩阵系统采用
+			<strong>局部坐标系系统
+			</strong>，所有元件的坐标变换都是以元件
+			<strong>自身坐标系
+			</strong>为基础进行变换。
+		</li>
+		<li>对修饰元件<code>DSymbolPtr</code>、<code>DSymbolGrp</code>、<code>DSymbolArr</code>、<code>DSymbolStk</code>进行
+			<strong>复制
+			</strong>操作时，其包含的子节点元件均采用
+			<strong>引用方式
+			</strong>进行复制。若子节点元件需要使用
+			<strong>拷贝方式
+			</strong>进行复制，再对指定子节点元件进行一次
+			<strong>独特
+			</strong>操作即可。
+		</li>
+	</ul></p><div class="markdown-indicate"><p>&nbsp;&nbsp;备注</p>
+	<ol>
+		<li>所有几何元件的初始坐标系与世界坐标系
+			<strong>完全重叠
+			</strong>。
+		</li>
+		<li>
+			<strong>引用方式
+			</strong>复制元件：复制后的元件和被复制的元件共享属性，
+			<strong>只需要修改一个元件的属性(如材料)
+			</strong>，其余所有以
+			<strong>引用方式
+			</strong>复制的元件的属性都会同步改变。<br />
+
+			<strong>拷贝方式
+			</strong>后的元件：使用
+			<strong>独特
+			</strong>操作后的元件，解除其引用方式，无论如何修改该元件的属性，都只影响其自身，对其它元件无影响。
+		</li>
+	</ol></div><h2>刻蚀结构最终模型截图</h2><div class="markdown-block">
+	<table width="100%" style="border:0px">
+		<tr style="border:0px">
+			<td style="border:0px">
+				<a name=""><img src="image/DShape/demo/etching/etching_finish.png" />
+				</a>
+			</td>
+		</tr>
+	</table></div><h2>刻蚀结构创建步骤</h2><blockquote>步骤索引<ul><li><a target="_top" href="#help_model_shape_symbol_DShapeDemo_demo_etching.material">导入材料库材料</a></li><li><a target="_top" href="#help_model_shape_symbol_DShapeDemo_demo_etching.bottom">创建Si材料长方体（最底部）</a></li><li><a target="_top" href="#help_model_shape_symbol_DShapeDemo_demo_etching.middle">创建SiO2材料长方体（中间部分）</a></li><li><a target="_top" href="#help_model_shape_symbol_DShapeDemo_demo_etching.yst">创建Y结构</a></li><li><a target="_top" href="#help_model_shape_symbol_DShapeDemo_demo_etching.xst">创建X结构</a></li></ul></blockquote><a name="help_model_shape_symbol_DShapeDemo_demo_etching.material"> </a><h3>一、导入材料库材料</h3>在 EastWave V7 中打开<strong>模型编辑器</strong>菜单，然后选择<strong>材料管理器</strong>以打开三维建模窗口。选择相应的<code>Si</code>、<code>Si3N4</code>、<code>SiO2</code>材料，<strong>导入</strong>至需要计算的工程文档。<div class="markdown-block">
+	<table width="100%" style="border:0px">
+		<tr style="border:0px">
+			<td style="border:0px">
+				<a name=""><img src="image/DShape/demo/etching/import_material.png" />
+				</a>
+			</td>
+		</tr>
+	</table></div><a name="help_model_shape_symbol_DShapeDemo_demo_etching.bottom"> </a><h3>二、创建Si材料长方体（最底部）</h3><h4>最终效果图（红色高亮部分）</h4><div class="markdown-block">
+	<table width="100%" style="border:0px">
+		<tr style="border:0px">
+			<td style="border:0px">
+				<a name=""><img src="image/DShape/demo/etching/Si_Pic.png" />
+				</a>
+			</td>
+		</tr>
+	</table></div><h4>详细步骤</h4><ol>
+	<li>
+		<strong>创建长方体几何元件
+		</strong><br />
+选中
+		<strong>模型树
+		</strong>窗口中的
+		<strong>显示 &gt; 模型
+		</strong>节点，右键打开菜单，选中
+		<strong>添加 &gt; 添加结构
+		</strong>打开几何元件创建界面，类型选择<code>DShapeCube</code>，参数设置如下图。其中长方体中心为(0, 0, -400)，长宽高分别为(300, 200, 800)，元件名称为<code>Si_Cube</code>。
+		<strong>确定
+		</strong>完成长方体几何创建。
+		<div class="markdown-block">
+			<table width="100%" style="border:0px">
+				<tr style="border:0px">
+					<td style="border:0px">
+						<a name=""><img src="image/DShape/demo/etching/Si_Cube_Prop.png" />
+						</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<a name="help_model_shape_symbol_DShapeDemo_demo_etching.bind"> 
+		</a>
+	</li>
+	<li>
+		<strong>添加Si材料信息
+		</strong><br />
+选中上一步中创建完毕的长方体元件节点，打开其右键菜单，选中
+		<strong>修饰
+		</strong>。创建该长方体元件的修饰器元件<code>DSymbolPtr</code>。打开该<code>DSymbolPtr</code>的右键菜单并且选中
+		<strong>属性
+		</strong>打开其属性界面，设置其单位为<code>Si (Silicon) -Palik-0.2un-30um</code>，元件名称为<code>Si</code>。
+		<strong>确定
+		</strong>完成修饰器修改。
+		<div class="markdown-block">
+			<table width="100%" style="border:0px">
+				<tr style="border:0px">
+					<td style="border:0px">
+						<a name=""><img src="image/DShape/demo/etching/Si_Ptr.png" />
+						</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</li></ol><a name="help_model_shape_symbol_DShapeDemo_demo_etching.middle"> </a><h3>三、创建SiO2材料长方体（中间部分）</h3><h4>最终效果图（红色高亮部分）</h4><div class="markdown-block">
+	<table width="100%" style="border:0px">
+		<tr style="border:0px">
+			<td style="border:0px">
+				<a name=""><img src="image/DShape/demo/etching/SiO2_Pic.png" />
+				</a>
+			</td>
+		</tr>
+	</table></div><h4>详细步骤</h4><ol>
+	<li>
+		<strong>创建长方体几何元件
+		</strong><br />
+参照步骤二，创建长方体。参数设置如下图。其中长方体中心为(0, 0, 50)，长宽高分别为(300, 200, 100)，元件名称为<code>SiO2_Cube</code>。
+		<div class="markdown-block">
+			<table width="100%" style="border:0px">
+				<tr style="border:0px">
+					<td style="border:0px">
+						<a name=""><img src="image/DShape/demo/etching/SiO2_Cube_Prop.png" />
+						</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</li>
+	<li>
+		<strong>添加SiO2材料
+		</strong><br />
+参照步骤二，为几何元件添加修饰器<code>DSymbolPtr</code>，添加<code>SiO2</code>材料信息，并修改其属性设置如下图。
+		<div class="markdown-block">
+			<table width="100%" style="border:0px">
+				<tr style="border:0px">
+					<td style="border:0px">
+						<a name=""><img src="image/DShape/demo/etching/SiO2_Ptr.png" />
+						</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</li></ol><a name="help_model_shape_symbol_DShapeDemo_demo_etching.yst"> </a><h3>四、创建Y结构</h3><h4>最终效果图（红色高亮部分以及蓝灰夹层部分）</h4><div class="markdown-block">
+	<table width="100%" style="border:0px">
+		<tr style="border:0px">
+			<td style="border:0px">
+				<a name=""><img src="image/DShape/demo/etching/Y_Pic.png" />
+				</a>
+			</td>
+		</tr>
+	</table></div><p>
+	<h4>详细步骤
+	</h4>
+	<ol>
+		<li>添加外层长方体几何元件，长方体属性为<code>中心(0, 0, 200)，长宽高(300, 33, 200)，名称 Spacer </code>。并在该长方体元件上添加一层修饰器<code>DSymbolPtr</code>，属性为<code>材料 Si3N4 ，名称 Si3N4_Spacer </code>。
+			<div class="markdown-block">
+				<table width="100%" style="border:0px">
+					<tr style="border:0px">
+						<td style="border:0px">
+							<a name=""><img src="image/DShape/demo/etching/Si3N4_Prop.png" />
+							</a>
+						</td>
+					</tr>
+				</table>
+			</div>得到如下结构（蓝色部分）：
+			<div class="markdown-block">
+				<table width="100%" style="border:0px">
+					<tr style="border:0px">
+						<td style="border:0px">
+							<a name=""><img src="image/DShape/demo/etching/Si3N4_Pic.png" />
+							</a>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</li>
+		<li>添加内嵌长方体几何元件，长方体属性为<code>中心(0, 0, 175)，长宽高(300.1, 21, 150)，名称 Poly </code>。并在该长方体元件上添加一层修饰器<code>DSymbolPtr</code>，属性为<code>材料 Si ，名称 Si_Poly </code>。
+			<div class="markdown-block">
+				<table width="100%" style="border:0px">
+					<tr style="border:0px">
+						<td style="border:0px">
+							<a name=""><img src="image/DShape/demo/etching/Si_Poly_Prop.png" />
+							</a>
+						</td>
+					</tr>
+				</table>
+			</div>得到如下结构（红色部分，内嵌于Spacer中）：
+			<div class="markdown-block">
+				<table width="100%" style="border:0px">
+					<tr style="border:0px">
+						<td style="border:0px">
+							<a name=""><img src="image/DShape/demo/etching/Si_Poly_Pic.png" />
+							</a>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</li>
+		<li>在
+			<strong>模型树
+			</strong>窗口中，同时选中<code>Si3N4_Spacer</code>、<code>Si_Poly</code>节点，右键打开菜单，选择
+			<strong>组合
+			</strong>，得到<code>DSymbolGrp</code>组修饰器。
+			<div class="markdown-block">
+				<table width="100%" style="border:0px">
+					<tr style="border:0px">
+						<td style="border:0px">
+							<a name=""><img src="image/DShape/demo/etching/comb_si_si3n4.png" />
+							</a>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</li>
+		<li>右键打开新得到的
+			<strong>DSymbolGrp
+			</strong>节点，打开其
+			<strong>属性
+			</strong>界面，修改其名字为<code>Y+75nm</code>，并进行坐标变换。从图中可以看出，我们将该几何元件组往Y轴正方向进行了<code>75nm</code>的平移。
+			<div class="markdown-block">
+				<table width="100%" style="border:0px">
+					<tr style="border:0px">
+						<td style="border:0px">
+							<a name=""><img src="image/DShape/demo/etching/Y+75nm_Prop.png" />
+							</a>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="markdown-block">
+				<table width="100%" style="border:0px">
+					<tr style="border:0px">
+						<td style="border:0px">
+							<a name=""><img src="image/DShape/demo/etching/Y+75nm_Pic.png" />
+							</a>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</li>
+		<li>选中平移后的几何元件组<code>Y+75nm</code>节点，右键打开菜单选择
+			<strong>复制
+			</strong>，得到<code>Y+75nm</code>元件组的
+			<strong>深度拷贝
+			</strong>。打开新得到的复制品<code>Y+75nm_1</code>属性界面，改名为<code>Y+25nm</code>我们可以看到上个步骤中的坐标平移变换依然存在，我们只需要在这基础上往Y轴负方向平移<code>50nm</code>即可。
+			<div class="markdown-block">
+				<table width="100%" style="border:0px">
+					<tr style="border:0px">
+						<td style="border:0px">
+							<a name=""><img src="image/DShape/demo/etching/Y+25nm_Prop.png" />
+							</a>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="markdown-block">
+				<table width="100%" style="border:0px">
+					<tr style="border:0px">
+						<td style="border:0px">
+							<a name=""><img src="image/DShape/demo/etching/Y+25nm_Pic.png" />
+							</a>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</li>
+		<li>重复
+			<strong>复制 &gt; 坐标变换
+			</strong>的操作，最终我们可以得到四个完整的Y结构体。
+			<div class="markdown-block">
+				<table width="100%" style="border:0px">
+					<tr style="border:0px">
+						<td style="border:0px">
+							<a name=""><img src="image/DShape/demo/etching/Y_Final_Pic.png" />
+							</a>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</li>
+		<li>总结，各<code>DSymbolGrp</code>几何元件组最终坐标变换情况
+			<div class="markdown-block">
+				<table width="100%">
+					<tr style="border:0px">
+						<td style="border:0px">
+							<div class="markdown-table">
+								<table width="100%" class="markdown-table" style="border:1px">
+									<thead>
+										<tr>
+											<td align="left"> 几何元件组名称 
+											</td>
+											<td align="left"> 坐标变换矩阵 
+											</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td align="left"> Y+75nm 
+											</td>
+											<td align="left"> 平移 - Y轴正方向 - 75 
+											</td>
+										</tr>
+										<tr>
+											<td align="left"> Y+25nm 
+											</td>
+											<td align="left"> 平移 - Y轴正方向 - 75<br \>平移 - Y轴负方向 - 50
+											</td>
+										</tr>
+										<tr>
+											<td align="left"> Y-25nm 
+											</td>
+											<td align="left"> 平移 - Y轴正方向 - 75<br \>平移 - Y轴负方向 - 50<br \>平移 - Y轴负方向 - 50
+											</td>
+										</tr>
+										<tr>
+											<td align="left"> Y-75nm 
+											</td>
+											<td align="left"> 平移 - Y轴正方向 - 75<br \>平移 - Y轴负方向 - 50<br \>平移 - Y轴负方向 - 50<br \>平移 - Y轴负方向 - 50 
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</li>
+	</ol>
+	<a name="help_model_shape_symbol_DShapeDemo_demo_etching.xst"> 
+	</a>
+	<h3>五、创建X结构
+	</h3>
+	<h4>最终效果图（红色高亮部分）
+	</h4>
+	<div class="markdown-block">
+		<table width="100%" style="border:0px">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<a name=""><img src="image/DShape/demo/etching/X_Final_Pic.png" />
+					</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<h4>详细步骤
+	</h4>
+	<ol>
+		<li>添加梯形体<br />
+建立X结构的底部梯形体部分，可以使用 EastWave V7 提供的<code>DShapeColumn</code>拉伸体建模工具。
+			<ol>
+				<li>
+					<strong>模型
+					</strong>节点右键菜单，
+					<strong>添加 &gt; 添加结构
+					</strong>，选中<code>DShapeColumn</code>类型。点击
+					<strong>引用表面
+					</strong>下拉框，选择
+					<strong>新建结构
+					</strong>，弹出的界面即为
+					<strong>二维几何体创建界面
+					</strong>，选中<code>DShapePoly</code>类型创建多边形。参数如下图所示，给出一个二维平面的梯形。设置好参数后，点击
+					<strong>确定
+					</strong>按钮返回<code>DShapeColumn</code>属性界面。其中梯形体名称为<code>X-1 structure bottom</code>。
+					<div class="markdown-block">
+						<table width="100%" style="border:0px">
+							<tr style="border:0px">
+								<td style="border:0px">
+									<a name=""><img src="image/DShape/demo/etching/Trapezoid_Prop.png" />
+									</a>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</li>
+				<li>在<code>DShapeColumn</code>属性界面输入XY平面几何往Z轴正方向拉伸高度<code>200.1</code>。点击
+					<strong>确定
+					</strong>按钮，即可生成梯形体结构。
+					<div class="markdown-block">
+						<table width="100%" style="border:0px">
+							<tr style="border:0px">
+								<td style="border:0px">
+									<a name=""><img src="image/DShape/demo/etching/X-1-Bottom.png" />
+									</a>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</li>
+				<li>得到的梯形体如下图所示（红色高亮部分）
+					<div class="markdown-block">
+						<table width="100%" style="border:0px">
+							<tr style="border:0px">
+								<td style="border:0px">
+									<a name=""><img src="image/DShape/demo/etching/X-1-Bottom-Pic.png" />
+									</a>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</li>
+			</ol>
+		</li>
+		<li>往新建的梯形体添加顶部长方体<br />
+
+			<ol>
+				<li>新建好的梯形体，梯形面位于XY平面。后续还需要将该梯形体进行坐标变换才能转换到我们所需的位置。不过在进行坐标变换之前，我们应该先添加其顶部长方体，把顶部的长方体和底部的梯形体捆绑为一个<code>DSymbolGrp</code>几何元件组，最后才进行统一的坐标变换。<br />
+
+				</li>
+				<li>
+					<strong>模型
+					</strong>节点右键菜单，
+					<strong>添加 &gt; 添加结构
+					</strong>，选中<code>DShapeCube</code>，选中
+					<strong>类型下拉框
+					</strong>的
+					<strong>边
+					</strong>选项，以角点的方式构造长方体。我们只需给定左下前角点(-5, 100, 0)以及右上后角点(5, 200, 200.1)即可把长宽高分别为(10, 100, 200.1)的长方体添加到梯形体的顶部。其中顶部长方体名称为<code>X-1 structure top</code>。
+					<div class="markdown-block">
+						<table width="100%" style="border:0px">
+							<tr style="border:0px">
+								<td style="border:0px">
+									<a name=""><img src="image/DShape/demo/etching/X-1-Top.png" />
+									</a>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</li>
+				<li>得到的顶部长方体如下图所示（红色高亮部分）
+					<div class="markdown-block">
+						<table width="100%" style="border:0px">
+							<tr style="border:0px">
+								<td style="border:0px">
+									<a name=""><img src="image/DShape/demo/etching/X-1-Top-Pic.png" />
+									</a>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</li>
+			</ol>
+			<a name="help_model_shape_symbol_DShapeDemo_demo_etching.transform"> 
+			</a>
+		</li>
+		<li>捆绑梯形以及顶部长方体并进行坐标变换
+			<ol>
+				<li> 
+					<strong>模型树
+					</strong>窗口中，同时选中<code>X-1 structure bottom</code>和<code>X-1 structure top</code>节点，右键打开菜单，选中
+					<strong>组合
+					</strong>得到<code>DSymbolGrp</code>几何元件组。
+				</li>
+				<li> 打开新得到的<code>DSymbolGrp</code>几何元件组的属性界面。命名为<code>X-1 structure_0</code>，设置材料为<code>Si</code>材料，并且添加坐标变换，绕X轴逆时针旋转90度。得到如下图结构。 
+					<div class="markdown-block">
+						<table width="100%" style="border:0px">
+							<tr style="border:0px">
+								<td style="border:0px">
+									<a name=""><img src="image/DShape/demo/etching/X-1-S-0.png" />
+									</a>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</li>
+				<li> 上个步骤中，<code>X-1 structure_0</code>几何元件组绕X轴逆时针旋转90度后，几何元件组的自身坐标系已经发生了变换，其X轴正方向仍然与世界坐标系X轴正方向重叠， 但其Y轴正方向与世界坐标系的Z轴正方向重叠，其Z轴正方向与世界坐标系的Y轴负方向重叠。 
+					<div class="markdown-block">
+						<table width="100%" style="border:0px">
+							<tr style="border:0px">
+								<td style="border:0px">
+									<a name=""><img src="image/DShape/demo/etching/X-1 structure-0.png" />
+									</a>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</li>
+				<li> 因此，若要把<code>X-1 structure_0</code>几何元件组
+					<strong>底面中心
+					</strong>移至与
+					<strong>世界坐标系的原点
+					</strong>重合。实际上就是往自身坐标系的Z轴负方向平移<code>100.05nm</code>距离。 
+					<div class="markdown-block">
+						<table width="100%" style="border:0px">
+							<tr style="border:0px">
+								<td style="border:0px">
+									<a name=""><img src="image/DShape/demo/etching/X-0-structure_0.png" />
+									</a>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</li>
+				<li> 再把<code>X-1 structure_0</code>几何元件组往自身坐标系X方向移动<code>135nm</code>即可得到最终的<code>X-1 structure_0</code>结构。
+				</li>
+			</ol>
+		</li>
+		<li>通过
+			<strong>复制
+			</strong>操作，创建其它<code>X-1 structure</code>
+			<ol>
+				<li> 选中<code>X-1 structure_0</code>节点，右键打开菜单选择
+					<strong>复制
+					</strong>，得到<code>X-1 structure_1</code>，继续沿X轴负方向移动<code>30nm</code>即可得到最终的<code>X-1 structure_1</code>。
+				</li>
+				<li> 选中<code>X-1 structure_1</code>节点，右键打开菜单选择
+					<strong>复制
+					</strong>，得到<code>X-1 structure_2</code>，继续沿X轴负方向移动<code>60nm</code>即可得到最终的<code>X-1 structure_2</code>。
+				</li>
+				<li> 选中<code>X-1 structure_1</code>节点，右键打开菜单选择
+					<strong>复制
+					</strong>，得到<code>X-1 structure_3</code>，继续沿X轴负方向移动<code>60nm</code>即可得到最终的<code>X-1 structure_3</code>。
+				</li>
+				<li> 选中<code>X-1 structure_1</code>节点，右键打开菜单选择
+					<strong>复制
+					</strong>，得到<code>X-1 structure_4</code>，继续沿X轴负方向移动<code>30nm</code>即可得到最终的<code>X-1 structure_4</code>。
+				</li>
+				<li> 选中<code>X-1 structure_1</code>节点，右键打开菜单选择
+					<strong>复制
+					</strong>，得到<code>X-1 structure_5</code>，继续沿X轴负方向移动<code>60nm</code>即可得到最终的<code>X-1 structure_5</code>。
+				</li>
+				<li> 选中<code>X-1 structure_1</code>节点，右键打开菜单选择
+					<strong>复制
+					</strong>，得到<code>X-1 structure_6</code>，继续沿X轴负方向移动<code>30nm</code>即可得到最终的<code>X-1 structure_6</code>。
+				</li>
+				<li> 最终得到的<code>X-1</code>结构如下图所示 
+					<div class="markdown-block">
+						<table width="100%" style="border:0px">
+							<tr style="border:0px">
+								<td style="border:0px">
+									<a name=""><img src="image/DShape/demo/etching/X-1-Grp.png" />
+									</a>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</li>
+			</ol>
+		</li>
+	</ol></p><div class="markdown-warning"><p>&nbsp;&nbsp;提醒</p>以上演示的坐标变换步骤只是获得最终结构体的众多方法中的其中一种，用户也可以通过其它的平移、旋转和缩放的变换组合得到最终结构体。</div><div class="markdown-indicate"><p>&nbsp;&nbsp;几何结构体说明</p>
+	<ul>
+		<li>
+			<strong>边定义方式的长方体：
+			</strong>用户提供左下前角点以及右上后角点，即可构造出规则的长方体结构。
+		</li>
+		<li>
+			<strong>垂直拉伸体：
+			</strong>一种高级建模工具，用户只需提供一个XY平面的引用表面以及提供往Z轴正方向拉伸的高度，即可生成稍微复杂的几何结构体。
+		</li>
+	</ul></div></div>

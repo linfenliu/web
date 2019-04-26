@@ -1,0 +1,508 @@
+<div class="markdown-body"><p>
+	<h1>雷达目标散射截面(RCS)计算模式
+	</h1></p><p>
+	<h2>概述
+	</h2>计算物体单站及双站 RCS 的频率响应或角度响应。计算模式根据输入参数（频率范围或扫描角度等），自动设置激励源和记录器，完成频率或角度扫描，并自动完成后处理给出 RCS 的频率 / 角度响应曲线。</p><p>本计算模式兼容单站及双站 RCS 计算，对于单站 RCS ，使用脉冲分析方法，可以同时得到多频点或宽带的 RCS 特性。双站 RCS 为用户可选选项，默认为关闭状态，开启时，每个单站角度都会进行双站扫描计算。双站 RCS 监视器支持延迟的 RCS 计算智能数据、固实的 RCS 数值智能数据两类。延迟计算的 RCS 智能数据仅支持频域远场监视器（即不能宽带扫描）。</p><strong>单站 RCS 模式的仿真流程</strong>：<p>
+	<ul>
+		<li>设置基本参数（工作频率、发射雷达角度范围、极化角度等）
+		</li>
+		<li>建立散射体模型（RCS 目标）
+		</li>
+		<li>计算（计算模式根据设定角度自动完成单站 RCS 角度扫描）
+		</li>
+		<li>分析结果（智能数据处理得到单站模式下角度及频率响应曲线）
+		</li>
+	</ul></p><strong>双站 RCS 模式的仿真流程</strong>：<p>
+	<ul>
+		<li>设置基本参数（开启双站、工作频率、发射及接收雷达角度范围、极化角度等）
+		</li>
+		<li>建立散射体模型（RCS 目标）
+		</li>
+		<li>计算（计算模式根据设定角度自动完成双站 RCS 角度扫描）
+		</li>
+		<li>分析结果（智能数据处理得到双站模式下角度及频率响应曲线）
+		</li>
+	</ul></p><h2>模式设定</h2><ol>
+	<li>
+		<strong>单位
+		</strong>：默认单位设置如下，也可修改文档单位。
+		<ul>
+			<li>长度单位：
+				<strong>mm
+				</strong>
+			</li>
+			<li>时间单位：
+				<strong>ns
+				</strong>
+			</li>
+			<li>频率单位：
+				<strong>GHz
+				</strong> 
+			</li>
+		</ul>
+	</li>
+	<li>
+		<strong>激励源
+		</strong>：
+		<ul>
+			<li>空间分布：平面波（总场散射场）
+			</li>
+			<li>时域波形：默认设置脉冲（信号频率范围覆盖输入的频率范围），也可在
+				<strong>杂项
+				</strong>中自定义信号波形。
+			</li>
+			<li>发射方向：根据用户输入的模式参数
+				<strong>发射雷达角度
+				</strong> $\theta$ 、$\phi$  确定。
+			</li>
+			<li>极化角度：根据用户输入的模式参数
+				<strong>发射雷达极化角
+				</strong> $\alpha$ 确定。
+			</li>
+			<li>位置：激励源的默认设置位置为距离物体包围框的 
+				<strong>LAMBDA / 4
+				</strong> 处，用户也可在
+				<strong>杂项
+				</strong>中自定义激励源的位置。
+			</li>
+		</ul>
+	</li>
+	<li>
+		<strong>记录器
+		</strong>：
+		<ul>
+			<li>类型：单站模式下，默认设置为时域远场记录器；双站模式下，默认设置为频域远场记录器。
+			</li>
+			<li>远场方向：单站模式下，无需设置，接收方向与发射方向反向；双站模式下，根据用户输入的模式参数
+				<strong>接收雷达角度
+				</strong> $\theta$ 、$\phi$ 确定。
+			</li>
+			<li>位置：记录器的默认设置位置为距离物体包围框的 
+				<strong>LAMBDA / 2
+				</strong> 处，用户也可以在
+				<strong>杂项
+				</strong>中自定义记录器的位置。
+			</li>
+		</ul>
+	</li>
+	<li>
+		<strong>边界设置
+		</strong>：
+		<ul>
+			<li>开放边界，默认设置为 12 层 PML 吸收边界。
+			</li>
+		</ul>
+	</li>
+	<li>
+		<strong>其他
+		</strong>：
+		<ul>
+			<li>根据输入角度范围自动完成角度扫描。
+			</li>
+		</ul>
+	</li></ol><p><br />
+	<h2>模式图示
+	</h2></p><p>模式界面如下：</p><p>
+	<div class="markdown-block">
+		<table width="100%">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<div class="markdown-table">
+						<table width="100%" class="markdown-table" style="border:1px">
+							<thead>
+								<tr>
+									<td align="center"> 
+										<div class="markdown-block">
+											<table width="100%" style="border:0px">
+												<tr style="border:0px">
+													<td style="border:0px">
+														<a name="RCS模式设置"><img src="image/workmode/rcs/rcs_bisic.png" alt="image 1: RCS模式设置" />
+														</a>
+													</td>
+												</tr>
+												<tr style="border:0px">
+													<td style="border:0px" align="center">image 1: RCS模式设置
+													</td>
+												</tr>
+											</table>
+										</div><br />
+
+									</td>
+									<td align="center"> 
+										<div class="markdown-block">
+											<table width="100%" style="border:0px">
+												<tr style="border:0px">
+													<td style="border:0px">
+														<a name="杂项设置"><img src="image/workmode/rcs/rcs_misc.png" alt="image 2: 杂项设置" />
+														</a>
+													</td>
+												</tr>
+												<tr style="border:0px">
+													<td style="border:0px" align="center">image 2: 杂项设置
+													</td>
+												</tr>
+											</table>
+										</div><br />
+
+									</td>
+								</tr>
+							</thead>
+							<tbody />
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div></p><h2>模式参数</h2><p>
+	<h3>设置
+	</h3></p><strong>频率设置</strong>：<div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center"> 频率设置<br />
+
+								</td>
+								<td align="center">  参数<br />
+
+								</td>
+								<td align="center"> 说明<br />
+
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="center"> 单一频点<br />
+
+								</td>
+								<td align="center">  频率单值<br />
+
+								</td>
+								<td align="center"> 单一频点模式下，仅需要设置单一频率，即为工作频率<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 线性步进<br />
+
+								</td>
+								<td align="center">  最小频率、最大频率、频率间隔 
+								</td>
+								<td align="center"> 生成（最小频率：频率间隔：最大频率）的频率序列<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 均匀采样<br />
+
+								</td>
+								<td align="center">  最小频率、最大频率、频率数<br />
+
+								</td>
+								<td align="center"> 生成以最小频率、最大频率、频率数构造的等差频率序列<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 频率列表<br />
+
+								</td>
+								<td align="center">  频率列表<br />
+
+								</td>
+								<td align="center"> 离散的频率点<br />
+
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div><strong>发射雷达角度设置</strong>：<div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center"> 角度设置<br />
+
+								</td>
+								<td align="center">  参数<br />
+
+								</td>
+								<td align="center"> 说明<br />
+
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="center"> 角度模式<br />
+
+								</td>
+								<td align="center">  $\theta$ 扫描 / $\phi$ 扫描<br />
+
+								</td>
+								<td align="center"> 发射雷达入射角扫描模式<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 球坐标模式<br />
+
+								</td>
+								<td align="center">  ISO / HCS / GCS<br />
+
+								</td>
+								<td align="center"> 球坐标系模式<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> $\theta$ 角度<br />
+
+								</td>
+								<td align="center">  $\theta$<br />
+
+								</td>
+								<td align="center"> 发射雷达入射角度 $\theta$
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> $\phi$ 角度<br />
+
+								</td>
+								<td align="center">  $\phi$<br />
+
+								</td>
+								<td align="center"> 发射雷达入射角度 $\phi$<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 极化角度<br />
+
+								</td>
+								<td align="center">  $\alpha$<br />
+
+								</td>
+								<td align="center"> 发射雷达极化角<br />
+
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div><strong>双站外推设置</strong>：（<strong>目前双站默认设置为频域记录器（立即外推），这三个参数暂时不起作用</strong>）<div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td rowspan="1" colspan="3" align="center"> 双站外推设置<br />
+
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="center">  参数<br />
+
+								</td>
+								<td align="center"> 说明<br />
+
+								</td>
+								<td align="center">    备注<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  立即频域外推<br />
+
+								</td>
+								<td align="center"> 双站远场监视器选择频域远场监视器（立即外推）<br />
+
+								</td>
+								<td align="center">   暂时无效
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  延迟频域外推<br />
+
+								</td>
+								<td align="center"> 双站远场监视器选择频域远场监视器（延迟外推）<br />
+
+								</td>
+								<td align="center">    暂时无效
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  时域远场外推<br />
+
+								</td>
+								<td align="center"> 双站远场监视器选择时域远场监视器<br />
+
+								</td>
+								<td align="center">     暂时无效
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div><p>
+	<strong>接收雷达角度设置
+	</strong>（仅限双站）：
+	<div class="markdown-block">
+		<table width="100%">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<div class="markdown-table">
+						<table width="100%" class="markdown-table" style="border:1px">
+							<thead>
+								<tr>
+									<td align="center"> 角度设置<br />
+
+									</td>
+									<td align="center">  参数<br />
+
+									</td>
+									<td align="center"> 说明<br />
+
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td align="center"> 角度模式<br />
+
+									</td>
+									<td align="center">  $\theta$ 扫描 / $\phi$ 扫描<br />
+
+									</td>
+									<td align="center"> 接收雷达角度扫描模式<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 球坐标模式<br />
+
+									</td>
+									<td align="center">  ISO / HCS / GCS<br />
+
+									</td>
+									<td align="center"> 球坐标系模式<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> $\theta$ 角度<br />
+
+									</td>
+									<td align="center">  $\theta$<br />
+
+									</td>
+									<td align="center"> 接收雷达角度 $\theta$<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> $\phi$ 角度<br />
+
+									</td>
+									<td align="center">  $\phi$<br />
+
+									</td>
+									<td align="center"> 接收雷达角度 $\phi$<br />
+
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div></p><p>
+	<h3>杂项
+	</h3></p><p>杂项中主要包括自定义激励源、自定义监视器等其他一些高级设置选项：
+	<ul>
+		<li>激励源设置中主要包括：自定义信号的设置、激励源的入射方向、激励源位置
+		</li>
+		<li>监视器设置主要是监视器的位置设置
+		</li>
+		<li>其他和计算相关的设置（如计算精度，计算区域位置等）
+		</li>
+	</ul></p><div class="markdown-indicate"><p>&nbsp;&nbsp;说明</p>
+	<ul>
+		<li>本计算模式默认设置激励源的信号为用户设置的频率范围的脉冲信号，勾选自定义信号，即可根据用户自己的需求设置时域信号（设置参数包括中心频率、脉冲宽度、信号强度、信号延迟）。
+		</li>
+		<li>激励源的入射方向有两个选项：雷达（源）方向 / 波矢方向，默认设置为雷达（源）方向。
+		</li>
+		<li>激励源的位置默认设置为自动拓展空间，拓展的距离是距离物体框 
+			<strong>LAMBDA / 4
+			</strong>，用户也可以修改这个拓展距离，也可以自定义激励源的位置。
+		</li>
+		<li>监视器的位置默认设置为自动拓展空间，拓展的距离是距内置激励源位置的 
+			<strong>LAMBDA / 4
+			</strong>，用户可以修改拓展距离，也可以自定义监视器的位置。
+		</li>
+		<li>精度设置暂时无效
+		</li>
+		<li>计算区域设置暂时无效
+		</li>
+	</ul></div><h2>输出结果：</h2>智能数据结果主要分为两大部分：<ul>
+	<li>RCS 角度响应结果
+	</li>
+	<li>RCS 频率响应结果
+	</li></ul>单站 RCS 智能数据界面如下（扫频）：<div class="markdown-block">
+	<table width="100%" style="border:0px">
+		<tr style="border:0px">
+			<td style="border:0px">
+				<a name="help_workmode_rcs.atf"><img src="image/workmode/rcs/rcs_smartdata_monos.png" />
+				</a>
+			</td>
+		</tr>
+	</table></div><p>双站 RCS 智能数据界面如下（扫角）：
+	<div class="markdown-block">
+		<table width="100%" style="border:0px">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<a name="help_workmode_rcs.atf"><img src="image/workmode/rcs/rcs_smartdata_bis.png" />
+					</a>
+				</td>
+			</tr>
+		</table>
+	</div></p><div class="markdown-warning"><p>&nbsp;&nbsp;注意:</p>
+	<ul>
+		<li>角度设置：发射雷达的入射角度 $\theta$ 及 $\phi$ 不能同时为序列，接受雷达的角度设置也是如此。
+		</li>
+		<li>双站开启：默认设置双站关闭状态，勾选双站开启后，双站外推设置及接收雷达角度设置才有效。
+		</li>
+		<li>极化角：发射雷达极化角暂时仅能设置为单值，不能设置成序列。
+		</li>
+		<li>角度扫描：角度扫描方式要和设置的 $\theta$、$\phi$ 一致。（例如：$\phi$ 扫描模式下，$\phi$ 为序列，$\theta$ 为单值。$\theta$ 扫描模式同理）
+		</li>
+	</ul></div><p>
+	<strong>案例：
+	</strong></p><p>
+	<a target="_top" href="javascript:ewdoc.open_editor('samples/project/PEC金属球单站RCS.ewp2')">单站RCS-PEC球
+	</a></p><p>
+	<a target="_top" href="javascript:ewdoc.open_editor('samples/project/PEC金属球双站RCS.ewp2')">双站RCS-PEC球
+	</a></p><p>
+	<a target="_top" href="javascript:ewdoc.open_editor('samples/project/介质包裹的金属球（双站RCS）.ewp2')">双站RCS-介质包裹PEC球
+	</a></p><p>
+	<a target="_top" href="javascript:ewdoc.open_editor('samples/project/贴片天线阵（双站RCS）.ewp2')">双站RCS-贴片天线阵
+	</a></p></div>

@@ -1,0 +1,132 @@
+<div class="markdown-body"><p>
+	<h1>常用函数
+	</h1></p><a name="help_script_Specifications_Common.function.print"> </a><code>print</code><br />打印变量的值<br /><strong>语法：</strong>  <pre><code>print(arg1,...)</code></pre><br /><strong>例子：</strong>  <pre><code code-language="ewsl">/* example 1: interactive mode */<br />&gt;&gt; a = 1;<br />&gt;&gt; b = 2;<br />&gt;&gt; print("a = ", a, ", b = ", b, "\n")<br />a = 1, b = 2</code></pre><br /><strong>参考：</strong>  <ul>
+	<li>
+		<a target="_top" href="#help_script_Specifications_Common.function.println"><code>println</code>
+		</a>
+	</li>
+	<li>
+		<a target="_top" href="#help_script_Specifications_Common.function.puts"><code>puts</code>
+		</a>
+	</li></ul><a name="help_script_Specifications_Common.function.println"> </a><code>println</code>  <br />打印变量的值，并且换行<br /><strong>语法：</strong>  <pre><code>println(arg1,...)</code></pre><br /><strong>例子：</strong>  <pre><code code-language="ewsl">/* example 1 */<br />a = ["abc", "def", "ghc"]<br />for_each(_,v in a)<br />{<br />    println(v);<br />}<br /><br />/* output below: */<br />abc<br />def<br />ghc</code></pre><p><br />
+	<strong>参考：
+	</strong>  
+	<ul>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Common.function.print"><code>print</code>
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Common.function.puts"><code>puts</code>
+			</a>
+		</li>
+	</ul></p><a name="help_script_Specifications_Common.function.puts"> </a><code>puts</code>  <br />打印变量的值<br /><strong>语法：</strong>  <pre><code>puts(arg1,...)</code></pre><br /><strong>例子：</strong>  <pre><code code-language="ewsl">/* example 1: interactive mode */<br />&gt;&gt; a = 1;<br />&gt;&gt; b = 2;<br />&gt;&gt; puts("a = ", a, ", b = ", b, "\n")<br />a = 1, b = 2</code></pre><p><br />
+	<strong>参考：
+	</strong>  
+	<ul>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Common.function.print"><code>print</code>
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Common.function.puts"><code>puts</code>
+			</a>
+		</li>
+	</ul></p><a name="help_script_Specifications_Common.function.pcall"> </a><code>pcall</code>  <br />保护性调用<br /><strong>语法：</strong>  <pre><code code-language="ewsl">succ, ret = pcall(fn, arg1, ...)</code></pre>调用<code>fn</code>，并且将<code>arg1</code>等后面的参数传给<code>fn</code>，如果运行成功，则返回值<code>succ</code>为<code>true</code>，<code>ret</code>为返回结果，否则为<code>false</code>，<code>ret</code>为错误信息。<br /><strong>例子：</strong>  <pre><code code-language="ewsl">/* example 1 */<br />function fn(x)<br />{<br />    if(x&gt;=0)<br />    {<br />        return sqrt(x);<br />    }<br />    else<br />    {<br />        throw "negative_is_not_allowed";<br />    }<br />}; // use ';' to screen output 'function fn'<br /><br />pcall(fn, 1)   // unuse ';' to show the result of pcall<br />pcall(fn, -1)  // like above<br /><br />/* output below: */<br />results: true,1<br />results: false,negative_is_not_allowed</code></pre><a name="help_script_Specifications_Common.function.map"> </a><code>map</code>  <br />映射（高阶函数）<br /><strong>语法：</strong>  <pre><code code-language="ewsl">ret = map(f,arr)  // directly call, arr can be a variant table.<br />g   = map(f)      // lifting f to g. The result of calling g(arr) is the same with that of calling map(f, arr).</code></pre><p>
+	<ul>
+		<li>用法1：直接调用。将函数<code>f</code>映射到数组<code>arr</code>的每个元素上，计算的结果按照原先的次序重组为新的数组<code>ret</code>。
+		</li>
+		<li>用法2：函数提升。将作用在元素上的函数<code>f</code>提升为作用在数组上的函数<code>g</code>，调用<code>g(arr)</code>与<code>map(f,arr)</code>相同。
+		</li>
+		<li>说明：对变量表有类似作用。
+		</li>
+	</ul></p><br /><strong>例子：</strong>  <pre><code code-language="ewsl">/* example 1 */<br />add1 = function(x) { return x + 1; }<br />a = 1:10;<br />b = map(add1, a);<br />map(println, b);<br />/* output below: */<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br /><br />/* example 2 */<br />print_elm = function(e) { print(e," "); }<br />print_arr = function(arr) { map(print_elm)(arr); println(); }<br />print_arr(1:10);<br /><br />/* output below: */<br />1 2 3 4 5 6 7 8 9 10 <br /></code></pre><p><br />
+	<strong>参考：
+	</strong>  
+	<ul>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Common.function.mapkv"><code>mapkv</code>
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Common.function.foldl"><code>foldl</code>
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Common.function.foldr"><code>foldr</code>
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Common.function.filter"><code>filter</code>
+			</a>
+		</li>
+	</ul></p><a name="help_script_Specifications_Common.function.mapkv"> </a><code>mapkv</code>  <br />带键值映射（高阶函数）<br /><strong>语法：</strong>  <pre><code code-language="ewsl">mapkv(f,arr) // Directly call in which arr can be a variant table.<br />mapkv(f)     // Lifting f to g. The result of calling g(arr) is the same with that of calling mapkv(f, arr).</code></pre><ul>
+	<li>用法1：直接调用。将二元函数<code>f</code>映射到数组<code>arr</code>的每对键值和值上（<code>f</code>是二元函数，第一个参数是数组的索引或变量表的键值名称，第二个参数是对应索引或者键值的元素值），计算的结果按照原先的次序重组为新的数组<code>ret</code>。
+	</li>
+	<li>用法2：函数提升。将作用在元素上的函数<code>f</code>提升为作用在数组上的函数<code>g</code>，调用<code>g(arr)</code>与<code>map(f,arr)</code>相同。
+	</li>
+	<li>说明：对变量表有类似作用。
+	</li></ul><a name="example"> </a><pre><code code-language="ewsl">/* example 1 */<br /><br />a = table{<br />    x:1;<br />    y:2;<br />    z:3<br />};<br /><br />print_kv = function(k,v)<br />{<br />    print(k, " =&gt; ", v, "\n");<br />};<br /><br />mapkv(print_kv, a);<br /><br />/* output below: */<br />x =&gt; 1<br />y =&gt; 2<br />z =&gt; 3<br /></code></pre><br /><strong>参考：</strong>  <ul>
+	<li>
+		<a target="_top" href="#help_script_Specifications_Common.function.map"><code>map</code>
+		</a>
+	</li>
+	<li>
+		<a target="_top" href="#help_script_Specifications_Common.function.foldl"><code>foldl</code>
+		</a>
+	</li>
+	<li>
+		<a target="_top" href="#help_script_Specifications_Common.function.foldr"><code>foldr</code>
+		</a>
+	</li>
+	<li>
+		<a target="_top" href="#help_script_Specifications_Common.function.filter"><code>filter</code>
+		</a>
+	</li></ul><a name="help_script_Specifications_Common.function.foldl"> </a><code>foldl</code>  <br />左折叠<br />
+<br /><strong>语法：</strong>  <pre><code code-language="ewsl">foldl(f,s,arr)<br />foldl(f,s)</code></pre><ul>
+	<li>用法1：给一个二元函数<code>f</code>和一个初始值<code>s</code>，<code>arr</code>是个数组或者变量表，每次从<code>arr</code>中取一个元素<code>x</code>，计算<code>s=f(s,x)</code>，如此重复迭代直至遍历完<code>arr</code>的全部元素。
+	</li>
+	<li>用法2：给一个二元函数<code>f</code>和一个初始值<code>s</code>，返回一个函数<code>g</code>，<code>g(arr)</code>的效果与<code>foldl(f,s,arr)</code>相同。
+	</li></ul><br /><strong>例子：</strong>  <pre><code code-language="ewsl">/* example 1 */<br />s = foldl(math.add, 0, 1:10); // sum of 1 to 10<br />p = foldl(math.mul, 1, 1:10); // product of 1 to 10<br />println(s);<br />println(p);<br /><br />/* output below: */<br />55<br />3628800</code></pre><br /><strong>参考：</strong>  <ul>
+	<li>
+		<a target="_top" href="#help_script_Specifications_Common.function.map"><code>map</code>
+		</a>
+	</li>
+	<li>
+		<a target="_top" href="#help_script_Specifications_Common.function.foldr"><code>foldr</code>
+		</a>
+	</li>
+	<li>
+		<a target="_top" href="#help_script_Specifications_Common.function.filter"><code>filter</code>
+		</a>
+	</li></ul><p>
+	<a name="help_script_Specifications_Common.function.foldr"> 
+	</a><code>foldr</code>  <br />右折叠</p><br /><strong>语法：</strong>  <pre><code code-language="ewsl">foldr(f,s,arr)<br />foldr(f,s)</code></pre><ul>
+	<li>用法1：给一个二元函数<code>f</code>和一个初始值<code>s</code>，<code>arr</code>是个数组或者变量表，每次从<code>arr</code>中取一个元素<code>x</code>，计算<code>s=f(x,s)</code>，如此重复迭代直至遍历完<code>arr</code>的全部元素。
+	</li>
+	<li>用法2：给一个二元函数<code>f</code>和一个初始值<code>s</code>，返回一个 函数<code>g</code>，<code>g(arr)</code>的效果与<code>foldl(f,s,arr)</code>相同。
+	</li>
+	<li>注意：<code>foldl</code>和<code>foldr</code>对第一个参数（函数）的区别在于结合方向，<code>foldl</code>是“左结合”，而<code>foldr</code>是“右结合”。
+	</li></ul><br /><strong>例子：</strong>  <pre><code code-language="ewsl">/* example 1 */<br />a = [1,3,5,7,9,7,5,3,1];<br />s = foldr(function(x,y){return ?(x&lt;y,y,x);}, a[0], a);<br />println(s);<br />/* output below: */<br />9</code></pre><br /><strong>参考：</strong>  <ul>
+	<li>
+		<a target="_top" href="#help_script_Specifications_Common.function.map"><code>map</code>
+		</a>
+	</li>
+	<li>
+		<a target="_top" href="#help_script_Specifications_Common.function.foldr"><code>foldl</code>
+		</a>
+	</li>
+	<li>
+		<a target="_top" href="#help_script_Specifications_Common.function.filter"><code>filter</code>
+		</a>
+	</li></ul><a name="help_script_Specifications_Common.function.filter"> </a><code>filter</code>  <br />过滤<br /><strong>语法：</strong>  <pre><code code-language="ewsl">filter(pred, arr)<br />filter(pred)</code></pre><ul>
+	<li>用法1：给一个一元谓词函数（返回bool值的函数被称为
+		<strong>谓词
+		</strong>），和一个数组（或变量表），遍历其中所有元素，将元素传给谓词，如果返回为真加到结果数组中，返回的结果是所有满足谓词条件的元素集合。
+	</li>
+	<li>用法2：<code>filter(pred)(x)</code>和<code>filter(pred,x)</code>是等价的。
+	</li></ul><br /><strong>例子：</strong>  <pre><code code-language="ewsl">/* example 1 */<br />local a = filter(function(x){return x&gt;=0;}, (-10):10);<br />for_each(v in a)<br />{<br />    print(v, " ");<br />}<br />println();<br /><br />/* output below: */<br />0 1 2 3 4 5 6 7 8 9 10 </code></pre><a name="help_script_Specifications_Common.function.compose"> </a><code>compose</code>  函数的复合（高阶函数）<br /><strong>语法：</strong>  <pre><code code-language="ewsl">compose(f, g)</code></pre><p>
+	<ul>
+		<li>使用函数的复合可以简单的将两个函数连接成一个新的函数，而新的函数相当于原来两个函数的连续应用
+		</li>
+	</ul></p></div>

@@ -1,0 +1,390 @@
+<div class="markdown-body"><h1>类型</h1>EWSL是一种动态类型语言，因此一个变量在其生命周期中类型可能会发生变化。此外，部分脚本函数对输入参数进行了隐式类型转换，不要球输入参数的类型是某种唯一确定的类型。<a name="help_script_Types.primitive_types"> </a><h2>基本类型</h2><p>EWSL支持以下几种基本数据类型：
+	<ol>
+		<li>
+			<a target="_top" href="#help_script_Types.nil">空类型
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Types.boolean">布尔类型
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Types.integer">整数类型
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Types.double">双精度浮点数
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Types.complex">复数类型
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Types.string">字符串类型
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Types.array">数组类型
+			</a>
+			<ol>
+				<li>
+					<a target="_top" href="#help_script_Types.array_integer">整数数组
+					</a>
+				</li>
+				<li>
+					<a target="_top" href="#help_script_Types.array_double">双精度浮点数组
+					</a>
+				</li>
+				<li>
+					<a target="_top" href="#help_script_Types.array_complex">复数数组
+					</a>
+				</li>
+				<li>
+					<a target="_top" href="#help_script_Types.array_variant">动态类型数组
+					</a>
+				</li>
+			</ol>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Types.variant_table">变量表类型
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Types.others">其他类型
+			</a>
+		</li>
+	</ol></p>基本类型拥有其独特的类型ID号，使用<code>typeid(var)</code>函数来获取变量<code>var</code>的类型ID。在交互式编程环境下输入下面的命令会返回相应的类型ID号：<pre><code code-language="ewsl">&gt;&gt; typeid(true)<br />results: 1<br />&gt;&gt; typeid(1)<br />results: 2<br />&gt;&gt; typeid("abc")<br />results: 5</code></pre><a name="help_script_Types.typelist"> </a><div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td align="center" style="border:0px">
+				<a name="">EWSL支持的类型的符号与ID
+				</a>
+			</td>
+		</tr>
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center"> 类型名<br />
+
+								</td>
+								<td align="center"> 类型符号<br />
+
+								</td>
+								<td align="center"> ID<br />
+
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="center"> 空类型<br />
+
+								</td>
+								<td align="center"> nil<br />
+
+								</td>
+								<td align="center">  0<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 布尔型<br />
+
+								</td>
+								<td align="center"> bool<br />
+
+								</td>
+								<td align="center">  1<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 整数型<br />
+
+								</td>
+								<td align="center"> integer<br />
+
+								</td>
+								<td align="center">  2<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 浮点型<br />
+
+								</td>
+								<td align="center"> double<br />
+
+								</td>
+								<td align="center">  3<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 复数型<br />
+
+								</td>
+								<td align="center"> complex<br />
+
+								</td>
+								<td align="center">  4<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 字符串<br />
+
+								</td>
+								<td align="center"> string<br />
+
+								</td>
+								<td align="center">  5<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 变量表<br />
+
+								</td>
+								<td align="center"> variant_table<br />
+
+								</td>
+								<td align="center">  6<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 整数数组<br />
+
+								</td>
+								<td align="center"> array_integer<br />
+
+								</td>
+								<td align="center">  7<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 浮点数组<br />
+
+								</td>
+								<td align="center"> array_double<br />
+
+								</td>
+								<td align="center">  8<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 复数数组<br />
+
+								</td>
+								<td align="center"> array_complex<br />
+
+								</td>
+								<td align="center">  9<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 动态类型数组<br />
+
+								</td>
+								<td align="center"> array_variant<br />
+
+								</td>
+								<td align="center"> 10<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 其他类型<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+								<td align="center"> 15<br />
+
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div><blockquote>EWSL支持<a target="_blank" href="help_ewsl_Programming_I.htm#function">函数</a>、<a target="_blank" href="help_ewsl_Programming_II.htm#closure">闭包</a>、<a href="#help_ewsl_Programming_II.htm#class">类和对象</a>等复杂类型，这些类型使用<code>typeid</code>函数获取ID，返回15。</blockquote>普通<a target="_blank" href="help_ewsl_Variables.htm">变量</a>可以直接通过赋值行为进行定义，在EWSL中使用等号<code>=</code>表示赋值过程：<pre><code>a = 1;          // 变量a赋值为一个整数，值为1<br />b = 2.0;        // 变量b赋值为一个浮点数，值为2.0<br />c = 1+2i;       // 变量c赋值为一个复数，值为1+2i<br />d = "hello";    // 变量d赋值为一个字符串，值为"hello"<br />e = false;      // 变量e赋值为一个布尔值，值为false（假），另外true表示真<br />t = table{ x:1; y:2.0; z:"abc" };   // 将变量t赋值为一个变量表，包括三个子变量t.x、t.y、t.z<br />h = [1,2,3,"abc"];      // 变量h赋值为一个动态类型变量<br />g = integer([1,2,3]);   // 变量g赋值为一个整数数组<br />u = double([1,2,3]);    // 变量u赋值为一个浮点数组<br />v = complex([1,2,3]);   // 变量v赋值为一个复数数组</code></pre><strong>注意事项：</strong><ul>
+	<li>使用方括号<code>[]</code>和逗号<code>,</code>直接构造的数组是动态类型数组，必须使用相应的类型转换函数才能将其转换为确定的数值类型数组。
+	</li>
+	<li>变量表的定义要求使用关键词<code>table</code>开头，然后用大括号对<code>{}</code>将内容括起来，中间的内容必须使用冒号<code>:</code>作为子变量定义的符号，并且使用分号<code>;</code>作为不同子变量定义的分隔符。
+	</li>
+	<li>使用<code>table()</code>函数可以创建一个空变量表。
+	</li></ul><a name="help_script_Types.type_specs"> </a><h2>类型说明</h2><p>
+	<a name="help_script_Types.nil"> 
+	</a>
+	<h2>空类型NIL
+	</h2>空类型是一种特殊的类型，可以认为是一种只有一种取值，而这个值（<code>nil</code>）恰好又等于该类型本身的一种类型。有时空类型可以被称为“底类型”（Bottom Type）。为了区别含义，大写的<code>NIL</code>表示空类型的类型，而小写的<code>nil</code>表示空类型的数值。<br />
+	<ul>
+		<li>空类型具有一些特殊的性质和用法，例如清除一个变量的内容，可以对这个变量赋值一个<code>nil</code>。如：
+		</li>
+	</ul></p><pre><code code-language="ewsl">a = [1,2,3,4];<br />a = nil; // clear a's content</code></pre><ul>
+	<li>利用空类型可以参与布尔运算的特点，作为函数参数默认值定义的一种方案。例如：
+	</li></ul><pre><code code-language="ewsl">function(a,b,flag)<br />{<br />    a = a || 0;         // default value is 0<br />    b = b || 'xyz';     // default value is a string 'xyz'<br />    flag = c || true;   // default value is true<br />}</code></pre><ul>
+	<li>利用空类型可以产生特殊的语法规则，避免歧义。例如
+		<a target="_top" href="#help_script_Specifications_Mathematics.function.max"><code>max</code>
+		</a>函数：
+	</li></ul><pre><code code-language="ewsl">max(A,nil,0)            // the second argument is nil, it means to calculate the maximum along DIM 0<br />max(A,0)                // it means to calculate the max of A and 0 </code></pre><a name="help_script_Types.boolean"> </a><h2>布尔类型</h2><p>布尔类型是逻辑代数（布尔代数）的取值类型，包括<code>true</code>和<code>false</code>两种类型，分别对应“真”和“假”的概念。<br />在布尔代数中主要包括了逻辑或、与、非、异或等运算，一般我们使用逻辑运算符表示：</p><strong>说明：</strong><ul>
+	<li>利用
+		<a target="_top" href="#help_script_Programming_I.operator-logicals">关系运算符
+		</a>可以得到布尔值。
+	</li>
+	<li>布尔类型是
+		<a target="_top" href="#help_script_Programming_I.branch">条件分支结构
+		</a>和
+		<a target="_top" href="#help_script_Types.help_ewsl_Programming_I.conditional_loop">条件循环结构
+		</a>必须的数值类型。
+	</li></ul><div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td align="center" style="border:0px">
+				<a name="">逻辑运算符
+				</a>
+			</td>
+		</tr>
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center"> 算符<br />
+
+								</td>
+								<td align="center"> 意义<br />
+
+								</td>
+								<td align="center"> 备注<br />
+
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="center"> &&<br />
+
+								</td>
+								<td align="center"> 逻辑与<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  ||<br />
+
+								</td>
+								<td align="center"> 逻辑或<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> ^^<br />
+
+								</td>
+								<td align="center"> 逻辑异或<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> !<br />
+
+								</td>
+								<td align="center"> 逻辑非<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div>例如：<pre><code code-language="ewsl">b = 0;<br />a = 1 &gt;= b;     // evaluate a relation expression to get a boolean value<br />if(a)           // if-else structure<br />{<br />    println("1&gt;=b");<br />}else<br />{<br />    println("1&lt;b");<br />}</code></pre><p>
+	<strong>布尔值类型转换规则：
+	</strong>
+	<ul>
+		<li>空值<code>nil</code>转换为<code>false</code>。
+		</li>
+		<li>整数、浮点数、复数转换规则：非零数转换为<code>true</code>，零转换为<code>false</code>。
+		</li>
+		<li>字符串转换规则：空字符串转换为<code>false</code>，非空转换为<code>true</code>。
+		</li>
+		<li>其他类型转换为布尔值的
+			<strong>行为未定义
+			</strong>。
+		</li>
+		<li>布尔值不能向上转换为其他数值类型。
+		</li>
+	</ul></p><a name="help_script_Types.integer"> </a><h2>整数型</h2>整数类型是表达有符号整数的一种方式，使用64bit的内存空间储存一个整数值。整数类型是最基本的算术计算。使用<code>integer.MAX_VALUE</code>和<code>integer.MIN_VALUE</code>获得整数类型的上界和下界。<br /><a name="help_script_Types.double"> </a><h2>双精度浮点数</h2><br />双精度浮点数是实数的离散表达形式，使用64bit的内存空间储存一个双精度浮点数。浮点数类型支持算术计算。使用<code>double.MAX_VALUE</code>和<code>double.MIN_VALUE</code>可以获得正浮点数的最大表示和最小表示（注意并不是最大浮点数和最小浮点数）。程序中引用浮点数常量数值时可以使用科学技术法如：<code>+1.500e--3</code>表示<code>0.0015</code>。<a name="help_script_Types.complex"> </a><h2>复数型</h2><p>复数类型是由两个双精度浮点数分别表示实部和虚部，使用128bit的内存空间储存一个复数。复数支持算术计算。使用<code>complex.i_unit</code>可以获得单位纯虚数。引用复数常量数值时可以用<code>i</code>表示虚数，例如：<code>1+1i</code>表示复数$1+i$，单位虚数<code>1i</code>要在符号<code>i</code>前加上数字<code>1</code>以区别于普通变量符号<code>i</code>。</p><a name="help_script_Types.string"> </a><h2>字符串类型</h2>字符串类型是基本类型之一，EWSL没有提供专门的字符类型，也没有将字符串等同于字符数组类型。字符串类型的常量使用单引号对<code>''</code>、双引号对<code>""</code>或者三个单引号对<code>''' ... '''</code>来定义。使用双引号和单引号时需要考虑转义字符，使用<code>\\</code>作为转移符号；使用三个单引好时，可以定义多行字符串，程序中的字面字符串将不考虑转义直接转化为常量字符串，但是其中不能再出现三个连续单引号。<ul>
+	<li>双引号和单引好定义字符串：
+	</li></ul><pre><code code-language="ewsl">a = "abc"       // a word abc<br />b = '"abc"'     // a string "abc" (with double quote)<br />c = "'"         // just a single quote '</code></pre><ul>
+	<li>C风格多行字符串：（双引号可以用单引号替换掉）
+	</li></ul><pre><code code-language="ewsl">a = "Johny is a good boy.\n"<br />    "Marry is a nice girl.\n"<br />    "Their father is an engineer."</code></pre><ul>
+	<li>三个单引号定义
+	</li></ul><pre><code code-language="ewsl">'''<br />China is a greate nation.<br />Beijing is the capital of China.<br />Shanghai is another city of China.<br />'''</code></pre><a name="help_script_Types.array"> </a><h2>数组类型</h2><ul>
+	<li>数组类型将一组同类型或不同类型元素按照数组的形式组织起来，并且可以使用下标引用数组中的每个元素。数组类型使用算符<code>[]</code>获得数组中的元素或者子数组。当数组变量使用<code>[]</code>引用元素或者子数组并且处于赋值符号<code>=</code>的左侧，即作为左值引用的时候，相应下标的元素成为左值引用的对象，即可以对数组的元素和子数组进行局部赋值。一些赋值自操作的运算符（诸如<code>+=</code>、<code>-=</code>、<code>*=</code>之类）也有类似的作用。例如：
+	</li></ul><pre><code code-language="ewsl">a = 1:10;<br />a[5] = 20;<br />a[7] -= 10;<br />/* a = [1,2,3,4,5,20,7,-2,9,10]<br /> */</code></pre><ul>
+	<li>EWSL支持二维数组的直接定义语法，使用逗号<code>,</code>表示列分隔，<code>;</code>表示行分隔的方式（类似于
+		<strong>Matlab
+		</strong>）来实现，例如：
+	</li></ul><pre><code code-language="ewsl">a = [1,2,3;<br />     4,5,6;<br />     7,8,9]</code></pre><p><blockquote>上面的例子定义了一个3x3的二维数组。</blockquote></p><strong>注意：</strong><ul>
+	<li>EWSL的数组下标从<code>0</code>开始索引，不同于
+		<strong>Matlab
+		</strong>。
+	</li>
+	<li>EWSL的数组下标中可以使用<code>end</code>关键词来表示这个维度下标的最后一个索引编号。例如<code>a = 0:9</code>则<code>a[end]==9</code>。
+	</li>
+	<li>阅读
+		<a target="_top" href="#help_script_Specifications_Array">数组函数
+		</a>相关内容。<br />
+
+	</li></ul><a name="help_script_Types.array_integer"> </a><h3>整数数组</h3>每个元素都是整数的数组。类型名为<code>array_integer</code>。<p>
+	<a name="help_script_Types.array_double"> 
+	</a>
+	<h3>双精度浮点数数组
+	</h3><br />每个元素都是双精度浮点数。类型名为<code>array_double</code>。</p><a name="help_script_Types.array_complex"> </a><h3>复数数组</h3><br />每个元素都是复数。类型名为<code>array_complex</code>。<a name="help_script_Types.array_variant"> </a><h3>动态类型数组</h3><p>每个元素的类型为动态变量类型，即可以是任何类型。类型名为<code>array_variant</code>。可以用动态类型数组来表示字符串数组、变量表数组、函数数组、类实例数组等。使用方括号构造算符<code>[...]</code>可以直接构造一个动态类型数组，例如<code>a = [1,2,3,4,"abc"]</code>构造的是一个动态类型数组，数组中包含了整数和字符串两种类型的数值。<code>[...]</code>可以递归调用，即可以定义数组的数组，例如：</p><pre><code code-language="ewsl">a = [[1,2,3],[2,3,4]]</code></pre><a name="help_script_Types.variant_table"> </a><h2>变量表类型</h2><p>变量表类型是一种将键值（key，字符串类型）和一个数值（value，任意类型）关联起来的一种数据类型，非常适合存储具有特定含义的参数集，例如配置文件、字典文件等。</p><ul>
+	<li>变量表使用<code>.</code>和<code>[]</code>来索引数据。<code>a.x</code>和<code>a["x"]</code>的效果是一样的，他们的差别在于：使用<code>.</code>要求键值必须是程序字符串的字面值，而使用<code>[]</code>时键值可以是字符串变量。
+	</li>
+	<li>变量表构造方式有两种，一种是调用函数<code>table(key1,val1,key2,val2,...)</code>，另一种是利用<code>table{...}</code>语法糖，具体例子如下：
+	</li></ul><pre><code code-language="ewsl">a = table("name",   "John",<br />          "age",    18,<br />          "height", 180);<br /><br />b = table{ name:    "John";<br />           age:     18;<br />           height:  180 };</code></pre><p><blockquote>上面的两个例子构造的<code>a</code>和<code>b</code>变量表的内容是完全相同的。</blockquote></p><a name="help_script_Types.others"> </a><h2>其他类型</h2>EWSL支持其他类型，例如函数、闭包、类和对象实例等。<p>
+	<a name="help_script_Types.read_more"> 
+	</a>
+	<h2>相关阅读
+	</h2>
+	<ul>
+		<li>
+			<a target="_top" href="#help_script_Getting_Started">入门
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Programming_I">EWSL程序设计阶段 I
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Programming_II">EWSL程序设计阶段 II
+			</a>
+		</li>
+	</ul></p></div>

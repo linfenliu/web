@@ -1,0 +1,117 @@
+<div class="markdown-body"><h1>入门</h1><h2>第一个程序</h2>和大多数程序设计语言一样，我们还是先给出一个输出<code>Hello World!</code>的小程序。我们可以打开交互式运行环境，在命令行提示符<code>&gt;&gt;</code>后输入下面的命令：<pre><code code-language="mx">&gt;&gt; print("Hello World!")<br />Hello World!<br /></code></pre><h2>使用帮助</h2>使用<code>help</code>函数可以调取有关对象的帮助信息，例如：<pre><code code-language="mx">&gt;&gt; help(sin)<br />math.sin:<br />计算数组或数值的正弦值<br /><br />alias:<br />sin<br /><br />usage:<br />sin(1.3);<br />sin((0:10:180)*3.1415/180);<br /><br />example:<br />PI=3.14159265;<br />param = 30.0;<br />result = sin (param*PI/180);<br />println(result);</code></pre><h2>算术表达式</h2>MX支持常见的算术表达式用来快速计算一些式子，例如我们要计算$\dfrac{1 + \sqrt{5}}{2}$的数值，可以在交互式运行环境中输入：<pre><code code-language="mx">&gt;&gt; (1 + sqrt(5))/2<br />result: 1.61803</code></pre><p>
+	<strong>注意：
+	</strong>
+	<ul>
+		<li>在算术表达式中，采取常规的中缀模式（即二元运算符处于操作数的中间）。
+		</li>
+		<li>括号的优先级最高。
+		</li>
+		<li>支持常见的加减乘除运算(<code>+,-,*,/</code>)、乘方运算（<code>^</code>）。
+		</li>
+		<li>在<code>math</code>模块下有一些常用的数学函数。
+		</li>
+	</ul></p><h2>字符串的打印和连接</h2>MX可以用三种方式定义字符串：<ul>
+	<li>双引号括起来
+	</li>
+	<li>单引号括起来
+	</li>
+	<li>三个单引号括起来的多行字符串
+	</li></ul>例如：<pre><code code-language="mx">a = "abc";<br />b = '"abc"';<br />c = '''<br />John:  What can I do for you?<br />Marry: I need some cofee. Thank you very much.<br />John:  That' all right.</code></pre><strong>注意：</strong><ul>
+	<li>使用单双引号时，注意使用转义字符<code>\</code>对有关字符进行转义。
+	</li>
+	<li>使用单引号可以不必对双引号进行转义，使用双引号可以不必对单引号进行转义。
+	</li>
+	<li>使用三个单引号的多行字符串，可以不使用转义字符串，但是中间不可以再出现连续的三个单引号。
+	</li></ul><p>下面是转义字符表：
+	<div class="markdown-block">
+		<table width="100%">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<div class="markdown-table">
+						<table width="100%" class="markdown-table" style="border:1px">
+							<thead>
+								<tr>
+									<td align="center">  转义字符 
+									</td>
+									<td align="center">  含义<br />
+
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td align="center">  \t<br />
+
+									</td>
+									<td align="center">  制表位<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  \b<br />
+
+									</td>
+									<td align="center">  退格<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  \s<br />
+
+									</td>
+									<td align="center">  空格<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  \r<br />
+
+									</td>
+									<td align="center">  回车<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  \n<br />
+
+									</td>
+									<td align="center">  换行<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  \\<br />
+
+									</td>
+									<td align="center">  字符\<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  \"<br />
+
+									</td>
+									<td align="center">  双引号"<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center">  \'<br />
+
+									</td>
+									<td align="center">  单引号'<br />
+
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div></p><h2>注释</h2>MX使用C++风格的注释，分别支持单行注释符(<code>//</code>)和多行注释符(<code>/* ... */</code>)两种模式。例子：<pre><code code-language="mx">println("Hello"); // 这是单行注释<br />/* 这是多行注释<br /> * 1. 定义一个二元函数f，返回两个参数的和<br /> * 2. 定义一个一元函数g，输入参数为z，返回一个一元函数，参数为x，其行为是返回x+z的值<br /> */<br />f = function(x,y) { return x + y; }<br />g = function(z) { return function(x) { return x + z; }; }</code></pre><h2>使用函数</h2>我们可以定义一个函数，将输入的参数加1并且返回：<pre><code code-language="mx">function my_func(x)<br />{<br />    return x + 1;<br />}</code></pre>MX中的函数如同普通值（如整数、浮点数等）一样是一等公民，可以赋值给任何一个变量符号。例如：<pre><code code-language="mx">&gt;&gt; f = my_func;<br />&gt;&gt; g = my_func;<br />&gt;&gt; f(10)<br />11<br />&gt;&gt; g(20)<br />21</code></pre><h2>使用数组</h2>MX可以定义一个数组，数组可以进行简单的四则运算：<pre><code code-language="mx">&gt;&gt; xs = [1,2,3,4];<br />&gt;&gt; ys = [3,4,5,6];<br />&gt;&gt; zs = xs + ys<br />[4,6,8,10]<br />&gt;&gt; ws = ys - xs<br />[2,2,2,2]</code></pre><p>
+	<strong>注意：
+	</strong>使用<code>;</code>可以告诉交互式编程环境不输出当前表达式的值，如果不写<code>;</code>，那么会打印当前表达式的值。</p><h2>使用变量表</h2>MX可以定义变量表，用来保存复杂的数据：<pre><code code-language="mx">&gt;&gt; student = table { name : "Jack"; gender : "male"; age : 18 };<br />&gt;&gt; print(student.name)<br />Jack<br />&gt;&gt; print(student.gender)<br />male<br />&gt;&gt; print(student.age)<br />18</code></pre><h2>保存和载入数据</h2>MX可以将变量内容保存成外部文件，或者从外部文件中读入数据：<pre><code code-language="mx">&gt;&gt; xs = [1,2,3,4];<br />&gt;&gt; io.save_var("D:\\Temp\\xs.ewd", xs);<br />&gt;&gt; ys = io.load_var("D:\\Temp\\xs.ewd")<br />[1,2,3,4]</code></pre><strong>注意：</strong>如果要保存多个数据可以先将数据装入一个变量表或者数组，然后再保存出去。MX可以支持普通数组导出为文本格式，或者从文本格式中读入一个数组，使用<code>io.save_txt</code>和<code>io.load_txt</code>函数：<pre><code code-language="mx">&gt;&gt; xs = [1,2,3,4];<br />&gt;&gt; io.save_txt("D:\\Temp\\xs.txt", xs);<br />&gt;&gt; ys = io.load_txt("D:\\Temp\\ys.txt", ys);</code></pre><p>
+	<strong>注意：
+	</strong>二维以下数值可以用文本格式直接表示，对于维度更高的情况建议使用<code>io.save_var</code>和<code>io.load_var</code>来实现。</p><h2>数据的绘图</h2>MX支持绘图功能。例如创建简单的曲线图：<pre><code code-language="mx">&gt;&gt; xs = linspace(0, pi * 2, 361);<br />&gt;&gt; ys1 = cos(xs);<br />&gt;&gt; ys2 = sin(xs);<br />&gt;&gt; myfig = fig.new_figure();<br />&gt;&gt; fig.plot(xs,ys1);<br />&gt;&gt; fig.plot(xs.ys2);</code></pre>打开<code>myfig</code>节点可以查看：<p>
+	<img src="image/mx/tutorial/figure_example_1.png" alt="绘图例子1" /></p></div>

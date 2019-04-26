@@ -1,0 +1,32 @@
+<div class="markdown-body"><p>
+	<ul>
+		<li>
+			<a href="#help_internal_doc_base.header_1">1. 翻译词条
+			</a>
+		</li>
+		<li>
+			<a href="#help_internal_doc_base.header_2">2. 属性内部名称
+			</a>
+		</li>
+	</ul></p><a name="help_internal_doc_base.header_1">
+	<h1>1. 翻译词条
+	</h1></a>词条，分为核心词汇和后缀，使用<code>#</code>分隔，可以带多个后缀。比如 <code>Name</code>，核心词汇为<code>Name</code>，不带后缀。比如 <code>Name#cube</code>，核心词汇为<code>Name</code>，后缀为<code>cube</code>。核心词汇被翻译，但核心词汇一样但不带后缀的词条未被翻译的情况下，会直接使用核心词汇的翻译。比如 <code>Name</code>翻译为<code>名称</code>，但<code>Name#cube</code>未被翻译，这情况下，会直接使用<code>名称</code>这个翻译。<p>词条命名规则<br />
+
+	<ul>
+		<li>核心词汇，关键字母使用大写，多个关键字之间，使用<code>\_</code>连接。
+		</li>
+		<li>后缀，全部使用小写字母
+		</li>
+	</ul></p><a name="help_internal_doc_base.header_2">
+	<h1>2. 属性内部名称
+	</h1></a>属性内部类型，目前可以有<code>boolean</code>，<code>integer</code>，<code>double</code>，<code>string</code>和<code>array_variant</code>。另外，还有复合类型，比如 三个string之类的。<p>属性内部名称命名规则
+	<ul>
+		<li>属性名称，采用 前缀+核心词汇+后缀的方式命名，后缀可以不使用。
+		</li>
+		<li>前缀由类型决定
+		</li>
+		<li>核心词汇命名规则。。。
+		</li>
+		<li>后缀一般不使用，在属性名称被多个类共同使用又要区分的情况下，可考虑使用
+		</li>
+	</ul></p></div>

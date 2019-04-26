@@ -1,0 +1,338 @@
+<div class="markdown-body"><h1>数学函数</h1><p>
+	<h2>目录
+	</h2>
+	<ol>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Mathematics.constants">数学常数
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Mathematics.arithmetics">算术函数
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Mathematics.triangular">三角函数
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Mathematics.anti_triangular">反三角函数
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Mathematics.hyperbolic">双曲函数
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Mathematics.complex">复数相关函数
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Mathematics.exponential_and_logarithm">指数与对数函数
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Mathematics.others">其他常用函数
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Mathematics.transform">函数变换
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Mathematics.special">特殊函数
+			</a>
+		</li>
+	</ol></p><a name="help_script_Specifications_Mathematics.constants"> </a><h2>数学常数</h2><p>
+	<a name="help_script_Specifications_Mathematics.constant.pi"> 
+	</a><code>pi</code>, <code>math.pi</code><br />圆周率$\pi=3.14159\ldots$</p><a name="help_script_Specifications_Mathematics.constant.e"> </a><code>math.e</code><br />自然对数的底$e=\exp(1)=2.7172\ldots$<a name="help_script_Specifications_Mathematics.arithmetics"> </a><h2>算术运算</h2>EWSL提供基本的算术运算函数，通常情况下使用<a target="_top" href="#help_script_Programming_I.operator-arithmetics">算术运算符</a>。<a name="help_script_Specifications_Mathematics.function.add"> </a><code>math.add</code>, <code>+</code><br />加法<br /><strong>语法：</strong>  <pre><code code-language="ewsl">math.add(x,y)  // function<br />x + y          // operator</code></pre><a name="help_script_Specifications_Mathematics.function.sub"> </a><code>math.sub</code>, <code>-</code><br />减法<br /><strong>语法：</strong>  <pre><code code-language="ewsl">math.sub(x,y)  // function<br />x - y          // operator</code></pre><br /><a name="help_script_Specifications_Mathematics.function.mul"> </a><code>math.mul</code>, <code>*</code><br />乘法<br /><strong>语法：</strong>  <pre><code code-language="ewsl">math.mul(x,y)  // function<br />x * y          // operator</code></pre><a name="help_script_Specifications_Mathematics.function.div"> </a><code>math.div</code>, <code>/</code><br />除法<br /><strong>语法：</strong>  <pre><code code-language="ewsl">math.div(x,y)  // function<br />x / y          // operator</code></pre><strong>注意事项：</strong><ul>
+	<li>两个整数之间除法如果出不进
+	</li></ul><a name="help_script_Specifications_Mathematics.function.pow"> </a><code>math.pow</code>, <code>^</code><br />乘方<br /><strong>语法：</strong>  <pre><code code-language="ewsl">math.pow(x,n)  // function<br />x ^ n          // operator</code></pre><p>
+	<strong>参考：
+	</strong>
+	<ul>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Mathematics.function.exp">指数函数<code>exp</code>
+			</a>。
+		</li>
+	</ul></p><a name="help_script_Specifications_Mathematics.function.pow"> </a><code>math.neg</code>, <code>-</code>（一元算符）<br />取负<br /><strong>语法：</strong>  <pre><code code-language="ewsl">math.neg(x)  // function<br />-x           // operator</code></pre><a name="help_script_Specifications_Mathematics.function.mod"> </a><code>math.mod</code>, <code>%</code><br />取模<br /><strong>语法：</strong>  <pre><code code-language="ewsl">math.mod(a,b)<br />a % b</code></pre><br /><strong>例子：</strong>  <pre><code code-language="ewsl">math.mod( 7, 3)  //  1<br />math.mod(-7, 3)  //  2<br />math.mod( 7,-3)  // -2<br />math.mod(-7,-3)  // -1</code></pre><strong>注意事项：</strong><ul>
+	<li>EWSL的取模运算与
+		<strong>Matlab
+		</strong>语言和
+		<strong>GNU Octave
+		</strong>保持一致，符合数学约定，但是与C/C++的约定是不同的。
+	</li>
+	<li>在数学中，“模”的概念与周期性有关系，因此并不是简单的除法取余。在实数轴上，对一个非零常数取余，得到的是一个周期重复，而不是中心对称的分布。
+	</li>
+	<li>取模运算中，第二个参数是负数的时候，得到的模值也是负的。
+	</li>
+	<li>如果需要使用类似C/C++的<code>fmod</code>函数，参考
+		<a target="_top" href="#help_script_Specifications_Mathematics.function.rem">取余<code>rem</code>
+		</a>。
+	</li></ul><p><br />
+	<strong>参考：
+	</strong>  
+	<ul>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Mathematics.function.rem"><code>rem</code>
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Mathematics.function.div"><code>div</code>
+			</a>
+		</li>
+	</ul></p><a name="help_script_Specifications_Mathematics.function.rem"> </a><code>math.rem</code><br />取余数<br /><strong>语法：</strong>  <pre><code code-language="ewsl">math.rem(a,b)</code></pre><br /><strong>例子：</strong>  <pre><code code-language="ewsl">math.rem( 7, 3)  //  1<br />math.rem(-7, 3)  // -1<br />math.rem( 7,-3)  //  1<br />math.rem(-7,-3)  // -1</code></pre><p>
+	<strong>注意事项：
+	</strong>
+	<ul>
+		<li>当第二个参数是负数的结果与其正数是相同的。
+		</li>
+		<li>余数的符号与第一个参数相同。
+		</li>
+		<li>余数函数关于<code>0</code>具有中心对称性，这与除法函数保持一致。
+		</li>
+		<li>余数函数的行为与C/C++中的<code>fmod</code>函数一致。
+		</li>
+	</ul></p><br /><strong>参考：</strong>  <ul>
+	<li>
+		<a target="_top" href="#help_script_Specifications_Mathematics.function.mod"><code>mod</code>
+		</a>
+	</li>
+	<li>
+		<a target="_top" href="#help_script_Specifications_Mathematics.function.div"><code>div</code>
+		</a>
+	</li></ul><a name="help_script_Specifications_Mathematics.triangular"> </a><h2>三角函数</h2><a name="help_script_Specifications_Mathematics.function.sin"> </a><a name="help_script_Specifications_Mathematics.function.sind"> </a><a name="help_script_Specifications_Mathematics.function.sindeg"> </a><code>sin</code>, <code>sind</code>, <code>sindeg</code><br />正弦函数<br /><strong>语法：</strong>  <pre><code code-language="ewsl">sin(pi/2)   //  1<br />sind(180)   //  0<br />sindeg(30)  //  0.5<br />sin(1+1i)   //  1.29846+0.634964i</code></pre><a name="help_script_Specifications_Mathematics.function.cos"> </a><a name="help_script_Specifications_Mathematics.function.cosd"> </a><a name="help_script_Specifications_Mathematics.function.cosdeg"> </a><code>cos</code>, <code>cosd</code>, <code>cosdeg</code><br />余弦函数<br /><strong>语法：</strong>  <pre><code code-language="ewsl">cos(pi/2)   //  0<br />cosd(180)   // -1<br />cosdeg(60)  //  0.5<br />cos(1+1i)   //  0.83373-0.988898i</code></pre><p>
+	<a name="help_script_Specifications_Mathematics.function.tan"> 
+	</a>
+	<a name="help_script_Specifications_Mathematics.function.tand"> 
+	</a>
+	<a name="help_script_Specifications_Mathematics.function.tandeg"> 
+	</a><code>tan</code>, <code>tand</code>, <code>tandeg</code><br />正切函数</p><br /><strong>语法：</strong>  <pre><code code-language="ewsl">tan(0)      //  0<br />tand(45)    //  1<br />tandeg(135) // -1<br />tan(1+1i)   //  0.271753+1.08392i</code></pre><p>
+	<a name="help_script_Specifications_Mathematics.function.cot"> 
+	</a>
+	<a name="help_script_Specifications_Mathematics.function.cotd"> 
+	</a>
+	<a name="help_script_Specifications_Mathematics.function.cotdeg"> 
+	</a><code>cot</code>, <code>cotd</code>, <code>cotdeg</code><br />余切函数</p><br /><strong>语法：</strong>  <pre><code code-language="ewsl">cot(0)      //  0<br />cotd(45)    //  1<br />cotdeg(135) // -1<br />cot(1+1i)   //  0.271753+1.08392i</code></pre><a name="help_script_Specifications_Mathematics.function.cot"> </a><a name="help_script_Specifications_Mathematics.function.cotd"> </a><a name="help_script_Specifications_Mathematics.function.cotdeg"> </a><a name="help_script_Specifications_Mathematics.function.sec"> </a><a name="help_script_Specifications_Mathematics.function.secd"> </a><a name="help_script_Specifications_Mathematics.function.secdeg"> </a><a name="help_script_Specifications_Mathematics.function.csc"> </a><a name="help_script_Specifications_Mathematics.function.cscd"> </a><a name="help_script_Specifications_Mathematics.function.cscdeg"> </a><h3>其它三角函数</h3>下列函数存放于<code>math</code>变量表中，也可以在全局使用<ul>
+	<li><code>cot = 1/tan(x)</code>
+	</li>
+	<li><code>sec = 1/cos(x)</code>
+	</li>
+	<li><code>csc = 1/sin(x)</code>
+	</li>
+	<li><code>cotd(x) = cotdeg(x) = cot(deg2rad(x))</code>
+	</li>
+	<li><code>secd(x) = secdeg(x) = sec(deg2rad(x))</code>
+	</li>
+	<li><code>cscd(x) = cscdeg(x) = csc(deg2rad(x))</code>
+	</li></ul><p>
+	<a name="help_script_Specifications_Mathematics.function.deg2rad"> 
+	</a>
+	<a name="help_script_Specifications_Mathematics.function.rad2deg"> 
+	</a>
+	<h3>弧度制与角度制的转换
+	</h3>下列函数存放于<code>math</code>变量表中，也可以在全局使用
+	<ul>
+		<li><code>deg2rad(x) = x / 180 * pi</code>
+		</li>
+		<li><code>rad2deg(x) = x / pi * 180</code>
+		</li>
+	</ul></p><a name="help_script_Specifications_Mathematics.anti_triangular"> </a><h2>反三角函数</h2><a name="help_script_Specifications_Mathematics.function.asin"> </a><a name="help_script_Specifications_Mathematics.function.asind"> </a><a name="help_script_Specifications_Mathematics.function.asindeg"> </a><code>asin</code>, <code>asind</code>, <code>asindeg</code><br />反正弦函数<br /><strong>语法：</strong>  <pre><code code-language="ewsl">asin(1)                 // pi/2<br />asind(sqrt(2)/2)        // 45<br />asindeg(0.5)            // 30<br />asin(2)                 //  1.5708-1.31696i<br />asin(-2)                // -1.5708+1.31696i</code></pre><a name="help_script_Specifications_Mathematics.function.acos"> </a><a name="help_script_Specifications_Mathematics.function.acosd"> </a><a name="help_script_Specifications_Mathematics.function.acosdeg"> </a><code>acos</code>, <code>acosd</code>, <code>acosdeg</code><br />反余弦函数<br /><strong>语法：</strong>  <pre><code code-language="ewsl">acos(1)                 // 0<br />acosd(sqrt(2)/2)        // 45<br />acosdeg(0.5)            // 60<br />acos(2)                 // -0+1.31696i<br />acos(-2)                // 3.14159+1.31696i</code></pre><p>
+	<a name="help_script_Specifications_Mathematics.hyperbolic"> 
+	</a>
+	<h2>双曲函数
+	</h2></p><a name="help_script_Specifications_Mathematics.complex"> </a><h2>复数相关函数</h2><p>
+	<a name="help_script_Specifications_Mathematics.function.sign"> 
+	</a><code>math.sign</code><br />取符号函数、复数单位化</p><br /><strong>语法：</strong>  <pre><code code-language="ewsl">sign(1.5)   //  1<br />sign(0)     //  0<br />sign(-1.5)  // -1<br />sign(1+1i)  // 0.7071 + 0.7071i</code></pre><p>
+	<strong>注意事项：
+	</strong>
+	<ul>
+		<li><code>sign</code>函数对复数的意义相当于取单位复数。
+		</li>
+		<li><code>sign</code>函数不改变输入参数的数值类型。
+		</li>
+	</ul></p><a name="help_script_Specifications_Mathematics.function.abs"> </a><code>math.abs</code><br />绝对值函数、复数的模<br /><strong>语法：</strong>  <pre><code code-language="ewsl">abs(7)      // 7<br />abs(-3)     // 3<br />abs(0)      // 0<br />abs(1+1i)   // 1.4142...</code></pre><p>
+	<strong>注意事项：
+	</strong>
+	<ul>
+		<li><code>abs</code>函数对复数的意义与数学习惯一致。
+		</li>
+		<li><code>abs</code>作用于复数上的返回值类型是浮点数。
+		</li>
+	</ul></p><a name="help_script_Specifications_Mathematics.function.arg"> </a><a name="help_script_Specifications_Mathematics.function.angle"> </a><code>math.arg</code>, <code>math.angle</code><br />复数的辐角<br /><strong>语法：</strong>  <pre><code code-language="ewsl">arg(1)      // 0<br />arg(-1)     // pi<br />arg(1i)     // pi/2<br />arg(-1i)    // -pi/2</code></pre><p>
+	<strong>注意事项：
+	</strong>
+	<ul>
+		<li>取值范围为弧度制角度$(-\pi,+\pi]$，负实数取$-\pi$。
+		</li>
+	</ul></p><a name="help_script_Specifications_Mathematics.function.real"> </a><a name="help_script_Specifications_Mathematics.function.imag"> </a><code>math.real</code>, <code>math.imag</code>复数的实部与虚部<br /><strong>语法：</strong>  <pre><code code-language="ewsl">real(1+1i)  //  1<br />imag(1-1i)  // -1</code></pre><a name="help_script_Specifications_Mathematics.function.conj"> </a><code>math.conj</code>复数的共轭<br /><strong>语法：</strong>  <pre><code code-language="ewsl">conj(1+1i)  // 1-1i</code></pre><a name="help_script_Specifications_Mathematics.exponential_and_logarithm"> </a><h2>指数、对数函数</h2><a name="help_script_Specifications_Mathematics.function.exp"> </a><code>math.exp</code><br />以$e$为底数的指数函数<br /><strong>语法：</strong>  <pre><code code-language="ewsl">exp(0)          //  1<br />exp(1)          //  2.7172<br />exp(1i*pi/2)    // -1</code></pre><p>
+	<strong>参考：
+	</strong>
+	<ul>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Mathematics.function.pow">乘方<code>pow</code>
+			</a>
+		</li>
+	</ul></p><a name="help_script_Specifications_Mathematics.function.log"> </a><code>math.log</code><br />自然对数（以$e$为底数的对数）<br /><strong>语法：</strong>  <pre><code code-language="ewsl">log(exp(1))     // 0<br />log(1+1i)       // 0.346574+0.785398i<br />log(-1)         // 0 + 3.14159i</code></pre><p>
+	<strong>注意事项：
+	</strong>
+	<ul>
+		<li>对负数的操作将转换为对复数的操作。
+		</li>
+		<li>复数计算结果取角度时与<code>arg</code>函数一致。
+		</li>
+		<li>参考
+			<a target="_top" href="#help_script_Specifications_Mathematics.function.arg">俯角函数<code>arg</code>、<code>angle</code>
+			</a>
+		</li>
+		<li>参考
+			<a target="_top" href="#help_script_Specifications_Mathematics.function.log10">以10为底的对数<code>log10</code>
+			</a>
+		</li>
+	</ul></p><a name="help_script_Specifications_Mathematics.function.log10"> </a><code>math.log10</code><br />对数（以10为底）<br />数学上保证：$$
+\log_{10} x = \dfrac{\log x}{\log 10}
+$$<br /><strong>语法：</strong>  <pre><code code-language="ewsl">log10(0)        // 0<br />log10(10)       // 1<br />log10(-10)      // 1+1.36438i</code></pre><p>
+	<strong>注意事项：
+	</strong>
+	<ul>
+		<li>对负数的操作将转换为对复数的操作。
+		</li>
+		<li>参考
+			<a target="_top" href="#help_script_Specifications_Mathematics.function.arg">俯角函数<code>arg</code>、<code>angle</code>
+			</a>
+		</li>
+		<li>参考
+			<a target="_top" href="#help_script_Specifications_Mathematics.function.log">自然对数<code>log</code>
+			</a>
+		</li>
+	</ul></p><a name="help_script_Specifications_Mathematics.others"> </a><h2>其他常用数学函数</h2><a name="help_script_Specifications_Mathematics.function.sqrt"> </a><code>math.sqrt</code><br />平方根函数<br /><strong>语法：</strong>  <pre><code code-language="ewsl">sqrt(2)         // 1.41421<br />sqrt(1+1i)      // 1.09868+0.45509i</code></pre><p>
+	<strong>注意事项：
+	</strong>
+	<ul>
+		<li>对复数的运算，取角度时与<code>arg</code>函数一致。
+		</li>
+		<li>参考
+			<a target="_top" href="#help_script_Specifications_Mathematics.function.arg">俯角函数<code>arg</code>、<code>angle</code>
+			</a>
+		</li>
+		<li>参考
+			<a target="_top" href="#help_script_Specifications_Mathematics.function.log">自然对数<code>log</code>
+			</a>
+		</li>
+	</ul></p><a name="help_script_Specifications_Mathematics.function.max"> </a><code>max</code><br />取最大值<br />
+<br /><strong>语法：</strong>  <pre><code code-language="ewsl">max(a)          // If a is an array, return the maximum of a's all elements; if a is a scalar, just return itself.<br />max(a,nil,N)    // If a is an array, return the maximum of a's elements in the N-dim; if a is a scalar, just return itself.<br />max(A,B)        // If A or B is an array (or both of them are arrays), do element-by-element compare; if A and B are scalars, just return the maximum of A and B<br />max(a,b,c...)   // </code></pre><p>
+	<strong>补充说明：
+	</strong>  
+	<ul>
+		<li>不支持直接在复数中取最大最小值，参阅
+			<a target="_top" href="#help_script_Specifications_Comparisons.relation_operations">
+				<strong>Matlab
+				</strong>关系运算符问题
+			</a>。
+		</li>
+	</ul></p><a name="help_script_Specifications_Mathematics.function.min"> </a><code>min</code><br />取最小值<br /><strong>语法：</strong>  <pre><code code-language="ewsl">min(a)          // If a is an array, return the minimum of a's all elements.<br />min(a,nil,N)    // If a is an array, return the minimum of a's elements in the N-dim<br />min(A,B)        // If A or B is an array (or both of them are arrays), do element-by-element compare; if A and B are scalars, just return the minimum of A and B</code></pre><p>
+	<strong>补充说明：
+	</strong>  
+	<ul>
+		<li>不支持直接在复数中取最大最小值，参阅
+			<a target="_top" href="#help_script_Specifications_Comparisons.relation_operations">
+				<strong>Matlab
+				</strong>关系运算符问题
+			</a>。
+		</li>
+	</ul></p><a name="help_script_Specifications_Mathematics.function.sum"> </a><code>sum</code>求和<br /><br /><strong>语法：</strong>  <pre><code code-language="ewsl">sum(a)          // If a is an array, return the summation of a's all elements.<br />sum(a,N)        // If a is an array, return the summation of a's elements in the N-dim.<br />sum(a,b,c,...)  // a,b,c,... are scalars and return the summation of them.</code></pre><a name="help_script_Specifications_Mathematics.function.product"> </a><code>product</code>求积<br /><strong>语法：</strong>  <pre><code code-language="ewsl">product(a)          // If a is an array, return the product of a's all elements.<br />product(a,N)        // If a is an array, return the product of a's elements in the N-dim.<br />product(a,b,c,...)  // a,b,c,... are scalars and return the product of them.</code></pre><a name="help_script_Specifications_Mathematics.transform"> </a><h2>函数变换</h2><a name="help_script_Specifications_Mathematics.fourier_transform"> </a><h3>傅里叶变换</h3>傅里叶变换原理和快速傅里叶变换的算法参看<a target="_top" href="#help_script_Appendix.fft">傅里叶变换与快速傅里叶变换算法</a><a name="help_script_Specifications_Mathematics.function.fft"> </a><code>fft</code><br />快速傅里叶变换<br /><strong>语法：</strong>  <pre><code code-language="ewsl">fft(X)                    // N-Point Fast Fourier Transform, N is the length of the first non-singleton dimension.<br />fft(X,N)                  // N-Point Fast Fourier Transform under the first non-singleton dimension.<br />fft(X,N,DIM)              // N-Point Fast Fourier Transform under the dimension DIM. </code></pre><ul>
+	<li>用法1：N点FFT，对第一个非退化维度进行傅里叶变换，N是该维度的大小。
+	</li>
+	<li>用法2：N点FFT，对第一个非退化维度进行傅里叶变换，N由用户设定。
+	</li>
+	<li>用法3：N点FFT，对第DIM维度进行傅里叶变换，如果N是<code>nil</code>，则自动根据X数组的DIM维大小来确定。
+	</li></ul><br /><strong>参考：</strong>  <ul>
+	<li>
+		<a target="_top" href="#help_script_Specifications_Mathematics.function.ifft"><code>ifft</code>
+		</a>
+	</li>
+	<li>
+		<a target="_top" href="#help_script_Specifications_Mathematics.function.fftshift"><code>fftshift</code>
+		</a>
+	</li>
+	<li>
+		<a target="_top" href="#help_script_Specifications_Mathematics.function.ifftshift"><code>ifftshift</code>
+		</a>
+	</li></ul><a name="help_script_Specifications_Mathematics.function.ifft"> </a><code>ifft</code>快速逆傅里叶变换<br /><strong>语法：</strong>  <pre><code code-language="ewsl">ifft(X)                    // N-Point Fast Fourier Transform, N is the length of the first non-singleton dimension.<br />ifft(X,N)                  // N-Point Fast Fourier Transform under the first non-singleton dimension.<br />ifft(X,N,DIM)              // N-Point Fast Fourier Transform under the dimension DIM. </code></pre><ul>
+	<li>用法1：N点IFFT，对第一个非退化维度进行逆傅里叶变换，N是该维度的大小。
+	</li>
+	<li>用法2：N点IFFT，对第一个非退化维度进行逆傅里叶变换，N由用户设定。
+	</li>
+	<li>用法3：N点IFFT，对第DIM维度进行逆傅里叶变换，如果N是<code>nil</code>，则自动根据X数组的DIM维大小来确定。
+	</li></ul><br /><strong>参考：</strong>  <ul>
+	<li>
+		<a target="_top" href="#help_script_Specifications_Mathematics.function.fft"><code>fft</code>
+		</a>
+	</li>
+	<li>
+		<a target="_top" href="#help_script_Specifications_Mathematics.function.fftshift"><code>fftshift</code>
+		</a>
+	</li>
+	<li>
+		<a target="_top" href="#help_script_Specifications_Mathematics.function.ifftshift"><code>ifftshift</code>
+		</a>
+	</li></ul><a name="help_script_Specifications_Mathematics.function.fftshift"> </a><code>fftshift</code><br />快速傅里叶变换的数据移动<br /><strong>语法：</strong>  <pre><code code-language="ewsl">fftshift(X)  <br />fftshift(X,N)</code></pre><ul>
+	<li>用法1：对<code>X</code>数组的各个维度进行傅里叶变换移位
+	</li>
+	<li>用法2：对<code>X</code>数组的指定第<code>N</code>维度进行傅里叶变换移位
+	</li></ul><strong>具体移位规则如下：</strong><ul>
+	<li>对于偶数长度的维度，将其分割为相等的左右两半部分，将左半部分与右半部分平移交换
+	</li>
+	<li>对于奇数长度的维度，将其分割为左右两半部分，左部分比右部分
+		<strong>多
+		</strong>1，然后再将左半部分与有半部分平移交换
+	</li></ul><blockquote>说明：时域信号傅里叶变换的频域数据对应的频点可以如下计算</blockquote><pre><code code-language="ewsl">// st is time-domain signal series<br />// dt is delta t<br />nt = length(st);<br />df = 1/(dt*nt);<br />left = (nt+1)/2;<br />right = nt - left;<br />f = double([]);<br />f[0:(left-1)] = df * (0:(left-1));<br />f[left:(nt-1)] = df * (0:(right-1)) + (-df * right)</code></pre><br /><strong>参考：</strong>  <ul>
+	<li>
+		<a target="_top" href="#help_script_Specifications_Mathematics.function.fft"> <code>fft</code>
+		</a>
+	</li>
+	<li>
+		<a target="_top" href="#help_script_Specifications_Mathematics.function.ifft"> <code>ifft</code>
+		</a>
+	</li>
+	<li>
+		<a target="_top" href="#help_script_Specifications_Mathematics.function.ifftshift"> <code>ifftshift</code>
+		</a>
+	</li></ul><p>
+	<a name="help_script_Specifications_Mathematics.function.ifftshift"> 
+	</a><code>ifftshift</code><br />快速逆傅里叶变换的数据移动，正好是<code>fftshift</code>的逆操作。</p><br /><strong>语法：</strong>  <pre><code code-language="ewsl">ifftshift(X)<br />ifftshift(X,N)</code></pre><ul>
+	<li>用法1：对<code>X</code>数组的各个维度进行逆傅里叶变换移位
+	</li>
+	<li>用法2：对<code>X</code>数组的指定第<code>N</code>维度进行逆傅里叶变换移位
+	</li></ul><strong>具体移位规则如下：</strong><ul>
+	<li>对于偶数长度的维度，将其分割为相等的左右两半部分，将左半部分与右半部分平移交换
+	</li>
+	<li>对于奇数长度的维度，将其分割为左右两半部分，左部分比右部分
+		<strong>少
+		</strong>1，然后再将左半部分与有半部分平移交换
+	</li></ul><p><br />
+	<strong>参考：
+	</strong>  
+	<ul>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Mathematics.function.fft"> <code>fft</code>
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Mathematics.function.ifft"> <code>ifft</code>
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Mathematics.function.fftshift"> <code>fftshift</code>
+			</a>
+		</li>
+	</ul></p><p>
+	<a name="help_script_Specifications_Mathematics.special"> 
+	</a>
+	<h2>特殊函数
+	</h2></p><p>
+	<a name="help_script_Specifications_Mathematics.function.fftshift"> 
+	</a><code>fftshift</code></p><a name="help_script_Specifications_Mathematics.function.ifftshift"> </a><code>ifftshift</code><p>
+	<a name="help_script_Specifications_Mathematics.special"> 
+	</a>
+	<h2>特殊函数
+	</h2></p></div>

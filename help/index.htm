@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html class='njs'>
+
+<head>
+	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+	<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' />
+	<link rel="stylesheet" type="text/css" href="./css/custom.css" />
+	<link rel="stylesheet" type="text/css" href="./css/markdown.css" />
+	<link rel='icon' type='image/x-icon' href='./css/img/logo.png' />
+	<script type='text/javascript'>
+		document.getElementsByTagName('html')[0].className = '';
+	</script>
+	
+	<meta name='viewport' content='user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width' />
+	<title></title>
+	<style type='text/css'>
+		.loading{
+			position: fixed;
+			background: transparent url('./css/img/loading.gif') no-repeat;
+			background-size: 48px 48px;
+			width: 48px;
+			height: 48px;
+			top: 49%;
+			top: -webkit-calc(50% - 24px);
+			top: calc(50% - 24px);
+			left: 49%;
+			left: -webkit-calc(50% - 24px);
+			left: calc(50% - 24px);
+			z-index: 2000;
+		}
+		
+		#njs, .njs .loading { 
+			display: none; 
+		}
+		
+		.njs #njs {
+			display: block;
+		}
+		
+	</style>
+</head>
+
+<body>
+	<div class='loading'></div>
+	
+	<div id="njs">
+		<p lang='zh'>若要查看此页面，您必须启用 JavaScript。</p>
+		<p lang='en'>To see this page, you must enable JavaScript.</p>
+	</div>
+	
+	<script type='text/javascript'> var njs = document.getElementById('njs'); njs.parentNode.removeChild(njs);</script>
+	<script data-main='./js/app' src='../js/require.js'></script>
+</body>
+
+</html>

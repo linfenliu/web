@@ -1,0 +1,275 @@
+<div class="markdown-body"><h1>MX程序设计语言帮助手册</h1><h2>目录</h2><ul>
+	<li>
+		<a href="#help_script.header_1">1. 简介
+		</a>
+	</li>
+	<li>
+		<a href="#help_script.header_2">2. 第一个程序
+		</a>
+	</li>
+	<li>
+		<a href="#help_script.header_3">3. 基本概念
+		</a>
+		<ul>
+			<li>
+				<a href="#help_script.header_3_1">3.1. 基本数据类型
+				</a>
+			</li>
+			<li>
+				<a href="#help_script.header_3_2">3.2. 变量表（Variable Table）
+				</a>
+			</li>
+			<li>
+				<a href="#help_script.header_3_3">3.3. 数组（Array）
+				</a>
+			</li>
+			<li>
+				<a href="#help_script.header_3_4">3.4. 函数（Function）
+				</a>
+			</li>
+			<li>
+				<a href="#help_script.header_3_5">3.5. 类和对象
+				</a>
+			</li>
+		</ul>
+	</li>
+	<li>
+		<a href="#help_script.header_4">4. 过程控制结构
+		</a>
+	</li>
+	<li>
+		<a href="#help_script.header_5">5. 编写文件读写与字符串处理
+		</a>
+		<ul>
+			<li>
+				<a href="#help_script.header_5_1">5.1. 文本文件的读写
+				</a>
+			</li>
+			<li>
+				<a href="#help_script.header_5_2">5.2. 从文本文件中导入数组（需要改进）
+				</a>
+			</li>
+			<li>
+				<a href="#help_script.header_5_3">5.3. 文件流的支持（尚未实现）
+				</a>
+			</li>
+			<li>
+				<a href="#help_script.header_5_4">5.4. 字符串的处理
+				</a>
+				<ul>
+					<li>
+						<a href="#help_script.header_5_4_1">5.4.1. 字符串的分解和拼接
+						</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>
+		<a href="#help_script.header_6">6. 编写数值计算程序
+		</a>
+		<ul>
+			<li>
+				<a href="#help_script.header_6_1">6.1. 数值积分与微分
+				</a>
+			</li>
+		</ul>
+	</li></ul><a name="help_script.header_1">
+	<h1>1. 简介
+	</h1></a><strong>MX程序设计语言</strong>是上海东峻信息科技有限公司开发的一款面向CAE仿真前、后处理和通用接口设计编码的脚本语言。EastWave V7.0脚本语言以下简称<strong>MX</strong>。<blockquote>EastWave V7版本EWSL与之前版本的EWSL有较多差异，但也有一定的相似性。使用旧版脚本语言可以较快的掌握新版脚本语言的基本用法。</blockquote>新版EWSL支持动态类型（Dynamic Typed）、C风格语法（C-Style Syntax）、变量表（Variable Table）和动态变量数组（Dynamic Variable Array）、预编译/解释执行（Pre-compiled/Interpretative）、函数/闭包（Function/Closure）、函数式编程（Functional Programming）、面向对象编程（Object Oriented Programming）、面向数组/矩阵运算（Array/Matrix Computation）的语法、数值计算库、绘图库、WEB服务器等多种功能。<a name="help_script.header_2">
+	<h1>2. 第一个程序
+	</h1></a><strong>从Hello World!开始</strong>像大多数语言的入门教程一样，先实现一个Hello World程序。打开EastWave界面，选择新建“Ewsl交互式编辑器”。然后在交互式编程环境下输入：<code>&gt;&gt; print("Hello World!")</code><p>
+	<ul>
+		<li>注释<br />
+EWSL使用C/C++风格注释，即支持<code>//</code>行注释和<code>/**/</code>的块注释。
+		</li>
+		<li>前处理指令（这部分未来放到其他地方）<br />
+EWSL支持前处理指令，用<code>#</code>字符开头，用来控制编译器或者解释器的一些行为，以及对源代码文件的含义的解释。目前典型的包括有：<br />
+
+			<ol>
+				<li><code>#function</code><blockquote><code>#function</code>前处理指令用来规定该文件内容是定义一个函数，函数的输入参数在<code>#function</code>后的括号中表述，诸如：<code>#function(arg1, arg2, ...)</code></blockquote>
+				</li>
+				<li><code>#variable</code><blockquote><code>#variable</code>用来指定文件内容中定义变量符号的作用域规则（<code>local</code>或者<code>global</code>），<code>#variable(explicit)</code>表示所有的变量符号定义必须显式指定，<code>#variable(implicit:global)</code>表示采用隐式规则，并且默认设定为全局变量（除特殊的局部语法规定外），<code>#variable(implicit:local)</code>表示采用隐式规则，并且默认设定为局部变量。</blockquote>
+				</li>
+				<li><code>#import</code>和<code>#export</code><blockquote>导入模块和设定模块导出符号表。<ol><li><code>#import</code>用法: 使用<code>#import modulename</code>导入整个模块，但是必须使用模块名作前缀名；使用<code>#import modulename(symbol, ...)</code>从模块中导入部分符号，并且作为系统变量表中的可用符号。<strong>注意：</strong>系统变量表中的符号不允许同名，如果同名会抛出错误信息。</li><li><code>#export</code>用法：使用<code>#export(sym1, ...)</code>，对<code>#import ...</code>可导入的符号产生影响。</li></ol></blockquote>
+				</li>
+				<li><code>#results</code>设定语句运行时是否打印出返回值<blockquote><code>#results(show)</code>表示语句最后没有分号时，会打印语句的返回值<code>#results(hide)</code>表示语句最后没有分号时，不打印语句的返回值</blockquote>
+				</li>
+			</ol>
+		</li>
+	</ul></p><a name="help_script.header_3">
+	<h1>3. 基本概念
+	</h1></a><a name="help_script.header_3_1">
+	<h2>3.1. 基本数据类型
+	</h2></a><ul>
+	<li>数值类型（整数和浮点数）
+	</li></ul><p>EWSL提供了整数类型（Integer）和浮点数类型（Float），两种基本数值类型。其中整数类型是有符号64位整数类型，浮点数为双精度浮点数。</p><pre><code code-language="c">a = 1; // 定义一个变量a，其值为整数1<br />b = 2.0; // 定义一个浮点变量b，其值为浮点数2.0</code></pre><p>数值类型支持四则运算<code>+</code>、<code>-</code>、<code>*</code>、<code>/</code>。此外数值类型在一定程度上可以互相转换。例如我们可以计算勾股定理：$$
+c=\sqrt{a^2+b^2}, a=3, b=4
+$$参考代码如下：</p><pre><code code-language="c++">a = 3;<br />b = 4;<br />c = sqrt(a^2+b^2);<br />print(c);</code></pre><p>打印结果为<code>5</code>。</p><ul>
+	<li>布尔类型（Boolean）
+	</li></ul><p>布尔类型即布尔代数的数据类型，布尔型包括两个值，真<code>true</code>和假<code>false</code>，支持
+	<strong>C风格
+	</strong>布尔运算符号：逻辑与<code>&amp;&amp;</code>、逻辑或<code>||</code>、逻辑非<code>!</code>、逻辑异或<code>^^</code>。</p><pre><code code-language="c++">a = true;<br />b = false;<br />c = a &amp;&amp; b;  // 逻辑与运算<br />d = a || b;  // 逻辑或运算<br />e = !a;      // 逻辑非运算<br />f = a ^^ b   // 逻辑异或</code></pre><ul>
+	<li>复数类型（Complex）
+	</li></ul>EWSL支持复数类型的直接定义语法糖，诸如<code>1+1i</code>注意，这里<code>i</code>前面的<code>1</code>不能省略。相关函数包括取实部<code>real</code>、取虚部<code>imag</code>、取共轭<code>conj</code>、绝对值<code>abs</code>和幅角<code>arg</code>（也可以用<code>angle</code>函数）。使用complex类型构造函数<code>complex</code>也可以构造一个复数。<p>例子：</p><pre><code code-language="c++">a = 1+1i;    // a = complex(1,1);<br />b = conj(a); // b = 1-1i<br />c = abs(a); // c = sqrt(2)<br />d = arg(a); // d = pi/4，用d = angle(a)相似</code></pre><ul>
+	<li>字符串类型（String）
+	</li></ul>EWSL支持字符串类型。定义字符串的方式包括双引号<code>"abc"</code>、单引号方式<code>'abc'</code>以及多行字符串（无转义字符串）<code>'''abc'''</code>。使用<code>print</code>函数可以打印显示，使用<code>..</code>实现字符串的串联功能。复杂的用法见<a target="_blank" href="string_functions">字符串高级功能</a>。<p>定义字符串例子：</p><pre><code code-language="ewsl">a = "Hello world!";<br />b = 'Good Luck';<br />c = '''<br />What you want is what we try to achieve.<br />'''</code></pre><blockquote>EWSL支持宽字符作为变量，例如可以定义<code>我=1024</code>，也可以使用特殊字符串，这时候必须使用反撇记号(<code> ` </code>)，如<code> `a-&gt;b`=value; </code>这样给一个名叫<code>a-&gt;b</code>的变量进行赋值。</blockquote><a name="help_script.header_3_2">
+	<h2>3.2. 变量表（Variable Table）
+	</h2></a><p>EWSL支持变量表类型。所谓变量表，本质上是一个字典（Dictation），即一个名称（字符串类型）作为键值（key）映射到一个任意变量的数据结构。变量表用<code>table</code>函数定义。</p><pre><code code-language="c">/* 常规定义方式 */<br />tbl = table();<br />tbl.x = 1;<br />tbl.y = 'abc';<br />tbl.t = table();<br />tbl["u"] = [1,2,3];<br /><br />/* table 直接定义内容的方式，格式对齐可以便于阅读 */<br />tbl2 = table{<br />    a : 1;<br />    b : [1;2;3];<br />    c : "abc";<br />    d : table {<br />        x : 0;<br />        y : 1; <br />        z : 2        <br />    }<br />}<br /><br />/* table函数的定义方式 */<br />tbl3 = table(<br />    "a", 1, <br />    "b", [1,2,3],<br />    "c", "abc",<br />    "d", table(<br />        "x", 1,<br />        "y", 2<br />    )<br />)</code></pre>三种定义方式适用不同情况：<blockquote>(1) 直接定义适合于一般的动态添加子变量的情况。(2) 用table{}语法糖适合于在程序中直接定义静态的数据结构。(3) 用table()函数方式适合于用户用程序方式生成参数表，以及一些特殊子变量名称的定义。</blockquote><p>
+	<ul>
+		<li>变量表引用的方式可以使用<code>.</code>也可以使用<code>[]</code>的方式：
+		</li>
+	</ul></p><pre><code code-language="c++">tbl = table("a", 1, "b", 2);<br />tbl.a = 1;<br />tbl["b"] = "xyz";</code></pre><p><blockquote>使用<code>.</code>相当于使用静态的代码字符串字面量作为索引键值，使用<code>[]</code>相当于使用一个字符串变量的内容作为键值。使用<code>[]</code>时可以定义一些特殊的名称，不必顾及变量名与语法关键词、算符重名的情况，当作一个通用字典数据库时，推荐使用该方法。</blockquote></p><a name="help_script.header_3_3">
+	<h2>3.3. 数组（Array）
+	</h2></a><p>EWSL语言支持两类数组，一类由动态类型变量作为值，另一类指定了某种数据类型。动态变量数组可以直接使用方括号（<code>[]</code>）定义：</p><pre><code code-language="c++">a = [1,2,3,4];<br />b = ["a", "b", 3, 4];<br />c = [];<br />d = [table("a", 1, "b", 2), 1, 2, 3];<br />e = [function(x){return x;}, function(x){return x+1;}, math.add, math.sin];</code></pre>EWSL支持用分号分隔符来定义2维数组：<pre><code code-language="c++">a = [<br />1,2,3;<br />2,3,4;<br />3,4,5 ]</code></pre>动态变量类型的数组，允许存入任何变量类型，包括<code>nil</code>值类型。对于数值计算来说，用户可能需要使用特定数据类型数组， EWSL支持：<ul>
+	<li>整型数组
+	</li>
+	<li>浮点数组
+	</li>
+	<li>复数数组
+	</li></ul><p>用户可以使用“类型构造函数”将动态数组转换成上述三种类型数组：</p><pre><code code-language="lua">a = integer([1,2,3]);<br />b = double([1,2,3]);<br />c = complex([1,2,3]);</code></pre><blockquote><ul><li>提示1：上述构造函数支持尽可能将字符串转换为数字的功能。转换失败将抛出错误信息。</li><li>提示2：EWSL的数组最大支持6个维度，且支持数组嵌套（数组的数组）</li></ul></blockquote><ul>
+	<li>数组的其他操作还包括
+		<ul>
+			<li><code>push</code>向数组尾部追加元素（一种成员方法，参看
+				<a target="_blank" href="Object-Oriented-Programming">面向对象编程
+				</a>）
+			</li>
+			<li><code>size</code>函数返回数组的大小
+			</li>
+			<li><code>trans</code>返回二维数组的转置
+			</li>
+		</ul>
+	</li></ul><a name="help_script.header_3_4">
+	<h2>3.4. 函数（Function）
+	</h2></a><p>EWSL支持用户自定义函数，定义方式使用<code>function</code>关键词或者<code>def</code>关键词均可。使用<code>return</code>关键词表达函数的返回值。EWSL的函数支持：
+	<ul>
+		<li>不定参数个数和参数包（Parameter Package，即<code>...</code>）
+		</li>
+		<li>函数的递归调用（Recursive Call）
+		</li>
+		<li>多返回值（Multiple Returned Value）
+		</li>
+		<li>函数体内定义函数
+		</li>
+		<li>函数可作为变量的值
+		</li>
+	</ul></p><p>例如，我们定义一个求和函数：</p><pre><code code-language="c">function mysum(...)<br />{<br />    local s = 0;<br />    for_each(v in [...])<br />    {<br />        s = s + v;<br />    }<br />    return s;<br />}</code></pre><p>定义一个阶乘函数：</p><pre><code code-language="c">function factorial(n)<br />{<br />    if(n==1)<br />    {<br />        return 1;<br />    }else<br />    {<br />        return self(n-1)*n;<br />    }<br />}</code></pre><blockquote>函数递归调用时，建议使用self关键词，可以防止出现内存泄漏问题。</blockquote><p>函数作为变量的值，并且内部再定义一个函数：</p><pre><code code-language="c++">local myfunc = function(op)<br />{<br />    local candidate = table(<br />        "hello", function() { return "Hello!"; },<br />        "good_luck", function() { return "Gool Luck!"; },<br />        "go_home", function() { return "Go Home!"; }<br />    );<br />    <br />    local default_func = function() { return "Unknown!"; };<br />    <br />    if(nil==candidate[op])<br />    {<br />        return default_func;<br />    }else<br />    {<br />        return candidate[op];<br />    }<br />}</code></pre>EWSL支持匿名函数语法糖，使用<code>@(args,...){...}</code>的方式定义，使用时如下：<pre><code>map(@(x){return x+1;}, [1,2,3])</code></pre>函数进一步的使用请参考：<a target="_blank" href="Concept-Closure">闭包</a>和<a target="_blank" href="Functional-Programming">函数式编程</a>两部分内容。<a name="help_script.header_3_5">
+	<h2>3.5. 类和对象
+	</h2></a>EWSL提供了面向对象编程支持，支持用户定义类型和对象，并且重载相应的接口函数。<a href="#help">EastWave 7 文档</a>  <blockquote>类（class）的概念表达的是对一族对象的性质的抽象，定义一个class，意味着任何属于这个类的对象都应当具备这个class规定的接口和数据。</blockquote>类型的定义由一段EWSL脚本生成，起始用关键词<code>class</code>表示，定义成员用<code>self.</code>或者<code>self[member_name]</code>的方式。定义成员函数有两种方式，一种为动态绑定的成员函数，用<code>function self.func(...){...}</code>来定义，另一种用<code>function meta.func(...){...}</code>来定义。<pre><code code-language="lua">class T<br />{<br />    self.x = 0;<br />    self.y = 0;<br />    self.z = 0;<br />    function meta.length() // 元表函数，静态绑定，同一个类型的所有实例对象公用一份<br />    {<br />        return sqrt(self.x^2 + self.y^2 + self.z^2)<br />    }<br />    function meta.__get_index__(ind) // 元表函数，静态绑定的索引算符<br />    {<br />        switch(ind)<br />        {<br />            case 0: return self.x;<br />            case 1: return self.y;<br />            case 2: return self.z;<br />        }<br />    }<br />    function self.bind(f) // 普通成员函数，动态绑定，每个实例对象均有一份<br />    {<br />        return f(self);<br />    }<br />}</code></pre><p>使用类可以定义一些动态的数据结构，提升程序的可读性。经过特别设计的类可以作为接口类对数据进行分类管理。</p><a name="help_script.header_4">
+	<h1>4. 过程控制结构
+	</h1></a>EWSL提供了条件分支和switch分支、循环、条件循环几种过程控制结构：<br />
+1. <code>if</code>语句语法：<code>if</code>关键词后带一个括号，括号中为一个条件表达式，返回值为布尔值。如果为<code>true</code>则执行第一个语句块中的语句，如果<code>false</code>则执行<code>else</code>关键词后的语句块。例如：<pre><code code-language="lua">if(typename(v)=="string")<br />{<br />    print("v is a string-typed variable.");<br />}else<br />{<br />    print("v is not a string-typed variable.");<br />}</code></pre><blockquote><code>if</code>语句允许使用初始化语句如：<code>if(local a=10; local b=0; x&lt;a &amp;&amp; x&gt;b) {...}</code>。</blockquote>2. <code>switch(){case ... }</code>语句语法：<code>switch</code>后的括号中是一个值表达式，求出的值和<code>case</code>分支后的常量值进行匹配。若匹配执行<code>case ..:</code>冒号后的语句（直到下一个<code>case</code>分支或者<code>default</code>默认分支之前）。例如：<pre><code code-language="c++">switch(val)<br />{<br />    case 0: print("value = 0");<br />    case 1: print("value = 1");<br />    case 2: print("value = 2");<br />    default: print("other value"); <br />}</code></pre><blockquote>注意：与C/C++不同，<code>case</code>分支不需要用<code>break</code>语句跳出分支结构。</blockquote>3. <code>for</code>和<code>for_each</code><ul>
+	<li><code>for</code>表达循环控制结构： 
+	</li></ul>语法：<pre><code code-language="htmltext">for(&lt;init-statement&gt;;&lt;loop-condition-expr&gt;;&lt;iteration-statement&gt;)<br />{<br />    &lt;loop-statement&gt;<br />}</code></pre><code>for</code>关键词后面的括号里用分号隔开为三项，第一项表示循环前初始化语句，第二项表示循环继续条件表达式，第三项是循环迭代语句（一般用于计数），例如：<pre><code code-language="c">s = 0;<br />for(local i=0; i&lt;100; ++i)<br />{<br />    s += i;<br />}<br />print(s);</code></pre><p>在<code>for</code>循环体内，可以使用<code>break</code>提前跳出循环；使用<code>continue</code>跳过循环内语句的后续部分，直接进入下一轮循环过程。</p><ul>
+	<li><code>for_each</code>语句：
+	</li></ul>语法：<pre><code code-language="htmltext">for_each (i, v in lst) // or for_each(v in lst)<br />{<br />    &lt;loop-statement&gt;<br />}</code></pre><code>for_each</code>取目标数组或变量表的索引和值进行迭代，允许省略索引值而只使用值进行迭代。这种语法的好处是能写出意义更加清楚地循环结构。<blockquote>建议1：<code>for</code>循环中的初始条件语句可以定义变量，建议使用<code>local</code>关键词限制其作用域，防止循环变量污染全局名字空间。<br />
+建议2：在<code>for</code>循环中谨慎使用<code>break</code>和<code>continue</code>等跳转语句以及过于复杂的分值判断，滥用可能过程逻辑变得不够清晰。复杂循环的编写可参考<a target="_blank" href="Functional-Programming">函数式编程</a>部分内容。<br />
+建议3：简单循环尽量使用<code>for_each</code>语句来替代<code>for</code>循环。</blockquote><br />4. <code>while</code>和<code>do-while</code>条件循环控制结构：语法：<pre><code code-language="c++">// while loop structure<br />while(&lt;loop-condition-expr&gt;)<br />{<br />    &lt;loop-statement&gt;<br />}<br />// do-while loop struture<br />do<br />{<br />    &lt;loop-statement&gt;<br />}while(&lt;loop-condition-expr&gt;)</code></pre>其中<code>while</code>循环方式的循环判断处于每次循环过程之前，而<code>do-while</code>循环的判断处于每次循环过程之后。两者的差别主要在进入循环时是否要先执行一次循环体过程。在<code>while</code>循环体内，与<code>for</code>循环类似，可以使用<code>break</code>提前跳出循环；使用<code>continue</code>跳过循环内语句的后续部分，直接进入下一轮循环过程。<p><blockquote>建议：在<code>while</code>循环中谨慎使用<code>break</code>和<code>continue</code>等跳转语句以及过于复杂的分值判断，滥用可能过程逻辑变得不够清晰。复杂循环的编写可参考<a target="_blank" href="Functional-Programming">函数式编程</a>部分内容。</blockquote></p><a name="help_script.header_5">
+	<h1>5. 编写文件读写与字符串处理
+	</h1></a><a name="help_script.header_5_1">
+	<h2>5.1. 文本文件的读写
+	</h2></a>EWSL的io库中提供了<code>io.readfile</code>和<code>io.savefile</code>两个函数。<code>io.readfile</code>。下面是一个文本文件示例：（文件名为example.txt）<pre><code code-language="text">I have a dream that one day this nation will rise up and live out the true meaning of its creed: "We hold these truths to be self-evident: that all men are created equal."<br />I have a dream that one day on the red hills of Georgia the sons of former slaves and the sons of former slave owners will be able to sit down together at the table of brotherhood.</code></pre>我们在EWSL交互式命令环境下输入：<pre><code code-language="ewsl">&gt;&gt; content = io.readfile("example.txt")</code></pre>返回值赋值给变量<code>content</code>，内容就是<code>"example.txt"</code>文件的内容。如果我们要将文件保存出去，可以使用<code>io.writefile</code>函数，函数的第一个参数是文件路径（字符串），第二个参数是文件的内容字符串。<pre><code>content = "Martin Luther King: \r\n" .. content;<br />io.writefile("output.txt", content);</code></pre><p><blockquote>注意：Windows操作系统的换行符是<code>\r\n</code>，Linux操作系统的换行符是<code>\n</code>，而MacOS操作系统的换行符是<code>\r</code>。</blockquote></p><a name="help_script.header_5_2">
+	<h2>5.2. 从文本文件中导入数组（需要改进）
+	</h2></a>使用<code>io.load_txt</code>函数可以导入文本格式的数组：<pre><code code-language="ewsl">&gt;&gt; arr = io.load_txt("array.dat");</code></pre>反之，使用<code>io.save_txt</code>函数将数组导出到一个文本文件。<pre><code>&gt;&gt; a = ones(3,3)</code></pre><a name="help_script.header_5_3">
+	<h2>5.3. 文件流的支持（尚未实现）
+	</h2></a><a name="help_script.header_5_4">
+	<h2>5.4. 字符串的处理
+	</h2></a><a name="help_script.header_5_4_1">
+	<h3>5.4.1. 字符串的分解和拼接
+	</h3></a>将读入的文本文件做简单的分析，一般而言，通常我们考虑将文本文件拆分成行(lines)和词(words)。string库提供了<code>string.lines</code>函数和<code>string.words</code>函数用来分解文本。下列程序：<pre><code code-language="ewsl">line = content.lines();<br />word = map(function(x){return x.words();}, line);</code></pre>可以得到一个嵌套数组（<code>word</code>），最外层是行，内层是词，<code>word[i][j]</code>表示第<code>i</code>行、第<code>j</code>个词的内容。反过来，如果我们将词语数组重新组装为一个字符串，需要使用<code>string.join</code>函数。<code>string.join</code>函数接受一个分隔符和一个字符串数组，将分隔符插入到字符串数组的相邻两个字符串之间，返回最终组装的完整字符串。下列程序：<pre><code code-language="ewsl">s = string.join("\r\n", map(function(x){return string.join(" ",x);}, [ ["abc", "def"], ["xxx", "yyy"] ]));</code></pre><p>可以将嵌套字符串数组中的词语先用空格分隔后连接起来，然后再形成行（插入换行符）。</p><a name="help_script.header_6">
+	<h1>6. 编写数值计算程序
+	</h1></a><a name="help_script.header_6_1">
+	<h2>6.1. 数值积分与微分
+	</h2></a><p>
+	<h1>附录：常用函数列表
+	</h1></p><ul>
+	<li>全局函数：
+		<ul>
+			<li><code>pcall</code>容错函数调用
+			</li>
+			<li><code>map</code>和<code>mapkv</code>函数
+			</li>
+			<li><code>foldl</code>和<code>foldr</code>函数
+			</li>
+			<li><code>filter</code>过滤器函数
+			</li>
+			<li><code>array_concat</code>数组拼接函数
+			</li>
+			<li><code>length</code>和<code>size</code>函数
+			</li>
+			<li><code>reverse</code>函数
+			</li>
+		</ul>
+	</li>
+	<li>io库函数
+		<ul>
+			<li><code>save_txt</code>和<code>load_txt</code>函数
+			</li>
+			<li><code>save_var</code>和<code>load_var</code>函数
+			</li>
+			<li><code>puts</code>、<code>print</code>、<code>println</code>打印函数
+			</li>
+			<li><code>parse_xml</code>、<code>parse_json</code>、<code>load_json</code>和<code>load_xml</code>函数
+			</li>
+		</ul>
+	</li>
+	<li>string库和字符串函数
+		<ul>
+			<li><code>string.length</code>成员函数
+			</li>
+			<li><code>string.upper</code>和<code>string.lower</code>成员函数
+			</li>
+			<li><code>string.substr</code>成员函数
+			</li>
+			<li><code>string.split</code>、<code>string.words</code>和<code>string.lines</code>成员函数
+			</li>
+			<li><code>split_word</code>和<code>split_line</code>函数
+			</li>
+			<li><code>reverse</code>函数
+			</li>
+			<li><code>format</code>函数
+			</li>
+			<li><code>join</code>函数
+			</li>
+		</ul>
+	</li>
+	<li>操作系统API(os库)
+		<ul>
+			<li><code>time</code>函数
+			</li>
+			<li><code>sleep</code>函数
+			</li>
+			<li><code>shell</code>函数
+			</li>
+			<li><code>execute</code>函数
+			</li>
+			<li><code>getenv</code>函数
+			</li>
+			<li><code>getcwd</code>、<code>setcwd</code>函数
+			</li>
+			<li><code>dir</code>函数
+			</li>
+			<li><code>remove</code>、<code>rename</code>、<code>mkdir</code>、<code>rmdir</code>
+			</li>
+			<li><code>exit</code>函数
+			</li>
+		</ul>
+	</li>
+	<li>数学函数（math库）
+		<ul>
+			<li><code>add</code>、<code>sub</code>、<code>mul</code>、<code>div</code>、<code>dot_mul</code>、<code>dot_div</code>、<code>dot_pow</code>、<code>pow</code>、<code>sqrt</code>、<code>log</code>、<code>log10</code>
+			</li>
+			<li><code>sin</code>、<code>cos</code>、<code>tan</code>、<code>sinh</code>、<code>cosh</code>、<code>tanh</code>、<code>sind</code>、<code>cosd</code>、<code>tand</code>、<code>asin</code>、<code>acos</code>、<code>atan</code>、<code>atan2</code>、<code>atan2d</code>、<code>asinh</code>、<code>acosh</code>、<code>atanh</code>
+			</li>
+		</ul>
+	</li>
+	<li>绘图函数（fig库）
+		<ul>
+			<li><code>plot</code>、<code>imagesc</code>、<code>polar</code>、<code>polar3d</code>
+			</li>
+			<li><code>title</code>、<code>xlabel</code>、<code>ylabel</code>、<code>xlim</code>、<code>ylim</code>、<code>rlim</code>
+			</li>
+			<li><code>axis</code>函数
+			</li>
+		</ul>
+	</li></ul></div>

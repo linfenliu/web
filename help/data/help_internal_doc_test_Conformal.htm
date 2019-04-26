@@ -1,0 +1,63 @@
+<div class="markdown-body"><h1>共形（测试说明）</h1>共形技术较为复杂，会修改FDTD的迭代形式，错误的实现极易出现计算的稳定性问题，导致计算结果发散;即使计算结果未发散，也会出现计算结果精度不高的问题。因此共形测试的主要目的是检测新版共形在各种模型和设置下的<strong>稳定性</strong>、<strong>准确性</strong>。共形策略介绍参考此<a target="_top" href="#help_model_Conformal">链接</a>。<h2>条件控制</h2>进行精度对比时，可选用FEM、MoM、快速多级子算法软件结果作为标准解（前提是保证以达到网格收敛），而在同FDTD算法类软件进行结果精度对比时除了计算模型相同以外必须保证：<ol>
+	<li>网格尺寸、网格数目相同
+	</li>
+	<li>计算物理时间相同 
+	</li></ol>网格为非均匀网格时：<ol>
+	<li>尽可能保证网格尺寸和数目接近
+	</li>
+	<li>计算物理时间严格相同
+	</li></ol><br /><h2>测试目标</h2><ol>
+	<li>普通材料、PEC材料共形稳定性、准确性
+	</li>
+	<li>SC策略（结构必须含PEC或PMC）
+		<ol>
+			<li>模型在开启SC后时间步长的增加情况
+			</li>
+			<li>SC策略开启前后的精度对比
+			</li>
+		</ol>
+	</li></ol><h2>测试方法</h2><ol>
+	<li>基本测试
+		<ol>
+			<li>分别运行标准案例，测试计算过程的稳定性、计算结果的精度
+			</li>
+			<li>改变标准案例中的网格设置（如设置为非均匀网格）进行测试
+			</li>
+		</ol>
+	</li>
+	<li>高精度测试
+		<ol>
+			<li>标准案例为自动透反率模式，需要与至少一款同类FDTD软件进行精度对比，推荐FDTD Solutions；需要一款FEM类软件结果作为标准对比，推荐CST
+			</li>
+			<li>更高精度的测试可采用RCS模式的结果与其它非结构网格算法软件（如FEKO、HFSS）结果进行对比<br />
+
+			</li>
+		</ol>
+	</li>
+	<li>极端测试<br />
+测试用户在极端或异常输入下的稳定性，减小标准案例中各方向网格（传播方向必须大于8），测试求解器是否能运行
+	</li></ol><h2>标准案例</h2><ol>
+	<li>普通材料共形
+		<a target="_top" href="javascript:ewdoc.open_editor('internal_files/test/systest/conformal/ew-v7_0_0-conformal-material-0001.ewp2')">测试文档
+		</a>
+	</li>
+	<li>PEC共形
+		<a target="_top" href="javascript:ewdoc.open_editor('internal_files/test/systest/conformal/ew-v7_0_0-conformal-pec-0001.ewp2')">测试文档
+		</a>
+	</li>
+	<li>普通材料、PEC混合共形
+		<a target="_top" href="javascript:ewdoc.open_editor('internal_files/test/systest/conformal/ew-v7_0_0-conformal-material-pec-0001.ewp2')">测试文档
+		</a>
+	</li>
+	<li>SC策略
+		<ol>
+			<li>纯PEC共形SC策略
+				<a target="_top" href="javascript:ewdoc.open_editor('internal_files/test/systest/conformal/ew-v7_0_0-conformal-sc-0001.ewp2')">测试文档1
+				</a>
+			</li>
+			<li>普通材料、PEC混合共形SC策略
+				<a target="_top" href="javascript:ewdoc.open_editor('internal_files/test/systest/conformal/ew-v7_0_0-conformal-sc-0002.ewp2')">测试文档2
+				</a>
+			</li>
+		</ol>
+	</li></ol><br /></div>

@@ -1,0 +1,633 @@
+<div class="markdown-body"><ul>
+	<li>
+		<a href="#help_internal_doc_markdown.header_1">1. 概述
+		</a>
+		<ul>
+			<li>
+				<a href="#help_internal_doc_markdown.header_1_1">1.1. 段落和换行
+				</a>
+			</li>
+			<li>
+				<a href="#help_internal_doc_markdown.header_1_2">1.2. 前置行转义
+				</a>
+			</li>
+			<li>
+				<a href="#help_internal_doc_markdown.header_1_3">1.3. 语义块
+				</a>
+			</li>
+			<li>
+				<a href="#help_internal_doc_markdown.header_1_4">1.4. 引用
+				</a>
+			</li>
+		</ul>
+	</li>
+	<li>
+		<a href="#help_internal_doc_markdown.header_2">2. 区块元素
+		</a>
+		<ul>
+			<li>
+				<a href="#help_internal_doc_markdown.header_2_1">2.1. 标题
+				</a>
+			</li>
+			<li>
+				<a href="#help_internal_doc_markdown.header_2_2">2.2. 引用代码
+				</a>
+			</li>
+			<li>
+				<a href="#help_internal_doc_markdown.header_2_3">2.3. 内容引用
+				</a>
+			</li>
+			<li>
+				<a href="#help_internal_doc_markdown.header_2_4">2.4. 列表
+				</a>
+			</li>
+			<li>
+				<a href="#help_internal_doc_markdown.header_2_5">2.5. 表格
+				</a>
+			</li>
+			<li>
+				<a href="#help_internal_doc_markdown.header_2_6">2.6. 块引用
+				</a>
+			</li>
+		</ul>
+	</li>
+	<li>
+		<a href="#help_internal_doc_markdown.header_3">3. 区段元素
+		</a>
+		<ul>
+			<li>
+				<a href="#help_internal_doc_markdown.header_3_1">3.1. 字体效果
+				</a>
+			</li>
+			<li>
+				<a href="#help_internal_doc_markdown.header_3_2">3.2. 超链接、图片、锚定义
+				</a>
+				<ul>
+					<li>
+						<a href="#help_internal_doc_markdown.header_3_2_1">3.2.1. 超链接
+						</a>
+					</li>
+					<li>
+						<a href="#help_internal_doc_markdown.header_3_2_2">3.2.2. 图片
+						</a>
+					</li>
+					<li>
+						<a href="#help_internal_doc_markdown.header_3_2_3">3.2.3. 锚定义
+						</a>
+					</li>
+					<li>
+						<a href="#help_internal_doc_markdown.header_3_2_4">3.2.4. 模板文件定义
+						</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>
+		<a href="#help_internal_doc_markdown.header_4">4. html版帮助系统说明
+		</a>
+	</li></ul><a name="help_internal_doc_markdown.header_1">
+	<h1>1. 概述
+	</h1></a><p>Markdown的目标是实现易读易写。在主流Markdown的基础上进行大量的扩展改进，语法严格化，并根据我们的需求扩展出多种语法，实现多页面统一生成，跨页面引用等。<br />
+</p><p>Markdown兼容HTML，优先使用HTML解释器对整个文件进行解释。对非HTML的内容，再使用Markdwon解释器进行处理。<br />
+如果某段内容，希望直接使用Markdown语法处理，可以在行都使用<code>"`"</code>加上一个空格来实现，加上这个后，本行后续的内容直接当使用Markdown解释器处理。如果是多行内容，可以使用块定义并设置markdown的标识来处理。<br />
+</p><pre><code><br />` 这里的内容使用markdown来处理<br /><br />```markdown<br />这里一大段的内容使用markdown来处理 <br />```<br /></code></pre><a name="help_internal_doc_markdown.header_1_1">
+	<h2>1.1. 段落和换行
+	</h2></a><p>一个Markdown段落，由一个或多个连续的文本行组成，两个或以上的空行，代表新的段落的开始。</p><p>行尾两个或以上的空格，表示换行。</p><a name="help_internal_doc_markdown.header_1_2">
+	<h2>1.2. 前置行转义
+	</h2></a><div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td align="center" style="border:0px">
+				<a name="">前置行转义
+				</a>
+			</td>
+		</tr>
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center"> 符号 
+								</td>
+								<td align="center"> 作用 
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="center"> <code>#</code> 
+								</td>
+								<td align="center"> 标题 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> <code>`</code> 
+								</td>
+								<td align="center">  代表后续的内容，直接使用markdown解释器处理 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> <code>&gt;</code> 
+								</td>
+								<td align="center"> 代表后续的内容为引用 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> <code>*</code> 
+								</td>
+								<td align="center"> 无序列表<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> <code>+</code> 
+								</td>
+								<td align="center"> 有序列表<br />
+
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div><p>前置转义符，后面必须有空格，无空格的情况不认为是前置转义符。<br />
+其中，除了"#"以外的其他行转义符，可以嵌套使用。<br />
+后续的行，根据开始内容，做不同的处理：
+	<ul>
+		<li>以两个空格开始，认为是跟上面行转义内容的延续<br />
+
+		</li>
+		<li>以同类转义符开始，认为是新的同级别的项 
+		</li>
+		<li>其他情况，转义结束
+		</li>
+	</ul></p>示例：<pre><code>下面是一个列表<br />` * 列表内容中有html特殊字符&lt;hello&gt;哦<br />* 列表的第二项<br />  * 这是第二项里的一个子列表<br />    前面有四个空格，这是子列表第二项内容的延续<br />  * 这是子列表的第二项<br />  前面有两个空格，这是顶层列表的第二项的延续内容<br />* 列表第三项<br />  &gt; 前面有两个空格，这是第三项内容的延续，这里是一个引用  <br />    第三项引用的内容里又使用了列表<br />    * 引用里又使用了列表<br />    * 引用里的列表第二项<br /></code></pre>效果：<br />
+下面是一个列表<ul>
+	<li>列表内容中有html特殊字符&lt;hello&gt;哦
+	</li>
+	<li>列表的第二项
+		<ul>
+			<li>这是第二项里的一个子列表前面有四个空格，这是子列表第二项内容的延续
+			</li>
+			<li>这是子列表的第二项
+			</li>
+		</ul>前面有两个空格，这是顶层列表的第二项的延续内容
+	</li>
+	<li>列表第三项<blockquote>前面有两个空格，这是第三项内容的延续，这里是一个引用<br />
+第三项引用的内容里又使用了列表<ul><li>引用里又使用了列表</li><li>引用里的列表第二项</li></ul></blockquote>
+	</li></ul><br /><a name="help_internal_doc_markdown.header_1_3">
+	<h2>1.3. 语义块
+	</h2></a>使用下列方式，可以定义语义块<pre><code>```[type[`endtag]]<br />content<br />```[endtag]</code></pre><br />其中：type指定语义块的类型，endtag为结束标识。<br />type目前定义有 markdown、rawtext、htmtext、block和code等。<br />对于未定义的type，使用code解释，认为是代码块<br /><a name="help_internal_doc_markdown.header_1_4">
+	<h2>1.4. 引用
+	</h2></a>引用，可用来定义包括超链接，图片引用，表格引用等内容。具体有下面三种方式：<ul>
+	<li>[type](params)
+	</li>
+	<li>[type-def:name](params)
+	</li>
+	<li>[type-ref](name)
+	</li></ul>其中，type是引用的类型，params是参数。目前已经定义的type有link、image、anchor和block，以后可能会引入其他的引用类型。带<code>-def</code>的为预先定义，不产生真正的内容，但可以被<code>-ref</code>引用。<br />
+具体语法见<br />
+<ul>
+	<li>
+		<a href="#help_internal_doc_markdown.header_3_2">3.2. 超链接、图片、锚定义
+		</a>。
+		<ul>
+			<li>
+				<a href="#help_internal_doc_markdown.header_3_2_1">3.2.1. 超链接
+				</a>
+			</li>
+			<li>
+				<a href="#help_internal_doc_markdown.header_3_2_2">3.2.2. 图片
+				</a>
+			</li>
+			<li>
+				<a href="#help_internal_doc_markdown.header_3_2_3">3.2.3. 锚定义
+				</a>
+			</li>
+		</ul>
+	</li></ul><p>
+	<div class="markdown-block">
+		<table width="100%">
+			<tr style="border:0px">
+				<td align="center" style="border:0px">
+					<a name="">引用类型说明
+					</a>
+				</td>
+			</tr>
+			<tr style="border:0px">
+				<td style="border:0px">
+					<div class="markdown-table">
+						<table width="100%" class="markdown-table" style="border:1px">
+							<thead>
+								<tr>
+									<td align="center"> 类型 
+									</td>
+									<td align="center"> 作用 
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td align="center"> link 
+									</td>
+									<td align="center"> 超链接 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> image 
+									</td>
+									<td align="center"> 图片 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> anchor 
+									</td>
+									<td align="center"> 位置锚 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> block 
+									</td>
+									<td align="center"> 内容块 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> topic 
+									</td>
+									<td align="center"> 目录索引 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> template 
+									</td>
+									<td align="center"> 模板文件 
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div></p><a name="help_internal_doc_markdown.header_2">
+	<h1>2. 区块元素
+	</h1></a><a name="help_internal_doc_markdown.header_2_1">
+	<h2>2.1. 标题
+	</h2></a>有两种方式实现标题。<ul>
+	<li>第一种方式:在标题的后续一行，使用6个或以上的"="、"-"或"."，这种方式下构造出来的标题，会自动生成索引。
+	</li>
+	<li>第二种方式:是在行的内容，使用一个或多个#号加一个空格开始时，这行的内容会自己作为标题，#的个数为标题的级别。<br />
+
+	</li></ul><br />标题效果： <h1>#The largest heading</h1><h2>##The second largest heading</h2><h3>###The thrid heading</h3><h4>####The fourth heading</h4><h5>#####The fifth heading</h5><h6>######The smallest heading</h6><br /><a name="help_internal_doc_markdown.header_2_2">
+	<h2>2.2. 引用代码
+	</h2></a><br />行内引用 `代码` 或  ```代码```  <br /> <br />多行引用，请直接使用特殊的语义块，type为代码的语言，如c++、ewsl等。<br />  <br /><a name="help_internal_doc_markdown.header_2_3">
+	<h2>2.3. 内容引用
+	</h2></a><p>在行的最前面使用 <code>&gt;</code><br />
+</p><pre><code>引用其他内容:<br /><br />&gt; 下面又再引用其他内容<br />  &gt; hello  <br />    world<br />    * 引用里的一个列表的第一项<br />    * 第二项<br />    下面再次再次引用其他内容<br />    &gt; hello, world!<br />    第二层引用结束<br />  第一层引用结束<br /></code></pre><br />效果:<br />
+引用其他内容:<blockquote>下面又再引用其他内容<blockquote>hello<br />
+world<ul><li>引用里的一个列表的第一项</li><li>第二项</li></ul>下面再次再次引用其他内容<blockquote>hello, world!</blockquote>第二层引用结束</blockquote>第一层引用结束</blockquote><br /><br /><br /><br /><a name="help_internal_doc_markdown.header_2_4">
+	<h2>2.4. 列表
+	</h2></a><p>列表1<br />
+
+	<ul>
+		<li>George Washington
+		</li>
+		<li>John Adams
+		</li>
+		<li>Thomas Jefferson
+		</li>
+	</ul></p>列表2<br />
+<ul>
+	<li>Make my changes
+		<ul>
+			<li>Fix bug
+			</li>
+			<li>Improve formatting
+				<ul>
+					<li>Make the heading bigger
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>Push my commits to Github
+	</li>
+	<li>Open a pull request
+		<ul>
+			<li>Describe my changes
+			</li>
+			<li>Mention all the members of my team
+				<ul>
+					<li>Ask for feedbackk
+					</li>
+				</ul>
+			</li>
+		</ul><br />
+	</li></ul>有序列表<ol>
+	<li>item1
+	</li>
+	<li>item2
+	</li>
+	<li>item3
+	</li></ol>有序列表嵌套无序列表<ol>
+	<li>item1
+		<ul>
+			<li>item1.1
+			</li>
+			<li>item1.2
+			</li>
+		</ul>
+	</li>
+	<li>
+		<ul>
+			<li>item2.1
+			</li>
+			<li>item2.2
+			</li>
+		</ul>
+	</li>
+	<li>item3
+	</li></ol><a name="help_internal_doc_markdown.header_2_5">
+	<h2>2.5. 表格
+	</h2></a>定义：<br />
+| name | value |<br />| n1 | v1 |<br />| n2 |(2) v2 |<br />| v3 |<br />效果：<br />
+<div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center"> name 
+								</td>
+								<td align="center"> value 
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="center"> n1 
+								</td>
+								<td align="center"> v1 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> n2 
+								</td>
+								<td rowspan="2" align="center"> v2 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> v3 
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div>注意：如果表格中有<code>|</code>字符，需要转义，使用<code>\|</code>代替。<br />
+<a name="help_internal_doc_markdown.header_2_6">
+	<h2>2.6. 块引用
+	</h2></a><p>定义：<br />
+</p><br />```block:table1<br />| name | value |<br />| n1 | v1 |<br />| n2 |(2) v2 |<br />| v3 |<br />```<br /><br />```block:table2<br />| name | value |<br />| n1 | v1 |<br />| n2 |(2) [block-ref](table1) |<br />| v3 |<br />```<br />引用：<br />
+[block-ref](table2)<p>效果：<br />
+</p><p>
+	<div class="markdown-block">
+		<table width="100%">
+			<tr style="border:0px">
+				<td style="border:0px">
+					<div class="markdown-table">
+						<table width="100%" class="markdown-table" style="border:1px">
+							<thead>
+								<tr>
+									<td align="center"> name 
+									</td>
+									<td align="center"> value 
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td align="center"> n1 
+									</td>
+									<td align="center"> v1 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> n2 
+									</td>
+									<td rowspan="2" align="center"> 
+										<div class="markdown-block">
+											<table width="100%">
+												<tr style="border:0px">
+													<td style="border:0px">
+														<div class="markdown-table">
+															<table width="100%" class="markdown-table" style="border:1px">
+																<thead>
+																	<tr>
+																		<td align="center"> name 
+																		</td>
+																		<td align="center"> value 
+																		</td>
+																	</tr>
+																</thead>
+																<tbody>
+																	<tr>
+																		<td align="center"> n1 
+																		</td>
+																		<td align="center"> v1 
+																		</td>
+																	</tr>
+																	<tr>
+																		<td align="center"> n2 
+																		</td>
+																		<td rowspan="2" align="center"> v2 
+																		</td>
+																	</tr>
+																	<tr>
+																		<td align="center"> v3 
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+														</div>
+													</td>
+												</tr>
+											</table>
+										</div> 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> v3 
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div></p><a name="help_internal_doc_markdown.header_3">
+	<h1>3. 区段元素
+	</h1></a><a name="help_internal_doc_markdown.header_3_1">
+	<h2>3.1. 字体效果
+	</h2></a><div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td align="center" style="border:0px">
+				<a name="help_internal_doc_markdown.table_font">table 1: 字体效果表
+				</a>
+			</td>
+		</tr>
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center"> 名称 
+								</td>
+								<td align="center"> 语法 
+								</td>
+								<td align="center"> 效果 
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="center"> bold 
+								</td>
+								<td align="center"> **text** 
+								</td>
+								<td align="center"> 
+									<strong>text
+									</strong> 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> italicized 
+								</td>
+								<td align="center"> *text* 
+								</td>
+								<td align="center"> 
+									<em>text
+									</em> 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> misstaken 
+								</td>
+								<td align="center"> ~~text~~ 
+								</td>
+								<td align="center"> 
+									<del>text
+									</del> 
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> important 
+								</td>
+								<td align="center"> **_text_** 
+								</td>
+								<td align="center"> 
+									<strong>_text_
+									</strong> 
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div><a name="help_internal_doc_markdown.header_3_2">
+	<h2>3.2. 超链接、图片、锚定义
+	</h2></a><p>
+	<div class="markdown-block">
+		<table width="100%">
+			<tr style="border:0px">
+				<td align="center" style="border:0px">
+					<a name="help_internal_doc_markdown.table_def">table 2: 定义表
+					</a>
+				</td>
+			</tr>
+			<tr style="border:0px">
+				<td style="border:0px">
+					<div class="markdown-table">
+						<table width="100%" class="markdown-table" style="border:1px">
+							<thead>
+								<tr>
+									<td align="center"> 名称 
+									</td>
+									<td align="center"> 语法 
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td align="center"> link 
+									</td>
+									<td align="center"> [link](url,text,title) 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> image 
+									</td>
+									<td align="center"> [image](url,alt.text,anchor) 
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> anchor 
+									</td>
+									<td align="center"> [anchor](anchor,text,title) 
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div></p><p>预先定义一些引用: [type-def:name](arg_list)<br />
+使用预先定义的引用： [type-ref](name)<br />
+</p><a name="help_internal_doc_markdown.header_3_2_1">
+	<h3>3.2.1. 超链接
+	</h3></a>直接定义链接：<pre><code>[link]("http://www.eastwave.com.cn","EastWave","go to EastWave homepage")</code></pre><p><br /></p>预定链接并引用：<pre><code>[link-def:.mylink]("mylink.url","mylink.text","mylink.title")  <br />[link-ref](mylink)</code></pre><p>自动生成的预定义链接:
+	<ul>
+		<li>每个章节都生自动生成一个预定义链接，名字的规则为 简称用<code>_</code>连接起来。比如本页面是<code>help_doc_markdown</code>。
+		</li>
+		<li>每个章节的内容的标题索引，名字为 <code>本页面的名称+.header_标题的编号</code>，比如这里是<code>help_doc_mardown.header_3_2_1</code>。
+		</li>
+	</ul></p><p>引用已有的链接：<br />
+link: <code>[link-ref](".header_2")</code><br />
+效果: 
+	<a href="#help_internal_doc_markdown.header_2">2. 区块元素
+	</a><br />
+</p><a name="help_internal_doc_markdown.header_3_2_2">
+	<h3>3.2.2. 图片
+	</h3></a><p>image: <code>[image]("image.url","alt.text")</code>
+	<img src="image.url" alt="alt.text" />  </p><br /><a name="help_internal_doc_markdown.header_3_2_3">
+	<h3>3.2.3. 锚定义
+	</h3></a>定义方式:<pre><code>[anchor](".myposition")</code></pre><a name="help_internal_doc_markdown.myposition"> </a>使用<code>.</code>开头，前面会自动加上本页面的名称。要引用上面这个位置，可这样<pre><code>[link]("?help_internal_doc_markdown.myposition")</code></pre><a name="help_internal_doc_markdown.header_3_2_4">
+	<h3>3.2.4. 模板文件定义
+	</h3></a>定义方式:<pre><code>[template](etching_example.ewp2)</code></pre><p>效果：
+	<a target="_top" href="javascript:ewdoc.open_template('etching_example.ewp2')">etching_example.ewp2
+	</a></p><a name="help_internal_doc_markdown.header_4">
+	<h1>4. html版帮助系统说明
+	</h1></a><p>source目录为源目录，web目录为目标目录。source目录下，每一个目录为一个子章节，目录组织即为帮助内容的章节组织。目录的名称为内部简称，采用prefix.name的方式命名。其中prefix为前缀，仅用于排序，无其他意义。name为该章节的内部简称。每个目录下，有config.ewsl文件，这个用于配置该章节的信息，目前仅包括该章节的全称。此外，还有很多的内容文件，命名规则为 prefix.content.ext。其中prefix为前缀，仅用于排序，无其他意义。处理时，按prefix排序，依次生成帮助内容，最后合并为一个文件。ext为扩展名，扩展名其中txt时，使用Markdown处理该文件。扩展名为htm时，不做任何处理，直接嵌入。</p>web/help目录为目标目录，生成的文件，全部入在data目录下，其他文件为帮助框架文件，需要考虑浏览器兼容问题。这里的index.htm文件，是总的框架文件，这个文件，可以有多个实现，应对不同的浏览器，或是采用不同的风格。最终，我们希望实现为无刷新的版本。<p><br />修改source后，需要执行一次<code>ewx_help</code>，重新生成帮助文件。这个动作，在使用我们自定义的httpserver服务器的情况，可以在某个动态网页上加出这个功能。</p><p>有些浏览器，没有权限直接访问本地文件，这情况下，可以使用ewsl库创建的httpserver。使用<code>ewx_ewsl.exe httpserver.ewsl</code>的方式来启动，启动后可以通过http://localhost或http://127.0.0.1来访问生成的帮助文档。</p><p>httpserver.ewsl的内容</p><pre><code code-language="ewsl">local s=net.httpserver();<br />local t=table();<br /><br />// http setting<br />t.port=80;<br /><br />// https setting<br />//t.ssl_port=443;<br />//t.ssl_cert="ssl_cert.pem";<br />//t.ssl_key="ssl_key.pem";<br /><br />// no cache, for test<br />t.maxage=0;<br /><br />s(t);</code></pre>使用ewsl来定义动态网页<pre><code code-language="ewsl"><br />// 文件开头<br />#function(session,request,response);<br />global server;<br /><br />// 可以使用response.buffer.write来输出<br />// 可以使用response.redirect来重定向到其他文件<br />// 一般的情况下，这个动态页面，返回一个json文件，其他功能使用前端脚本实现。<br />// ewsl的table，只要不存在特殊类型的数据如函数等，可使用to_json函数转换为json格式。<br /></code></pre>示例：reload.ewsl，功能为重新生成help文档，然后再重定向到help/index.htm。<pre><code code-language="ewsl">// file reload.ewsl<br />#function(session,request,response);<br />global server;<br />util.htmlgen("source","web/help")<br />response.redirect("help/index.htm");</code></pre><p>使用动态网页加上我们的ewsl库，可以实现很多功能。
+	<ul>
+		<li>动态报告生成系统
+		</li>
+		<li>在线题库系统
+		</li>
+		<li>license的internet认证功能
+		</li>
+		<li>试用版验证码自动计算功能
+		</li>
+		<li>任务管理系统
+		</li>
+	</ul></p><br /></div>

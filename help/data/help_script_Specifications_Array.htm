@@ -1,0 +1,221 @@
+<div class="markdown-body"><h1>数组函数</h1><p>
+	<h2>目录
+	</h2>
+	<ol>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Array.properties">数组的属性
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Array.constructors">数组的构造函数
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Array.vectorization">向量化
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Array.formal_operations">形式的操作
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Array.others">其他
+			</a>
+		</li>
+	</ol></p><a name="help_script_Specifications_Array.properties"> </a><h2>数组的属性</h2><a name="help_script_Specifications_Array.function.length"> </a><a name="help_script_Specifications_Array.function.numel"> </a><code>length</code> <code>numel</code><br />返回数组元素个数（兼容变量表）<br /><strong>语法：</strong>  <pre><code code-language="ewsl">length(A)<br />numel(A)</code></pre><strong>补充说明：</strong><ul>
+	<li>与
+		<strong>Matlab
+		</strong>的<code>length</code>函数行为不同，请阅读
+		<a target="_top" href="#help_script_Specifications_Comparisons.length">
+			<strong>Matlab
+			</strong>兼容性问题<code>length</code>函数
+		</a>。
+	</li>
+	<li>如果要使用类似
+		<strong>Matlab
+		</strong>的<code>length</code>函数，请使用<code>math.length_</code>函数替代。
+	</li></ul><p><br />
+	<strong>参考：
+	</strong>  
+	<ul>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Array.function.size"><code>size</code>
+			</a>
+		</li>
+	</ul></p><a name="help_script_Specifications_Array.function.size"> </a><code>size</code><br />返回数组的维度信息，包括指定维度的大小<br /><strong>语法：</strong>  <pre><code code-language="ewsl">size(A)     // Return a dimension size vector [6x1].<br />size(A,DIM) // Return the size of the dimension DIM of A.</code></pre><p><br />
+	<strong>参考：
+	</strong>  
+	<ul>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Array.function.length"><code>length</code>
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Array.function.rwos"><code>rows</code>
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Array.function.columns"><code>columns</code>
+			</a>
+		</li>
+	</ul></p><code>rows</code><br />返回数组的行数<br /><strong>语法：</strong>  <pre><code code-language="ewsl">rows(A)      // row(A) == size(A, 0)</code></pre><p><br />
+	<strong>参考：
+	</strong>  
+	<ul>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Array.function.length"><code>length</code>
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Array.function.size"><code>size</code>
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Array.function.columns"><code>columns</code>
+			</a>
+		</li>
+	</ul></p><code>columns</code><br />返回数组的列数<br /><strong>语法：</strong>  <pre><code code-language="ewsl">columns(A)  // columns(A) == size(A, 1)</code></pre><p><br />
+	<strong>参考：
+	</strong>  
+	<ul>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Array.function.length"><code>length</code>
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Array.function.rwos"><code>rows</code>
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Array.function.size"><code>size</code>
+			</a>
+		</li>
+	</ul></p><a name="help_script_Specifications_Array.constructors"> </a><h2>数组的构造函数</h2><a name="help_script_Specifications_Array.function.colon_operator"> </a><code>a:b</code>, <code>a:step:b</code><br />冒号算符，用起止和步长构造等差数列<br /><strong>语法：</strong>  <pre><code code-language="ewsl">1:10        // [1,2,3,...10], when a &lt; b the default step = 1<br />0:(-10)     // [0,-1,...-10], when a &gt; b default step = -1<br />1:2:10      // [1,3,5,7,9]<br />a:0:b       // [], when the step==0 it returns an empty array.</code></pre><strong>补充说明：</strong><ul>
+	<li><code>a:b</code>当<code>a&lt;b</code>时，默认步长为<code>1</code>，如果<code>ab</code>默认步长为<code>-1</code>
+	</li>
+	<li><code>a:0:b</code>即步长为<code>0</code>的时候，返回空数组
+	</li>
+	<li>输入参数均为整数时，返回的序列为整数序列
+	</li>
+	<li>不兼容复数类型，除非复数参数的虚部是<code>0</code>，则当做实数处理
+	</li></ul><p><br />
+	<strong>参考：
+	</strong>  
+	<a target="_top" href="#help_script_Specifications_Array.function.linspace"><code>linspace</code>
+	</a></p><a name="help_script_Specifications_Array.function.linspace"> </a><code>linspace</code><br />使用端点和点的个数构造等差数列<br /><strong>语法：</strong>  <pre><code code-language="ewsl">linspace(0,10,11)       // [0,1,2,3,4,5,6,7,8,9,10]<br />linspace(0,10i,11)      // [0,1i,2i,3i,4i,5i,6i,7i,8i,9i,10i]<br />linspace(1,2,1)         // Error. Invalid number of points.<br />linspace(2,3,0)         // [], when the point number is zero it returns an empty array.<br />linspace(a,b,0.5)       // Error. Look below.<br />linspace(a,b,-1)        // Error. Invalid number of points.</code></pre><strong>补充说明：</strong><ul>
+	<li>支持复数类型
+	</li>
+	<li>当点数是<code>0</code>的时候，返回空数组
+	</li>
+	<li>输入端点是整数和浮点数（或者复数的需部为<code>0</code>）时，返回值是浮点数组
+	</li>
+	<li>输入端点至少一个是复数的时候，返回值是复数数组
+	</li>
+	<li>当点数是<code>1</code>或者是负数的时候，抛出错误。
+	</li></ul><p><br />
+	<strong>参考：
+	</strong>  
+	<ul>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Array.function.colon_operator">冒号算符<code>:</code>
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Array.function.logspace"><code>logspace</code>
+			</a>
+		</li>
+	</ul></p><a name="help_script_Specifications_Array.function.logspace"> </a><code>logspace</code>使用端点和点的个数构造对数数列<br /><strong>语法：</strong>  <pre><code code-language="ewsl">logspace(A,B,N)             // 10.^linspace(A,B,N)<br />logspace(A,B,0)             // []<br />logspace(A,B,1)             // Error. Invalid number of points.<br />logspace(A,B,-2)            // Error. Invalid number of points.</code></pre><strong>补充说明：</strong><ul>
+	<li>支持复数类型
+	</li>
+	<li>当点数<code>N</code>等于<code>0</code>的时候，返回空数组
+	</li>
+	<li>当点数<code>N</code>等于<code>1</code>或者为负数的时候，抛出错误。
+	</li></ul><p><br />
+	<strong>参考：
+	</strong>  
+	<ul>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Array.function.logspace"><code>logspace</code>
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Comparisons.matlab_copatibility.logspace"><code>logspace</code>函数的
+				<strong>MATLAB
+				</strong>兼容性问题
+			</a>。
+		</li>
+	</ul></p><a name="help_script_Specifications_Array.function.zeros"> </a><code>zeros</code><br />构造零数组<br /><strong>语法：</strong>  <pre><code code-language="ewsl">zeros(s1,s2,...,TYPE='double')     // Return an array with size [s1,s2,...] and its every elements are zeros. The default type is array_double.<br />zeros([s1,s2,...],TYPE='double')   // Like above.</code></pre><strong>补充说明：</strong><ul>
+	<li>最后一个参数<code>TYPE</code>的取值包括：<code>int</code>或者<code>integer</code>、<code>double</code>或者<code>real</code>、<code>complex</code>、<code>variant</code>分别对应构造出的数组元素类型。
+	</li>
+	<li>默认的构造类型是浮点数。
+	</li></ul><p><br />
+	<strong>参考：
+	</strong>  
+	<ul>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Array.function.ones"><code>ones</code>
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Array.function.eye"><code>eye</code>
+			</a>
+		</li>
+	</ul></p><p>
+	<a name="help_script_Specifications_Array.function.ones"> 
+	</a><code>ones</code><br />构造元素全为1的数组</p><br /><strong>语法：</strong>  <pre><code code-language="ewsl">ones(s1,s2,...,TYPE='double')       // Return an array with size [s1,s2,...] and its every elements are ones. The default type is array_double.<br />ones([s1,s2,...],TYPE='double')     // Like above.</code></pre><strong>补充说明：</strong><ul>
+	<li>最后一个参数<code>TYPE</code>的取值包括：<code>int</code>或者<code>integer</code>、<code>double</code>或者<code>real</code>、<code>complex</code>、<code>variant</code>分别对应构造出的数组元素类型。
+	</li>
+	<li>默认的构造类型是浮点数。
+	</li></ul><p><br />
+	<strong>参考：
+	</strong>  
+	<ul>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Array.function.zeros"><code>zeros</code>
+			</a>
+		</li>
+		<li>
+			<a target="_top" href="#help_script_Specifications_Array.function.eye"><code>eye</code>
+			</a>
+		</li>
+	</ul></p><code>eye</code><br />构造单位矩阵<br /><strong>语法：</strong>  <pre><code code-language="ewsl">eye(s1,s2=s1,TYPE='double')     // Return an array with size [s1,s2] and the dianonal elements are ones. The default type is array_double.<br />eye([s1,s2],TYPE='double')      // Like above. </code></pre><strong>补充说明：</strong><ul>
+	<li>最后一个参数<code>TYPE</code>的取值包括：<code>int</code>或者<code>integer</code>、<code>double</code>或者<code>real</code>、<code>complex</code>、<code>variant</code>分别对应构造出的数组元素类型。
+	</li>
+	<li>默认的构造类型是浮点数。
+	</li></ul><br /><strong>语法：</strong>  <ul>
+	<li>
+		<a target="_top" href="#help_script_Specifications_Array.function.eye"><code>eye</code>
+		</a>
+	</li>
+	<li>
+		<a target="_top" href="#help_script_Specifications_Array.function.ones"><code>ones</code>
+		</a>
+	</li>
+	<li>
+		<a target="_top" href="#help_script_Specifications_Array.function.diag"><code>diag</code>
+		</a>
+	</li></ul><a name="help_script_Specifications_Array.function.diag"> </a><code>diag</code><br />构造对角矩阵<br /><strong>语法：</strong>  <pre><code code-language="ewsl">diag(V,K=0)     // If V is a vector and K is an integer, it returns a K-th diagonal(K=0)/super-diagonal(K&gt;0)/sub-diagonal(K&lt;0) matrix with diangonal elements V.<br />diag(V,[M,N])   // Like below.<br />diag(V,M,N)     // If V is a vector and both M and N are positive integers, it returns a [M,N]-sized matrix with pseudo-diagonal.<br />diag(M,K=0)     // If M is a matrix (2d-array), it returns its K-th diagonal(K=0)/super-diagonal(K&gt;0)/sub-diagonal(K&lt;0) elements as a column-vector.</code></pre><br /><strong>例子：</strong>  <pre><code code-language="ewsl">/* examples: interactive mode */<br />println("ex1:", diag([1,2,3]));<br />println("ex2:", diag([1,2,3],1));<br />println("ex3:", diag([1,2,3],-1));<br /><br />a = [1,2,3;<br />     3,4,5;<br />     5,6,7];<br /><br />println(diag(a));<br />println(diag(a,-1));<br /><br /><br />/* output below: */<br />ex1:<br />1  0  0<br />0  2  0<br />0  0  3<br /><br />ex2:<br />0  1  0  0<br />0  0  2  0<br />0  0  0  3<br />0  0  0  0<br /><br />ex3:<br />0  0  0  0<br />1  0  0  0<br />0  2  0  0<br />0  0  3  0<br /><br />ex4:<br />1<br />4<br />7<br /><br />ex5:<br />3<br />6</code></pre><p><br />
+	<strong>参考：
+	</strong>  
+	<a target="_top" href="#help_script_Specifications_Array.function.eye"><code>eye</code>
+	</a></p><p>
+	<a name="help_script_Specifications_Array.vectorization"> 
+	</a>
+	<h2>向量化
+	</h2></p><a name="help_script_Specifications_Array.formal_operations"> </a><h2>形式的操作</h2><p><code>transpose</code><br />转置</p><p><code>ctranspose</code><br />共轭转置</p><p><code>flip</code>, <code>fliplr</code>, <code>flipud</code><br />数组的翻转</p><p><code>rot90</code><br />数组的旋转</p><code>cat</code><br />数组的拼接<br /><strong>语法：</strong>  <pre><code code-language="ewsl">cat(DIM, A, B)  // 在第DIM维度上进行矩阵拼接</code></pre><p>
+	<a name="help_script_Specifications_Array.others"> 
+	</a><code>find</code>  </p>搜索非零元素<br /><strong>语法：</strong>  <pre><code code-language="ewsl">find((1:10)&gt;5)  // Find all elements of 1:10 that is greater than 5, and it returns the indices of those elements.</code></pre><p>
+	<ul>
+		<li>搜索数组中的非零元素，返回它们的索引组成的数组。
+		</li>
+		<li>当输入数组是向量的时候，返回的索引数组保持向量所在的数组维度。
+		</li>
+		<li>如果没有找到任何非零元素，返回一个空数组。
+		</li>
+	</ul></p><p><code>sort</code>  </p>排序<br /><strong>语法：</strong>  <pre><code code-language="ewsl">sort(X)             // Take the first non-singleton dimension as DIM parameter, behave the same as sort(X,DIM)<br />sort(X,DIM)         // Take the DIM dimension as the sorting dimension. If DIM==-1 then behave the same as sort(X).<br />sort(X,DIM,MODE)    // MODE: "ascending" or "descending"</code></pre><ul>
+	<li><code>sort(X)</code>方式默认使用第一个非单元素维度（non-singleton dimension）作为排序维度进行排序，默认升序。
+	</li>
+	<li><code>sort(X,DIM)</code>指定<code>DIM</code>为排序维度，如果<code>DIM==-1</code>则采用<code>sort(X)</code>一致的行为，默认升序。
+	</li>
+	<li><code>sort(X,DIM,MODE)</code>基本同上，<code>MODE</code>参数用来选择序关系，<code>"ascending"</code>表示升序，<code>"descending"</code>表示降序。
+	</li></ul></div>

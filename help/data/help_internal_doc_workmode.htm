@@ -1,0 +1,345 @@
+<div class="markdown-body"><h1>计算模式构建指南</h1><p>
+	<h2>概念
+	</h2>计算模式是仿真流程模式的抽象。通过定义计算模式，可以省去用户建立激励源、监视器、部分模型和后处理的工作。更为关键的在于计算模式可以针对领域特定问题定义参数集合，从而减少用户解读工程模型和后处理结果的工作量。</p><ul>
+	<li>建模的层次
+	</li></ul>整个EastWave仿真建模体系分为三个层次：<ol>
+	<li>仿真模型(Model)
+		<ul>
+			<li>负责细节的定义
+			</li>
+			<li>负责基本仿真参数的定义
+			</li>
+			<li>负责将用户变量表转换为一般元件参数
+			</li>
+			<li>仿真模型的元件参数、结果的含义一般具有数学意义和物理意义而不具有工程学含义（即领域术语）
+			</li>
+			<li>仿真模型在默认的计算模式和调度器下经过求解器运行得到原始的结果输出
+			</li>
+			<li>
+				<strong>物理级仿真
+				</strong>(Physical Simulation)
+			</li>
+			<li>
+				<strong>仿真原语
+				</strong>(Simulation Semantics)
+			</li>
+		</ul>
+	</li>
+	<li>计算模式(Workmode)
+		<ul>
+			<li>对仿真模型的修饰和提升
+			</li>
+			<li>计算模式自身的基本参数和最终输出结果是领域术语
+			</li>
+			<li>将计算模式自身的基本参数转化为仿真模型的参数，包括添加隐藏元件
+			</li>
+			<li>具有操纵多次重复计算过程的能力
+			</li>
+			<li>具有根据需要改变仿真模型中元件参数更新逻辑的能力
+			</li>
+			<li>计算模式对仿真模型计算的原始输出数据进行进一步加工，得到具有工程学意义的结果
+			</li>
+			<li>计算模式不应当修改用户变量表，用户变量表中定义的变量可以在计算模式用户参数中使用
+			</li>
+			<li>
+				<strong>工程级仿真
+				</strong>(Engineering Simulation)
+			</li>
+			<li>
+				<strong>领域原语
+				</strong>(Domain Semantics)
+			</li>
+		</ul>
+	</li>
+	<li>调度器(Dispatcher)
+		<ul>
+			<li>调度器是对计算模式任务计算过程的组织
+			</li>
+			<li>调度器一般包括默认调度器（计算一次结束）、参数扫描调度器和参数寻优调度器三种，允许编写更为复杂的调度逻辑
+			</li>
+			<li>调度器可以多层嵌套
+			</li>
+			<li>调度器不能使用用户变量表的内容，但可以修改用户变量表的内容
+			</li>
+			<li>调度器需要解决多次计算的结果综合的问题
+			</li>
+			<li>
+				<strong>智能级仿真
+				</strong>(Intelligent Simulation)
+			</li>
+			<li>
+				<strong>任务原语
+				</strong>(Task Semantics)
+			</li>
+		</ul>
+	</li></ol><strong>箭头图：</strong><pre><code>                     Run Solver<br />   Model[2] --------------------------&gt; Simple/Multiple Results            | Task Semantics         |<br />     /|\             Modify User Vars                /|\<br />      |                                               |<br />      | Lifting with a Dispatcher                     | Filter/Regroup by Dispatcher<br />      |                                               |<br />      |              Run Solver                       | <br />   Model[1] --------------------------&gt; Result interpreted by Workmode     | Domain Semantics       |<br />     /|\             Use User Vars                   /|\ <br />      |                                               |<br />      | Decorate with a Workmode                      | Postprocess by workmode <br />      |                                               |<br />      |              Run Solver                       | <br />   Model[0] --------------------------&gt; Result interpreted by Math/Physics | Simulation Semantics   |<br />                     Use User Vars</code></pre><h2>运行原理</h2>求解器读取一个工程文档后，按照下面的次序进行工作（注意并行时多节点的行为）：<ol>
+	<li>读取用户变量表，进行解析求值
+	</li>
+	<li>依次读取调度器堆栈的栈顶，根据调度器的内部逻辑对用户变量表进行修改（如查询某个指定的变量修改其数值）
+	</li>
+	<li>处理完所有的调度器的操作后进入核心计算模式
+		<ul>
+			<li>[A] 主节点执行计算模式初始化函数<code>wmbase.init0()</code>
+			</li>
+			<li>[B] 主节点更新<code>sddata.ndoc</code>（如无则设定为0），执行计算模式<code>wmbase.nextp()</code>函数，如果返回为<code>true</code>则进入计算循环[C]，否则跳出计算循环[G]，并所有节点同步<code>sddata</code>变量表
+				<ul>
+					<li>[C] 每个节点执行<code>wmbase.update()</code>函数，将<code>wmuser</code>的参数转换到<code>wmdata</code>中
+					</li>
+					<li>[D] 每个节点执行<code>wmbase.check()</code>函数，一般检测<code>wmdata</code>中的参数
+					</li>
+					<li>[E] 每个节点执行求解计算过程
+					</li>
+					<li>[F] 每个节点执行计算模式后处理<code>wmbase.postp()</code>函数
+					</li>
+				</ul>
+			</li>
+			<li>[G] 全部节点跳出循环（由主节点通知其他节点是否要跳出循环或是继续下一次计算）
+			</li>
+			<li>[H] 主节点执行<code>wmbase.fini0()</code>函数
+			</li>
+		</ul>
+	</li>
+	<li>执行当前调度器内部的后处理，判断是否要进行下一轮计算模式或者下一次的内部调度器计算计算，如果不需要则退出到外面一层调度器依次判断
+	</li>
+	<li>结束全部计算过程
+	</li></ol>计算模式部分用伪代码表述：<pre><code>wmbase.init0();<br />while(wmbase.nextp())<br />{<br />    wmbase.update();<br />    wmbase.check();<br />    wmbase.process();<br />    wmbase.postp();<br />}<br />wmbase.fini0();</code></pre><h2>参数更新逻辑</h2>进入求解计算过程时，有一个参数解析过程（每个非从节点都会运行），见下表：<div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td align="center" style="border:0px">
+				<a name="ll">table 1: 阶段说明
+				</a>
+			</td>
+		</tr>
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center"> 阶段(phase)<br />
+
+								</td>
+								<td align="center"> 说明<br />
+
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="center">  <code>param</code><br />
+
+								</td>
+								<td align="center"> 更新参数<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  <code>border</code><br />
+
+								</td>
+								<td align="center"> 更新边界（类型）<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  <code>freq</code><br />
+
+								</td>
+								<td align="center"> 更新频率<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  <code>model</code><br />
+
+								</td>
+								<td align="center"> 加载模型<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  <code>bbox</code><br />
+
+								</td>
+								<td align="center"> 更新物体包围框<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  <code>cbox</code><br />
+
+								</td>
+								<td align="center"> 更新可见元件包围框<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  <code>fbox</code><br />
+
+								</td>
+								<td align="center"> 更新计算区域（第1次）<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  <code>pml</code><br />
+
+								</td>
+								<td align="center"> 更新吸收边界<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  <code>meshpos</code><br />
+
+								</td>
+								<td align="center"> 更新网格（即同时第二次更新fbox）<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  <code>time</code><br />
+
+								</td>
+								<td align="center"> 更新时间参数<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center">  <code>solver</code><br />
+
+								</td>
+								<td align="center"> 更新求解器参数<br />
+
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div><h2>可用变量的说明</h2>在计算模式的编写过程中用到的一些变量的说明：<div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td align="center" style="border:0px">
+				<a name="ll">table 2: 计算模式脚本变量说明
+				</a>
+			</td>
+		</tr>
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center"> <code>td</code><br />
+
+								</td>
+								<td align="center">    文档参数、建模方法集合<br />
+
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="center"> <code>config</code><br />
+
+								</td>
+								<td align="center">    配置信息<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> <code>wmbase</code><br />
+
+								</td>
+								<td align="center">    计算模式通用过程与方法集合<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> <code>wmuser</code><br />
+
+								</td>
+								<td align="center">    计算模式用户参数集合<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> <code>wmdata</code><br />
+
+								</td>
+								<td align="center">    计算模式用户数据集合<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> <code>result</code><br />
+
+								</td>
+								<td align="center">    计算模式生成的计算结果<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> <code>sddata</code><br />
+
+								</td>
+								<td align="center">    并行节点之间的共享数据<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> <code>dparam</code><br />
+
+								</td>
+								<td align="center">    模型文档参数，在前处理中可用<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> <code>eparam</code><br />
+
+								</td>
+								<td align="center">    引擎参数，在后处理中可用<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> <code>svdata</code><br />
+
+								</td>
+								<td align="center">    求解器数据集，用于跨调度器传送数据（如向上传送数据时将自动传入<code>sddata</code>中<br />
+
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div><h2>计算模式参数定义规范</h2><ul>
+	<li>规格说明是对计算模式的参数集、参数约束情况以及部分运行逻辑的说明和解释（建议对复杂以及可能产生误解的一些问题予以说明），一般写在计算模式程序的最顶部。
+	</li>
+	<li><code>wmuser</code>和<code>wmdata</code>传送数据时按照约定的规则可以减少重复代码的编写，并且有利于计算模式规格定义信息的突出。在<code>wmbase.definition()</code>函数中定义计算模式变量的名称和默认值，并且自动包含了默认类型信息。在<code>wmbase.transfer(ar)</code>和<code>wmbase.init0()</code>两个函数中采用简单的名称构造法，因此大部分普通计算模式不需要对这两个过程进行额外的编写工作。另一方面，计算模式的界面对话框会调用<code>wmbase.transfer(ar)</code>函数进行参数同步工作。具体的规则如下：
+	</li>
+	<li>在构造<code>wmbase</code>时，使用<code>wmbase = wmutil.create_workmode_basic()</code>或者其他类似的初始化函数。
+	</li>
+	<li>
+		<strong>计算模式规格变量表
+		</strong>：即在<code>wmbase.definition()</code>函数中返回一个变量表，建议使用<code>table { ... }</code>的方式表达，并且对齐代码，每一行一个参数，并且附加注释（如果有必要）。
+	</li>
+	<li><code>wmbase.transfer(ar)</code>的默认行为是根据
+		<strong>计算模式规格变量表
+		</strong>根据嵌套的情况构建名字，例如参数<code>param1.freq</code>，在<code>wmuser</code>中的索引名称是<code>'param1.freq'</code>，因此引用方式为<code>wmuser['param1.freq']</code>。
+	</li>
+	<li><code>wmdata</code>中保存的是已经被求值的各个用户参数，根据用户参数计算出来的一些衍生参数（为了方便后续重复利用）。
+	</li>
+	<li><code>wmbase.update(dp)</code>过程负责将<code>wmuser</code>中的原始用户参数转换为计算模式处理过程中的内部数据，因此为了方便表述，建议采用规整的写法，并且尽量和
+		<strong>计算模式规格变量表
+		</strong>中的变量保持对应关系；一些衍生参数的处理注意保持逻辑的清晰性，例如可以使用<code>switch-case</code>语句。
+	</li></ul><h2>例子与解释</h2>计算模式规格说明信息的参考格式：<pre><code code-language="ewsl">/* EastWave V7 RCS 计算模式<br /> * 规格设计：戴炜锋<br /> * 设计日期：2018/09/07<br /> * 修改时期：----/--/--<br /> * 模式名称：雷达散射截面计算模式（单站）<br /> * 备注信息：单站RCS计算（脉冲模式）<br /> * 帮助文档：<br /> * ***************************************<br /> * ... （略）<br /> */</code></pre>典型的计算模式规格定义如下：<pre><code code-language="ewsl">function wmbase.definition()<br />{<br />    return table {<br />        freq : table {<br />            mode    : 0;        // 0: 单值，1: 线性步进，2: 均匀采样，3: 列表<br />            value   : "1.0";<br />            min     : "0.9";<br />            max     : "1.1";<br />            count   : "21";<br />            step    : "0.01";<br />        };<br /><br />        angle : table {<br />            mode    : 1;        // 0: Theta扫描，1: Phi扫描<br />            scsmode : 0;        // 0: ISO，1: HCS，2: GCS<br />            theta   : "90";<br />            phi     : "0:5:180";<br />        };<br /><br />        misc : table {<br />            accuracy      : "1.0e-3";   // 脉冲式计算的场收敛条件<br />            customsignal  : false;      // 自定义高斯信号<br />            gaussianfreq  : "1.0";      // 高斯脉冲的中心频率<br />            bandwidth     : "0.2";      // 高斯脉冲的带宽<br />            ff_distance   : "1.0e+8";   // 远场距离，一般不影响计算结果，不在界面中体现<br />            add_space_src : "0.25";     // 平面波距离BBOX的距离<br />            add_space_mon : "0.25";     // 远场监视器距离平面波盒子的距离<br />            add_space_cal : "0.25";     // 计算区域边界和远场监视器盒子的距离<br />        };<br />    };<br />}</code></pre><code>wmbase.update(dp)</code>函数中对原始参数求值的例子：<blockquote><code>dp.eval</code>的用法：<code>dp.eval(param_name, typename)</code>，第一个参数表示参数的名称，第二个参数表示求值的类型，要求是强类型求值。</blockquote><pre><code code-language="ewsl">wmdata.angle = table {<br />    mode    : dp.eval("angle.mode",    "integer"     );<br />    scsmode : dp.eval("angle.scsmode", "integer"     );<br />    theta   : dp.eval("angle.theta",   "array_double");<br />    phi     : dp.eval("angle.phi",     "array_double");<br />};</code></pre><h2>补充说明</h2><ul>
+	<li><code>wmutil</code>是针对计算模式某些较为通用的需求提供的辅助工具集，通过<code>#import wmutil</code>的方式调用。
+	</li>
+	<li>在<code>wmbase.hook0()</code>函数运行阶段中，如果在较早的阶段直接指定了后续某个阶段的属性变量表，则计算模式内部的机制会跳过内部更新机制而直接采用预设的数值。利用该方法可以减少重复性工作（例如提前设定<code>dparam.meshpos</code>可以避免进行非均匀网格划分）。
+	</li></ul></div>

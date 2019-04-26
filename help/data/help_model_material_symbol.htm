@@ -1,0 +1,85 @@
+<div class="markdown-body"><h1>材料元件</h1>EastWave 的材料元件采用具有严格意义的物理模型，可支持几乎所有的电磁/光电材料，包括电介质材料、金属材料、各向异性材料、激光材料、磁性材料等。如果面对的是一种全新的材料，只要有实测的宽频色散曲线，EastWave 就可利用内部引擎进行<a target="_top" href="#help_model_material_symbol_material_fitting">色散自动拟合</a>，进行稳定的 FDTD 求解。<h2>如何创建材料元件</h2><ul>
+	<li>
+		<a target="_top" href="#help_model_material_symbol_DMaterialCreate.create-by-GUI">界面创建材料元件（推荐）
+		</a><br />
+
+	</li>
+	<li>
+		<a target="_top" href="#help_model_material_symbol_DMaterialCreate.create-by-EWSL">脚本创建材料元件（高级建模）
+		</a>
+	</li></ul><h2>如何从材料库导入材料元件至工程</h2>打开材料库界面后，选中目标材料元件，点击<strong>导入至当前工程</strong>即可。具体操作，请参看<a target="_top" href="#help_model_material_symbol_material_depot">材料库导入材料元件</a>，<h2>如何拟合生成材料元件</h2>材料拟合工具集成于材料库中，需要通过材料库的<strong>拟合生成功能</strong>才可以打开拟合工具。拟合生成材料元件的具体步骤，请参看<a target="_top" href="#help_model_material_symbol_material_fitting">拟合生成材料元件</a>。<h2>所有材料元件</h2><div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td align="center" style="border:0px">
+				<a name="">材料类别表
+				</a>
+			</td>
+		</tr>
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center"> 材料类别<br />
+
+								</td>
+								<td align="center"> 特点<br />
+
+								</td>
+								<td align="center"> 备注<br />
+
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="center"> 普通材料<br />
+
+								</td>
+								<td align="center"> 具有常数的$\varepsilon$、$\mu$、$\sigma_e$和$\sigma_m$<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 洛仑兹材料<br />
+
+								</td>
+								<td align="center"> 具备洛仑兹色散关系的材料<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 空间相关材料<br />
+
+								</td>
+								<td align="center"> 物理属性与空间分布有关的材料<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 涂敷材料<br />
+
+								</td>
+								<td align="center"> 用来定义薄板或者物体表面加油指定厚度或者电磁属性的材料<br />
+
+								</td>
+								<td align="center"> 多层材料和阻抗材料<br />
+
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div></div>

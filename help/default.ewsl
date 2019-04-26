@@ -1,0 +1,16 @@
+#function(session,request,response);
+global server;
+
+response.redirect("/help/index.htm");
+
+/*
+if(request.useragent.find("MSIE 7")>=0||request.useragent.find("MSIE 8")>=0)
+{
+	response.redirect("/help/index_1.htm");
+}
+else
+{
+	response.redirect("/help/index.htm");
+}*/
+
+

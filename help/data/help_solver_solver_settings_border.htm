@@ -1,0 +1,163 @@
+<div class="markdown-body"><h1>边界设置</h1>在仿真不同类型电磁波问题时可能使用不同的边界条件。边界类型分为：开放边界、周期边界、PEC 边界、PMC 边界和布洛赫边界。<p>
+	<div class="markdown-block">
+		<table width="100%">
+			<tr style="border:0px">
+				<td align="center" style="border:0px">
+					<a name="">边界类型
+					</a>
+				</td>
+			</tr>
+			<tr style="border:0px">
+				<td style="border:0px">
+					<div class="markdown-table">
+						<table width="100%" class="markdown-table" style="border:1px">
+							<thead>
+								<tr>
+									<td align="center"> 边界类型<br />
+
+									</td>
+									<td align="center"> 使用条件<br />
+
+									</td>
+									<td align="center"> 常见问题<br />
+
+									</td>
+									<td align="center"> 备注<br />
+
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td align="center"> 开放边界<br />
+
+									</td>
+									<td align="center"> 模拟无限大开放边界<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+									<td align="center"> 需要设定吸收层<br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> PEC 边界<br />
+
+									</td>
+									<td align="center"> 模拟电反射边界<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> PMC 边界<br />
+
+									</td>
+									<td align="center"> 模拟磁反射边界<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> 周期边界<br />
+
+									</td>
+									<td align="center"> 在一个方向上的周期边界条件<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div></p><div class="markdown-indicate"><p>&nbsp;&nbsp;周期边界条件</p>
+	<ul>
+		<li>电反射边界条件：电场水平分量为0，磁场水平分量不变，对应无限大理想金属平板（$\sigma_e\rightarrow\infty$）
+		</li>
+		<li>磁反射边界条件：磁场水平分量为0，电场水平分量不变，对应无限大理想磁导体平板（$\sigma_m\rightarrow\infty$）
+		</li>
+	</ul></div>用户打开边界设置对话框如下图：<br />
+<img src="image/param/border.png" alt="边界设置对话框" /><br />
+<p>当选择开放边界时，需要正确选择和合适的吸收边界。每种边界的含义和用法如下表：<br />
+
+	<div class="markdown-block">
+		<table width="100%">
+			<tr style="border:0px">
+				<td align="center" style="border:0px">
+					<a name="">吸收层类型
+					</a>
+				</td>
+			</tr>
+			<tr style="border:0px">
+				<td style="border:0px">
+					<div class="markdown-table">
+						<table width="100%" class="markdown-table" style="border:1px">
+							<thead>
+								<tr>
+									<td align="center"> 吸收边界<br />
+
+									</td>
+									<td align="center"> 含义<br />
+
+									</td>
+									<td align="center"> 用法<br />
+
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td align="center"> PML<br />
+
+									</td>
+									<td align="center"> 完美匹配层<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+								<tr>
+									<td align="center"> CPML<br />
+
+									</td>
+									<td align="center"> 卷积型完美匹配层<br />
+
+									</td>
+									<td align="center"><br />
+
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div></p><div class="markdown-warning"><p>&nbsp;&nbsp;注意</p>
+	<ul>
+		<li>开放边界附近有强色散材料时注意延拓空间（ADDSPACE）要适当增大，否则可能引发边界附近计算不精确或部分发散。
+		</li>
+		<li>通常PML层数越多吸收效果越好，但过多的吸收层将增大内存和计算开销。
+		</li>
+	</ul></div></div>

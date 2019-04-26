@@ -1,0 +1,93 @@
+<div class="markdown-body"><h1>工程定义</h1>EastWave仿真模型将一些被引用的参数放在<strong>定义</strong>中，以便用户定义模型元件时使用。- 变量表- 单位- 材料- 元件（库）<h2>变量表</h2>变量表提供了设计参数管理的手段。用户在变量表中定义变量（可以使用MX语言的表达式来计算变量值）。在工程模型元件中的参数通常可以使用变量表中的变量进行定义。<h2>单位</h2>设定当前文档有关的单位。对于电磁仿真，主要是时间单位、长度单位和频率单位。常见的单位包括：<ul>
+	<li>国际单位制（SI）：米<code>m</code>、秒<code>s</code>、赫兹<code>Hz</code>
+	</li>
+	<li>电磁波工程常用：毫米<code>mm</code>、纳秒<code>ns</code>、吉赫兹<code>GHz</code>
+	</li></ul><p>
+	<h2>材料
+	</h2>设定当前文档有关的材料。</p>EastWave V7提供了下列材料模型：<div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td align="center" style="border:0px">
+				<a name="">材料模型
+				</a>
+			</td>
+		</tr>
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center"> 名称<br />
+
+								</td>
+								<td align="center"> 说明<br />
+
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="center"> 简单材料<br />
+
+								</td>
+								<td align="center"> 介电常数、电导率等为常数的材料<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 德拜材料<br />
+
+								</td>
+								<td align="center"> 德拜材料模型<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 洛仑兹材料<br />
+
+								</td>
+								<td align="center"> 洛仑兹材料模型<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 修正洛仑兹材料<br />
+
+								</td>
+								<td align="center"> 修正洛仑兹材料模型<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 电磁组合材料<br />
+
+								</td>
+								<td align="center"> 电特性和磁特性可以分别绑定不同材料模型的材料<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 空间相关材料<br />
+
+								</td>
+								<td align="center"> 空间每一点的介电常数、电导率可以取不同的数值<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 条件选择材料<br />
+
+								</td>
+								<td align="center"> 根据用户设定的条件在空间的不同区域选择不同材料<br />
+
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div><p>
+	<h2>元件（库）
+	</h2>元件库是EastWave V7中可以用于建立仿真模型的所有元件组织成的库。在元件库中的元件相当于工厂的零件仓库，既有可能被使用，也有可能没有被使用。对于可见对象，即几何结构（Geometry Entity）、物理元件（Physical Entity）、组、阵列，以及监视器和激励源等，如果要被仿真过程应用，必须在“模型”节点下被组装起来。</p></div>

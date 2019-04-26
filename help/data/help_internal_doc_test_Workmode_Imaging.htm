@@ -1,0 +1,78 @@
+<div class="markdown-body"><h1>成像计算模式（测试说明）</h1><h2>概述</h2>主要测试内容为：<ol>
+	<li>子模式包括HRRP（目标一维距离成像）和ISAR(目标二维雷达成像)
+	</li>
+	<li>前处理界面功能测试
+	</li>
+	<li>后处理数据挂载完整性和合理性测试
+	</li>
+	<li>后处理图像显示正确性测试<br />
+
+	</li></ol><h2>前处理界面功能测试</h2>前处理界面测试主要测试界面按钮、可选框、参数设置是否起作用。<h3>HRRP子模式界面功能测试</h3>HRRP子模式界面如下：<br />
+<img src="image/workmode/radarImaging/interface_hrrp.png" /><br />
+图1 HRRP模式界面<br />
+重点测试：成像模式可选框（HRRP,ISAR），频率，角度（$\theta$,$\phi$），极化，距离分辨率，距离像范围参数设置和窗函数可选框设置是否起作用。<br />
+通过仿真结果可查看以上设置是否起作用。HRRP仿真结果数据结构如下：<br />
+<img src="image/workmode/radarImaging/result_hrrp.png" /><br />
+图2 HRRP仿真结果数据结构<br />
+basicData.frequency_center为界面上设置的频率；<br />
+basicData.theta 为界面上设置的$\theta$角；<br />
+basicData.phi 为界面上设置的$\phi$角；<br />
+imageData.rangeResolution为界面上设置的距离分辨率；<br />
+imageData.rangeSize为界面上设置的距离像范围；<br />
+radarImage.ThetaPolar为回波垂直极化雷达图像；<br />
+radarImage.ThetaPolar为回波水平极化雷达图像；<br />
+详细的仿真参数请查看dparam节点数据。<br />
+<br /><strong>注：</strong><ol>
+	<li>雷达信号类型目前仅实现了高斯信号
+	</li>
+	<li>球坐标系模式目前仅支持ISO
+	</li>
+	<li>HRRP仿真时界面上的方位分辨率和方位像方位不起作用
+	</li>
+	<li>杂项参数设置暂不测试
+	</li></ol><h3>ISAR子模式界面功能测试</h3>ISAR子模式界面如下：<br />
+<img src="image/workmode/radarImaging/interface_isar.png" /><br />
+图3 ISAR模式界面<br />
+重点测试：成像模式可选框（HRRP,ISAR），频率，角度（$\theta$,$\phi$），极化，距离分辨率，方位分辨率，距离像范围，方位像范围参数设置和窗函数可选框设置是否起作用。<br />
+测试参考仿真结果数据。HRRP仿真结果数据结构如下：<br />
+<img src="image/workmode/radarImaging/result_isar.png" /><br />
+图4 HRRP仿真结果数据结构<br />
+basicData.frequency_center为界面上设置的频率；<br />
+basicData.theta 为界面上设置的$\theta$角；<br />
+basicData.phi_center 为界面上设置的$\phi$角；<br />
+imageData.rangeResolution为界面上设置的距离分辨率；<br />
+imageData.rangeSize为界面上设置的距离像范围； imageData.crangeResolution为界面上设置的距离分辨率；<br />
+imageData.crangeSize为界面上设置的距离像范围； radarImage.ThetaPolar为回波垂直极化雷达图像；<br />
+radarImage.ThetaPolar为回波水平极化雷达图像； 详细的仿真参数请查看dparam节点数据。<br />
+<br /><strong>注：</strong><ol>
+	<li>雷达信号类型目前仅实现了高斯信号
+	</li>
+	<li>球坐标系模式目前仅支持ISO
+	</li>
+	<li>杂项参数设置暂不测试
+	</li></ol><h2>后处理数据挂载完整性和合理性测试</h2>如图2和图4所示，仿真数据种类繁多，dparam节点下的数据为仿真文档参数，eparam节点下的数据为仿真引擎参数。与雷达成像模式直接相关的数据挂载在basicData和imageData节点下，basicData记录了与雷达参数相关的频率（中心频率、扫描频率、频率带宽）、频点个数、角度（$\theta$角、中心方位角、扫描方位角、方位角带宽）、角点个数；<br />
+imageData记录了与图像参数相关的雷达图像数据（垂直极化电场和水平极化电场）、图像分辨率（距离分辨率和方位分辨率）、图像尺寸（距离像范围和方位像范围）。<br />
+后处理测试需要从工程上和逻辑上判断后处理basicData和imageData数据的完整性和合理性，并提出建议和方案。<br />
+radarImage节点下的数据为仿真结果图：radarImage.ThetaPolar为回波垂直极化雷达图像；<br />
+radarImage.ThetaPolar为回波水平极化雷达图像；<br />
+<h2>后处理图像显示正确性测试 </h2><p>根据仿真的雷达图像以及仿真物理模型判断仿真结果的正确性，依据如下：<br />
+
+	<ol>
+		<li>测试物体的位置正确性
+			<ul>
+				<li>距离向上物体的绝对位置
+				</li>
+				<li>距离向上物体的相对位置
+				</li>
+				<li>方位向上物体的绝对位置
+				</li>
+				<li>方位向上物体的相对位置
+				</li>
+			</ul>
+		</li>
+		<li>测试图像上散射强度的物理意义正确性<br />
+
+		</li>
+		<li>测试仿真图像与界面设置参数的对应性
+		</li>
+	</ol></p><h2>标准案例</h2><a target="_top" href="javascript:ewdoc.open_editor('internal_files/test/systest/workmode/imaging/ew-v7_0_0-workmode-imaging-0001.ewp2')">测试文档</a></div>

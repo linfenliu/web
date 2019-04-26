@@ -1,0 +1,52 @@
+<div class="markdown-body"><p>
+	<h1>面向对象编程
+	</h1></p><a name="help_script_Programming_II_OOP.concept"> </a><h2>基本概念</h2><p>EWSL支持较为简洁的面向对象设计范式。包括支持
+	<strong>类
+	</strong>（class）、
+	<strong>类的继承
+	</strong>、成员变量与方法、类方法等概念。面向对象编程的核心概念是类和对象。其中类可以看成构造对象实例的模板，而对象则是根据类的规则将一组数据和方法组合成起来的一种数据结构。每个类都为各自的类实例定义了一系列的成员对象和方法，相同类的对象实例具有类似的行为特征。面向对象编程比较适合对真实世界行为的模拟和概念抽象，例如动物、人类、汽车、建筑都可以抽象为类的概念。类的概念又衍生出了子类的概念，例如我们可以定义“人”是一个类，那么“男人”就可以定义成一个子类，而“女人”可以定义成另一个子类。在许多时候，类的设计很容让程序员理解代码的含义。合理使用面向对象编程技术有利于提高程序的可读性、封装性和重用能力。</p><ul>
+	<li>一个简单的类和对象的定义与使用的例子
+	</li></ul><pre><code code-language="ewsl">class Person<br />{<br />    self.name   = "noname";<br />    self.age    = 18;<br />    self.height = 175;<br />    self.gender = "male";<br />};<br /><br />John = Person();<br />John.name = "John";<br />John.age = 18;<br />John.height = 180;<br />John.gender = "male";<br /><br />Marry = Person();<br />Marry.name = "Marry";<br />Marry.age  = 22;<br />Marry.height = 165;<br />Marry.gender = "female";</code></pre><p><blockquote>上面的例子定义了一个叫做<code>Person</code>的类，并且定义了两个对象实例分别叫做<code>John</code>和<code>Mary</code>。</blockquote></p><ul>
+	<li>定义一个类
+		<ul>
+			<li><code>class</code>关键词后跟着类名，如例子中的<code>Point</code>。
+			</li>
+			<li>在类名后跟上大括号对<code>{}</code>，大括号之间书写类的定义。
+			</li>
+			<li><code>self</code>关键词表示的是类的对象实例的成员域，并且是动态绑定（即每个对象实例均有一份该名字的成员），并且运行期是可变的(mutable)。
+			</li>
+			<li><code>mfun</code>关键词表示的是类的对象实例的成员域，但是是静态绑定（即每个对象实例均共享同名的成员），在运行期是不可变的(immutable)。
+			</li>
+			<li><code>meta</code>关键词表示类本身成员的定义，必须使用类而不是对象实例来引用（<code>Point.length</code>是合法的，而<code>Point().length</code>是非法的）。
+			</li>
+		</ul>
+	</li></ul><pre><code code-language="ewsl">class Point<br />{<br />    self.x = 0;<br />    self.y = 0;<br />    self.z = 0;<br />    <br />    // meta-method<br />    // it is used as `Point.length(...)`<br />    // `Point.length` is immutable (cannot be modified)<br />    meta.length = function(p)<br />    {<br />        return sqrt(p.x*p.x + p.y*p.y + p.z*p.z);<br />    };<br /><br />    // static-binded member-method<br />    // it is used as `obj.length()`<br />    // `obj.length` is immutable (cannot be modified)<br />    // predicate: (Point().length1 === Point().length1) == true (always)<br />    mfun.length1 = function()<br />    {<br />        return meta.length(this): <br />    }<br /><br />    // dynamic-binded member-method<br />    // it is used as `obj.len()`<br />    // `obj.length2` is mutable (can be modified) like `obj.x`<br />    self.length2 = function()<br />    {<br />        return this.length1();<br />    }<br />};</code></pre><ul>
+	<li>使用类构造对象实例
+		<ul>
+			<li>定义好类以后，把类当作函数调用运行一次即可得到默认构造的对象
+			</li>
+			<li>如果希望构造方法多样化，建议在类的元方法中增加专用的构造函数，或者可以考虑使用独立函数进行构造。
+			</li>
+			<li>对象实例和普通的变量表比较相似，可以使用<code>[]</code>也可以使用<code>.</code>来引用其内部成员。
+			</li>
+		</ul>
+	</li></ul><pre><code code-language="ewsl">p1 = Point();<br />p2 = Point();<br /><br />p1.x = 100;<br />p1.y = -50;<br />p1.z = +30;<br /><br />p2["x"] = -100;<br />p2["y"] = -20;<br />p2["z"] = 30;</code></pre><ul>
+	<li>特殊成员方法的重载
+		<ul>
+			<li><code>mfun.__fun_call</code>或者<code>self.__fun_call</code>可以定义一个对象当作函数调用时的行为。
+			</li>
+			<li><code>mfun.__add</code>、<code>mfun.__sub</code>、<code>mfun.__mul</code>、<code>mfun.__div</code>可以定义该对象接受算符<code>+</code>、<code>-</code>、<code>*</code>、<code>/</code>时的行为。
+			</li>
+			<li><code>mfun.__gt</code>、<code>mfun.__ge</code>、<code>mfun.lt</code>、<code>mfun.le</code>、<code>mfun.ne</code>、<code>mfun.eq</code>可以定义该对象接受算符<code>&gt;</code>, <code>&gt;=</code>, <code>&lt;</code>, <code>&lt;=</code>的行为。
+			</li>
+		</ul>
+	</li>
+	<li>类的继承
+		<ul>
+			<li>当一个类<code>B</code>从另一个类<code>A</code>继承的时候，类<code>B</code>将拥有类<code>A</code>的全部特性，一般认为<code>B</code>是<code>A</code>的子类
+			</li>
+			<li>可以使用多继承，但是不推荐，对于动态绑定的对象来说，如果出现同名成员方法将会使得对象实例的行为难以理解，应当在不至于产生混淆和歧义的前提下谨慎使用多继承。
+			</li>
+		</ul>
+	</li></ul><pre><code code-language="ewsl">class A<br />{<br />    self.x = 0;<br />    self.y = 0;<br />};<br /><br />class B<br />{<br />    self.func1 = function() { return 0; };<br />    self.func2 = function() { return 1; };<br />};<br /><br />class C : A<br />{<br />    self.func1x = function() { return this.x; };<br />    self.func1y = function() { return this.y; };<br />};<br /><br />class D : B, C<br />{<br />    self.g = function() { return "g"; };<br />    self.k = function() { return "k"; };<br />};<br /></code></pre><blockquote>上面提供了一个简单的继承和多继承的例子</blockquote><h2>作为值的类</h2><p>作为动态类型的脚本语言，类也是一种特殊的值，与函数类似，可以动态定义和构造和赋值、拷贝。我们可以定义一种函数，其返回值是类，然后再用这个类去定义一系列对象实例。<br />
+</p><pre><code code-language="ewsl">function make_class(member_name1, member_name2)<br />{<br />    local c = class<br />    {<br />        self[member_name1] = "member1";<br />        self[member_name2] = "member2";<br />    };<br />    return c;<br />};<br /></code></pre><p><blockquote>上面的例子定义了一个可以根据参数来动态创建类的函数。这样的用法相当于创造了一种类模板的概念，即可以使用参数来生成类，再用类生成具体实例对象。这在将数据转换为对象的时候较为有用。</blockquote></p></div>

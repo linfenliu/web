@@ -1,0 +1,117 @@
+<div class="markdown-body"><p>
+	<h1>激励源（测试说明）
+	</h1></p><p>
+	<strong>激励源的测试内容包括：
+	</strong>
+	<ul>
+		<li>测试用户参数设置的有效性
+			<ul>
+				<li>设定后对仿真的影响是否符合预期
+				</li>
+				<li>设置位置、大小超出边界的测试
+				</li>
+			</ul>
+		</li>
+		<li>测试输出结果输出的符合性
+		</li>
+		<li>界面显示
+			<ul>
+				<li>指示信息与用户设置、计算是否吻合
+				</li>
+				<li>信息缺失问题
+				</li>
+			</ul>
+		</li>
+		<li>测试各种计算条件下的健壮性
+			<ol>
+				<li>单线程测试
+				</li>
+				<li>并行测试
+				</li>
+				<li>其他求解器参数设置下的运行情况
+					<ul>
+						<li>微引擎参数
+						</li>
+						<li>网格参数的影响
+						</li>
+					</ul>
+				</li>
+			</ol>
+		</li>
+	</ul></p><strong>测试激励源如下：</strong><div class="markdown-block">
+	<table width="100%">
+		<tr style="border:0px">
+			<td align="center" style="border:0px">
+				<a name="">激励源元件
+				</a>
+			</td>
+		</tr>
+		<tr style="border:0px">
+			<td style="border:0px">
+				<div class="markdown-table">
+					<table width="100%" class="markdown-table" style="border:1px">
+						<thead>
+							<tr>
+								<td align="center"> 名称<br />
+
+								</td>
+								<td align="center"> 说明<br />
+
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="center"> 偶极子<br />
+
+								</td>
+								<td align="center"><br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 场源<br />
+
+								</td>
+								<td align="center"> 参数较多，注意测试完整性<br />
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 平面波<br />
+
+								</td>
+								<td align="center"> 注意杂项参数的测试，平面波的后向初射与数值色散修正有关<br />
+
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table></div><strong>重点测试：</strong><ul>
+	<li>场源的朝向、坐标系、辐射角的相关性问题
+	</li></ul><strong>补充说明：</strong><ul>
+	<li>测试激励源时注意信号问题，一般考虑3种典型信号
+		<ul>
+			<li>余弦波（直接激发时建议相位设为<code>90</code>或者<code>270</code>使得打出的是正弦信号
+			</li>
+			<li>上升沿信号，会减少由于初始信号跃变导致的高频噪声
+			</li>
+			<li>高斯脉冲（按时间设置和按频率设置两种）
+			</li>
+		</ul>
+	</li></ul><strong>测试案例：</strong><ul>
+	<li>
+		<a target="_top" href="javascript:ewdoc.open_editor('internal_files/test/systest/source/ew-v7_0_0-source-dipole-0001.ewp2')">偶极子辐射远场案例
+		</a>
+	</li>
+	<li>
+		<a target="_top" href="javascript:ewdoc.open_editor('internal_files/test/systest/shared/ew-v7_0_0-shared-rcs-custom-0001.ewp2')">自定义RCS测试文档（平面波+远场监视器）
+		</a>
+	</li>
+	<li>
+		<a target="_top" href="javascript:ewdoc.open_editor('internal_files/test/systest/source/ew-v7_0_0-source-sourcefield-0001.ewp2')">场源薄介质板透射案例
+		</a>
+	</li></ul></div>
