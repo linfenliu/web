@@ -205,6 +205,8 @@ div.markdown-block > table
 {
 	background-color: #f2f2f2;	/*style*/
 	font-weight: bold;
+	
+	word-break: normal;
 }
 
 
