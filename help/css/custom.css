@@ -251,6 +251,13 @@ td.cls_menu_button, td.cls_menu_button_empty
 	width: 1.5rem;
 }
 
+.websize-small td.cls_menu_button, .websize-small td.cls_menu_button_empty
+{
+	width: 34px;
+	width: 2rem;
+}
+
+
 .cls_menu_button > button
 {
 	cursor: pointer;
@@ -265,6 +272,7 @@ td.cls_menu_button, td.cls_menu_button_empty
 	outline: none;
 }
 
+
 .cls_menu_button_empty > button
 {
 	cursor: unset;
@@ -276,6 +284,12 @@ td.cls_menu_button, td.cls_menu_button_empty
 	background-color: transparent;
 	
 	outline: none;
+}
+
+.websize-small .cls_menu_button > button, .websize-small .cls_menu_button_empty > button
+{
+	width: 34px;
+	width: 2rem;
 }
 
 #wrap_menu a
