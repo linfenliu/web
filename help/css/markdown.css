@@ -195,8 +195,8 @@ div.markdown-block > table
 	/*display: block;*/
 	width: 100%;
 	overflow: auto;
-	word-break: normal;
-	/*word-break: break-all;*/
+	/*word-break: normal;*/
+	word-break: break-all;
 	border-collapse: collapse;
 	border-spacing: 0;
 }
